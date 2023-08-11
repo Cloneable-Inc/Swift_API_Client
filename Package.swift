@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "OpenAPIClient",
+    name: "Swift_API_Client",
     platforms: [
         .iOS(.v10),
         .macOS(.v10_12),
@@ -13,8 +13,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "OpenAPIClient",
-            targets: ["OpenAPIClient"]
+            name: "Swift_API_Client",
+            targets: ["Swift_API_Client"]
         ),
     ],
     dependencies: [
@@ -26,9 +26,9 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "OpenAPIClient",
+            name: "Swift_API_Client",
             dependencies: ["AnyCodable", "Alamofire", ],
-            path: "OpenAPIClient/Classes"
+            path: "Swift_API_Client/Classes"
         ),
     ]
 )

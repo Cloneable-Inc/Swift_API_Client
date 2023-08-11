@@ -18,7 +18,7 @@ Get company by id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Swift_API_Client
 
 let id = "id_example" // String | 
 
@@ -66,7 +66,7 @@ Get user by id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Swift_API_Client
 
 let id = "id_example" // String | 
 

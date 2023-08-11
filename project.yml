@@ -1,10 +1,10 @@
-name: OpenAPIClient
+name: Swift_API_Client
 targets:
-  OpenAPIClient:
+  Swift_API_Client:
     type: framework
     platform: iOS
     deploymentTarget: "9.0"
-    sources: [OpenAPIClient]
+    sources: [Swift_API_Client]
     info:
       path: ./Info.plist
       version: 0.0.1

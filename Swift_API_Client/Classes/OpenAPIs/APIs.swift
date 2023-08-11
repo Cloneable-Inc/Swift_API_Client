@@ -9,14 +9,14 @@ import Foundation
 import FoundationNetworking
 #endif
 
-// We reverted the change of OpenAPIClientAPI to OpenAPIClient introduced in https://github.com/OpenAPITools/openapi-generator/pull/9624
+// We reverted the change of Swift_API_ClientAPI to Swift_API_Client introduced in https://github.com/OpenAPITools/openapi-generator/pull/9624
 // Because it was causing the following issue https://github.com/OpenAPITools/openapi-generator/issues/9953
 // If you are affected by this issue, please consider removing the following two lines,
 // By setting the option removeMigrationProjectNameClass to true in the generator
-@available(*, deprecated, renamed: "OpenAPIClientAPI")
-public typealias OpenAPIClient = OpenAPIClientAPI
+@available(*, deprecated, renamed: "Swift_API_ClientAPI")
+public typealias Swift_API_Client = Swift_API_ClientAPI
 
-open class OpenAPIClientAPI {
+open class Swift_API_ClientAPI {
     public static var basePath = "http://localhost:3000/api/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
@@ -43,7 +43,7 @@ open class RequestBuilder<T> {
         self.headers = headers
         self.requiresAuthentication = requiresAuthentication
 
-        addHeaders(OpenAPIClientAPI.customHeaders)
+        addHeaders(Swift_API_ClientAPI.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -53,7 +53,7 @@ open class RequestBuilder<T> {
     }
 
     @discardableResult
-    open func execute(_ apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
+    open func execute(_ apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
         return requestTask
     }
 
@@ -65,7 +65,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = OpenAPIClientAPI.credential
+        credential = Swift_API_ClientAPI.credential
         return self
     }
 }
