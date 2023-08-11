@@ -60,7 +60,7 @@ No authorization required
 
 # **getFiles**
 ```swift
-    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, completion: @escaping (_ data: [FileSchemaArrayInner]?, _ error: Error?) -> Void)
+    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, completion: @escaping (_ data: [FileSchema]?, _ error: Error?) -> Void)
 ```
 
 Get all files
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[FileSchemaArrayInner]**](FileSchemaArrayInner.md)
+[**[FileSchema]**](FileSchema.md)
 
 ### Authorization
 

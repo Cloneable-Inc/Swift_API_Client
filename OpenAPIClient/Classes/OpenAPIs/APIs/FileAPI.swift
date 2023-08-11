@@ -66,7 +66,7 @@ open class FileAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileSchemaArrayInner]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileSchema]?, _ error: Error?) -> Void)) -> RequestTask {
         return getFilesWithRequestBuilder(getFilesRequest: getFilesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -81,9 +81,9 @@ open class FileAPI {
      Get all files
      - POST /files
      - parameter getFilesRequest: (body) Body (optional)
-     - returns: RequestBuilder<[FileSchemaArrayInner]> 
+     - returns: RequestBuilder<[FileSchema]> 
      */
-    open class func getFilesWithRequestBuilder(getFilesRequest: GetFilesRequest? = nil) -> RequestBuilder<[FileSchemaArrayInner]> {
+    open class func getFilesWithRequestBuilder(getFilesRequest: GetFilesRequest? = nil) -> RequestBuilder<[FileSchema]> {
         let localVariablePath = "/files"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getFilesRequest)
@@ -96,7 +96,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[FileSchemaArrayInner]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[FileSchema]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
