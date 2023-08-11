@@ -17,7 +17,7 @@ import FoundationNetworking
 public typealias OpenAPIClient = OpenAPIClientAPI
 
 open class OpenAPIClientAPI {
-    public static var basePath = "https://new-api.cloneablewebapp.pages.dev/api/v1"
+    public static var basePath = "http://localhost:3000/api/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

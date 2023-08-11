@@ -20,7 +20,7 @@ open class UserAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrg(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrgResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOrg(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrgSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getOrgWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -34,13 +34,10 @@ open class UserAPI {
     /**
      Get company by id
      - GET /org/{id}
-     - BASIC:
-       - type: http
-       - name: bearerAuth
      - parameter id: (path)  
-     - returns: RequestBuilder<OrgResponse> 
+     - returns: RequestBuilder<OrgSchema> 
      */
-    open class func getOrgWithRequestBuilder(id: String) -> RequestBuilder<OrgResponse> {
+    open class func getOrgWithRequestBuilder(id: String) -> RequestBuilder<OrgSchema> {
         var localVariablePath = "/org/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,9 +53,9 @@ open class UserAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrgResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OrgSchema>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -69,7 +66,7 @@ open class UserAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUser(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUser(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -83,13 +80,10 @@ open class UserAPI {
     /**
      Get user by id
      - GET /user/{id}
-     - BASIC:
-       - type: http
-       - name: bearerAuth
      - parameter id: (path)  
-     - returns: RequestBuilder<UserResponse> 
+     - returns: RequestBuilder<UserSchema> 
      */
-    open class func getUserWithRequestBuilder(id: String) -> RequestBuilder<UserResponse> {
+    open class func getUserWithRequestBuilder(id: String) -> RequestBuilder<UserSchema> {
         var localVariablePath = "/user/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -105,8 +99,8 @@ open class UserAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UserResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UserSchema>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

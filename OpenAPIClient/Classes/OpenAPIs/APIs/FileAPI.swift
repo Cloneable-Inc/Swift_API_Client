@@ -13,15 +13,15 @@ import AnyCodable
 open class FileAPI {
 
     /**
-     Add a new file after upload
+     Returns a signed download url from R2 by fileId
      
-     - parameter fileInput: (body) Body (optional)
+     - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFile(fileInput: FileInput? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return createFileWithRequestBuilder(fileInput: fileInput).execute(apiResponseQueue) { result in
+    open class func getFileDownloadUrl(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetFileDownloadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFileDownloadUrlWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -32,18 +32,18 @@ open class FileAPI {
     }
 
     /**
-     Add a new file after upload
-     - PUT /file
-     - BASIC:
-       - type: http
-       - name: bearerAuth
-     - parameter fileInput: (body) Body (optional)
-     - returns: RequestBuilder<FileResponse> 
+     Returns a signed download url from R2 by fileId
+     - GET /file/{id}/download-url
+     - parameter id: (path)  
+     - returns: RequestBuilder<GetFileDownloadUrl200Response> 
      */
-    open class func createFileWithRequestBuilder(fileInput: FileInput? = nil) -> RequestBuilder<FileResponse> {
-        let localVariablePath = "/file"
+    open class func getFileDownloadUrlWithRequestBuilder(id: String) -> RequestBuilder<GetFileDownloadUrl200Response> {
+        var localVariablePath = "/file/{id}/download-url"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fileInput)
+        let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -53,21 +53,21 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<FileResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetFileDownloadUrl200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
      Get all files
      
-     - parameter getFilesInput: (body) Body (optional)
+     - parameter getFilesRequest: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiles(getFilesInput: GetFilesInput? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileResponse]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getFilesWithRequestBuilder(getFilesInput: getFilesInput).execute(apiResponseQueue) { result in
+    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileSchemaArrayInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getFilesWithRequestBuilder(getFilesRequest: getFilesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -80,16 +80,13 @@ open class FileAPI {
     /**
      Get all files
      - POST /files
-     - BASIC:
-       - type: http
-       - name: bearerAuth
-     - parameter getFilesInput: (body) Body (optional)
-     - returns: RequestBuilder<[FileResponse]> 
+     - parameter getFilesRequest: (body) Body (optional)
+     - returns: RequestBuilder<[FileSchemaArrayInner]> 
      */
-    open class func getFilesWithRequestBuilder(getFilesInput: GetFilesInput? = nil) -> RequestBuilder<[FileResponse]> {
+    open class func getFilesWithRequestBuilder(getFilesRequest: GetFilesRequest? = nil) -> RequestBuilder<[FileSchemaArrayInner]> {
         let localVariablePath = "/files"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getFilesInput)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getFilesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -99,20 +96,20 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[FileResponse]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[FileSchemaArrayInner]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
-     Get a single file
+     Get a single files
      
      - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOneFile(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOneFile(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getOneFileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -124,15 +121,12 @@ open class FileAPI {
     }
 
     /**
-     Get a single file
+     Get a single files
      - GET /file/{id}
-     - BASIC:
-       - type: http
-       - name: bearerAuth
      - parameter id: (path)  
-     - returns: RequestBuilder<FileResponse> 
+     - returns: RequestBuilder<FileSchema> 
      */
-    open class func getOneFileWithRequestBuilder(id: String) -> RequestBuilder<FileResponse> {
+    open class func getOneFileWithRequestBuilder(id: String) -> RequestBuilder<FileSchema> {
         var localVariablePath = "/file/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -148,8 +142,51 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<FileResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<FileSchema>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Add a new file after upload
+     
+     - parameter fileSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func uploadFile(fileSchema: FileSchema? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UploadFile201Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return uploadFileWithRequestBuilder(fileSchema: fileSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Add a new file after upload
+     - PUT /file
+     - parameter fileSchema: (body) Body (optional)
+     - returns: RequestBuilder<UploadFile201Response> 
+     */
+    open class func uploadFileWithRequestBuilder(fileSchema: FileSchema? = nil) -> RequestBuilder<UploadFile201Response> {
+        let localVariablePath = "/file"
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fileSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UploadFile201Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

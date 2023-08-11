@@ -1,6 +1,6 @@
 # UserAPI
 
-All URIs are relative to *https://new-api.cloneablewebapp.pages.dev/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getOrg**
 ```swift
-    open class func getOrg(id: String, completion: @escaping (_ data: OrgResponse?, _ error: Error?) -> Void)
+    open class func getOrg(id: String, completion: @escaping (_ data: OrgSchema?, _ error: Error?) -> Void)
 ```
 
 Get company by id
@@ -43,11 +43,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrgResponse**](OrgResponse.md)
+[**OrgSchema**](OrgSchema.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **getUser**
 ```swift
-    open class func getUser(id: String, completion: @escaping (_ data: UserResponse?, _ error: Error?) -> Void)
+    open class func getUser(id: String, completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
 ```
 
 Get user by id
@@ -91,11 +91,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserResponse**](UserResponse.md)
+[**UserSchema**](UserSchema.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+No authorization required
 
 ### HTTP request headers
 

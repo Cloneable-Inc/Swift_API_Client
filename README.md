@@ -21,28 +21,32 @@ Run `pod install`
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://new-api.cloneablewebapp.pages.dev/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
+*FileAPI* | [**getFileDownloadUrl**](docs/FileAPI.md#getfiledownloadurl) | **GET** /file/{id}/download-url | Returns a signed download url from R2 by fileId
 *FileAPI* | [**getFiles**](docs/FileAPI.md#getfiles) | **POST** /files | Get all files
-*FileAPI* | [**getOneFile**](docs/FileAPI.md#getonefile) | **GET** /file/{id} | Get a single file
+*FileAPI* | [**getOneFile**](docs/FileAPI.md#getonefile) | **GET** /file/{id} | Get a single files
+*FileAPI* | [**uploadFile**](docs/FileAPI.md#uploadfile) | **PUT** /file | Add a new file after upload
 *UserAPI* | [**getOrg**](docs/UserAPI.md#getorg) | **GET** /org/{id} | Get company by id
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
 
 
 ## Documentation For Models
 
- - [FileInput](docs/FileInput.md)
- - [FileResponse](docs/FileResponse.md)
- - [FileResponseAdditionalProperties](docs/FileResponseAdditionalProperties.md)
- - [GetFilesInput](docs/GetFilesInput.md)
- - [GetFilesInputFilters](docs/GetFilesInputFilters.md)
- - [ModelErrorResponse](docs/ModelErrorResponse.md)
- - [OrgResponse](docs/OrgResponse.md)
- - [UserResponse](docs/UserResponse.md)
- - [UserResponseCompany](docs/UserResponseCompany.md)
+ - [FileSchema](docs/FileSchema.md)
+ - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
+ - [FileSchemaArrayInner](docs/FileSchemaArrayInner.md)
+ - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
+ - [GetFilesRequest](docs/GetFilesRequest.md)
+ - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
+ - [OrgSchema](docs/OrgSchema.md)
+ - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
+ - [OrgSchemaUsersInnerCompany](docs/OrgSchemaUsersInnerCompany.md)
+ - [UploadFile201Response](docs/UploadFile201Response.md)
+ - [UploadFile400Response](docs/UploadFile400Response.md)
+ - [UserSchema](docs/UserSchema.md)
 
 
 ## Documentation For Authorization
