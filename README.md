@@ -42,7 +42,6 @@ Class | Method | HTTP request | Description
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
- - [OrgSchemaUsersInnerCompany](docs/OrgSchemaUsersInnerCompany.md)
  - [UploadFile201Response](docs/UploadFile201Response.md)
  - [UploadFile400Response](docs/UploadFile400Response.md)
  - [UserSchema](docs/UserSchema.md)
