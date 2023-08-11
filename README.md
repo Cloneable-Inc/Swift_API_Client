@@ -37,7 +37,6 @@ Class | Method | HTTP request | Description
 
  - [FileSchema](docs/FileSchema.md)
  - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
- - [FileSchemaArrayInner](docs/FileSchemaArrayInner.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
