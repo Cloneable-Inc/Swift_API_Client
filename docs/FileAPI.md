@@ -20,7 +20,7 @@ Returns a signed download url from R2 by fileId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_API
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
@@ -68,7 +68,7 @@ Get all files
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_API
+import Cloneable_Swift_Client
 
 let getFilesRequest = getFiles_request(id: ["id_example"], filters: getFiles_request_filters(company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", type: "type_example", typeRefId: "typeRefId_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", savedToCloud: false, syncToEdge: false), latest: "latest_example") // GetFilesRequest | Body (optional)
 
@@ -116,7 +116,7 @@ Get a single files
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_API
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
@@ -164,7 +164,7 @@ Add a new file after upload
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_API
+import Cloneable_Swift_Client
 
 let fileSchema = FileSchema(id: "id_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdAt: "createdAt_example", createdBy: "createdBy_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", url: "url_example", savedToCloud: false, storageAuthProviderName: "storageAuthProviderName_example", storageAuthProviderRefID: "storageAuthProviderRefID_example", storageProvider: "storageProvider_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: FileSchema_additional_properties(modelType: "modelType_example", modelVersion: "modelVersion_example", modelDescription: "modelDescription_example", modelDevice: "modelDevice_example")) // FileSchema | Body (optional)
 
