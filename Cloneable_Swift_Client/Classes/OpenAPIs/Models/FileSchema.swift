@@ -16,20 +16,32 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     public var relatedObjectId: String?
     public var relatedWorkflowId: String?
     public var typeRefIds: [String]?
+    /** The company ID */
     public var company: String
+    /** The content type of the file */
     public var contentType: String
+    /** The date the file was created */
     public var createdAt: String
+    /** The user ID of the user who created the file */
     public var createdBy: String
+    /** The file extension */
     public var _extension: String
+    /** The file name */
     public var name: String
+    /** The file display name */
     public var displayName: String
+    /** The file size in bytes */
     public var size: Double
+    /** The file type */
     public var type: String
+    /** The stored file path */
     public var url: String
+    /** Whether the file is saved to the cloud */
     public var savedToCloud: Bool
     public var storageAuthProviderName: String
     public var storageAuthProviderRefID: String
     public var storageProvider: String
+    /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
     public var additionalProperties: FileSchemaAdditionalProperties?
