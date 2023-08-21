@@ -1,10 +1,10 @@
-name: Cloneable_Swift_Client
+name: OpenAPIClient
 targets:
-  Cloneable_Swift_Client:
+  OpenAPIClient:
     type: framework
     platform: iOS
-    deploymentTarget: "9.0"
-    sources: [Cloneable_Swift_Client]
+    deploymentTarget: "11.0"
+    sources: [OpenAPIClient]
     info:
       path: ./Info.plist
       version: 0.0.1
