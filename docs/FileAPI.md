@@ -22,7 +22,7 @@ Add a new file after upload
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let createFileSchema = CreateFileSchema(relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdAt: "createdAt_example", createdBy: "createdBy_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: FileSchema_additional_properties(modelType: "modelType_example", modelVersion: "modelVersion_example", modelDescription: "modelDescription_example", modelDevice: "modelDevice_example")) // CreateFileSchema | Body (optional)
 
@@ -70,7 +70,7 @@ Returns a signed download url from R2 by fileId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
@@ -118,7 +118,7 @@ Get all files
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let getFilesRequest = getFiles_request(id: ["id_example"], filters: getFiles_request_filters(company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", type: "type_example", typeRefId: "typeRefId_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", savedToCloud: false, syncToEdge: false), latest: "latest_example") // GetFilesRequest | Body (optional)
 
@@ -166,7 +166,7 @@ Get a single files
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
@@ -214,7 +214,7 @@ Returns a signed upload url from R2 by file.id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
@@ -262,7 +262,7 @@ Update a single file
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 let insertFileSchema = InsertFileSchema(savedToCloud: false, syncToEdge: false, relatedWorkflowId: "relatedWorkflowId_example", relatedObjectId: "relatedObjectId_example", typeRefIds: ["typeRefIds_example"]) // InsertFileSchema | Body (optional)
