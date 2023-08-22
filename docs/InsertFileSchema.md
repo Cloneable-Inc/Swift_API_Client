@@ -1,4 +1,4 @@
-# UpdateFileRequest
+# InsertFileSchema
 
 ## Properties
 Name | Type | Description | Notes

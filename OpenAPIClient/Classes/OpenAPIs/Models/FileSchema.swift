@@ -22,6 +22,8 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     public var contentType: String
     /** The date the file was created */
     public var createdAt: String
+    /** The date the file was last updated */
+    public var updatedAt: String?
     /** The user ID of the user who created the file */
     public var createdBy: String
     /** The file extension */
@@ -46,7 +48,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     public var typeRefID: String?
     public var additionalProperties: FileSchemaAdditionalProperties?
 
-    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
+    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
@@ -54,6 +56,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         self.company = company
         self.contentType = contentType
         self.createdAt = createdAt
+        self.updatedAt = updatedAt
         self.createdBy = createdBy
         self._extension = _extension
         self.name = name
@@ -78,6 +81,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         case company
         case contentType = "content_type"
         case createdAt = "created_at"
+        case updatedAt = "updated_at"
         case createdBy = "created_by"
         case _extension = "extension"
         case name
@@ -105,6 +109,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         try container.encode(company, forKey: .company)
         try container.encode(contentType, forKey: .contentType)
         try container.encode(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(_extension, forKey: ._extension)
         try container.encode(name, forKey: .name)

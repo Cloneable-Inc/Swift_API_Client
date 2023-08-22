@@ -15,13 +15,13 @@ open class FileAPI {
     /**
      Add a new file after upload
      
-     - parameter fileSchema: (body) Body (optional)
+     - parameter createFileSchema: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createFile(fileSchema: FileSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile201Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return createFileWithRequestBuilder(fileSchema: fileSchema).execute(apiResponseQueue) { result in
+    open class func createFile(createFileSchema: CreateFileSchema? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile201Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createFileWithRequestBuilder(createFileSchema: createFileSchema).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,13 +34,13 @@ open class FileAPI {
     /**
      Add a new file after upload
      - PUT /file
-     - parameter fileSchema: (body) Body (optional)
+     - parameter createFileSchema: (body) Body (optional)
      - returns: RequestBuilder<CreateFile201Response> 
      */
-    open class func createFileWithRequestBuilder(fileSchema: FileSchema? = nil) -> RequestBuilder<CreateFile201Response> {
+    open class func createFileWithRequestBuilder(createFileSchema: CreateFileSchema? = nil) -> RequestBuilder<CreateFile201Response> {
         let localVariablePath = "/file"
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fileSchema)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createFileSchema)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -50,7 +50,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CreateFile201Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CreateFile201Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -63,7 +63,7 @@ open class FileAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFileDownloadUrl(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetFileDownloadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFileDownloadUrl(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetFileDownloadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getFileDownloadUrlWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -85,7 +85,7 @@ open class FileAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -96,7 +96,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GetFileDownloadUrl200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GetFileDownloadUrl200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -109,7 +109,7 @@ open class FileAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileSchema]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getFiles(getFilesRequest: GetFilesRequest? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [FileSchema]?, _ error: Error?) -> Void)) -> RequestTask {
         return getFilesWithRequestBuilder(getFilesRequest: getFilesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -128,7 +128,7 @@ open class FileAPI {
      */
     open class func getFilesWithRequestBuilder(getFilesRequest: GetFilesRequest? = nil) -> RequestBuilder<[FileSchema]> {
         let localVariablePath = "/files"
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getFilesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -139,7 +139,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[FileSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[FileSchema]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -152,7 +152,7 @@ open class FileAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOneFile(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileSchema?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOneFile(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getOneFileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -174,7 +174,7 @@ open class FileAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -185,7 +185,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<FileSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<FileSchema>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -198,7 +198,7 @@ open class FileAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func retryFileUploadUrl(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: RetryFileUploadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func retryFileUploadUrl(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: RetryFileUploadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return retryFileUploadUrlWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -220,7 +220,7 @@ open class FileAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -231,7 +231,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<RetryFileUploadUrl200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RetryFileUploadUrl200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -240,13 +240,13 @@ open class FileAPI {
      Update a single file
      
      - parameter id: (path)  
-     - parameter updateFileRequest: (body) Body (optional)
+     - parameter insertFileSchema: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateFile(id: String, updateFileRequest: UpdateFileRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateFileWithRequestBuilder(id: id, updateFileRequest: updateFileRequest).execute(apiResponseQueue) { result in
+    open class func updateFile(id: String, insertFileSchema: InsertFileSchema? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateFileWithRequestBuilder(id: id, insertFileSchema: insertFileSchema).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -260,16 +260,16 @@ open class FileAPI {
      Update a single file
      - POST /file/{id}
      - parameter id: (path)  
-     - parameter updateFileRequest: (body) Body (optional)
+     - parameter insertFileSchema: (body) Body (optional)
      - returns: RequestBuilder<UpdateFile200Response> 
      */
-    open class func updateFileWithRequestBuilder(id: String, updateFileRequest: UpdateFileRequest? = nil) -> RequestBuilder<UpdateFile200Response> {
+    open class func updateFileWithRequestBuilder(id: String, insertFileSchema: InsertFileSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
         var localVariablePath = "/file/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateFileRequest)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: insertFileSchema)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -279,7 +279,7 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
