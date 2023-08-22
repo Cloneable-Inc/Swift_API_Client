@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
 
+    public var id: String?
     public var relatedObjectId: String?
     public var relatedWorkflowId: String?
     public var typeRefIds: [String]?
@@ -37,8 +38,15 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     public var syncToEdge: Bool
     public var typeRefID: String?
     public var additionalProperties: FileSchemaAdditionalProperties?
+    /** The stored file path */
+    public var url: String?
+    /** Whether the file is saved to the cloud */
+    public var savedToCloud: Bool?
+    public var storageProvider: String?
+    public var storageAuthProviderName: String?
 
-    public init(relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
+    public init(id: String? = nil, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil, url: String? = nil, savedToCloud: Bool? = nil, storageProvider: String? = nil, storageAuthProviderName: String? = nil) {
+        self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
         self.typeRefIds = typeRefIds
@@ -54,9 +62,14 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
         self.syncToEdge = syncToEdge
         self.typeRefID = typeRefID
         self.additionalProperties = additionalProperties
+        self.url = url
+        self.savedToCloud = savedToCloud
+        self.storageProvider = storageProvider
+        self.storageAuthProviderName = storageAuthProviderName
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case relatedObjectId = "related_object_id"
         case relatedWorkflowId = "related_workflow_id"
         case typeRefIds = "type_ref_ids"
@@ -72,12 +85,17 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
         case syncToEdge = "sync_to_edge"
         case typeRefID = "type_ref_ID"
         case additionalProperties = "additional_properties"
+        case url
+        case savedToCloud = "saved_to_cloud"
+        case storageProvider = "storage_provider"
+        case storageAuthProviderName = "storage_auth_provider_name"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(relatedObjectId, forKey: .relatedObjectId)
         try container.encodeIfPresent(relatedWorkflowId, forKey: .relatedWorkflowId)
         try container.encodeIfPresent(typeRefIds, forKey: .typeRefIds)
@@ -93,6 +111,10 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
         try container.encode(syncToEdge, forKey: .syncToEdge)
         try container.encodeIfPresent(typeRefID, forKey: .typeRefID)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
+        try container.encodeIfPresent(url, forKey: .url)
+        try container.encodeIfPresent(savedToCloud, forKey: .savedToCloud)
+        try container.encodeIfPresent(storageProvider, forKey: .storageProvider)
+        try container.encodeIfPresent(storageAuthProviderName, forKey: .storageAuthProviderName)
     }
 }
 

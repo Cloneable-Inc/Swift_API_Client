@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **url** | **String** | The stored file path | 
 **savedToCloud** | **Bool** | Whether the file is saved to the cloud | 
 **storageAuthProviderName** | **String** |  | 
-**storageAuthProviderRefID** | **String** |  | 
+**storageAuthProviderRefID** | **String** |  | [optional] 
 **storageProvider** | **String** |  | 
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 

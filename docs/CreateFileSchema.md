@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | [optional] 
 **relatedObjectId** | **String** |  | [optional] 
 **relatedWorkflowId** | **String** |  | [optional] 
 **typeRefIds** | **[String]** |  | [optional] 
@@ -18,6 +19,10 @@ Name | Type | Description | Notes
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 
 **additionalProperties** | [**FileSchemaAdditionalProperties**](FileSchemaAdditionalProperties.md) |  | [optional] 
+**url** | **String** | The stored file path | [optional] 
+**savedToCloud** | **Bool** | Whether the file is saved to the cloud | [optional] 
+**storageProvider** | **String** |  | [optional] 
+**storageAuthProviderName** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

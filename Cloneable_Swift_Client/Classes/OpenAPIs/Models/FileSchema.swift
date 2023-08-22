@@ -41,14 +41,14 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     /** Whether the file is saved to the cloud */
     public var savedToCloud: Bool
     public var storageAuthProviderName: String
-    public var storageAuthProviderRefID: String
+    public var storageAuthProviderRefID: String?
     public var storageProvider: String
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
     public var additionalProperties: FileSchemaAdditionalProperties?
 
-    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
+    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String? = nil, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
@@ -119,7 +119,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         try container.encode(url, forKey: .url)
         try container.encode(savedToCloud, forKey: .savedToCloud)
         try container.encode(storageAuthProviderName, forKey: .storageAuthProviderName)
-        try container.encode(storageAuthProviderRefID, forKey: .storageAuthProviderRefID)
+        try container.encodeIfPresent(storageAuthProviderRefID, forKey: .storageAuthProviderRefID)
         try container.encode(storageProvider, forKey: .storageProvider)
         try container.encode(syncToEdge, forKey: .syncToEdge)
         try container.encodeIfPresent(typeRefID, forKey: .typeRefID)
