@@ -20,7 +20,7 @@ open class UserAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOrg(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrgSchema?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOrg(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: OrgSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getOrgWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -42,7 +42,7 @@ open class UserAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -53,7 +53,7 @@ open class UserAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OrgSchema>.Type = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OrgSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -66,7 +66,7 @@ open class UserAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUser(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserSchema?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUser(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -88,7 +88,7 @@ open class UserAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -99,7 +99,7 @@ open class UserAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UserSchema>.Type = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UserSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

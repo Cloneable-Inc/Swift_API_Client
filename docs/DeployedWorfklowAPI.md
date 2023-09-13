@@ -18,7 +18,7 @@ Get all deployed workflows
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_ClientCloneable_Swift_Client
+import Cloneable_Swift_Client
 
 let getDeployedWorkflowsRequest = getDeployedWorkflows_request(id: ["id_example"], filters: getDeployedWorkflows_request_filters(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", active: false, environment: "environment_example"), latest: "latest_example") // GetDeployedWorkflowsRequest | Body (optional)
 
@@ -66,7 +66,7 @@ Returns a deployed workflow by id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_ClientCloneable_Swift_Client
+import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 

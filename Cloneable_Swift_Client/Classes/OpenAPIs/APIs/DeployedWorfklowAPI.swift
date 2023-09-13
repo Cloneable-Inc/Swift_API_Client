@@ -20,7 +20,7 @@ open class DeployedWorfklowAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDeployedWorkflows(getDeployedWorkflowsRequest: GetDeployedWorkflowsRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [DeployedWorkflowSchema]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getDeployedWorkflows(getDeployedWorkflowsRequest: GetDeployedWorkflowsRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [DeployedWorkflowSchema]?, _ error: Error?) -> Void)) -> RequestTask {
         return getDeployedWorkflowsWithRequestBuilder(getDeployedWorkflowsRequest: getDeployedWorkflowsRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -39,7 +39,7 @@ open class DeployedWorfklowAPI {
      */
     open class func getDeployedWorkflowsWithRequestBuilder(getDeployedWorkflowsRequest: GetDeployedWorkflowsRequest? = nil) -> RequestBuilder<[DeployedWorkflowSchema]> {
         let localVariablePath = "/deployed-workflows"
-        let localVariableURLString = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getDeployedWorkflowsRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -50,7 +50,7 @@ open class DeployedWorfklowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[DeployedWorkflowSchema]>.Type = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[DeployedWorkflowSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
@@ -63,7 +63,7 @@ open class DeployedWorfklowAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOneDeployedWorkflow(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOneDeployedWorkflow(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
         return getOneDeployedWorkflowWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -85,7 +85,7 @@ open class DeployedWorfklowAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -96,7 +96,7 @@ open class DeployedWorfklowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
