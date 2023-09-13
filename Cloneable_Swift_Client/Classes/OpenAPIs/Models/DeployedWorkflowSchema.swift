@@ -14,7 +14,6 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var companyId: String
-    public var active: Bool
     public var createdAt: String
     public var updatedAt: String
     public var createdBy: String
@@ -29,10 +28,9 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var workflowId: String
     public var workflowName: String
 
-    public init(id: String, companyId: String, active: Bool, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [DeployedWorkflowSchemaResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner]? = nil, revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
+    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [DeployedWorkflowSchemaResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner]? = nil, revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
         self.id = id
         self.companyId = companyId
-        self.active = active
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.createdBy = createdBy
@@ -51,7 +49,6 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case companyId = "company_id"
-        case active
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case createdBy = "created_by"
@@ -73,7 +70,6 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(companyId, forKey: .companyId)
-        try container.encode(active, forKey: .active)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encode(createdBy, forKey: .createdBy)

@@ -22,9 +22,9 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var workflowInstanceId: String
-    public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]
+    public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: String, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]) {
+    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: String, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.id = id
         self.name = name
         self.companyId = companyId
@@ -66,7 +66,7 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encode(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
         try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
-        try container.encode(auditTimeline, forKey: .auditTimeline)
+        try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
     }
 }
 

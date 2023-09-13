@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **companyId** | **String** |  | 
-**active** | **Bool** |  | 
 **createdAt** | **String** |  | 
 **updatedAt** | **String** |  | 
 **createdBy** | **String** |  | 
