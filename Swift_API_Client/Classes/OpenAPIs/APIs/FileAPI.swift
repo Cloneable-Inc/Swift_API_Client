@@ -13,6 +13,49 @@ import AnyCodable
 open class FileAPI {
 
     /**
+     Add a new file after upload
+     
+     - parameter createFileSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createFile(createFileSchema: CreateFileSchema? = nil, apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile201Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createFileWithRequestBuilder(createFileSchema: createFileSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Add a new file after upload
+     - PUT /file
+     - parameter createFileSchema: (body) Body (optional)
+     - returns: RequestBuilder<CreateFile201Response> 
+     */
+    open class func createFileWithRequestBuilder(createFileSchema: CreateFileSchema? = nil) -> RequestBuilder<CreateFile201Response> {
+        let localVariablePath = "/file"
+        let localVariableURLString = Swift_API_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createFileSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateFile201Response>.Type = Swift_API_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Returns a signed download url from R2 by fileId
      
      - parameter id: (path)  
@@ -148,15 +191,15 @@ open class FileAPI {
     }
 
     /**
-     Add a new file after upload
+     Returns a signed upload url from R2 by file.id
      
-     - parameter fileSchema: (body) Body (optional)
+     - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func uploadFile(fileSchema: FileSchema? = nil, apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UploadFile201Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return uploadFileWithRequestBuilder(fileSchema: fileSchema).execute(apiResponseQueue) { result in
+    open class func retryFileUploadUrl(id: String, apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: RetryFileUploadUrl200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return retryFileUploadUrlWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -167,15 +210,18 @@ open class FileAPI {
     }
 
     /**
-     Add a new file after upload
-     - PUT /file
-     - parameter fileSchema: (body) Body (optional)
-     - returns: RequestBuilder<UploadFile201Response> 
+     Returns a signed upload url from R2 by file.id
+     - GET /file/{id}/retry-upload-url
+     - parameter id: (path)  
+     - returns: RequestBuilder<RetryFileUploadUrl200Response> 
      */
-    open class func uploadFileWithRequestBuilder(fileSchema: FileSchema? = nil) -> RequestBuilder<UploadFile201Response> {
-        let localVariablePath = "/file"
+    open class func retryFileUploadUrlWithRequestBuilder(id: String) -> RequestBuilder<RetryFileUploadUrl200Response> {
+        var localVariablePath = "/file/{id}/retry-upload-url"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = Swift_API_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fileSchema)
+        let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -185,8 +231,56 @@ open class FileAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UploadFile201Response>.Type = Swift_API_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RetryFileUploadUrl200Response>.Type = Swift_API_ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a single file
+     
+     - parameter id: (path)  
+     - parameter insertFileSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateFile(id: String, insertFileSchema: InsertFileSchema? = nil, apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateFileWithRequestBuilder(id: id, insertFileSchema: insertFileSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a single file
+     - POST /file/{id}
+     - parameter id: (path)  
+     - parameter insertFileSchema: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func updateFileWithRequestBuilder(id: String, insertFileSchema: InsertFileSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/file/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Swift_API_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: insertFileSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Swift_API_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }
