@@ -1,6 +1,6 @@
 # UserAPI
 
-All URIs are relative to *https://app.cloneable.ai/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Get company by id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
+import Swift_API_Client
 
 let id = "id_example" // String | 
 
@@ -66,7 +66,7 @@ Get user by id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
+import Swift_API_Client
 
 let id = "id_example" // String | 
 

@@ -5,11 +5,8 @@
 //
 
 import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
-open class Cloneable_Swift_ClientAPI {
-    public static var basePath = "https://app.cloneable.ai/api/v1"
+open class Swift_API_ClientAPI {
+    public static var basePath = "http://localhost:3000/api/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
@@ -35,7 +32,7 @@ open class RequestBuilder<T> {
         self.headers = headers
         self.requiresAuthentication = requiresAuthentication
 
-        addHeaders(Cloneable_Swift_ClientAPI.customHeaders)
+        addHeaders(Swift_API_ClientAPI.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -45,7 +42,7 @@ open class RequestBuilder<T> {
     }
 
     @discardableResult
-    open func execute(_ apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
+    open func execute(_ apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
         return requestTask
     }
 
@@ -57,7 +54,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = Cloneable_Swift_ClientAPI.credential
+        credential = Swift_API_ClientAPI.credential
         return self
     }
 }

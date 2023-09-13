@@ -16,39 +16,25 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     public var relatedObjectId: String?
     public var relatedWorkflowId: String?
     public var typeRefIds: [String]?
-    /** The company ID */
     public var company: String
-    /** The content type of the file */
     public var contentType: String
-    /** The date the file was created */
     public var createdAt: String
-    /** The date the file was last updated */
-    public var updatedAt: String?
-    /** The user ID of the user who created the file */
     public var createdBy: String
-    /** The file extension */
     public var _extension: String
-    /** The file name */
     public var name: String
-    /** The file display name */
     public var displayName: String
-    /** The file size in bytes */
     public var size: Double
-    /** The file type */
     public var type: String
-    /** The stored file path */
     public var url: String
-    /** Whether the file is saved to the cloud */
     public var savedToCloud: Bool
     public var storageAuthProviderName: String
-    public var storageAuthProviderRefID: String?
+    public var storageAuthProviderRefID: String
     public var storageProvider: String
-    /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
     public var additionalProperties: FileSchemaAdditionalProperties?
 
-    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String? = nil, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
+    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
@@ -56,7 +42,6 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         self.company = company
         self.contentType = contentType
         self.createdAt = createdAt
-        self.updatedAt = updatedAt
         self.createdBy = createdBy
         self._extension = _extension
         self.name = name
@@ -81,7 +66,6 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         case company
         case contentType = "content_type"
         case createdAt = "created_at"
-        case updatedAt = "updated_at"
         case createdBy = "created_by"
         case _extension = "extension"
         case name
@@ -109,7 +93,6 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         try container.encode(company, forKey: .company)
         try container.encode(contentType, forKey: .contentType)
         try container.encode(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(_extension, forKey: ._extension)
         try container.encode(name, forKey: .name)
@@ -119,7 +102,7 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
         try container.encode(url, forKey: .url)
         try container.encode(savedToCloud, forKey: .savedToCloud)
         try container.encode(storageAuthProviderName, forKey: .storageAuthProviderName)
-        try container.encodeIfPresent(storageAuthProviderRefID, forKey: .storageAuthProviderRefID)
+        try container.encode(storageAuthProviderRefID, forKey: .storageAuthProviderRefID)
         try container.encode(storageProvider, forKey: .storageProvider)
         try container.encode(syncToEdge, forKey: .syncToEdge)
         try container.encodeIfPresent(typeRefID, forKey: .typeRefID)
