@@ -5,7 +5,7 @@
 //
 
 import Foundation
-open class Swift_API_ClientAPI {
+open class Cloneable_Swift_ClientCloneable_Swift_ClientAPI {
     public static var basePath = "https://app.cloneable.ai/api/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
@@ -32,7 +32,7 @@ open class RequestBuilder<T> {
         self.headers = headers
         self.requiresAuthentication = requiresAuthentication
 
-        addHeaders(Swift_API_ClientAPI.customHeaders)
+        addHeaders(Cloneable_Swift_ClientCloneable_Swift_ClientAPI.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -42,7 +42,7 @@ open class RequestBuilder<T> {
     }
 
     @discardableResult
-    open func execute(_ apiResponseQueue: DispatchQueue = Swift_API_ClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
+    open func execute(_ apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, ErrorResponse>) -> Void) -> RequestTask {
         return requestTask
     }
 
@@ -54,7 +54,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = Swift_API_ClientAPI.credential
+        credential = Cloneable_Swift_ClientCloneable_Swift_ClientAPI.credential
         return self
     }
 }

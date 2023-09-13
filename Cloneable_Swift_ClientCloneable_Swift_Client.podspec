@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'Swift_API_Client'
+  s.name = 'Cloneable_Swift_ClientCloneable_Swift_Client'
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.13'
   s.tvos.deployment_target = '11.0'
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.authors = 'OpenAPI Generator'
   s.license = 'Proprietary'
   s.homepage = 'https://github.com/OpenAPITools/openapi-generator'
-  s.summary = 'Swift_API_Client Swift SDK'
-  s.source_files = 'Swift_API_Client/Classes/**/*.swift'
+  s.summary = 'Cloneable_Swift_ClientCloneable_Swift_Client Swift SDK'
+  s.source_files = 'Cloneable_Swift_ClientCloneable_Swift_Client/Classes/**/*.swift'
   s.dependency 'AnyCodable-FlightSchool', '~> 0.6'
   s.dependency 'Alamofire', '~> 5.4'
 end

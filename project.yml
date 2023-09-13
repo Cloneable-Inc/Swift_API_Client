@@ -1,10 +1,10 @@
-name: Swift_API_Client
+name: Cloneable_Swift_ClientCloneable_Swift_Client
 targets:
-  Swift_API_Client:
+  Cloneable_Swift_ClientCloneable_Swift_Client:
     type: framework
     platform: iOS
     deploymentTarget: "11.0"
-    sources: [Swift_API_Client]
+    sources: [Cloneable_Swift_ClientCloneable_Swift_Client]
     info:
       path: ./Info.plist
       version: 0.0.1
