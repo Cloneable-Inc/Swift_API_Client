@@ -1,13 +1,11 @@
-# FileSchemaAdditionalProperties
+# GetDeployedWorkflowsRequest
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modelType** | **String** |  | [optional] 
-**modelVersion** | **String** |  | [optional] 
-**modelDescription** | **String** |  | [optional] 
-**modelDevice** | **String** |  | [optional] 
-**isTemplate** | **Bool** |  | [optional] 
+**id** | **[String]** |  | [optional] 
+**filters** | [**GetDeployedWorkflowsRequestFilters**](GetDeployedWorkflowsRequestFilters.md) |  | [optional] 
+**latest** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

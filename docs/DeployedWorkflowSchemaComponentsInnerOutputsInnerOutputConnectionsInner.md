@@ -1,13 +1,13 @@
-# FileSchemaAdditionalProperties
+# DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modelType** | **String** |  | [optional] 
-**modelVersion** | **String** |  | [optional] 
-**modelDescription** | **String** |  | [optional] 
-**modelDevice** | **String** |  | [optional] 
-**isTemplate** | **Bool** |  | [optional] 
+**targetInputStaticId** | **String** |  | 
+**targetDynamicId** | **String** |  | 
+**targetInput** | **String** |  | 
+**targetStaticId** | **String** |  | 
+**targetType** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

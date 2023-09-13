@@ -16,12 +16,14 @@ public struct FileSchemaAdditionalProperties: Codable, JSONEncodable, Hashable {
     public var modelVersion: String?
     public var modelDescription: String?
     public var modelDevice: String?
+    public var isTemplate: Bool?
 
-    public init(modelType: String? = nil, modelVersion: String? = nil, modelDescription: String? = nil, modelDevice: String? = nil) {
+    public init(modelType: String? = nil, modelVersion: String? = nil, modelDescription: String? = nil, modelDevice: String? = nil, isTemplate: Bool? = nil) {
         self.modelType = modelType
         self.modelVersion = modelVersion
         self.modelDescription = modelDescription
         self.modelDevice = modelDevice
+        self.isTemplate = isTemplate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct FileSchemaAdditionalProperties: Codable, JSONEncodable, Hashable {
         case modelVersion
         case modelDescription
         case modelDevice
+        case isTemplate
     }
 
     // Encodable protocol methods
@@ -39,6 +42,7 @@ public struct FileSchemaAdditionalProperties: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modelVersion, forKey: .modelVersion)
         try container.encodeIfPresent(modelDescription, forKey: .modelDescription)
         try container.encodeIfPresent(modelDevice, forKey: .modelDevice)
+        try container.encodeIfPresent(isTemplate, forKey: .isTemplate)
     }
 }
 

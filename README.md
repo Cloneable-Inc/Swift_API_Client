@@ -25,6 +25,10 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
+*CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
+*DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
 *FileAPI* | [**getFileDownloadUrl**](docs/FileAPI.md#getfiledownloadurl) | **GET** /file/{id}/download-url | Returns a signed download url from R2 by fileId
 *FileAPI* | [**getFiles**](docs/FileAPI.md#getfiles) | **POST** /files | Get all files
@@ -37,11 +41,32 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
+ - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
+ - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
+ - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
+ - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
+ - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
+ - [DeployedWorkflowSchemaComponentsInnerInputsInner](docs/DeployedWorkflowSchemaComponentsInnerInputsInner.md)
+ - [DeployedWorkflowSchemaComponentsInnerOutputsInner](docs/DeployedWorkflowSchemaComponentsInnerOutputsInner.md)
+ - [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner](docs/DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner.md)
+ - [DeployedWorkflowSchemaEdgesInner](docs/DeployedWorkflowSchemaEdgesInner.md)
+ - [DeployedWorkflowSchemaEdgesInnerMarkerEnd](docs/DeployedWorkflowSchemaEdgesInnerMarkerEnd.md)
+ - [DeployedWorkflowSchemaEdgesInnerStyle](docs/DeployedWorkflowSchemaEdgesInnerStyle.md)
+ - [DeployedWorkflowSchemaObjectsInner](docs/DeployedWorkflowSchemaObjectsInner.md)
+ - [DeployedWorkflowSchemaObjectsInnerFieldsInner](docs/DeployedWorkflowSchemaObjectsInnerFieldsInner.md)
+ - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
+ - [DeployedWorkflowSchemaResourcesInner](docs/DeployedWorkflowSchemaResourcesInner.md)
+ - [DeployedWorkflowSchemaResourcesInnerObjectsInner](docs/DeployedWorkflowSchemaResourcesInnerObjectsInner.md)
  - [FileSchema](docs/FileSchema.md)
  - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
+ - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
+ - [GetCompletedWorkflowsRequestFilters](docs/GetCompletedWorkflowsRequestFilters.md)
+ - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
+ - [GetDeployedWorkflowsRequestFilters](docs/GetDeployedWorkflowsRequestFilters.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
