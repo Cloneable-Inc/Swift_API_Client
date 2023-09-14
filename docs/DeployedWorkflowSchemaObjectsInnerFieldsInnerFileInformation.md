@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fileName** | **String** |  | 
+**fileName** | **String** |  | [optional] 
 **fileUrl** | **String** |  | [optional] 
 **storageProvider** | **String** |  | [optional] 
 **storageAuthProviderRefId** | **String** |  | [optional] 
