@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **inputDescription** | **String** |  | [optional] 
 **inputId** | **String** |  | 
 **inputName** | **String** |  | 
-**_required** | **Bool** |  | 
+**_required** | **Bool** |  | [optional] 
 **acceptsArray** | **Bool** |  | [optional] 
 **trigger** | **Bool** |  | [optional] 
 **additionalProperties** | **[String: AnyCodable]** |  | [optional] 

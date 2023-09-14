@@ -20,13 +20,13 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
     public var outputDescription: String?
     public var outputId: String
     public var outputName: String
-    public var _required: Bool
+    public var _required: Bool?
     public var outputsArray: Bool?
     public var outputImmediatelyUserDefinable: Bool?
     public var additionalProperties: [String: AnyCodable]?
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]
 
-    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable]? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]) {
+    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool? = nil, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable]? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]) {
         self.dynamicOutputId = dynamicOutputId
         self.group = group
         self.outputImmediately = outputImmediately
@@ -70,7 +70,7 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
         try container.encodeIfPresent(outputDescription, forKey: .outputDescription)
         try container.encode(outputId, forKey: .outputId)
         try container.encode(outputName, forKey: .outputName)
-        try container.encode(_required, forKey: ._required)
+        try container.encodeIfPresent(_required, forKey: ._required)
         try container.encodeIfPresent(outputsArray, forKey: .outputsArray)
         try container.encodeIfPresent(outputImmediatelyUserDefinable, forKey: .outputImmediatelyUserDefinable)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)

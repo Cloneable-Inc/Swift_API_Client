@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **outputDescription** | **String** |  | [optional] 
 **outputId** | **String** |  | 
 **outputName** | **String** |  | 
-**_required** | **Bool** |  | 
+**_required** | **Bool** |  | [optional] 
 **outputsArray** | **Bool** |  | [optional] 
 **outputImmediatelyUserDefinable** | **Bool** |  | [optional] 
 **additionalProperties** | **[String: AnyCodable]** |  | [optional] 
