@@ -16,7 +16,7 @@ public struct DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner: 
     public var paramDescription: String
     public var paramId: String
     public var paramGroup: String?
-    public var paramInputType: String
+    public var paramInputType: String?
     public var paramName: String
     public var selectedValue: AnyCodable?
     public var userCustomizable: Bool?
@@ -25,7 +25,7 @@ public struct DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner: 
     public var selectedValueIsArray: Bool?
     public var selectedValueArray: [AnyCodable]?
 
-    public init(paramDataType: String, paramDescription: String, paramId: String, paramGroup: String? = nil, paramInputType: String, paramName: String, selectedValue: AnyCodable? = nil, userCustomizable: Bool? = nil, relatedInputDynamicId: String? = nil, relatedOutputDynamicId: String? = nil, selectedValueIsArray: Bool? = nil, selectedValueArray: [AnyCodable]? = nil) {
+    public init(paramDataType: String, paramDescription: String, paramId: String, paramGroup: String? = nil, paramInputType: String? = nil, paramName: String, selectedValue: AnyCodable? = nil, userCustomizable: Bool? = nil, relatedInputDynamicId: String? = nil, relatedOutputDynamicId: String? = nil, selectedValueIsArray: Bool? = nil, selectedValueArray: [AnyCodable]? = nil) {
         self.paramDataType = paramDataType
         self.paramDescription = paramDescription
         self.paramId = paramId
@@ -63,7 +63,7 @@ public struct DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner: 
         try container.encode(paramDescription, forKey: .paramDescription)
         try container.encode(paramId, forKey: .paramId)
         try container.encodeIfPresent(paramGroup, forKey: .paramGroup)
-        try container.encode(paramInputType, forKey: .paramInputType)
+        try container.encodeIfPresent(paramInputType, forKey: .paramInputType)
         try container.encode(paramName, forKey: .paramName)
         try container.encodeIfPresent(selectedValue, forKey: .selectedValue)
         try container.encodeIfPresent(userCustomizable, forKey: .userCustomizable)

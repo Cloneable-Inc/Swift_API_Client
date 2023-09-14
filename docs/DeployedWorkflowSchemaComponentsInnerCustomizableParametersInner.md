@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **paramDescription** | **String** |  | 
 **paramId** | **String** |  | 
 **paramGroup** | **String** |  | [optional] 
-**paramInputType** | **String** |  | 
+**paramInputType** | **String** |  | [optional] 
 **paramName** | **String** |  | 
 **selectedValue** | **AnyCodable** |  | [optional] 
 **userCustomizable** | **Bool** |  | [optional] 
