@@ -27,6 +27,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
+*DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
@@ -47,6 +49,9 @@ Class | Method | HTTP request | Description
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
+ - [DataObjectSchema](docs/DataObjectSchema.md)
+ - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
+ - [DataObjectSchemaRelatedWorkflowInstanceIdsInner](docs/DataObjectSchemaRelatedWorkflowInstanceIdsInner.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -65,6 +70,8 @@ Class | Method | HTTP request | Description
  - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetCompletedWorkflowsRequestFilters](docs/GetCompletedWorkflowsRequestFilters.md)
+ - [GetDataObjectsRequest](docs/GetDataObjectsRequest.md)
+ - [GetDataObjectsRequestFilters](docs/GetDataObjectsRequestFilters.md)
  - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
  - [GetDeployedWorkflowsRequestFilters](docs/GetDeployedWorkflowsRequestFilters.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)

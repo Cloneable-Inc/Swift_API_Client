@@ -21,8 +21,8 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
     public var revision: Double
     public var title: String
     public var type: String
-    public var userCustomizedTitle: String
-    public var userCustomizedInstructions: String
+    public var userCustomizedTitle: String?
+    public var userCustomizedInstructions: String?
     public var dynamicComponentId: String
     public var additionalProperties: [String: AnyCodable]?
     public var nextButtonInBar: Bool?
@@ -37,7 +37,7 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
     public var inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner]?
     public var outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]?
 
-    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String, userCustomizedInstructions: String, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner]? = nil, componentDescription: String, dynamicComponentRenderer: Bool, dynamicId: String, useCustomViewForParams: Bool, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner]? = nil, outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]? = nil) {
+    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String? = nil, userCustomizedInstructions: String? = nil, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner]? = nil, componentDescription: String, dynamicComponentRenderer: Bool, dynamicId: String, useCustomViewForParams: Bool, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner]? = nil, outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]? = nil) {
         self.id = id
         self.availableToAllCompanies = availableToAllCompanies
         self.availableDevices = availableDevices
@@ -104,8 +104,8 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
         try container.encode(revision, forKey: .revision)
         try container.encode(title, forKey: .title)
         try container.encode(type, forKey: .type)
-        try container.encode(userCustomizedTitle, forKey: .userCustomizedTitle)
-        try container.encode(userCustomizedInstructions, forKey: .userCustomizedInstructions)
+        try container.encodeIfPresent(userCustomizedTitle, forKey: .userCustomizedTitle)
+        try container.encodeIfPresent(userCustomizedInstructions, forKey: .userCustomizedInstructions)
         try container.encode(dynamicComponentId, forKey: .dynamicComponentId)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
         try container.encodeIfPresent(nextButtonInBar, forKey: .nextButtonInBar)

@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **revision** | **Double** |  | 
 **title** | **String** |  | 
 **type** | **String** |  | 
-**userCustomizedTitle** | **String** |  | 
-**userCustomizedInstructions** | **String** |  | 
+**userCustomizedTitle** | **String** |  | [optional] 
+**userCustomizedInstructions** | **String** |  | [optional] 
 **dynamicComponentId** | **String** |  | 
 **additionalProperties** | **[String: AnyCodable]** |  | [optional] 
 **nextButtonInBar** | **Bool** |  | [optional] 
