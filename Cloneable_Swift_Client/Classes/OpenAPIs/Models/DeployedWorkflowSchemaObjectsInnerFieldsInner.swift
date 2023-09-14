@@ -14,23 +14,22 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
 
     public var displayName: String
     public var dynamicInputId: String
-    public var arraySubType: String
-    public var arrayCloneableSubType: String
+    public var arraySubType: String?
+    public var arrayCloneableSubType: String?
     public var dynamicOutputId: String
     public var fieldId: String
-    public var linkedObjectDisplayName: String
-    public var linkedObjectId: String
-    public var linkedObjectName: String
-    public var linkedObjectRevision: Double
+    public var linkedObjectDisplayName: String?
+    public var linkedObjectId: String?
+    public var linkedObjectName: String?
+    public var linkedObjectRevision: Double?
     public var name: String
     public var type: String
     public var cloneableDataType: String
-    public var statusOptions: [String]
-    public var objectDynamicCreateNewHandleId: Bool
+    public var statusOptions: [String]?
     public var fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation?
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]?
 
-    public init(displayName: String, dynamicInputId: String, arraySubType: String, arrayCloneableSubType: String, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String, linkedObjectId: String, linkedObjectName: String, linkedObjectRevision: Double, name: String, type: String, cloneableDataType: String, statusOptions: [String], objectDynamicCreateNewHandleId: Bool, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
+    public init(displayName: String, dynamicInputId: String, arraySubType: String? = nil, arrayCloneableSubType: String? = nil, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectId: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, name: String, type: String, cloneableDataType: String, statusOptions: [String]? = nil, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
         self.displayName = displayName
         self.dynamicInputId = dynamicInputId
         self.arraySubType = arraySubType
@@ -45,7 +44,6 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         self.type = type
         self.cloneableDataType = cloneableDataType
         self.statusOptions = statusOptions
-        self.objectDynamicCreateNewHandleId = objectDynamicCreateNewHandleId
         self.fileInformation = fileInformation
         self.outputConnections = outputConnections
     }
@@ -65,7 +63,6 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         case type
         case cloneableDataType = "cloneable_data_type"
         case statusOptions = "status_options"
-        case objectDynamicCreateNewHandleId = "object_dynamic_create_new_handle_id"
         case fileInformation = "file_information"
         case outputConnections = "output_connections"
     }
@@ -76,19 +73,18 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(displayName, forKey: .displayName)
         try container.encode(dynamicInputId, forKey: .dynamicInputId)
-        try container.encode(arraySubType, forKey: .arraySubType)
-        try container.encode(arrayCloneableSubType, forKey: .arrayCloneableSubType)
+        try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
+        try container.encodeIfPresent(arrayCloneableSubType, forKey: .arrayCloneableSubType)
         try container.encode(dynamicOutputId, forKey: .dynamicOutputId)
         try container.encode(fieldId, forKey: .fieldId)
-        try container.encode(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
-        try container.encode(linkedObjectId, forKey: .linkedObjectId)
-        try container.encode(linkedObjectName, forKey: .linkedObjectName)
-        try container.encode(linkedObjectRevision, forKey: .linkedObjectRevision)
+        try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
+        try container.encodeIfPresent(linkedObjectId, forKey: .linkedObjectId)
+        try container.encodeIfPresent(linkedObjectName, forKey: .linkedObjectName)
+        try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encode(name, forKey: .name)
         try container.encode(type, forKey: .type)
         try container.encode(cloneableDataType, forKey: .cloneableDataType)
-        try container.encode(statusOptions, forKey: .statusOptions)
-        try container.encode(objectDynamicCreateNewHandleId, forKey: .objectDynamicCreateNewHandleId)
+        try container.encodeIfPresent(statusOptions, forKey: .statusOptions)
         try container.encodeIfPresent(fileInformation, forKey: .fileInformation)
         try container.encodeIfPresent(outputConnections, forKey: .outputConnections)
     }

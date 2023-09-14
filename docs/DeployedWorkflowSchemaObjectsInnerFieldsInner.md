@@ -5,19 +5,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** |  | 
 **dynamicInputId** | **String** |  | 
-**arraySubType** | **String** |  | 
-**arrayCloneableSubType** | **String** |  | 
+**arraySubType** | **String** |  | [optional] 
+**arrayCloneableSubType** | **String** |  | [optional] 
 **dynamicOutputId** | **String** |  | 
 **fieldId** | **String** |  | 
-**linkedObjectDisplayName** | **String** |  | 
-**linkedObjectId** | **String** |  | 
-**linkedObjectName** | **String** |  | 
-**linkedObjectRevision** | **Double** |  | 
+**linkedObjectDisplayName** | **String** |  | [optional] 
+**linkedObjectId** | **String** |  | [optional] 
+**linkedObjectName** | **String** |  | [optional] 
+**linkedObjectRevision** | **Double** |  | [optional] 
 **name** | **String** |  | 
 **type** | **String** |  | 
 **cloneableDataType** | **String** |  | 
-**statusOptions** | **[String]** |  | 
-**objectDynamicCreateNewHandleId** | **Bool** |  | 
+**statusOptions** | **[String]** |  | [optional] 
 **fileInformation** | [**DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation**](DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md) |  | [optional] 
 **outputConnections** | [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner] |  | [optional] 
 
