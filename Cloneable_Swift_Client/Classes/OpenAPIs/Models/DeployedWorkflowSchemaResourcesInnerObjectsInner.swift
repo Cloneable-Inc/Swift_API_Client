@@ -13,9 +13,9 @@ import AnyCodable
 public struct DeployedWorkflowSchemaResourcesInnerObjectsInner: Codable, JSONEncodable, Hashable {
 
     public var templateId: String
-    public var createdAfter: String
+    public var createdAfter: String?
 
-    public init(templateId: String, createdAfter: String) {
+    public init(templateId: String, createdAfter: String? = nil) {
         self.templateId = templateId
         self.createdAfter = createdAfter
     }
@@ -30,7 +30,7 @@ public struct DeployedWorkflowSchemaResourcesInnerObjectsInner: Codable, JSONEnc
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(templateId, forKey: .templateId)
-        try container.encode(createdAfter, forKey: .createdAfter)
+        try container.encodeIfPresent(createdAfter, forKey: .createdAfter)
     }
 }
 
