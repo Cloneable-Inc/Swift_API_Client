@@ -28,9 +28,9 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
     public var statusOptions: [String]
     public var objectDynamicCreateNewHandleId: Bool
     public var fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation?
-    public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]
+    public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]?
 
-    public init(displayName: String, dynamicInputId: String, arraySubType: String, arrayCloneableSubType: String, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String, linkedObjectId: String, linkedObjectName: String, linkedObjectRevision: Double, name: String, type: String, cloneableDataType: String, statusOptions: [String], objectDynamicCreateNewHandleId: Bool, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]) {
+    public init(displayName: String, dynamicInputId: String, arraySubType: String, arrayCloneableSubType: String, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String, linkedObjectId: String, linkedObjectName: String, linkedObjectRevision: Double, name: String, type: String, cloneableDataType: String, statusOptions: [String], objectDynamicCreateNewHandleId: Bool, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
         self.displayName = displayName
         self.dynamicInputId = dynamicInputId
         self.arraySubType = arraySubType
@@ -90,7 +90,7 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         try container.encode(statusOptions, forKey: .statusOptions)
         try container.encode(objectDynamicCreateNewHandleId, forKey: .objectDynamicCreateNewHandleId)
         try container.encodeIfPresent(fileInformation, forKey: .fileInformation)
-        try container.encode(outputConnections, forKey: .outputConnections)
+        try container.encodeIfPresent(outputConnections, forKey: .outputConnections)
     }
 }
 

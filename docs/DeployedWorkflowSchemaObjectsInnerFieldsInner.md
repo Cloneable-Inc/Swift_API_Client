@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **statusOptions** | **[String]** |  | 
 **objectDynamicCreateNewHandleId** | **Bool** |  | 
 **fileInformation** | [**DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation**](DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md) |  | [optional] 
-**outputConnections** | [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner] |  | 
+**outputConnections** | [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
