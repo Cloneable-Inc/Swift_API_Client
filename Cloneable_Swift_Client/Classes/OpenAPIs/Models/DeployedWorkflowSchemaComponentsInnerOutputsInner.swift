@@ -13,20 +13,20 @@ import AnyCodable
 public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEncodable, Hashable {
 
     public var dynamicOutputId: String
-    public var group: String
-    public var outputImmediately: Bool
-    public var outputClassification: String
+    public var group: String?
+    public var outputImmediately: Bool?
+    public var outputClassification: String?
     public var outputDataType: String
-    public var outputDescription: String
+    public var outputDescription: String?
     public var outputId: String
     public var outputName: String
     public var _required: Bool
-    public var outputsArray: Bool
-    public var outputImmediatelyUserDefinable: Bool
-    public var additionalProperties: [String: AnyCodable]
+    public var outputsArray: Bool?
+    public var outputImmediatelyUserDefinable: Bool?
+    public var additionalProperties: [String: AnyCodable]?
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]
 
-    public init(dynamicOutputId: String, group: String, outputImmediately: Bool, outputClassification: String, outputDataType: String, outputDescription: String, outputId: String, outputName: String, _required: Bool, outputsArray: Bool, outputImmediatelyUserDefinable: Bool, additionalProperties: [String: AnyCodable], outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]) {
+    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable]? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]) {
         self.dynamicOutputId = dynamicOutputId
         self.group = group
         self.outputImmediately = outputImmediately
@@ -63,17 +63,17 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(dynamicOutputId, forKey: .dynamicOutputId)
-        try container.encode(group, forKey: .group)
-        try container.encode(outputImmediately, forKey: .outputImmediately)
-        try container.encode(outputClassification, forKey: .outputClassification)
+        try container.encodeIfPresent(group, forKey: .group)
+        try container.encodeIfPresent(outputImmediately, forKey: .outputImmediately)
+        try container.encodeIfPresent(outputClassification, forKey: .outputClassification)
         try container.encode(outputDataType, forKey: .outputDataType)
-        try container.encode(outputDescription, forKey: .outputDescription)
+        try container.encodeIfPresent(outputDescription, forKey: .outputDescription)
         try container.encode(outputId, forKey: .outputId)
         try container.encode(outputName, forKey: .outputName)
         try container.encode(_required, forKey: ._required)
-        try container.encode(outputsArray, forKey: .outputsArray)
-        try container.encode(outputImmediatelyUserDefinable, forKey: .outputImmediatelyUserDefinable)
-        try container.encode(additionalProperties, forKey: .additionalProperties)
+        try container.encodeIfPresent(outputsArray, forKey: .outputsArray)
+        try container.encodeIfPresent(outputImmediatelyUserDefinable, forKey: .outputImmediatelyUserDefinable)
+        try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
         try container.encode(outputConnections, forKey: .outputConnections)
     }
 }

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | [optional] 
 **componentDescription** | **String** |  | 
 **dynamicComponentRenderer** | **Bool** |  | 
-**useCustomViewForParams** | **Bool** |  | 
+**useCustomViewForParams** | **Bool** |  | [optional] 
 **implementationUrl** | **String** |  | 
 **inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | [optional] 
 **outputs** | [DeployedWorkflowSchemaComponentsInnerOutputsInner] |  | [optional] 
