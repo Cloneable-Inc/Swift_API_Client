@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | [optional] 
 **componentDescription** | **String** |  | 
 **dynamicComponentRenderer** | **Bool** |  | 
-**dynamicId** | **String** |  | 
 **useCustomViewForParams** | **Bool** |  | 
 **implementationUrl** | **String** |  | 
 **inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | [optional] 
