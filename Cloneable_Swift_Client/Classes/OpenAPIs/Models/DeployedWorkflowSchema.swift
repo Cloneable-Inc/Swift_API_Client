@@ -22,13 +22,13 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var resources: [DeployedWorkflowSchemaResourcesInner]?
     public var edges: [DeployedWorkflowSchemaEdgesInner]
     public var components: [DeployedWorkflowSchemaComponentsInner]
-    public var objects: [DeployedWorkflowSchemaObjectsInner]?
+    public var objects: [DeployedWorkflowSchemaObjectsInner]
     public var revision: Double
     public var workflowDescription: String
     public var workflowId: String
     public var workflowName: String
 
-    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [DeployedWorkflowSchemaResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner]? = nil, revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
+    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [DeployedWorkflowSchemaResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner], revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -78,7 +78,7 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(resources, forKey: .resources)
         try container.encode(edges, forKey: .edges)
         try container.encode(components, forKey: .components)
-        try container.encodeIfPresent(objects, forKey: .objects)
+        try container.encode(objects, forKey: .objects)
         try container.encode(revision, forKey: .revision)
         try container.encode(workflowDescription, forKey: .workflowDescription)
         try container.encode(workflowId, forKey: .workflowId)

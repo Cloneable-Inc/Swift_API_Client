@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **resources** | [DeployedWorkflowSchemaResourcesInner] |  | [optional] 
 **edges** | [DeployedWorkflowSchemaEdgesInner] |  | 
 **components** | [DeployedWorkflowSchemaComponentsInner] |  | 
-**objects** | [DeployedWorkflowSchemaObjectsInner] |  | [optional] 
+**objects** | [DeployedWorkflowSchemaObjectsInner] |  | 
 **revision** | **Double** |  | 
 **workflowDescription** | **String** |  | 
 **workflowId** | **String** |  | 

@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **nextButtonInBar** | **Bool** |  | [optional] 
 **nextButtonInBarText** | **String** |  | [optional] 
 **iosHwRequirements** | **[String]** |  | [optional] 
-**customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | [optional] 
+**customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | 
 **componentDescription** | **String** |  | 
 **dynamicComponentRenderer** | **Bool** |  | 
 **useCustomViewForParams** | **Bool** |  | [optional] 
 **implementationUrl** | **String** |  | 
-**inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | [optional] 
-**outputs** | [DeployedWorkflowSchemaComponentsInnerOutputsInner] |  | [optional] 
+**inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | 
+**outputs** | [DeployedWorkflowSchemaComponentsInnerOutputsInner] |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
