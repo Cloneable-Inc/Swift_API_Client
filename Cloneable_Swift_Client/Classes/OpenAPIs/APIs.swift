@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 open class Cloneable_Swift_ClientAPI {
     public static var basePath = "https://app.cloneable.ai/api/v1"
     public static var customHeaders: [String: String] = [:]
