@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **_required** | **Bool** |  | [optional] 
 **acceptsArray** | **Bool** |  | [optional] 
 **trigger** | **Bool** |  | [optional] 
-**additionalProperties** | **[String: AnyCodable]** |  | [optional] 
+**additionalProperties** | **[String: AnyCodable]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

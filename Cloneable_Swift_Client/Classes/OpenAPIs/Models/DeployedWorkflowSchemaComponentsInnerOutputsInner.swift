@@ -23,10 +23,10 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
     public var _required: Bool?
     public var outputsArray: Bool?
     public var outputImmediatelyUserDefinable: Bool?
-    public var additionalProperties: [String: AnyCodable]?
+    public var additionalProperties: [String: AnyCodable]
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]?
 
-    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool? = nil, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable]? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
+    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool? = nil, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable], outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
         self.dynamicOutputId = dynamicOutputId
         self.group = group
         self.outputImmediately = outputImmediately
@@ -73,7 +73,7 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
         try container.encodeIfPresent(_required, forKey: ._required)
         try container.encodeIfPresent(outputsArray, forKey: .outputsArray)
         try container.encodeIfPresent(outputImmediatelyUserDefinable, forKey: .outputImmediatelyUserDefinable)
-        try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
+        try container.encode(additionalProperties, forKey: .additionalProperties)
         try container.encodeIfPresent(outputConnections, forKey: .outputConnections)
     }
 }

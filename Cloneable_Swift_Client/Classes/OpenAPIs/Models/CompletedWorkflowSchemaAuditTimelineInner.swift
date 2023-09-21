@@ -17,9 +17,9 @@ public struct CompletedWorkflowSchemaAuditTimelineInner: Codable, JSONEncodable,
     public var dynamicComponentId: String
     public var startedAt: String
     public var staticComponentId: String
-    public var completedAt: String
+    public var completedAt: String?
 
-    public init(componentName: String, componentType: String, dynamicComponentId: String, startedAt: String, staticComponentId: String, completedAt: String) {
+    public init(componentName: String, componentType: String, dynamicComponentId: String, startedAt: String, staticComponentId: String, completedAt: String? = nil) {
         self.componentName = componentName
         self.componentType = componentType
         self.dynamicComponentId = dynamicComponentId
@@ -46,7 +46,7 @@ public struct CompletedWorkflowSchemaAuditTimelineInner: Codable, JSONEncodable,
         try container.encode(dynamicComponentId, forKey: .dynamicComponentId)
         try container.encode(startedAt, forKey: .startedAt)
         try container.encode(staticComponentId, forKey: .staticComponentId)
-        try container.encode(completedAt, forKey: .completedAt)
+        try container.encodeIfPresent(completedAt, forKey: .completedAt)
     }
 }
 
