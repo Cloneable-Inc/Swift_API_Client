@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **companyId** | **String** |  | 
 **finalized** | **Bool** |  | 
-**finalizedAt** | **String** |  | 
+**finalizedAt** | **String** |  | [optional] 
 **createdAt** | **String** |  | 
 **createdBy** | **String** |  | 
 **typeRefId** | **String** |  | 

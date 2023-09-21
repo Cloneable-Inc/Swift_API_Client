@@ -16,7 +16,7 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var name: String
     public var companyId: String
     public var finalized: Bool
-    public var finalizedAt: String
+    public var finalizedAt: String?
     public var createdAt: String
     public var createdBy: String
     public var typeRefId: String
@@ -24,7 +24,7 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var workflowInstanceId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: String, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.id = id
         self.name = name
         self.companyId = companyId
@@ -60,7 +60,7 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(companyId, forKey: .companyId)
         try container.encode(finalized, forKey: .finalized)
-        try container.encode(finalizedAt, forKey: .finalizedAt)
+        try container.encodeIfPresent(finalizedAt, forKey: .finalizedAt)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(typeRefId, forKey: .typeRefId)
