@@ -13,6 +13,49 @@ import AnyCodable
 open class DataObjectAPI {
 
     /**
+     Create a data object
+     
+     - parameter createDataObjectSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createDataObject(createDataObjectSchema: CreateDataObjectSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createDataObjectWithRequestBuilder(createDataObjectSchema: createDataObjectSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a data object
+     - PUT /data-object
+     - parameter createDataObjectSchema: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func createDataObjectWithRequestBuilder(createDataObjectSchema: CreateDataObjectSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+        let localVariablePath = "/data-object"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createDataObjectSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get all data objects
      
      - parameter getDataObjectsRequest: (body) Body (optional)

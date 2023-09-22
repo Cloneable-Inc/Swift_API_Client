@@ -1,9 +1,8 @@
-# DataObjectSchema
+# CreateDataObjectSchema
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
 **companyId** | **String** |  | 
 **createdAt** | **String** |  | 
 **createdBy** | **String** |  | 

@@ -25,8 +25,10 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
@@ -46,6 +48,8 @@ Class | Method | HTTP request | Description
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
+ - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
+ - [CreateDataObjectSchema](docs/CreateDataObjectSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)

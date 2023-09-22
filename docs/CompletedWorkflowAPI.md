@@ -4,9 +4,58 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createCompletedWorkflow**](CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 [**getCompletedWorkflows**](CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 [**getOneCompletedWorkflow**](CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
 
+
+# **createCompletedWorkflow**
+```swift
+    open class func createCompletedWorkflow(createCompletedWorkflowSchema: CreateCompletedWorkflowSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+```
+
+Add a new completed workflow
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let createCompletedWorkflowSchema = CreateCompletedWorkflowSchema(name: "name_example", companyId: "companyId_example", finalized: false, finalizedAt: "finalizedAt_example", createdAt: "createdAt_example", createdBy: "createdBy_example", typeRefId: "typeRefId_example", relatedObjectTypes: [CompletedWorkflowSchema_related_object_types_inner(objectId: "objectId_example", objectName: "objectName_example")], workflowInstanceId: "workflowInstanceId_example", auditTimeline: [CompletedWorkflowSchema_audit_timeline_inner(componentName: "componentName_example", componentType: "componentType_example", dynamicComponentId: "dynamicComponentId_example", startedAt: "startedAt_example", staticComponentId: "staticComponentId_example", completedAt: "completedAt_example")]) // CreateCompletedWorkflowSchema | Body (optional)
+
+// Add a new completed workflow
+CompletedWorkflowAPI.createCompletedWorkflow(createCompletedWorkflowSchema: createCompletedWorkflowSchema) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCompletedWorkflowSchema** | [**CreateCompletedWorkflowSchema**](CreateCompletedWorkflowSchema.md) | Body | [optional] 
+
+### Return type
+
+[**UpdateFile200Response**](UpdateFile200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCompletedWorkflows**
 ```swift
