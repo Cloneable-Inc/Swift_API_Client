@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **finalizedAt** | **String** |  | [optional] 
 **createdAt** | **String** |  | 
 **createdBy** | **String** |  | 
+**updatedAt** | **Date** |  | [optional] 
 **typeRefId** | **String** |  | 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
 **workflowInstanceId** | **String** |  | 

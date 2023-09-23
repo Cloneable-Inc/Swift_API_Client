@@ -28,6 +28,7 @@ Class | Method | HTTP request | Description
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*CompletedWorkflowAPI* | [**updateCompletedWorkflow**](docs/CompletedWorkflowAPI.md#updatecompletedworkflow) | **POST** /completed-workflow/{id} | Update a completed workflow
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
@@ -85,6 +86,7 @@ Class | Method | HTTP request | Description
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
+ - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UserSchema](docs/UserSchema.md)
 

@@ -18,18 +18,20 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var finalizedAt: String?
     public var createdAt: String
     public var createdBy: String
+    public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var workflowInstanceId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.name = name
         self.companyId = companyId
         self.finalized = finalized
         self.finalizedAt = finalizedAt
         self.createdAt = createdAt
         self.createdBy = createdBy
+        self.updatedAt = updatedAt
         self.typeRefId = typeRefId
         self.relatedObjectTypes = relatedObjectTypes
         self.workflowInstanceId = workflowInstanceId
@@ -43,6 +45,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case finalizedAt = "finalized_at"
         case createdAt = "created_at"
         case createdBy = "created_by"
+        case updatedAt = "updated_at"
         case typeRefId = "type_ref_id"
         case relatedObjectTypes = "related_object_types"
         case workflowInstanceId = "workflow_instance_id"
@@ -59,6 +62,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(finalizedAt, forKey: .finalizedAt)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
         try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
