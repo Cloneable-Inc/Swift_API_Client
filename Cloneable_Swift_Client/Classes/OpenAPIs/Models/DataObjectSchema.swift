@@ -18,21 +18,18 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var createdBy: String
     public var dynamicObjectId: String
     public var fields: [DataObjectSchemaFieldsInner]?
-    public var instanceObjectId: String?
-    public var modifiedAt: String?
-    public var objectDescription: String?
-    public var objectDisplayName: String?
-    public var objectDynamicCreateNewHandleId: String?
-    public var objectId: String?
-    public var objectName: String?
-    public var objectOutputDynamicId: String?
-    public var objectRevision: Double?
-    public var objectTemplateRevision: Double?
+    public var instanceObjectId: String
+    public var modifiedAt: String
+    public var objectDescription: String
+    public var objectDisplayName: String
+    public var objectId: String
+    public var objectName: String
+    public var objectRevision: Double
+    public var objectTemplateRevision: Double
     public var relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]?
-    public var typeRefId: String?
-    public var workflowFinalized: Bool?
+    public var typeRefId: String
 
-    public init(id: String, companyId: String, createdAt: String, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner]? = nil, instanceObjectId: String? = nil, modifiedAt: String? = nil, objectDescription: String? = nil, objectDisplayName: String? = nil, objectDynamicCreateNewHandleId: String? = nil, objectId: String? = nil, objectName: String? = nil, objectOutputDynamicId: String? = nil, objectRevision: Double? = nil, objectTemplateRevision: Double? = nil, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String? = nil, workflowFinalized: Bool? = nil) {
+    public init(id: String, companyId: String, createdAt: String, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner]? = nil, instanceObjectId: String, modifiedAt: String, objectDescription: String, objectDisplayName: String, objectId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -43,15 +40,12 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         self.modifiedAt = modifiedAt
         self.objectDescription = objectDescription
         self.objectDisplayName = objectDisplayName
-        self.objectDynamicCreateNewHandleId = objectDynamicCreateNewHandleId
         self.objectId = objectId
         self.objectName = objectName
-        self.objectOutputDynamicId = objectOutputDynamicId
         self.objectRevision = objectRevision
         self.objectTemplateRevision = objectTemplateRevision
         self.relatedWorkflowInstanceIds = relatedWorkflowInstanceIds
         self.typeRefId = typeRefId
-        self.workflowFinalized = workflowFinalized
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -65,15 +59,12 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         case modifiedAt = "modified_at"
         case objectDescription = "object_description"
         case objectDisplayName = "object_display_name"
-        case objectDynamicCreateNewHandleId = "object_dynamic_create_new_handle_id"
         case objectId = "object_id"
         case objectName = "object_name"
-        case objectOutputDynamicId = "object_output_dynamic_id"
         case objectRevision = "object_revision"
         case objectTemplateRevision = "object_template_revision"
         case relatedWorkflowInstanceIds = "related_workflow_instance_ids"
         case typeRefId = "type_ref_id"
-        case workflowFinalized = "workflow_finalized"
     }
 
     // Encodable protocol methods
@@ -86,19 +77,16 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(dynamicObjectId, forKey: .dynamicObjectId)
         try container.encodeIfPresent(fields, forKey: .fields)
-        try container.encodeIfPresent(instanceObjectId, forKey: .instanceObjectId)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(objectDescription, forKey: .objectDescription)
-        try container.encodeIfPresent(objectDisplayName, forKey: .objectDisplayName)
-        try container.encodeIfPresent(objectDynamicCreateNewHandleId, forKey: .objectDynamicCreateNewHandleId)
-        try container.encodeIfPresent(objectId, forKey: .objectId)
-        try container.encodeIfPresent(objectName, forKey: .objectName)
-        try container.encodeIfPresent(objectOutputDynamicId, forKey: .objectOutputDynamicId)
-        try container.encodeIfPresent(objectRevision, forKey: .objectRevision)
-        try container.encodeIfPresent(objectTemplateRevision, forKey: .objectTemplateRevision)
+        try container.encode(instanceObjectId, forKey: .instanceObjectId)
+        try container.encode(modifiedAt, forKey: .modifiedAt)
+        try container.encode(objectDescription, forKey: .objectDescription)
+        try container.encode(objectDisplayName, forKey: .objectDisplayName)
+        try container.encode(objectId, forKey: .objectId)
+        try container.encode(objectName, forKey: .objectName)
+        try container.encode(objectRevision, forKey: .objectRevision)
+        try container.encode(objectTemplateRevision, forKey: .objectTemplateRevision)
         try container.encodeIfPresent(relatedWorkflowInstanceIds, forKey: .relatedWorkflowInstanceIds)
-        try container.encodeIfPresent(typeRefId, forKey: .typeRefId)
-        try container.encodeIfPresent(workflowFinalized, forKey: .workflowFinalized)
+        try container.encode(typeRefId, forKey: .typeRefId)
     }
 }
 

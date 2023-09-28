@@ -13,20 +13,20 @@ import AnyCodable
 public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
     public var arraySubType: String?
-    public var displayName: String?
-    public var fieldId: String?
-    public var uniqueId: String?
+    public var displayName: String
+    public var fieldId: String
+    public var uniqueId: String
     public var linkedObjectDisplayName: String?
     public var linkedObjectName: String?
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
-    public var modifiedAt: String?
-    public var modifiedBy: String?
-    public var name: String?
+    public var modifiedAt: String
+    public var modifiedBy: String
+    public var name: String
     public var storedValue: String?
     public var type: String
 
-    public init(arraySubType: String? = nil, displayName: String? = nil, fieldId: String? = nil, uniqueId: String? = nil, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: String? = nil, modifiedBy: String? = nil, name: String? = nil, storedValue: String? = nil, type: String) {
+    public init(arraySubType: String? = nil, displayName: String, fieldId: String, uniqueId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: String, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
         self.arraySubType = arraySubType
         self.displayName = displayName
         self.fieldId = fieldId
@@ -63,16 +63,16 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(fieldId, forKey: .fieldId)
-        try container.encodeIfPresent(uniqueId, forKey: .uniqueId)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(fieldId, forKey: .fieldId)
+        try container.encode(uniqueId, forKey: .uniqueId)
         try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
         try container.encodeIfPresent(linkedObjectName, forKey: .linkedObjectName)
         try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encodeIfPresent(linkedObjectTemplateId, forKey: .linkedObjectTemplateId)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(modifiedAt, forKey: .modifiedAt)
+        try container.encode(modifiedBy, forKey: .modifiedBy)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
         try container.encode(type, forKey: .type)
     }

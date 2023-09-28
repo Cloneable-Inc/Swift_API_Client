@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arraySubType** | **String** |  | [optional] 
-**displayName** | **String** |  | [optional] 
-**fieldId** | **String** |  | [optional] 
-**uniqueId** | **String** |  | [optional] 
+**displayName** | **String** |  | 
+**fieldId** | **String** |  | 
+**uniqueId** | **String** |  | 
 **linkedObjectDisplayName** | **String** |  | [optional] 
 **linkedObjectName** | **String** |  | [optional] 
 **linkedObjectRevision** | **Double** |  | [optional] 
 **linkedObjectTemplateId** | **String** |  | [optional] 
-**modifiedAt** | **String** |  | [optional] 
-**modifiedBy** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
+**modifiedAt** | **String** |  | 
+**modifiedBy** | **String** |  | 
+**name** | **String** |  | 
 **storedValue** | **String** |  | [optional] 
 **type** | **String** |  | 
 
