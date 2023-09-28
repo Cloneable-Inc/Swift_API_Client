@@ -22,9 +22,10 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var workflowInstanceId: String
+    public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.name = name
         self.companyId = companyId
         self.finalized = finalized
@@ -35,6 +36,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         self.typeRefId = typeRefId
         self.relatedObjectTypes = relatedObjectTypes
         self.workflowInstanceId = workflowInstanceId
+        self.relatedWorkflowTemplateId = relatedWorkflowTemplateId
         self.auditTimeline = auditTimeline
     }
 
@@ -49,6 +51,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case typeRefId = "type_ref_id"
         case relatedObjectTypes = "related_object_types"
         case workflowInstanceId = "workflow_instance_id"
+        case relatedWorkflowTemplateId = "related_workflow_template_id"
         case auditTimeline = "audit_timeline"
     }
 
@@ -66,6 +69,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encode(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
         try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
+        try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
     }
 }

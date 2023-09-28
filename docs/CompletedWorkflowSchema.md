@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **typeRefId** | **String** |  | 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
 **workflowInstanceId** | **String** |  | 
+**relatedWorkflowTemplateId** | **String** |  | 
 **auditTimeline** | [CompletedWorkflowSchemaAuditTimelineInner] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

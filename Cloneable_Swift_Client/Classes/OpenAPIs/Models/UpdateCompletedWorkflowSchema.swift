@@ -18,15 +18,17 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
+    public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(name: String, finalized: Bool, finalizedAt: String? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, finalized: Bool, finalizedAt: String? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.name = name
         self.finalized = finalized
         self.finalizedAt = finalizedAt
         self.updatedAt = updatedAt
         self.typeRefId = typeRefId
         self.relatedObjectTypes = relatedObjectTypes
+        self.relatedWorkflowTemplateId = relatedWorkflowTemplateId
         self.auditTimeline = auditTimeline
     }
 
@@ -37,6 +39,7 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case updatedAt = "updated_at"
         case typeRefId = "type_ref_id"
         case relatedObjectTypes = "related_object_types"
+        case relatedWorkflowTemplateId = "related_workflow_template_id"
         case auditTimeline = "audit_timeline"
     }
 
@@ -50,6 +53,7 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
+        try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
     }
 }

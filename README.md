@@ -40,6 +40,8 @@ Class | Method | HTTP request | Description
 *FileAPI* | [**getOneFile**](docs/FileAPI.md#getonefile) | **GET** /file/{id} | Get a single files
 *FileAPI* | [**retryFileUploadUrl**](docs/FileAPI.md#retryfileuploadurl) | **GET** /file/{id}/retry-upload-url | Returns a signed upload url from R2 by file.id
 *FileAPI* | [**updateFile**](docs/FileAPI.md#updatefile) | **POST** /file/{id} | Update a single file
+*NotificationAPI* | [**createNotification**](docs/NotificationAPI.md#createnotification) | **PUT** /notification | Create a new notification request
+*NotificationAPI* | [**getNotifications**](docs/NotificationAPI.md#getnotifications) | **GET** /notifications | Get all notifications
 *UserAPI* | [**getOrg**](docs/UserAPI.md#getorg) | **GET** /org/{id} | Get company by id
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
 
@@ -83,6 +85,9 @@ Class | Method | HTTP request | Description
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
+ - [NotificationRequestSchema](docs/NotificationRequestSchema.md)
+ - [NotificationRequestSchemaTargetSmsNumbersInner](docs/NotificationRequestSchemaTargetSmsNumbersInner.md)
+ - [NotificationSchema](docs/NotificationSchema.md)
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)

@@ -12,31 +12,25 @@ import AnyCodable
 
 public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
-    public var arrayCloneableSubType: String?
     public var arraySubType: String?
-    public var cloneableDataType: String
-    public var displayName: String
-    public var fieldId: String
+    public var displayName: String?
+    public var fieldId: String?
+    public var uniqueId: String?
     public var linkedObjectDisplayName: String?
     public var linkedObjectName: String?
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
-    public var modifiedAt: String
-    public var modifiedBy: String
-    public var name: String
-    public var statusOptions: [String]?
-    public var storedArrayValues: [AnyCodable]?
-    public var storedValue: AnyCodable?
-    public var thematicStoredArrayValues: [String]?
-    public var thematicStoredValue: String?
+    public var modifiedAt: String?
+    public var modifiedBy: String?
+    public var name: String?
+    public var storedValue: String?
     public var type: String
 
-    public init(arrayCloneableSubType: String? = nil, arraySubType: String? = nil, cloneableDataType: String, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: String, modifiedBy: String, name: String, statusOptions: [String]? = nil, storedArrayValues: [AnyCodable]? = nil, storedValue: AnyCodable? = nil, thematicStoredArrayValues: [String]? = nil, thematicStoredValue: String? = nil, type: String) {
-        self.arrayCloneableSubType = arrayCloneableSubType
+    public init(arraySubType: String? = nil, displayName: String? = nil, fieldId: String? = nil, uniqueId: String? = nil, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: String? = nil, modifiedBy: String? = nil, name: String? = nil, storedValue: String? = nil, type: String) {
         self.arraySubType = arraySubType
-        self.cloneableDataType = cloneableDataType
         self.displayName = displayName
         self.fieldId = fieldId
+        self.uniqueId = uniqueId
         self.linkedObjectDisplayName = linkedObjectDisplayName
         self.linkedObjectName = linkedObjectName
         self.linkedObjectRevision = linkedObjectRevision
@@ -44,20 +38,15 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         self.modifiedAt = modifiedAt
         self.modifiedBy = modifiedBy
         self.name = name
-        self.statusOptions = statusOptions
-        self.storedArrayValues = storedArrayValues
         self.storedValue = storedValue
-        self.thematicStoredArrayValues = thematicStoredArrayValues
-        self.thematicStoredValue = thematicStoredValue
         self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayCloneableSubType = "array_cloneable_sub_type"
         case arraySubType = "array_sub_type"
-        case cloneableDataType = "cloneable_data_type"
         case displayName = "display_name"
         case fieldId = "field_id"
+        case uniqueId = "unique_id"
         case linkedObjectDisplayName = "linked_object_display_name"
         case linkedObjectName = "linked_object_name"
         case linkedObjectRevision = "linked_object_revision"
@@ -65,11 +54,7 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         case modifiedAt = "modified_at"
         case modifiedBy = "modified_by"
         case name
-        case statusOptions = "status_options"
-        case storedArrayValues = "stored_array_values"
         case storedValue = "stored_value"
-        case thematicStoredArrayValues = "thematic_stored_array_values"
-        case thematicStoredValue = "thematic_stored_value"
         case type
     }
 
@@ -77,23 +62,18 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(arrayCloneableSubType, forKey: .arrayCloneableSubType)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
-        try container.encode(cloneableDataType, forKey: .cloneableDataType)
-        try container.encode(displayName, forKey: .displayName)
-        try container.encode(fieldId, forKey: .fieldId)
+        try container.encodeIfPresent(displayName, forKey: .displayName)
+        try container.encodeIfPresent(fieldId, forKey: .fieldId)
+        try container.encodeIfPresent(uniqueId, forKey: .uniqueId)
         try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
         try container.encodeIfPresent(linkedObjectName, forKey: .linkedObjectName)
         try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encodeIfPresent(linkedObjectTemplateId, forKey: .linkedObjectTemplateId)
-        try container.encode(modifiedAt, forKey: .modifiedAt)
-        try container.encode(modifiedBy, forKey: .modifiedBy)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(statusOptions, forKey: .statusOptions)
-        try container.encodeIfPresent(storedArrayValues, forKey: .storedArrayValues)
+        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
+        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
-        try container.encodeIfPresent(thematicStoredArrayValues, forKey: .thematicStoredArrayValues)
-        try container.encodeIfPresent(thematicStoredValue, forKey: .thematicStoredValue)
         try container.encode(type, forKey: .type)
     }
 }

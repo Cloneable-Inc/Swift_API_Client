@@ -8,17 +8,20 @@ Name | Type | Description | Notes
 **createdAt** | **String** |  | 
 **createdBy** | **String** |  | 
 **dynamicObjectId** | **String** |  | 
-**fields** | [DataObjectSchemaFieldsInner] |  | 
-**instanceObjectId** | **String** |  | 
-**modifiedAt** | **String** |  | 
-**objectDescription** | **String** |  | 
-**objectDisplayName** | **String** |  | 
-**objectId** | **String** |  | 
-**objectName** | **String** |  | 
-**objectRevision** | **Double** |  | 
-**objectTemplateRevision** | **Double** |  | 
-**relatedWorkflowInstanceIds** | [DataObjectSchemaRelatedWorkflowInstanceIdsInner] |  | 
-**typeRefId** | **String** |  | 
+**fields** | [DataObjectSchemaFieldsInner] |  | [optional] 
+**instanceObjectId** | **String** |  | [optional] 
+**modifiedAt** | **String** |  | [optional] 
+**objectDescription** | **String** |  | [optional] 
+**objectDisplayName** | **String** |  | [optional] 
+**objectDynamicCreateNewHandleId** | **String** |  | [optional] 
+**objectId** | **String** |  | [optional] 
+**objectName** | **String** |  | [optional] 
+**objectOutputDynamicId** | **String** |  | [optional] 
+**objectRevision** | **Double** |  | [optional] 
+**objectTemplateRevision** | **Double** |  | [optional] 
+**relatedWorkflowInstanceIds** | [DataObjectSchemaRelatedWorkflowInstanceIdsInner] |  | [optional] 
+**typeRefId** | **String** |  | [optional] 
+**workflowFinalized** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct DataObjectSchemaRelatedWorkflowInstanceIdsInner: Codable, JSONEncodable, Hashable {
 
-    public var workflowFinalized: Bool
-    public var workflowInstanceId: String
-    public var workflowName: String
+    public var workflowFinalized: Bool?
+    public var workflowInstanceId: String?
+    public var workflowName: String?
 
-    public init(workflowFinalized: Bool, workflowInstanceId: String, workflowName: String) {
+    public init(workflowFinalized: Bool? = nil, workflowInstanceId: String? = nil, workflowName: String? = nil) {
         self.workflowFinalized = workflowFinalized
         self.workflowInstanceId = workflowInstanceId
         self.workflowName = workflowName
@@ -32,9 +32,9 @@ public struct DataObjectSchemaRelatedWorkflowInstanceIdsInner: Codable, JSONEnco
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(workflowFinalized, forKey: .workflowFinalized)
-        try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
-        try container.encode(workflowName, forKey: .workflowName)
+        try container.encodeIfPresent(workflowFinalized, forKey: .workflowFinalized)
+        try container.encodeIfPresent(workflowInstanceId, forKey: .workflowInstanceId)
+        try container.encodeIfPresent(workflowName, forKey: .workflowName)
     }
 }
 
