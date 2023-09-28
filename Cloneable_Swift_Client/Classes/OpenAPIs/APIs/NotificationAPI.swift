@@ -58,15 +58,13 @@ open class NotificationAPI {
     /**
      Get all notifications
      
-     - parameter id: (query)  (optional)
-     - parameter filters: (query)  (optional)
-     - parameter latest: (query)  (optional)
+     - parameter getNotificationsRequest: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getNotifications(id: [String]? = nil, filters: AnyCodable? = nil, latest: String? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [NotificationSchema]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getNotificationsWithRequestBuilder(id: id, filters: filters, latest: latest).execute(apiResponseQueue) { result in
+    open class func getNotifications(getNotificationsRequest: GetNotificationsRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [NotificationSchema]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getNotificationsWithRequestBuilder(getNotificationsRequest: getNotificationsRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -78,23 +76,16 @@ open class NotificationAPI {
 
     /**
      Get all notifications
-     - GET /notifications
-     - parameter id: (query)  (optional)
-     - parameter filters: (query)  (optional)
-     - parameter latest: (query)  (optional)
+     - POST /notifications
+     - parameter getNotificationsRequest: (body) Body (optional)
      - returns: RequestBuilder<[NotificationSchema]> 
      */
-    open class func getNotificationsWithRequestBuilder(id: [String]? = nil, filters: AnyCodable? = nil, latest: String? = nil) -> RequestBuilder<[NotificationSchema]> {
+    open class func getNotificationsWithRequestBuilder(getNotificationsRequest: GetNotificationsRequest? = nil) -> RequestBuilder<[NotificationSchema]> {
         let localVariablePath = "/notifications"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getNotificationsRequest)
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "id": (wrappedValue: id?.encodeToJSON(), isExplode: false),
-            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: false),
-            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: false),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -104,6 +95,6 @@ open class NotificationAPI {
 
         let localVariableRequestBuilder: RequestBuilder<[NotificationSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

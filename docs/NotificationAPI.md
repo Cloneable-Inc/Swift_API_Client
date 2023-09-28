@@ -5,7 +5,7 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createNotification**](NotificationAPI.md#createnotification) | **PUT** /notification | Create a new notification request
-[**getNotifications**](NotificationAPI.md#getnotifications) | **GET** /notifications | Get all notifications
+[**getNotifications**](NotificationAPI.md#getnotifications) | **POST** /notifications | Get all notifications
 
 
 # **createNotification**
@@ -58,7 +58,7 @@ No authorization required
 
 # **getNotifications**
 ```swift
-    open class func getNotifications(id: [String]? = nil, filters: AnyCodable? = nil, latest: String? = nil, completion: @escaping (_ data: [NotificationSchema]?, _ error: Error?) -> Void)
+    open class func getNotifications(getNotificationsRequest: GetNotificationsRequest? = nil, completion: @escaping (_ data: [NotificationSchema]?, _ error: Error?) -> Void)
 ```
 
 Get all notifications
@@ -68,12 +68,10 @@ Get all notifications
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let id = ["inner_example"] // [String] |  (optional)
-let filters =  // AnyCodable |  (optional)
-let latest = "latest_example" // String |  (optional)
+let getNotificationsRequest = getNotifications_request(id: ["id_example"], filters: getNotifications_request_filters(workflowId: "workflowId_example"), latest: "latest_example") // GetNotificationsRequest | Body (optional)
 
 // Get all notifications
-NotificationAPI.getNotifications(id: id, filters: filters, latest: latest) { (response, error) in
+NotificationAPI.getNotifications(getNotificationsRequest: getNotificationsRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -89,9 +87,7 @@ NotificationAPI.getNotifications(id: id, filters: filters, latest: latest) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**[String]**](String.md) |  | [optional] 
- **filters** | [**AnyCodable**](.md) |  | [optional] 
- **latest** | **String** |  | [optional] 
+ **getNotificationsRequest** | [**GetNotificationsRequest**](GetNotificationsRequest.md) | Body | [optional] 
 
 ### Return type
 
@@ -103,7 +99,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
