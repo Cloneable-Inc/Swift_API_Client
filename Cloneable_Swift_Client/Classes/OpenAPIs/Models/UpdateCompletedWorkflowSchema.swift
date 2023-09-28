@@ -14,14 +14,14 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var finalized: Bool
-    public var finalizedAt: String?
+    public var finalizedAt: Date?
     public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(name: String, finalized: Bool, finalizedAt: String? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, finalized: Bool, finalizedAt: Date? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.name = name
         self.finalized = finalized
         self.finalizedAt = finalizedAt

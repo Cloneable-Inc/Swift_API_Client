@@ -15,8 +15,8 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var name: String
     public var companyId: String
     public var finalized: Bool
-    public var finalizedAt: String?
-    public var createdAt: String
+    public var finalizedAt: Date?
+    public var createdAt: Date
     public var createdBy: String
     public var updatedAt: Date?
     public var typeRefId: String
@@ -25,7 +25,7 @@ public struct CreateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
 
-    public init(name: String, companyId: String, finalized: Bool, finalizedAt: String? = nil, createdAt: String, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
         self.name = name
         self.companyId = companyId
         self.finalized = finalized

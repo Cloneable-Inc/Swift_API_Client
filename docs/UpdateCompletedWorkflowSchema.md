@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
 **finalized** | **Bool** |  | 
-**finalizedAt** | **String** |  | [optional] 
+**finalizedAt** | **Date** |  | [optional] 
 **updatedAt** | **Date** |  | [optional] 
 **typeRefId** | **String** |  | 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
