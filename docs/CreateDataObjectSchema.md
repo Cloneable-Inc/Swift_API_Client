@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **createdAt** | **String** |  | 
 **createdBy** | **String** |  | 
 **dynamicObjectId** | **String** |  | 
-**fields** | [DataObjectSchemaFieldsInner] |  | [optional] 
+**fields** | [DataObjectSchemaFieldsInner] |  | 
 **instanceObjectId** | **String** |  | 
 **modifiedAt** | **String** |  | 
 **objectDescription** | **String** |  | 

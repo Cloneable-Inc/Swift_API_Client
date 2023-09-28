@@ -17,7 +17,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var createdAt: String
     public var createdBy: String
     public var dynamicObjectId: String
-    public var fields: [DataObjectSchemaFieldsInner]?
+    public var fields: [DataObjectSchemaFieldsInner]
     public var instanceObjectId: String
     public var modifiedAt: String
     public var objectDescription: String
@@ -29,7 +29,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]?
     public var typeRefId: String
 
-    public init(id: String, companyId: String, createdAt: String, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner]? = nil, instanceObjectId: String, modifiedAt: String, objectDescription: String, objectDisplayName: String, objectId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String) {
+    public init(id: String, companyId: String, createdAt: String, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner], instanceObjectId: String, modifiedAt: String, objectDescription: String, objectDisplayName: String, objectId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -76,7 +76,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(dynamicObjectId, forKey: .dynamicObjectId)
-        try container.encodeIfPresent(fields, forKey: .fields)
+        try container.encode(fields, forKey: .fields)
         try container.encode(instanceObjectId, forKey: .instanceObjectId)
         try container.encode(modifiedAt, forKey: .modifiedAt)
         try container.encode(objectDescription, forKey: .objectDescription)
