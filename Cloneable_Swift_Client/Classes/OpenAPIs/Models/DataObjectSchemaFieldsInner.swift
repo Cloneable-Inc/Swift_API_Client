@@ -21,12 +21,12 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
     public var modifiedAt: Date
-    public var modifiedBy: Date
+    public var modifiedBy: String
     public var name: String
     public var storedValue: String?
     public var type: String
 
-    public init(arraySubType: String? = nil, displayName: String, fieldId: String, uniqueId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: Date, name: String, storedValue: String? = nil, type: String) {
+    public init(arraySubType: String? = nil, displayName: String, fieldId: String, uniqueId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
         self.arraySubType = arraySubType
         self.displayName = displayName
         self.fieldId = fieldId
