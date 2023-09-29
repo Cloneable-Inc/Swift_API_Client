@@ -4,12 +4,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **companyId** | **String** |  | 
-**createdAt** | **String** |  | 
+**createdAt** | **Date** |  | 
 **createdBy** | **String** |  | 
 **dynamicObjectId** | **String** |  | 
 **fields** | [DataObjectSchemaFieldsInner] |  | 
 **instanceObjectId** | **String** |  | 
-**modifiedAt** | **String** |  | 
+**modifiedAt** | **Date** |  | 
 **objectDescription** | **String** |  | 
 **objectDisplayName** | **String** |  | 
 **objectId** | **String** |  | 

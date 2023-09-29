@@ -13,12 +13,12 @@ import AnyCodable
 public struct CreateDataObjectSchema: Codable, JSONEncodable, Hashable {
 
     public var companyId: String
-    public var createdAt: String
+    public var createdAt: Date
     public var createdBy: String
     public var dynamicObjectId: String
     public var fields: [DataObjectSchemaFieldsInner]
     public var instanceObjectId: String
-    public var modifiedAt: String
+    public var modifiedAt: Date
     public var objectDescription: String
     public var objectDisplayName: String
     public var objectId: String
@@ -28,7 +28,7 @@ public struct CreateDataObjectSchema: Codable, JSONEncodable, Hashable {
     public var relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]?
     public var typeRefId: String
 
-    public init(companyId: String, createdAt: String, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner], instanceObjectId: String, modifiedAt: String, objectDescription: String, objectDisplayName: String, objectId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String) {
+    public init(companyId: String, createdAt: Date, createdBy: String, dynamicObjectId: String, fields: [DataObjectSchemaFieldsInner], instanceObjectId: String, modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, relatedWorkflowInstanceIds: [DataObjectSchemaRelatedWorkflowInstanceIdsInner]? = nil, typeRefId: String) {
         self.companyId = companyId
         self.createdAt = createdAt
         self.createdBy = createdBy

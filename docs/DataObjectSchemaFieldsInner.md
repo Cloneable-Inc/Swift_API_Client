@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **linkedObjectName** | **String** |  | [optional] 
 **linkedObjectRevision** | **Double** |  | [optional] 
 **linkedObjectTemplateId** | **String** |  | [optional] 
-**modifiedAt** | **String** |  | 
-**modifiedBy** | **String** |  | 
+**modifiedAt** | **Date** |  | 
+**modifiedBy** | **Date** |  | 
 **name** | **String** |  | 
 **storedValue** | **String** |  | [optional] 
 **type** | **String** |  | 
