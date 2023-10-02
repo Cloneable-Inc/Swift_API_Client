@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
+    public var id: String
     public var arraySubType: String?
     public var displayName: String
     public var fieldId: String
@@ -25,7 +26,8 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     public var storedValue: String?
     public var type: String
 
-    public init(arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
+    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
+        self.id = id
         self.arraySubType = arraySubType
         self.displayName = displayName
         self.fieldId = fieldId
@@ -41,6 +43,7 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case arraySubType = "array_sub_type"
         case displayName = "display_name"
         case fieldId = "field_id"
@@ -59,6 +62,7 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
         try container.encode(displayName, forKey: .displayName)
         try container.encode(fieldId, forKey: .fieldId)

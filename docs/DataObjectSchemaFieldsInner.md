@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | 
 **arraySubType** | **String** |  | [optional] 
 **displayName** | **String** |  | 
 **fieldId** | **String** |  | 
