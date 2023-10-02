@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct NotificationRequestSchemaTargetSmsNumbersInner: Codable, JSONEncodable, Hashable {
 
-    public var countryCode: String
-    public var number: String
+    public var countryCode: Double
+    public var number: Double
 
-    public init(countryCode: String, number: String) {
+    public init(countryCode: Double, number: Double) {
         self.countryCode = countryCode
         self.number = number
     }

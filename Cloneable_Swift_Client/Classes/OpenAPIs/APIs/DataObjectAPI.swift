@@ -143,4 +143,52 @@ open class DataObjectAPI {
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
+
+    /**
+     Update a fields for a data object
+     
+     - parameter id: (path)  
+     - parameter updateDataObjectFieldsSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateDataObjectField(id: String, updateDataObjectFieldsSchema: UpdateDataObjectFieldsSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateDataObjectFieldWithRequestBuilder(id: id, updateDataObjectFieldsSchema: updateDataObjectFieldsSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a fields for a data object
+     - POST /data-object/{id}/fields
+     - parameter id: (path)  
+     - parameter updateDataObjectFieldsSchema: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func updateDataObjectFieldWithRequestBuilder(id: String, updateDataObjectFieldsSchema: UpdateDataObjectFieldsSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/data-object/{id}/fields"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateDataObjectFieldsSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
 }

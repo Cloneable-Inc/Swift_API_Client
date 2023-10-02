@@ -32,6 +32,7 @@ Class | Method | HTTP request | Description
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
+*DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
@@ -58,7 +59,6 @@ Class | Method | HTTP request | Description
  - [CreateFileSchema](docs/CreateFileSchema.md)
  - [DataObjectSchema](docs/DataObjectSchema.md)
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
- - [DataObjectSchemaRelatedWorkflowInstanceIdsInner](docs/DataObjectSchemaRelatedWorkflowInstanceIdsInner.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
+ - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UserSchema](docs/UserSchema.md)
 
