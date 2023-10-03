@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **linkedObjectRevision** | **Double** |  | [optional] 
 **name** | **String** |  | 
 **type** | **String** |  | 
-**cloneableDataType** | **String** |  | 
 **statusOptions** | **[String]** |  | [optional] 
 **fileInformation** | [**DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation**](DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md) |  | [optional] 
 **outputConnections** | [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner] |  | [optional] 
