@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **createDataObject**
 ```swift
-    open class func createDataObject(createDataObjectSchema: CreateDataObjectSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+    open class func createDataObject(dataObjectSchema: DataObjectSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
 Create a data object
@@ -22,10 +22,10 @@ Create a data object
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createDataObjectSchema = CreateDataObjectSchema(companyId: "companyId_example", createdAt: Date(), createdBy: "createdBy_example", fields: [DataObjectSchema_fields_inner(id: "id_example", arraySubType: "arraySubType_example", displayName: "displayName_example", fieldId: "fieldId_example", linkedObjectDisplayName: "linkedObjectDisplayName_example", linkedObjectName: "linkedObjectName_example", linkedObjectRevision: 123, linkedObjectTemplateId: "linkedObjectTemplateId_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", name: "name_example", storedValue: "storedValue_example", type: "type_example")], modifiedAt: Date(), objectDescription: "objectDescription_example", objectDisplayName: "objectDisplayName_example", objectTemplateId: "objectTemplateId_example", objectName: "objectName_example", objectRevision: 123, objectTemplateRevision: 123, typeRefId: "typeRefId_example") // CreateDataObjectSchema | Body (optional)
+let dataObjectSchema = DataObjectSchema(id: "id_example", companyId: "companyId_example", createdAt: Date(), createdBy: "createdBy_example", fields: [DataObjectSchema_fields_inner(id: "id_example", arraySubType: "arraySubType_example", displayName: "displayName_example", fieldId: "fieldId_example", linkedObjectDisplayName: "linkedObjectDisplayName_example", linkedObjectName: "linkedObjectName_example", linkedObjectRevision: 123, linkedObjectTemplateId: "linkedObjectTemplateId_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", name: "name_example", storedValue: "storedValue_example", type: "type_example")], modifiedAt: Date(), objectDescription: "objectDescription_example", objectDisplayName: "objectDisplayName_example", objectTemplateId: "objectTemplateId_example", objectName: "objectName_example", objectRevision: 123, objectTemplateRevision: 123, typeRefId: "typeRefId_example") // DataObjectSchema | Body (optional)
 
 // Create a data object
-DataObjectAPI.createDataObject(createDataObjectSchema: createDataObjectSchema) { (response, error) in
+DataObjectAPI.createDataObject(dataObjectSchema: dataObjectSchema) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -41,7 +41,7 @@ DataObjectAPI.createDataObject(createDataObjectSchema: createDataObjectSchema) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createDataObjectSchema** | [**CreateDataObjectSchema**](CreateDataObjectSchema.md) | Body | [optional] 
+ **dataObjectSchema** | [**DataObjectSchema**](DataObjectSchema.md) | Body | [optional] 
 
 ### Return type
 

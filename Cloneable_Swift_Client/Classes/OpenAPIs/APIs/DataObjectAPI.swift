@@ -15,13 +15,13 @@ open class DataObjectAPI {
     /**
      Create a data object
      
-     - parameter createDataObjectSchema: (body) Body (optional)
+     - parameter dataObjectSchema: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createDataObject(createDataObjectSchema: CreateDataObjectSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return createDataObjectWithRequestBuilder(createDataObjectSchema: createDataObjectSchema).execute(apiResponseQueue) { result in
+    open class func createDataObject(dataObjectSchema: DataObjectSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createDataObjectWithRequestBuilder(dataObjectSchema: dataObjectSchema).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,13 +34,13 @@ open class DataObjectAPI {
     /**
      Create a data object
      - PUT /data-object
-     - parameter createDataObjectSchema: (body) Body (optional)
+     - parameter dataObjectSchema: (body) Body (optional)
      - returns: RequestBuilder<UpdateFile200Response> 
      */
-    open class func createDataObjectWithRequestBuilder(createDataObjectSchema: CreateDataObjectSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+    open class func createDataObjectWithRequestBuilder(dataObjectSchema: DataObjectSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
         let localVariablePath = "/data-object"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createDataObjectSchema)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dataObjectSchema)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

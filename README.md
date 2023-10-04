@@ -53,7 +53,6 @@ Class | Method | HTTP request | Description
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
- - [CreateDataObjectSchema](docs/CreateDataObjectSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
