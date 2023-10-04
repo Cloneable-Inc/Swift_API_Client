@@ -153,7 +153,7 @@ open class DataObjectAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateDataObjectField(id: String, updateDataObjectFieldsSchema: UpdateDataObjectFieldsSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateDataObjectField(id: String, updateDataObjectFieldsSchema: [UpdateDataObjectFieldsSchema]? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return updateDataObjectFieldWithRequestBuilder(id: id, updateDataObjectFieldsSchema: updateDataObjectFieldsSchema).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -171,7 +171,7 @@ open class DataObjectAPI {
      - parameter updateDataObjectFieldsSchema: (body) Body (optional)
      - returns: RequestBuilder<UpdateFile200Response> 
      */
-    open class func updateDataObjectFieldWithRequestBuilder(id: String, updateDataObjectFieldsSchema: UpdateDataObjectFieldsSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+    open class func updateDataObjectFieldWithRequestBuilder(id: String, updateDataObjectFieldsSchema: [UpdateDataObjectFieldsSchema]? = nil) -> RequestBuilder<UpdateFile200Response> {
         var localVariablePath = "/data-object/{id}/fields"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

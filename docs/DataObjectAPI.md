@@ -156,7 +156,7 @@ No authorization required
 
 # **updateDataObjectField**
 ```swift
-    open class func updateDataObjectField(id: String, updateDataObjectFieldsSchema: UpdateDataObjectFieldsSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+    open class func updateDataObjectField(id: String, updateDataObjectFieldsSchema: [UpdateDataObjectFieldsSchema]? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
 Update a fields for a data object
@@ -167,7 +167,7 @@ Update a fields for a data object
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateDataObjectFieldsSchema = UpdateDataObjectFieldsSchema(id: "id_example", fieldId: "fieldId_example", linkedObjectDisplayName: "linkedObjectDisplayName_example", linkedObjectName: "linkedObjectName_example", linkedObjectRevision: 123, linkedObjectTemplateId: "linkedObjectTemplateId_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", storedValue: "storedValue_example") // UpdateDataObjectFieldsSchema | Body (optional)
+let updateDataObjectFieldsSchema = [UpdateDataObjectFieldsSchema(id: "id_example", fieldId: "fieldId_example", linkedObjectDisplayName: "linkedObjectDisplayName_example", linkedObjectName: "linkedObjectName_example", linkedObjectRevision: 123, linkedObjectTemplateId: "linkedObjectTemplateId_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", storedValue: "storedValue_example")] // [UpdateDataObjectFieldsSchema] | Body (optional)
 
 // Update a fields for a data object
 DataObjectAPI.updateDataObjectField(id: id, updateDataObjectFieldsSchema: updateDataObjectFieldsSchema) { (response, error) in
@@ -187,7 +187,7 @@ DataObjectAPI.updateDataObjectField(id: id, updateDataObjectFieldsSchema: update
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **updateDataObjectFieldsSchema** | [**UpdateDataObjectFieldsSchema**](UpdateDataObjectFieldsSchema.md) | Body | [optional] 
+ **updateDataObjectFieldsSchema** | [**[UpdateDataObjectFieldsSchema]**](UpdateDataObjectFieldsSchema.md) | Body | [optional] 
 
 ### Return type
 
