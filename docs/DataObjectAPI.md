@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDataObject**](DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 [**getDataObjects**](DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
+[**getDataObjectsPaged**](DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 [**getOneDataObject**](DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 [**updateDataObjectField**](DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
 
@@ -102,6 +103,64 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getDataObjectsPaged**
+```swift
+    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: AnyCodable? = nil, latest: String? = nil, sorting: AnyCodable? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
+```
+
+Get paginated data objects
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let search = "search_example" // String |  (optional)
+let pageIndex = 987 // Double |  (optional)
+let pageSize = 987 // Double |  (optional)
+let filters =  // AnyCodable |  (optional)
+let latest = "latest_example" // String |  (optional)
+let sorting =  // AnyCodable |  (optional)
+
+// Get paginated data objects
+DataObjectAPI.getDataObjectsPaged(search: search, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **String** |  | [optional] 
+ **pageIndex** | **Double** |  | [optional] 
+ **pageSize** | **Double** |  | [optional] 
+ **filters** | [**AnyCodable**](.md) |  | [optional] 
+ **latest** | **String** |  | [optional] 
+ **sorting** | [**AnyCodable**](.md) |  | [optional] 
+
+### Return type
+
+[**GetDataObjectsPaged200Response**](GetDataObjectsPaged200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

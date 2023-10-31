@@ -1,28 +1,27 @@
-# UserAPI
+# OrgAPI
 
 All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUser**](UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
+[**createOrg**](OrgAPI.md#createorg) | **PUT** /org | 
 
 
-# **getUser**
+# **createOrg**
 ```swift
-    open class func getUser(id: String, completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
+    open class func createOrg(orgSchema: OrgSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
-Get user by id
+
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let id = "id_example" // String | 
+let orgSchema = OrgSchema(id: "id_example", name: "name_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", roles: ["roles_example"]) // OrgSchema | Body (optional)
 
-// Get user by id
-UserAPI.getUser(id: id) { (response, error) in
+OrgAPI.createOrg(orgSchema: orgSchema) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -38,11 +37,11 @@ UserAPI.getUser(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
+ **orgSchema** | [**OrgSchema**](OrgSchema.md) | Body | [optional] 
 
 ### Return type
 
-[**UserSchema**](UserSchema.md)
+[**UpdateFile200Response**](UpdateFile200Response.md)
 
 ### Authorization
 
@@ -50,7 +49,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

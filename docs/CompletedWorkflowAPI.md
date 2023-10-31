@@ -70,7 +70,7 @@ Get all completed workflows
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let getCompletedWorkflowsRequest = getCompletedWorkflows_request(id: ["id_example"], filters: getCompletedWorkflows_request_filters(company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", finalized: false, finalizedAt: "finalizedAt_example", workflowInstanceId: "workflowInstanceId_example", relatedObjectId: "relatedObjectId_example"), latest: "latest_example") // GetCompletedWorkflowsRequest | Body (optional)
+let getCompletedWorkflowsRequest = getCompletedWorkflows_request(id: ["id_example"], filters: getCompletedWorkflows_request_filters(company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", finalized: false, finalizedAt: "finalizedAt_example", workflowInstanceId: "workflowInstanceId_example", relatedObjectId: "relatedObjectId_example"), latest: "latest_example", limit: 123, skip: 123) // GetCompletedWorkflowsRequest | Body (optional)
 
 // Get all completed workflows
 CompletedWorkflowAPI.getCompletedWorkflows(getCompletedWorkflowsRequest: getCompletedWorkflowsRequest) { (response, error) in

@@ -1,28 +1,28 @@
-# UserAPI
+# SupportAPI
 
 All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUser**](UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
+[**sendFeedback**](SupportAPI.md#sendfeedback) | **PUT** /support/feedback | Send feedback from user
 
 
-# **getUser**
+# **sendFeedback**
 ```swift
-    open class func getUser(id: String, completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
+    open class func sendFeedback(sendFeedbackRequest: SendFeedbackRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
-Get user by id
+Send feedback from user
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let id = "id_example" // String | 
+let sendFeedbackRequest = sendFeedback_request(message: "message_example", page: "page_example") // SendFeedbackRequest | Body (optional)
 
-// Get user by id
-UserAPI.getUser(id: id) { (response, error) in
+// Send feedback from user
+SupportAPI.sendFeedback(sendFeedbackRequest: sendFeedbackRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -38,11 +38,11 @@ UserAPI.getUser(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
+ **sendFeedbackRequest** | [**SendFeedbackRequest**](SendFeedbackRequest.md) | Body | [optional] 
 
 ### Return type
 
-[**UserSchema**](UserSchema.md)
+[**CreateFile400Response**](CreateFile400Response.md)
 
 ### Authorization
 
@@ -50,7 +50,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

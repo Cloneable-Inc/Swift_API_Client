@@ -31,6 +31,7 @@ Class | Method | HTTP request | Description
 *CompletedWorkflowAPI* | [**updateCompletedWorkflow**](docs/CompletedWorkflowAPI.md#updatecompletedworkflow) | **POST** /completed-workflow/{id} | Update a completed workflow
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
+*DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 *DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
@@ -43,7 +44,11 @@ Class | Method | HTTP request | Description
 *FileAPI* | [**updateFile**](docs/FileAPI.md#updatefile) | **POST** /file/{id} | Update a single file
 *NotificationAPI* | [**createNotification**](docs/NotificationAPI.md#createnotification) | **PUT** /notification | Create a new notification request
 *NotificationAPI* | [**getNotifications**](docs/NotificationAPI.md#getnotifications) | **POST** /notifications | Get all notifications
-*UserAPI* | [**getOrg**](docs/UserAPI.md#getorg) | **GET** /org/{id} | Get company by id
+*OpenapiAPI* | [**getOpenAPIJSON**](docs/OpenapiAPI.md#getopenapijson) | **GET** /openapi.json | Get OpenAPI JSON
+*OpenapiAPI* | [**getOpenAPIPage**](docs/OpenapiAPI.md#getopenapipage) | **GET** /openapi | Get OpenAPI Docs page
+*OpenapiAPI* | [**getOpenAPIYaml**](docs/OpenapiAPI.md#getopenapiyaml) | **GET** /openapi.yaml | Get OpenAPI YAML
+*OrgAPI* | [**createOrg**](docs/OrgAPI.md#createorg) | **PUT** /org | 
+*SupportAPI* | [**sendFeedback**](docs/SupportAPI.md#sendfeedback) | **PUT** /support/feedback | Send feedback from user
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
 
 
@@ -76,6 +81,7 @@ Class | Method | HTTP request | Description
  - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetCompletedWorkflowsRequestFilters](docs/GetCompletedWorkflowsRequestFilters.md)
+ - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsRequest](docs/GetDataObjectsRequest.md)
  - [GetDataObjectsRequestFilters](docs/GetDataObjectsRequestFilters.md)
  - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
@@ -90,8 +96,8 @@ Class | Method | HTTP request | Description
  - [NotificationRequestSchemaTargetSmsNumbersInner](docs/NotificationRequestSchemaTargetSmsNumbersInner.md)
  - [NotificationSchema](docs/NotificationSchema.md)
  - [OrgSchema](docs/OrgSchema.md)
- - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
+ - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
