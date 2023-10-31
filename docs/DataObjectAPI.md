@@ -71,7 +71,7 @@ Get all data objects
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let getDataObjectsRequest = getDataObjects_request(id: ["id_example"], filters: getDataObjects_request_filters(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", active: false, environment: "environment_example"), latest: "latest_example") // GetDataObjectsRequest | Body (optional)
+let getDataObjectsRequest = getDataObjects_request(id: ["id_example"], filters: getDataObjectsPaged_filters_parameter(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", active: false, environment: "environment_example"), latest: "latest_example") // GetDataObjectsRequest | Body (optional)
 
 // Get all data objects
 DataObjectAPI.getDataObjects(getDataObjectsRequest: getDataObjectsRequest) { (response, error) in
@@ -109,7 +109,7 @@ No authorization required
 
 # **getDataObjectsPaged**
 ```swift
-    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: AnyCodable? = nil, latest: String? = nil, sorting: AnyCodable? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
+    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
 ```
 
 Get paginated data objects
@@ -122,9 +122,9 @@ import Cloneable_Swift_Client
 let search = "search_example" // String |  (optional)
 let pageIndex = 987 // Double |  (optional)
 let pageSize = 987 // Double |  (optional)
-let filters =  // AnyCodable |  (optional)
+let filters = getDataObjectsPaged_filters_parameter(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", active: false, environment: "environment_example") // GetDataObjectsPagedFiltersParameter |  (optional)
 let latest = "latest_example" // String |  (optional)
-let sorting =  // AnyCodable |  (optional)
+let sorting = getDataObjectsPaged_sorting_parameter(column: "column_example", desc: false) // GetDataObjectsPagedSortingParameter |  (optional)
 
 // Get paginated data objects
 DataObjectAPI.getDataObjectsPaged(search: search, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting) { (response, error) in
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
  **search** | **String** |  | [optional] 
  **pageIndex** | **Double** |  | [optional] 
  **pageSize** | **Double** |  | [optional] 
- **filters** | [**AnyCodable**](.md) |  | [optional] 
+ **filters** | [**GetDataObjectsPagedFiltersParameter**](.md) |  | [optional] 
  **latest** | **String** |  | [optional] 
- **sorting** | [**AnyCodable**](.md) |  | [optional] 
+ **sorting** | [**GetDataObjectsPagedSortingParameter**](.md) |  | [optional] 
 
 ### Return type
 

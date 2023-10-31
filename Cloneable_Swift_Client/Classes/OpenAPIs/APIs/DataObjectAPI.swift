@@ -111,7 +111,7 @@ open class DataObjectAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: AnyCodable? = nil, latest: String? = nil, sorting: AnyCodable? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)) -> RequestTask {
         return getDataObjectsPagedWithRequestBuilder(search: search, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -133,19 +133,19 @@ open class DataObjectAPI {
      - parameter sorting: (query)  (optional)
      - returns: RequestBuilder<GetDataObjectsPaged200Response> 
      */
-    open class func getDataObjectsPagedWithRequestBuilder(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: AnyCodable? = nil, latest: String? = nil, sorting: AnyCodable? = nil) -> RequestBuilder<GetDataObjectsPaged200Response> {
+    open class func getDataObjectsPagedWithRequestBuilder(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil) -> RequestBuilder<GetDataObjectsPaged200Response> {
         let localVariablePath = "/data-objects"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "search": (wrappedValue: search?.encodeToJSON(), isExplode: false),
-            "pageIndex": (wrappedValue: pageIndex?.encodeToJSON(), isExplode: false),
-            "pageSize": (wrappedValue: pageSize?.encodeToJSON(), isExplode: false),
-            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: false),
-            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: false),
-            "sorting": (wrappedValue: sorting?.encodeToJSON(), isExplode: false),
+            "search": (wrappedValue: search?.encodeToJSON(), isExplode: true),
+            "pageIndex": (wrappedValue: pageIndex?.encodeToJSON(), isExplode: true),
+            "pageSize": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
+            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: true),
+            "sorting": (wrappedValue: sorting?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

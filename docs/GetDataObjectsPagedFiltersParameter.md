@@ -1,4 +1,4 @@
-# GetDataObjectsRequestFilters
+# GetDataObjectsPagedFiltersParameter
 
 ## Properties
 Name | Type | Description | Notes
