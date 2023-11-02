@@ -109,7 +109,7 @@ No authorization required
 
 # **getDataObjectsPaged**
 ```swift
-    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Double? = nil, pageSize: Double? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
+    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
 ```
 
 Get paginated data objects
@@ -120,8 +120,8 @@ Get paginated data objects
 import Cloneable_Swift_Client
 
 let search = "search_example" // String |  (optional)
-let pageIndex = 987 // Double |  (optional)
-let pageSize = 987 // Double |  (optional)
+let pageIndex = 987 // Int |  (optional)
+let pageSize = 987 // Int |  (optional)
 let filters = getDataObjectsPaged_filters_parameter(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: "createdAt_example", typeRefId: "typeRefId_example", active: false, environment: "environment_example") // GetDataObjectsPagedFiltersParameter |  (optional)
 let latest = "latest_example" // String |  (optional)
 let sorting = getDataObjectsPaged_sorting_parameter(column: "column_example", desc: false) // GetDataObjectsPagedSortingParameter |  (optional)
@@ -144,8 +144,8 @@ DataObjectAPI.getDataObjectsPaged(search: search, pageIndex: pageIndex, pageSize
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **String** |  | [optional] 
- **pageIndex** | **Double** |  | [optional] 
- **pageSize** | **Double** |  | [optional] 
+ **pageIndex** | **Int** |  | [optional] 
+ **pageSize** | **Int** |  | [optional] 
  **filters** | [**GetDataObjectsPagedFiltersParameter**](.md) |  | [optional] 
  **latest** | **String** |  | [optional] 
  **sorting** | [**GetDataObjectsPagedSortingParameter**](.md) |  | [optional] 

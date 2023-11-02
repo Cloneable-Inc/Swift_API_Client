@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct GetDataObjectsPaged200Response: Codable, JSONEncodable, Hashable {
 
-    public var index: Double?
-    public var size: Double?
-    public var count: Double?
-    public var pages: Double?
-    public var items: [DataObjectSchema]?
+    public var index: Int
+    public var size: Int
+    public var count: Int
+    public var pages: Int
+    public var items: [DataObjectSchema]
 
-    public init(index: Double? = nil, size: Double? = nil, count: Double? = nil, pages: Double? = nil, items: [DataObjectSchema]? = nil) {
+    public init(index: Int, size: Int, count: Int, pages: Int, items: [DataObjectSchema]) {
         self.index = index
         self.size = size
         self.count = count
@@ -38,11 +38,11 @@ public struct GetDataObjectsPaged200Response: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(index, forKey: .index)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(count, forKey: .count)
-        try container.encodeIfPresent(pages, forKey: .pages)
-        try container.encodeIfPresent(items, forKey: .items)
+        try container.encode(index, forKey: .index)
+        try container.encode(size, forKey: .size)
+        try container.encode(count, forKey: .count)
+        try container.encode(pages, forKey: .pages)
+        try container.encode(items, forKey: .items)
     }
 }
 
