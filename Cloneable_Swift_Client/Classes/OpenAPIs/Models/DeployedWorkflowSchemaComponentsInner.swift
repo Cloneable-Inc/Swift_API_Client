@@ -35,8 +35,9 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
     public var implementationUrl: String
     public var inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner]
     public var outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]
+    public var resources: SaveWorkflowRequestWorkflowResourcesInner?
 
-    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String? = nil, userCustomizedInstructions: String? = nil, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner], componentDescription: String, dynamicComponentRenderer: Bool, useCustomViewForParams: Bool? = nil, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner], outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]) {
+    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String? = nil, userCustomizedInstructions: String? = nil, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner], componentDescription: String, dynamicComponentRenderer: Bool, useCustomViewForParams: Bool? = nil, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner], outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner], resources: SaveWorkflowRequestWorkflowResourcesInner? = nil) {
         self.id = id
         self.availableToAllCompanies = availableToAllCompanies
         self.availableDevices = availableDevices
@@ -60,6 +61,7 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
         self.implementationUrl = implementationUrl
         self.inputs = inputs
         self.outputs = outputs
+        self.resources = resources
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -86,6 +88,7 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
         case implementationUrl = "implementation_url"
         case inputs
         case outputs
+        case resources
     }
 
     // Encodable protocol methods
@@ -115,6 +118,7 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
         try container.encode(implementationUrl, forKey: .implementationUrl)
         try container.encode(inputs, forKey: .inputs)
         try container.encode(outputs, forKey: .outputs)
+        try container.encodeIfPresent(resources, forKey: .resources)
     }
 }
 

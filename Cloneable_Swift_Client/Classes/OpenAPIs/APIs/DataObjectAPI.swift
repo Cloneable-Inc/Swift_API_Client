@@ -45,7 +45,7 @@ open class DataObjectAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -88,7 +88,7 @@ open class DataObjectAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -101,7 +101,6 @@ open class DataObjectAPI {
     /**
      Get paginated data objects
      
-     - parameter search: (query)  (optional)
      - parameter pageIndex: (query)  (optional)
      - parameter pageSize: (query)  (optional)
      - parameter filters: (query)  (optional)
@@ -111,8 +110,8 @@ open class DataObjectAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getDataObjectsPaged(search: String? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return getDataObjectsPagedWithRequestBuilder(search: search, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
+    open class func getDataObjectsPaged(pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDataObjectsPagedWithRequestBuilder(pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -125,7 +124,6 @@ open class DataObjectAPI {
     /**
      Get paginated data objects
      - GET /data-objects
-     - parameter search: (query)  (optional)
      - parameter pageIndex: (query)  (optional)
      - parameter pageSize: (query)  (optional)
      - parameter filters: (query)  (optional)
@@ -133,14 +131,13 @@ open class DataObjectAPI {
      - parameter sorting: (query)  (optional)
      - returns: RequestBuilder<GetDataObjectsPaged200Response> 
      */
-    open class func getDataObjectsPagedWithRequestBuilder(search: String? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil) -> RequestBuilder<GetDataObjectsPaged200Response> {
+    open class func getDataObjectsPagedWithRequestBuilder(pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil) -> RequestBuilder<GetDataObjectsPaged200Response> {
         let localVariablePath = "/data-objects"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "search": (wrappedValue: search?.encodeToJSON(), isExplode: true),
             "pageIndex": (wrappedValue: pageIndex?.encodeToJSON(), isExplode: true),
             "pageSize": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
@@ -243,7 +240,7 @@ open class DataObjectAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

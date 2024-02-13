@@ -14,27 +14,33 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
 
     public var companyId: String?
     public var createdBy: String?
-    public var createdAt: String?
+    public var createdAt: GetManyFilesFiltersParameterCreatedAt?
+    public var objectTemplateId: [String]?
     public var typeRefId: String?
     public var active: Bool?
     public var environment: String?
+    public var search: String?
 
-    public init(companyId: String? = nil, createdBy: String? = nil, createdAt: String? = nil, typeRefId: String? = nil, active: Bool? = nil, environment: String? = nil) {
+    public init(companyId: String? = nil, createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, objectTemplateId: [String]? = nil, typeRefId: String? = nil, active: Bool? = nil, environment: String? = nil, search: String? = nil) {
         self.companyId = companyId
         self.createdBy = createdBy
         self.createdAt = createdAt
+        self.objectTemplateId = objectTemplateId
         self.typeRefId = typeRefId
         self.active = active
         self.environment = environment
+        self.search = search
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case companyId = "company_id"
         case createdBy = "created_by"
         case createdAt = "created_at"
+        case objectTemplateId = "object_template_id"
         case typeRefId = "type_ref_id"
         case active
         case environment
+        case search
     }
 
     // Encodable protocol methods
@@ -44,9 +50,11 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
         try container.encodeIfPresent(companyId, forKey: .companyId)
         try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(objectTemplateId, forKey: .objectTemplateId)
         try container.encodeIfPresent(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(active, forKey: .active)
         try container.encodeIfPresent(environment, forKey: .environment)
+        try container.encodeIfPresent(search, forKey: .search)
     }
 }
 

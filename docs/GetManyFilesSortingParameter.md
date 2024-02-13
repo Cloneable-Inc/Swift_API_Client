@@ -1,13 +1,10 @@
-# FileSchemaAdditionalProperties
+# GetManyFilesSortingParameter
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modelType** | **String** |  | [optional] 
-**modelVersion** | **String** |  | [optional] 
-**modelDescription** | **String** |  | [optional] 
-**modelDevice** | **String** |  | [optional] 
-**isTemplate** | **Bool** |  | [optional] 
+**column** | **String** |  | 
+**desc** | **Bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
