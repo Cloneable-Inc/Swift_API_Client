@@ -15,17 +15,17 @@ public struct DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner: 
     public var paramDataType: String
     public var paramDescription: String
     public var paramId: String
-    public var paramGroup: String
-    public var paramInputType: String
+    public var paramGroup: String?
+    public var paramInputType: String?
     public var paramName: String
     public var selectedValue: AnyCodable?
-    public var userCustomizable: Bool
-    public var relatedInputDynamicId: String
-    public var relatedOutputDynamicId: String
-    public var selectedValueIsArray: Bool
-    public var selectedValueArray: [AnyCodable]
+    public var userCustomizable: Bool?
+    public var relatedInputDynamicId: String?
+    public var relatedOutputDynamicId: String?
+    public var selectedValueIsArray: Bool?
+    public var selectedValueArray: [AnyCodable]?
 
-    public init(paramDataType: String, paramDescription: String, paramId: String, paramGroup: String, paramInputType: String, paramName: String, selectedValue: AnyCodable? = nil, userCustomizable: Bool, relatedInputDynamicId: String, relatedOutputDynamicId: String, selectedValueIsArray: Bool, selectedValueArray: [AnyCodable]) {
+    public init(paramDataType: String, paramDescription: String, paramId: String, paramGroup: String? = nil, paramInputType: String? = nil, paramName: String, selectedValue: AnyCodable? = nil, userCustomizable: Bool? = nil, relatedInputDynamicId: String? = nil, relatedOutputDynamicId: String? = nil, selectedValueIsArray: Bool? = nil, selectedValueArray: [AnyCodable]? = nil) {
         self.paramDataType = paramDataType
         self.paramDescription = paramDescription
         self.paramId = paramId
@@ -62,15 +62,15 @@ public struct DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner: 
         try container.encode(paramDataType, forKey: .paramDataType)
         try container.encode(paramDescription, forKey: .paramDescription)
         try container.encode(paramId, forKey: .paramId)
-        try container.encode(paramGroup, forKey: .paramGroup)
-        try container.encode(paramInputType, forKey: .paramInputType)
+        try container.encodeIfPresent(paramGroup, forKey: .paramGroup)
+        try container.encodeIfPresent(paramInputType, forKey: .paramInputType)
         try container.encode(paramName, forKey: .paramName)
         try container.encodeIfPresent(selectedValue, forKey: .selectedValue)
-        try container.encode(userCustomizable, forKey: .userCustomizable)
-        try container.encode(relatedInputDynamicId, forKey: .relatedInputDynamicId)
-        try container.encode(relatedOutputDynamicId, forKey: .relatedOutputDynamicId)
-        try container.encode(selectedValueIsArray, forKey: .selectedValueIsArray)
-        try container.encode(selectedValueArray, forKey: .selectedValueArray)
+        try container.encodeIfPresent(userCustomizable, forKey: .userCustomizable)
+        try container.encodeIfPresent(relatedInputDynamicId, forKey: .relatedInputDynamicId)
+        try container.encodeIfPresent(relatedOutputDynamicId, forKey: .relatedOutputDynamicId)
+        try container.encodeIfPresent(selectedValueIsArray, forKey: .selectedValueIsArray)
+        try container.encodeIfPresent(selectedValueArray, forKey: .selectedValueArray)
     }
 }
 

@@ -45,7 +45,7 @@ open class FileAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -53,6 +53,54 @@ open class FileAPI {
         let localVariableRequestBuilder: RequestBuilder<CreateFile201Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Delete a single file
+     
+     - parameter id: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteFile(id: String, body: AnyCodable? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteFileWithRequestBuilder(id: id, body: body).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete a single file
+     - DELETE /file/{id}
+     - parameter id: (path)  
+     - parameter body: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func deleteFileWithRequestBuilder(id: String, body: AnyCodable? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/file/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -134,7 +182,7 @@ open class FileAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -145,15 +193,77 @@ open class FileAPI {
     }
 
     /**
-     Get a single files
+     Get paginated files
      
-     - parameter id: (path)  
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOneFile(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileSchema?, _ error: Error?) -> Void)) -> RequestTask {
-        return getOneFileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+    open class func getManyFiles(index: Int? = nil, size: Int? = nil, filters: GetManyFilesFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetManyFiles200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getManyFilesWithRequestBuilder(index: index, size: size, filters: filters, id: id, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get paginated files
+     - GET /files
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
+     - returns: RequestBuilder<GetManyFiles200Response> 
+     */
+    open class func getManyFilesWithRequestBuilder(index: Int? = nil, size: Int? = nil, filters: GetManyFilesFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil) -> RequestBuilder<GetManyFiles200Response> {
+        let localVariablePath = "/files"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "index": (wrappedValue: index?.encodeToJSON(), isExplode: true),
+            "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
+            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
+            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: true),
+            "sorting": (wrappedValue: sorting?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetManyFiles200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get a single files
+     
+     - parameter id: (path)  
+     - parameter downloadUrl: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getOneFile(id: String, downloadUrl: Bool? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: FileSchema?, _ error: Error?) -> Void)) -> RequestTask {
+        return getOneFileWithRequestBuilder(id: id, downloadUrl: downloadUrl).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -167,9 +277,10 @@ open class FileAPI {
      Get a single files
      - GET /file/{id}
      - parameter id: (path)  
+     - parameter downloadUrl: (query)  (optional)
      - returns: RequestBuilder<FileSchema> 
      */
-    open class func getOneFileWithRequestBuilder(id: String) -> RequestBuilder<FileSchema> {
+    open class func getOneFileWithRequestBuilder(id: String, downloadUrl: Bool? = nil) -> RequestBuilder<FileSchema> {
         var localVariablePath = "/file/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -177,7 +288,10 @@ open class FileAPI {
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "download_url": (wrappedValue: downloadUrl?.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -274,7 +388,7 @@ open class FileAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

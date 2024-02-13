@@ -19,14 +19,14 @@ Name | Type | Description | Notes
 **nextButtonInBar** | **Bool** |  | [optional] 
 **nextButtonInBarText** | **String** |  | [optional] 
 **iosHwRequirements** | **[String]** |  | [optional] 
-**customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | [optional] 
+**customizableParameters** | [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner] |  | 
 **componentDescription** | **String** |  | 
 **dynamicComponentRenderer** | **Bool** |  | 
-**dynamicId** | **String** |  | 
-**useCustomViewForParams** | **Bool** |  | 
+**useCustomViewForParams** | **Bool** |  | [optional] 
 **implementationUrl** | **String** |  | 
-**inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | [optional] 
-**outputs** | [DeployedWorkflowSchemaComponentsInnerOutputsInner] |  | [optional] 
+**inputs** | [DeployedWorkflowSchemaComponentsInnerInputsInner] |  | 
+**outputs** | [DeployedWorkflowSchemaComponentsInnerOutputsInner] |  | 
+**resources** | [**SaveWorkflowRequestWorkflowResourcesInner**](SaveWorkflowRequestWorkflowResourcesInner.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

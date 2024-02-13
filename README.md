@@ -25,20 +25,57 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ChatAPI* | [**componentAssitant**](docs/ChatAPI.md#componentassitant) | **POST** /chat/components/{id} | Get chat components
+*ChatAPI* | [**getCodeGen**](docs/ChatAPI.md#getcodegen) | **POST** /chat/code-gen | Get chat code gen stream
+*CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*CompletedWorkflowAPI* | [**updateCompletedWorkflow**](docs/CompletedWorkflowAPI.md#updatecompletedworkflow) | **POST** /completed-workflow/{id} | Update a completed workflow
+*ComponentAPI* | [**createComponent**](docs/ComponentAPI.md#createcomponent) | **POST** /component | Creates a new component
+*ComponentAPI* | [**getComponents**](docs/ComponentAPI.md#getcomponents) | **GET** /components | Get components for company
+*ComponentAPI* | [**getOneComponent**](docs/ComponentAPI.md#getonecomponent) | **GET** /component/{id} | Returns a component by id
+*ComponentAPI* | [**updateComponent**](docs/ComponentAPI.md#updatecomponent) | **POST** /component/{id} | Returns a component by id
+*DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
+*DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
+*DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
+*DataObjectTemplateAPI* | [**getManyDataObjectTemplates**](docs/DataObjectTemplateAPI.md#getmanydataobjecttemplates) | **GET** /data-object-templates | Get many data object templates
+*DataObjectTemplateAPI* | [**getOneDataObjectTemplate**](docs/DataObjectTemplateAPI.md#getonedataobjecttemplate) | **GET** /data-object-template/{id} | Get a data object template
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
+*DeployedWorfklowAPI* | [**getDeployedWorkflowsQuery**](docs/DeployedWorfklowAPI.md#getdeployedworkflowsquery) | **GET** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
+*FileAPI* | [**deleteFile**](docs/FileAPI.md#deletefile) | **DELETE** /file/{id} | Delete a single file
 *FileAPI* | [**getFileDownloadUrl**](docs/FileAPI.md#getfiledownloadurl) | **GET** /file/{id}/download-url | Returns a signed download url from R2 by fileId
 *FileAPI* | [**getFiles**](docs/FileAPI.md#getfiles) | **POST** /files | Get all files
+*FileAPI* | [**getManyFiles**](docs/FileAPI.md#getmanyfiles) | **GET** /files | Get paginated files
 *FileAPI* | [**getOneFile**](docs/FileAPI.md#getonefile) | **GET** /file/{id} | Get a single files
 *FileAPI* | [**retryFileUploadUrl**](docs/FileAPI.md#retryfileuploadurl) | **GET** /file/{id}/retry-upload-url | Returns a signed upload url from R2 by file.id
 *FileAPI* | [**updateFile**](docs/FileAPI.md#updatefile) | **POST** /file/{id} | Update a single file
-*UserAPI* | [**getOrg**](docs/UserAPI.md#getorg) | **GET** /org/{id} | Get company by id
+*JobAPI* | [**modelConversionJobComplete**](docs/JobAPI.md#modelconversionjobcomplete) | **POST** /job/model-conversion/{id}/complete | Get job by id
+*JobAPI* | [**modelConversionJobStatus**](docs/JobAPI.md#modelconversionjobstatus) | **POST** /job/model-conversion/{id}/status | Get job by id
+*JobAPI* | [**modelConversionJobUpload**](docs/JobAPI.md#modelconversionjobupload) | **POST** /job/model-conversion/{id}/upload | Create new model file and get upload url
+*ModelAPI* | [**createModel**](docs/ModelAPI.md#createmodel) | **POST** /model | Create model for company
+*ModelAPI* | [**createModelConversionJob**](docs/ModelAPI.md#createmodelconversionjob) | **POST** /model-conversion-job | Create model conversion job for company
+*ModelAPI* | [**getModelConversionJobs**](docs/ModelAPI.md#getmodelconversionjobs) | **GET** /model-conversion-jobs | Get model conversion jobs for company
+*ModelAPI* | [**getModels**](docs/ModelAPI.md#getmodels) | **GET** /models | Get models for company
+*ModelAPI* | [**getOneModel**](docs/ModelAPI.md#getonemodel) | **GET** /model/{id} | Get model for company
+*NotificationAPI* | [**createNotification**](docs/NotificationAPI.md#createnotification) | **PUT** /notification | Create a new notification request
+*NotificationAPI* | [**getNotifications**](docs/NotificationAPI.md#getnotifications) | **POST** /notifications | Get all notifications
+*OpenapiAPI* | [**getOpenAPIJSON**](docs/OpenapiAPI.md#getopenapijson) | **GET** /openapi.json | Get OpenAPI JSON
+*OpenapiAPI* | [**getOpenAPIPage**](docs/OpenapiAPI.md#getopenapipage) | **GET** /openapi | Get OpenAPI Docs page
+*OpenapiAPI* | [**getOpenAPIYaml**](docs/OpenapiAPI.md#getopenapiyaml) | **GET** /openapi.yaml | Get OpenAPI YAML
+*OrgAPI* | [**createOrg**](docs/OrgAPI.md#createorg) | **PUT** /org | 
+*SupportAPI* | [**sendFeedback**](docs/SupportAPI.md#sendfeedback) | **PUT** /support/feedback | Send feedback from user
+*UserAPI* | [**getAllUsers**](docs/UserAPI.md#getallusers) | **GET** /users | Get all users in the org
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
+*WorkflowAPI* | [**compileWorkflow**](docs/WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
+*WorkflowAPI* | [**createWorkflow**](docs/WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
+*WorkflowAPI* | [**duplicateWorkflow**](docs/WorkflowAPI.md#duplicateworkflow) | **POST** /workflow/duplicate | 
+*WorkflowAPI* | [**getAllWorkflows**](docs/WorkflowAPI.md#getallworkflows) | **GET** /workflows | Get all workflows
+*WorkflowAPI* | [**getWorkflow**](docs/WorkflowAPI.md#getworkflow) | **GET** /workflow/{workflow_id} | Get a workflow
+*WorkflowAPI* | [**saveWorkflow**](docs/WorkflowAPI.md#saveworkflow) | **POST** /workflow/save | Save a workflow
 
 
 ## Documentation For Models
@@ -46,12 +83,30 @@ Class | Method | HTTP request | Description
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
+ - [ComponentAssitantRequestInner](docs/ComponentAssitantRequestInner.md)
+ - [ComponentJSONSchema](docs/ComponentJSONSchema.md)
+ - [ComponentSchema](docs/ComponentSchema.md)
+ - [ComponentSchemaSchema](docs/ComponentSchemaSchema.md)
+ - [ComponentSchemaSchemaCustomizableParametersInner](docs/ComponentSchemaSchemaCustomizableParametersInner.md)
+ - [ComponentSchemaSchemaInputsInner](docs/ComponentSchemaSchemaInputsInner.md)
+ - [ComponentSchemaSchemaOutputsInner](docs/ComponentSchemaSchemaOutputsInner.md)
+ - [ComponentSchemaSchemaResources](docs/ComponentSchemaSchemaResources.md)
+ - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
+ - [CreateComponentRequest](docs/CreateComponentRequest.md)
+ - [CreateComponentSchema](docs/CreateComponentSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
+ - [CreateModelConversionJobRequest](docs/CreateModelConversionJobRequest.md)
+ - [CreateModelConversionJobRequestParamsInner](docs/CreateModelConversionJobRequestParamsInner.md)
+ - [CreateModelRequest](docs/CreateModelRequest.md)
+ - [CreateModelSchema](docs/CreateModelSchema.md)
+ - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [DataObjectSchema](docs/DataObjectSchema.md)
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
- - [DataObjectSchemaRelatedWorkflowInstanceIdsInner](docs/DataObjectSchemaRelatedWorkflowInstanceIdsInner.md)
+ - [DataObjectTemplateSchema](docs/DataObjectTemplateSchema.md)
+ - [DataObjectTemplateSchemaFieldsInner](docs/DataObjectTemplateSchemaFieldsInner.md)
+ - [DataObjectTemplateSchemaFieldsInnerFileInformation](docs/DataObjectTemplateSchemaFieldsInnerFileInformation.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -64,23 +119,49 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInner](docs/DeployedWorkflowSchemaObjectsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInner](docs/DeployedWorkflowSchemaObjectsInnerFieldsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
- - [DeployedWorkflowSchemaResourcesInner](docs/DeployedWorkflowSchemaResourcesInner.md)
- - [DeployedWorkflowSchemaResourcesInnerObjectsInner](docs/DeployedWorkflowSchemaResourcesInnerObjectsInner.md)
+ - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [FileSchema](docs/FileSchema.md)
- - [FileSchemaAdditionalProperties](docs/FileSchemaAdditionalProperties.md)
+ - [GetCodeGenRequest](docs/GetCodeGenRequest.md)
+ - [GetCodeGenRequestInputsInner](docs/GetCodeGenRequestInputsInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetCompletedWorkflowsRequestFilters](docs/GetCompletedWorkflowsRequestFilters.md)
+ - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
+ - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
  - [GetDataObjectsRequest](docs/GetDataObjectsRequest.md)
- - [GetDataObjectsRequestFilters](docs/GetDataObjectsRequestFilters.md)
+ - [GetDeployedWorkflowsQueryFiltersParameter](docs/GetDeployedWorkflowsQueryFiltersParameter.md)
  - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
  - [GetDeployedWorkflowsRequestFilters](docs/GetDeployedWorkflowsRequestFilters.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
+ - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
+ - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
+ - [GetManyFilesFiltersParameter](docs/GetManyFilesFiltersParameter.md)
+ - [GetManyFilesFiltersParameterCreatedAt](docs/GetManyFilesFiltersParameterCreatedAt.md)
+ - [GetManyFilesSortingParameter](docs/GetManyFilesSortingParameter.md)
+ - [GetModelConversionJobsFiltersParameter](docs/GetModelConversionJobsFiltersParameter.md)
+ - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
+ - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
+ - [ModelConversionJobCompleteRequest](docs/ModelConversionJobCompleteRequest.md)
+ - [ModelConversionJobSchema](docs/ModelConversionJobSchema.md)
+ - [ModelConversionJobStatusRequest](docs/ModelConversionJobStatusRequest.md)
+ - [ModelConversionJobUpload201Response](docs/ModelConversionJobUpload201Response.md)
+ - [ModelConversionJobUploadRequest](docs/ModelConversionJobUploadRequest.md)
+ - [ModelSchema](docs/ModelSchema.md)
+ - [NotificationRequestSchema](docs/NotificationRequestSchema.md)
+ - [NotificationRequestSchemaTargetSmsNumbersInner](docs/NotificationRequestSchemaTargetSmsNumbersInner.md)
+ - [NotificationSchema](docs/NotificationSchema.md)
  - [OrgSchema](docs/OrgSchema.md)
- - [OrgSchemaUsersInner](docs/OrgSchemaUsersInner.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
+ - [SaveWorkflowRequest](docs/SaveWorkflowRequest.md)
+ - [SaveWorkflowRequestWorkflow](docs/SaveWorkflowRequestWorkflow.md)
+ - [SaveWorkflowRequestWorkflowBuilderObject](docs/SaveWorkflowRequestWorkflowBuilderObject.md)
+ - [SaveWorkflowRequestWorkflowResourcesInner](docs/SaveWorkflowRequestWorkflowResourcesInner.md)
+ - [SaveWorkflowRequestWorkflowResourcesInnerObjectsInner](docs/SaveWorkflowRequestWorkflowResourcesInnerObjectsInner.md)
+ - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
+ - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
+ - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UserSchema](docs/UserSchema.md)
 

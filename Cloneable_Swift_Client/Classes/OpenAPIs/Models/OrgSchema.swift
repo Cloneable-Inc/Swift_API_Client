@@ -17,15 +17,13 @@ public struct OrgSchema: Codable, JSONEncodable, Hashable {
     public var createdAt: String
     public var updatedAt: String
     public var roles: [String]?
-    public var users: [OrgSchemaUsersInner]?
 
-    public init(id: String, name: String, createdAt: String, updatedAt: String, roles: [String]? = nil, users: [OrgSchemaUsersInner]? = nil) {
+    public init(id: String, name: String, createdAt: String, updatedAt: String, roles: [String]? = nil) {
         self.id = id
         self.name = name
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.roles = roles
-        self.users = users
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -34,7 +32,6 @@ public struct OrgSchema: Codable, JSONEncodable, Hashable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case roles
-        case users
     }
 
     // Encodable protocol methods
@@ -46,7 +43,6 @@ public struct OrgSchema: Codable, JSONEncodable, Hashable {
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
         try container.encodeIfPresent(roles, forKey: .roles)
-        try container.encodeIfPresent(users, forKey: .users)
     }
 }
 

@@ -13,10 +13,10 @@ import AnyCodable
 public struct GetDataObjectsRequest: Codable, JSONEncodable, Hashable {
 
     public var id: [String]?
-    public var filters: GetDataObjectsRequestFilters?
+    public var filters: GetDataObjectsPagedFiltersParameter?
     public var latest: String?
 
-    public init(id: [String]? = nil, filters: GetDataObjectsRequestFilters? = nil, latest: String? = nil) {
+    public init(id: [String]? = nil, filters: GetDataObjectsPagedFiltersParameter? = nil, latest: String? = nil) {
         self.id = id
         self.filters = filters
         self.latest = latest

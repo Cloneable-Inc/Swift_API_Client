@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **createdBy** | **String** |  | 
 **environment** | **String** |  | 
 **typeRefId** | **String** |  | 
-**resources** | [DeployedWorkflowSchemaResourcesInner] |  | [optional] 
+**resources** | [SaveWorkflowRequestWorkflowResourcesInner] |  | [optional] 
 **edges** | [DeployedWorkflowSchemaEdgesInner] |  | 
 **components** | [DeployedWorkflowSchemaComponentsInner] |  | 
-**objects** | [DeployedWorkflowSchemaObjectsInner] |  | [optional] 
+**objects** | [DeployedWorkflowSchemaObjectsInner] |  | 
 **revision** | **Double** |  | 
 **workflowDescription** | **String** |  | 
 **workflowId** | **String** |  | 

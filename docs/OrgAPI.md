@@ -1,0 +1,56 @@
+# OrgAPI
+
+All URIs are relative to *https://app.cloneable.ai/api/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createOrg**](OrgAPI.md#createorg) | **PUT** /org | 
+
+
+# **createOrg**
+```swift
+    open class func createOrg(orgSchema: OrgSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let orgSchema = OrgSchema(id: "id_example", name: "name_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", roles: ["roles_example"]) // OrgSchema | Body (optional)
+
+OrgAPI.createOrg(orgSchema: orgSchema) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orgSchema** | [**OrgSchema**](OrgSchema.md) | Body | [optional] 
+
+### Return type
+
+[**UpdateFile200Response**](UpdateFile200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

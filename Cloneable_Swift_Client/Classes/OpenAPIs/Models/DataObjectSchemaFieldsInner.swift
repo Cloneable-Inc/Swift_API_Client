@@ -12,34 +12,24 @@ import AnyCodable
 
 public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
-    public var arrayCloneableSubType: String?
+    public var id: String
     public var arraySubType: String?
-    public var cloneableDataType: String?
-    public var displayName: String?
-    public var dynamicInputId: String?
-    public var dynamicOutputId: String?
-    public var fieldId: String?
+    public var displayName: String
+    public var fieldId: String
     public var linkedObjectDisplayName: String?
     public var linkedObjectName: String?
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
-    public var modifiedAt: String?
-    public var modifiedBy: String?
-    public var name: String?
-    public var statusOptions: [String]?
-    public var storedArrayValues: [AnyCodable]?
-    public var storedValue: AnyCodable?
-    public var thematicStoredArrayValues: [String]?
-    public var thematicStoredValue: String?
-    public var type: String?
+    public var modifiedAt: Date
+    public var modifiedBy: String
+    public var name: String
+    public var storedValue: String?
+    public var type: String
 
-    public init(arrayCloneableSubType: String? = nil, arraySubType: String? = nil, cloneableDataType: String? = nil, displayName: String? = nil, dynamicInputId: String? = nil, dynamicOutputId: String? = nil, fieldId: String? = nil, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: String? = nil, modifiedBy: String? = nil, name: String? = nil, statusOptions: [String]? = nil, storedArrayValues: [AnyCodable]? = nil, storedValue: AnyCodable? = nil, thematicStoredArrayValues: [String]? = nil, thematicStoredValue: String? = nil, type: String? = nil) {
-        self.arrayCloneableSubType = arrayCloneableSubType
+    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
+        self.id = id
         self.arraySubType = arraySubType
-        self.cloneableDataType = cloneableDataType
         self.displayName = displayName
-        self.dynamicInputId = dynamicInputId
-        self.dynamicOutputId = dynamicOutputId
         self.fieldId = fieldId
         self.linkedObjectDisplayName = linkedObjectDisplayName
         self.linkedObjectName = linkedObjectName
@@ -48,21 +38,14 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         self.modifiedAt = modifiedAt
         self.modifiedBy = modifiedBy
         self.name = name
-        self.statusOptions = statusOptions
-        self.storedArrayValues = storedArrayValues
         self.storedValue = storedValue
-        self.thematicStoredArrayValues = thematicStoredArrayValues
-        self.thematicStoredValue = thematicStoredValue
         self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case arrayCloneableSubType = "array_cloneable_sub_type"
+        case id
         case arraySubType = "array_sub_type"
-        case cloneableDataType = "cloneable_data_type"
         case displayName = "display_name"
-        case dynamicInputId = "dynamic_input_id"
-        case dynamicOutputId = "dynamic_output_id"
         case fieldId = "field_id"
         case linkedObjectDisplayName = "linked_object_display_name"
         case linkedObjectName = "linked_object_name"
@@ -71,11 +54,7 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         case modifiedAt = "modified_at"
         case modifiedBy = "modified_by"
         case name
-        case statusOptions = "status_options"
-        case storedArrayValues = "stored_array_values"
         case storedValue = "stored_value"
-        case thematicStoredArrayValues = "thematic_stored_array_values"
-        case thematicStoredValue = "thematic_stored_value"
         case type
     }
 
@@ -83,26 +62,19 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(arrayCloneableSubType, forKey: .arrayCloneableSubType)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
-        try container.encodeIfPresent(cloneableDataType, forKey: .cloneableDataType)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(dynamicInputId, forKey: .dynamicInputId)
-        try container.encodeIfPresent(dynamicOutputId, forKey: .dynamicOutputId)
-        try container.encodeIfPresent(fieldId, forKey: .fieldId)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(fieldId, forKey: .fieldId)
         try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
         try container.encodeIfPresent(linkedObjectName, forKey: .linkedObjectName)
         try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encodeIfPresent(linkedObjectTemplateId, forKey: .linkedObjectTemplateId)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(statusOptions, forKey: .statusOptions)
-        try container.encodeIfPresent(storedArrayValues, forKey: .storedArrayValues)
+        try container.encode(modifiedAt, forKey: .modifiedAt)
+        try container.encode(modifiedBy, forKey: .modifiedBy)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
-        try container.encodeIfPresent(thematicStoredArrayValues, forKey: .thematicStoredArrayValues)
-        try container.encodeIfPresent(thematicStoredValue, forKey: .thematicStoredValue)
-        try container.encodeIfPresent(type, forKey: .type)
+        try container.encode(type, forKey: .type)
     }
 }
 
