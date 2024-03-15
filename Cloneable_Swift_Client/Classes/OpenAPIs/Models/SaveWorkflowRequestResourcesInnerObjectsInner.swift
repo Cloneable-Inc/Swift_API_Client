@@ -13,9 +13,9 @@ import AnyCodable
 public struct SaveWorkflowRequestResourcesInnerObjectsInner: Codable, JSONEncodable, Hashable {
 
     public var templateId: String
-    public var createdAfter: Date?
+    public var createdAfter: String?
 
-    public init(templateId: String, createdAfter: Date? = nil) {
+    public init(templateId: String, createdAfter: String? = nil) {
         self.templateId = templateId
         self.createdAfter = createdAfter
     }

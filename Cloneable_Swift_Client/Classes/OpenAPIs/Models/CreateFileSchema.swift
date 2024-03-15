@@ -37,7 +37,7 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
-    public var additionalProperties: GetManyFilesFiltersParameterAdditionalProperties?
+    public var additionalProperties: [String: AnyCodable]?
     /** The stored file path */
     public var url: String?
     /** Whether the file is saved to the cloud */
@@ -45,7 +45,7 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     public var storageProvider: String?
     public var storageAuthProviderName: String?
 
-    public init(id: String? = nil, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: GetManyFilesFiltersParameterAdditionalProperties? = nil, url: String? = nil, savedToCloud: Bool? = nil, storageProvider: String? = nil, storageAuthProviderName: String? = nil) {
+    public init(id: String? = nil, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: [String: AnyCodable]? = nil, url: String? = nil, savedToCloud: Bool? = nil, storageProvider: String? = nil, storageAuthProviderName: String? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId

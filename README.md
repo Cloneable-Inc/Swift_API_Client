@@ -139,8 +139,6 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInner](docs/DeployedWorkflowSchemaObjectsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInner](docs/DeployedWorkflowSchemaObjectsInnerFieldsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
- - [DeployedWorkflowSchemaResourcesInner](docs/DeployedWorkflowSchemaResourcesInner.md)
- - [DeployedWorkflowSchemaResourcesInnerObjectsInner](docs/DeployedWorkflowSchemaResourcesInnerObjectsInner.md)
  - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [FileSchema](docs/FileSchema.md)
  - [GetCodeGenRequest](docs/GetCodeGenRequest.md)
