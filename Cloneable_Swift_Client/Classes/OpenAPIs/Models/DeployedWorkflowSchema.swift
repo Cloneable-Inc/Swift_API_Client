@@ -19,7 +19,7 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var createdBy: String
     public var environment: String
     public var typeRefId: String
-    public var resources: [SaveWorkflowRequestWorkflowResourcesInner]?
+    public var resources: [DeployedWorkflowSchemaResourcesInner]?
     public var edges: [DeployedWorkflowSchemaEdgesInner]
     public var components: [DeployedWorkflowSchemaComponentsInner]
     public var objects: [DeployedWorkflowSchemaObjectsInner]
@@ -28,7 +28,7 @@ public struct DeployedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var workflowId: String
     public var workflowName: String
 
-    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [SaveWorkflowRequestWorkflowResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner], revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
+    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [DeployedWorkflowSchemaResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner], revision: Double, workflowDescription: String, workflowId: String, workflowName: String) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt

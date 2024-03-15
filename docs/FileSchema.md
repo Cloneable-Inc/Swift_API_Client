@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **storageProvider** | **String** |  | 
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 
-**additionalProperties** | **[String: AnyCodable]** |  | [optional] 
+**additionalProperties** | [**GetManyFilesFiltersParameterAdditionalProperties**](GetManyFilesFiltersParameterAdditionalProperties.md) |  | [optional] 
 **globalAccess** | **Bool** |  | [optional] 
 **downloadUrl** | **String** |  | [optional] 
 

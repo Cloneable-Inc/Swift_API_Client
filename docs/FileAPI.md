@@ -26,7 +26,7 @@ Add a new file after upload
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createFileSchema = CreateFileSchema(id: "id_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdAt: "createdAt_example", createdBy: "createdBy_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: "TODO", url: "url_example", savedToCloud: false, storageProvider: "storageProvider_example", storageAuthProviderName: "storageAuthProviderName_example") // CreateFileSchema | Body (optional)
+let createFileSchema = CreateFileSchema(id: "id_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdAt: "createdAt_example", createdBy: "createdBy_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: getManyFiles_filters_parameter_additional_properties(modelType: "modelType_example", modelVersion: "modelVersion_example", modelDescription: "modelDescription_example", modelDevice: "modelDevice_example", isTemplate: false), url: "url_example", savedToCloud: false, storageProvider: "storageProvider_example", storageAuthProviderName: "storageAuthProviderName_example") // CreateFileSchema | Body (optional)
 
 // Add a new file after upload
 FileAPI.createFile(createFileSchema: createFileSchema) { (response, error) in
@@ -222,7 +222,7 @@ import Cloneable_Swift_Client
 
 let index = 987 // Int |  (optional)
 let size = 987 // Int |  (optional)
-let filters = getManyFiles_filters_parameter(createdBy: "createdBy_example", createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), type: ["type_example"], savedToCloud: false, syncToEdge: false, search: "search_example") // GetManyFilesFiltersParameter |  (optional)
+let filters = getManyFiles_filters_parameter(createdBy: "createdBy_example", createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), type: ["type_example"], savedToCloud: false, syncToEdge: false, search: "search_example", additionalProperties: getManyFiles_filters_parameter_additional_properties(modelType: "modelType_example", modelVersion: "modelVersion_example", modelDescription: "modelDescription_example", modelDevice: "modelDevice_example", isTemplate: false)) // GetManyFilesFiltersParameter |  (optional)
 let id = ["inner_example"] // [String] |  (optional)
 let latest = "latest_example" // String |  (optional)
 let sorting = getManyFiles_sorting_parameter(column: "column_example", desc: false) // GetManyFilesSortingParameter |  (optional)

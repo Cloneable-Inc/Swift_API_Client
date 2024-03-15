@@ -6,15 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**compileWorkflow**](WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
 [**createWorkflow**](WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
+[**deleteWorkflow**](WorkflowAPI.md#deleteworkflow) | **DELETE** /workflow/{workflow_id} | 
 [**duplicateWorkflow**](WorkflowAPI.md#duplicateworkflow) | **POST** /workflow/duplicate | 
 [**getAllWorkflows**](WorkflowAPI.md#getallworkflows) | **GET** /workflows | Get all workflows
 [**getWorkflow**](WorkflowAPI.md#getworkflow) | **GET** /workflow/{workflow_id} | Get a workflow
-[**saveWorkflow**](WorkflowAPI.md#saveworkflow) | **POST** /workflow/save | Save a workflow
+[**saveWorkflow**](WorkflowAPI.md#saveworkflow) | **POST** /workflow/{id}/save | Save a workflow
 
 
 # **compileWorkflow**
 ```swift
-    open class func compileWorkflow(saveWorkflowRequest: SaveWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
 ```
 
 Compile a workflow
@@ -24,10 +25,10 @@ Compile a workflow
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let saveWorkflowRequest = saveWorkflow_request(workflow: saveWorkflow_request_workflow(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_workflow_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_workflow_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_workflow_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])])) // SaveWorkflowRequest | Body (optional)
+let compileWorkflowRequest = compileWorkflow_request(workflow: compileWorkflow_request_workflow(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: Date())])])) // CompileWorkflowRequest | Body (optional)
 
 // Compile a workflow
-WorkflowAPI.compileWorkflow(saveWorkflowRequest: saveWorkflowRequest) { (response, error) in
+WorkflowAPI.compileWorkflow(compileWorkflowRequest: compileWorkflowRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -43,7 +44,7 @@ WorkflowAPI.compileWorkflow(saveWorkflowRequest: saveWorkflowRequest) { (respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **saveWorkflowRequest** | [**SaveWorkflowRequest**](SaveWorkflowRequest.md) | Body | [optional] 
+ **compileWorkflowRequest** | [**CompileWorkflowRequest**](CompileWorkflowRequest.md) | Body | [optional] 
 
 ### Return type
 
@@ -91,6 +92,55 @@ WorkflowAPI.createWorkflow(createWorkflowRequest: createWorkflowRequest) { (resp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createWorkflowRequest** | [**CreateWorkflowRequest**](CreateWorkflowRequest.md) | Body | [optional] 
+
+### Return type
+
+[**UpdateFile200Response**](UpdateFile200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteWorkflow**
+```swift
+    open class func deleteWorkflow(workflowId: String, body: AnyCodable? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let workflowId = "workflowId_example" // String | 
+let body = "TODO" // AnyCodable | Body (optional)
+
+WorkflowAPI.deleteWorkflow(workflowId: workflowId, body: body) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workflowId** | **String** |  | 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -248,7 +298,7 @@ No authorization required
 
 # **saveWorkflow**
 ```swift
-    open class func saveWorkflow(saveWorkflowRequest: SaveWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
 ```
 
 Save a workflow
@@ -258,10 +308,11 @@ Save a workflow
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let saveWorkflowRequest = saveWorkflow_request(workflow: saveWorkflow_request_workflow(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_workflow_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_workflow_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_workflow_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])])) // SaveWorkflowRequest | Body (optional)
+let id = "id_example" // String | 
+let saveWorkflowRequest = saveWorkflow_request(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: Date())])]) // SaveWorkflowRequest | Body (optional)
 
 // Save a workflow
-WorkflowAPI.saveWorkflow(saveWorkflowRequest: saveWorkflowRequest) { (response, error) in
+WorkflowAPI.saveWorkflow(id: id, saveWorkflowRequest: saveWorkflowRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -277,6 +328,7 @@ WorkflowAPI.saveWorkflow(saveWorkflowRequest: saveWorkflowRequest) { (response, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
  **saveWorkflowRequest** | [**SaveWorkflowRequest**](SaveWorkflowRequest.md) | Body | [optional] 
 
 ### Return type

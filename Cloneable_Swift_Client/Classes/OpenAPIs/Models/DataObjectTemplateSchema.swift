@@ -12,12 +12,15 @@ import AnyCodable
 
 public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
 
+    static let objectDescriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let objectDisplayNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let objectNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: String
     public var objectId: String
     public var companyId: String
     public var createdAt: Date
     public var createdBy: String
-    public var fields: [DataObjectTemplateSchemaFieldsInner]?
+    public var fields: [UpdateDataObjectTemplateRequestFieldsInner]
     public var modifiedAt: Date
     public var objectDescription: String
     public var objectDisplayName: String
@@ -26,7 +29,7 @@ public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
     public var typeRefId: String?
     public var isTemplate: Bool
 
-    public init(id: String, objectId: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectTemplateSchemaFieldsInner]? = nil, modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectName: String, revision: Double, typeRefId: String? = nil, isTemplate: Bool) {
+    public init(id: String, objectId: String, companyId: String, createdAt: Date, createdBy: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectName: String, revision: Double, typeRefId: String? = nil, isTemplate: Bool) {
         self.id = id
         self.objectId = objectId
         self.companyId = companyId
@@ -67,7 +70,7 @@ public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
         try container.encode(companyId, forKey: .companyId)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(fields, forKey: .fields)
+        try container.encode(fields, forKey: .fields)
         try container.encode(modifiedAt, forKey: .modifiedAt)
         try container.encode(objectDescription, forKey: .objectDescription)
         try container.encode(objectDisplayName, forKey: .objectDisplayName)

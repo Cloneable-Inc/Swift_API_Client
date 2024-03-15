@@ -145,6 +145,67 @@ open class CompletedWorkflowAPI {
     }
 
     /**
+     Get paginated completed workflows
+     
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getPagedWorkflows(index: Int? = nil, size: Int? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetPagedWorkflowsSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetPagedWorkflows200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPagedWorkflowsWithRequestBuilder(index: index, size: size, filters: filters, id: id, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get paginated completed workflows
+     - GET /completed-workflows
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
+     - returns: RequestBuilder<GetPagedWorkflows200Response> 
+     */
+    open class func getPagedWorkflowsWithRequestBuilder(index: Int? = nil, size: Int? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetPagedWorkflowsSortingParameter? = nil) -> RequestBuilder<GetPagedWorkflows200Response> {
+        let localVariablePath = "/completed-workflows"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "index": (wrappedValue: index?.encodeToJSON(), isExplode: true),
+            "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
+            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
+            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: true),
+            "sorting": (wrappedValue: sorting?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPagedWorkflows200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Update a completed workflow
      
      - parameter id: (path)  

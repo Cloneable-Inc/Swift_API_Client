@@ -35,9 +35,9 @@ public struct DeployedWorkflowSchemaComponentsInner: Codable, JSONEncodable, Has
     public var implementationUrl: String
     public var inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner]
     public var outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner]
-    public var resources: SaveWorkflowRequestWorkflowResourcesInner?
+    public var resources: DeployedWorkflowSchemaResourcesInner?
 
-    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String? = nil, userCustomizedInstructions: String? = nil, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner], componentDescription: String, dynamicComponentRenderer: Bool, useCustomViewForParams: Bool? = nil, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner], outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner], resources: SaveWorkflowRequestWorkflowResourcesInner? = nil) {
+    public init(id: String, availableToAllCompanies: Bool, availableDevices: [String], builderCompatibility: String, componentId: String, componentType: String, revision: Double, title: String, type: String, userCustomizedTitle: String? = nil, userCustomizedInstructions: String? = nil, dynamicComponentId: String, additionalProperties: [String: AnyCodable]? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, iosHwRequirements: [String]? = nil, customizableParameters: [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner], componentDescription: String, dynamicComponentRenderer: Bool, useCustomViewForParams: Bool? = nil, implementationUrl: String, inputs: [DeployedWorkflowSchemaComponentsInnerInputsInner], outputs: [DeployedWorkflowSchemaComponentsInnerOutputsInner], resources: DeployedWorkflowSchemaResourcesInner? = nil) {
         self.id = id
         self.availableToAllCompanies = availableToAllCompanies
         self.availableDevices = availableDevices

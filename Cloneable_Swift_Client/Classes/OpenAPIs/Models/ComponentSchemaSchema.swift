@@ -38,14 +38,14 @@ public struct ComponentSchemaSchema: Codable, JSONEncodable, Hashable {
     public var nextButtonInBarText: String?
     public var docsUrl: String?
     public var iosHWRequirements: [String]?
-    public var outputs: [ComponentSchemaSchemaOutputsInner]?
-    public var inputs: [ComponentSchemaSchemaInputsInner]?
+    public var outputs: [ComponentJSONSchemaOutputsInner]?
+    public var inputs: [ComponentJSONSchemaInputsInner]?
     public var dynamicComponentRenderer: Bool
-    public var customizableParameters: [ComponentSchemaSchemaCustomizableParametersInner]?
+    public var customizableParameters: [ComponentJSONSchemaCustomizableParametersInner]?
     public var additionalProperties: AnyCodable?
-    public var resources: ComponentSchemaSchemaResources?
+    public var resources: ComponentJSONSchemaResources?
 
-    public init(title: String, componentID: String, dynamicComponentID: String? = nil, componentType: ComponentType, revision: Double, availableDevices: [String], implementationURL: String, builderCompatibility: String, availableToAllCompanies: Bool, useCustomViewForParams: Bool? = nil, componentDescription: String, defaultDrawerSize: String? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, docsUrl: String? = nil, iosHWRequirements: [String]? = nil, outputs: [ComponentSchemaSchemaOutputsInner]? = nil, inputs: [ComponentSchemaSchemaInputsInner]? = nil, dynamicComponentRenderer: Bool, customizableParameters: [ComponentSchemaSchemaCustomizableParametersInner]? = nil, additionalProperties: AnyCodable? = nil, resources: ComponentSchemaSchemaResources? = nil) {
+    public init(title: String, componentID: String, dynamicComponentID: String? = nil, componentType: ComponentType, revision: Double, availableDevices: [String], implementationURL: String, builderCompatibility: String, availableToAllCompanies: Bool, useCustomViewForParams: Bool? = nil, componentDescription: String, defaultDrawerSize: String? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, docsUrl: String? = nil, iosHWRequirements: [String]? = nil, outputs: [ComponentJSONSchemaOutputsInner]? = nil, inputs: [ComponentJSONSchemaInputsInner]? = nil, dynamicComponentRenderer: Bool, customizableParameters: [ComponentJSONSchemaCustomizableParametersInner]? = nil, additionalProperties: AnyCodable? = nil, resources: ComponentJSONSchemaResources? = nil) {
         self.title = title
         self.componentID = componentID
         self.dynamicComponentID = dynamicComponentID

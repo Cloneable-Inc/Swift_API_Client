@@ -13,6 +13,49 @@ import AnyCodable
 open class DataObjectTemplateAPI {
 
     /**
+     Create a data object template
+     
+     - parameter updateDataObjectTemplateRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createDataObjectTemplate(updateDataObjectTemplateRequest: UpdateDataObjectTemplateRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DataObjectTemplateSchema?, _ error: Error?) -> Void)) -> RequestTask {
+        return createDataObjectTemplateWithRequestBuilder(updateDataObjectTemplateRequest: updateDataObjectTemplateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create a data object template
+     - POST /data-object-template
+     - parameter updateDataObjectTemplateRequest: (body) Body (optional)
+     - returns: RequestBuilder<DataObjectTemplateSchema> 
+     */
+    open class func createDataObjectTemplateWithRequestBuilder(updateDataObjectTemplateRequest: UpdateDataObjectTemplateRequest? = nil) -> RequestBuilder<DataObjectTemplateSchema> {
+        let localVariablePath = "/data-object-template"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateDataObjectTemplateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DataObjectTemplateSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get many data object templates
      
      - parameter id: (query)  (optional)
@@ -108,5 +151,53 @@ open class DataObjectTemplateAPI {
         let localVariableRequestBuilder: RequestBuilder<DataObjectTemplateSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a data object template
+     
+     - parameter id: (path)  
+     - parameter updateDataObjectTemplateRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateDataObjectTemplate(id: String, updateDataObjectTemplateRequest: UpdateDataObjectTemplateRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateDataObjectTemplateWithRequestBuilder(id: id, updateDataObjectTemplateRequest: updateDataObjectTemplateRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a data object template
+     - POST /data-object-template/{id}
+     - parameter id: (path)  
+     - parameter updateDataObjectTemplateRequest: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func updateDataObjectTemplateWithRequestBuilder(id: String, updateDataObjectTemplateRequest: UpdateDataObjectTemplateRequest? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/data-object-template/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateDataObjectTemplateRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

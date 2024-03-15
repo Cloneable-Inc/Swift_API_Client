@@ -18,14 +18,16 @@ public struct GetManyFilesFiltersParameter: Codable, JSONEncodable, Hashable {
     public var savedToCloud: Bool?
     public var syncToEdge: Bool?
     public var search: String?
+    public var additionalProperties: GetManyFilesFiltersParameterAdditionalProperties?
 
-    public init(createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, type: [String]? = nil, savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, search: String? = nil) {
+    public init(createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, type: [String]? = nil, savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, search: String? = nil, additionalProperties: GetManyFilesFiltersParameterAdditionalProperties? = nil) {
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.type = type
         self.savedToCloud = savedToCloud
         self.syncToEdge = syncToEdge
         self.search = search
+        self.additionalProperties = additionalProperties
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,6 +37,7 @@ public struct GetManyFilesFiltersParameter: Codable, JSONEncodable, Hashable {
         case savedToCloud = "saved_to_cloud"
         case syncToEdge = "sync_to_edge"
         case search
+        case additionalProperties = "additional_properties"
     }
 
     // Encodable protocol methods
@@ -47,6 +50,7 @@ public struct GetManyFilesFiltersParameter: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(savedToCloud, forKey: .savedToCloud)
         try container.encodeIfPresent(syncToEdge, forKey: .syncToEdge)
         try container.encodeIfPresent(search, forKey: .search)
+        try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
     }
 }
 

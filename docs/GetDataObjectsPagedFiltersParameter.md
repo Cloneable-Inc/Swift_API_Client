@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **active** | **Bool** |  | [optional] 
 **environment** | **String** |  | [optional] 
 **search** | **String** |  | [optional] 
+**id** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **savedToCloud** | **Bool** |  | [optional] 
 **syncToEdge** | **Bool** |  | [optional] 
 **search** | **String** |  | [optional] 
+**additionalProperties** | [**GetManyFilesFiltersParameterAdditionalProperties**](GetManyFilesFiltersParameterAdditionalProperties.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

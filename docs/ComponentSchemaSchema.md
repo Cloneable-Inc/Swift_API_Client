@@ -19,12 +19,12 @@ Name | Type | Description | Notes
 **nextButtonInBarText** | **String** |  | [optional] 
 **docsUrl** | **String** |  | [optional] 
 **iosHWRequirements** | **[String]** |  | [optional] 
-**outputs** | [ComponentSchemaSchemaOutputsInner] |  | [optional] 
-**inputs** | [ComponentSchemaSchemaInputsInner] |  | [optional] 
+**outputs** | [ComponentJSONSchemaOutputsInner] |  | [optional] 
+**inputs** | [ComponentJSONSchemaInputsInner] |  | [optional] 
 **dynamicComponentRenderer** | **Bool** |  | 
-**customizableParameters** | [ComponentSchemaSchemaCustomizableParametersInner] |  | [optional] 
+**customizableParameters** | [ComponentJSONSchemaCustomizableParametersInner] |  | [optional] 
 **additionalProperties** | **AnyCodable** |  | [optional] 
-**resources** | [**ComponentSchemaSchemaResources**](ComponentSchemaSchemaResources.md) |  | [optional] 
+**resources** | [**ComponentJSONSchemaResources**](ComponentJSONSchemaResources.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

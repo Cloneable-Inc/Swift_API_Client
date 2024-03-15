@@ -13,12 +13,12 @@ import AnyCodable
 public struct GetCompletedWorkflowsRequest: Codable, JSONEncodable, Hashable {
 
     public var id: [String]?
-    public var filters: GetCompletedWorkflowsRequestFilters?
+    public var filters: GetPagedWorkflowsFiltersParameter?
     public var latest: String?
     public var limit: Double?
     public var skip: Double?
 
-    public init(id: [String]? = nil, filters: GetCompletedWorkflowsRequestFilters? = nil, latest: String? = nil, limit: Double? = nil, skip: Double? = nil) {
+    public init(id: [String]? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, latest: String? = nil, limit: Double? = nil, skip: Double? = nil) {
         self.id = id
         self.filters = filters
         self.latest = latest

@@ -46,11 +46,11 @@ public struct FileSchema: Codable, JSONEncodable, Hashable {
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
-    public var additionalProperties: [String: AnyCodable]?
+    public var additionalProperties: GetManyFilesFiltersParameterAdditionalProperties?
     public var globalAccess: Bool?
     public var downloadUrl: String?
 
-    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String? = nil, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: [String: AnyCodable]? = nil, globalAccess: Bool? = nil, downloadUrl: String? = nil) {
+    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String? = nil, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: GetManyFilesFiltersParameterAdditionalProperties? = nil, globalAccess: Bool? = nil, downloadUrl: String? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId

@@ -20,8 +20,9 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
     public var active: Bool?
     public var environment: String?
     public var search: String?
+    public var id: [String]?
 
-    public init(companyId: String? = nil, createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, objectTemplateId: [String]? = nil, typeRefId: String? = nil, active: Bool? = nil, environment: String? = nil, search: String? = nil) {
+    public init(companyId: String? = nil, createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, objectTemplateId: [String]? = nil, typeRefId: String? = nil, active: Bool? = nil, environment: String? = nil, search: String? = nil, id: [String]? = nil) {
         self.companyId = companyId
         self.createdBy = createdBy
         self.createdAt = createdAt
@@ -30,6 +31,7 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
         self.active = active
         self.environment = environment
         self.search = search
+        self.id = id
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,6 +43,7 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
         case active
         case environment
         case search
+        case id
     }
 
     // Encodable protocol methods
@@ -55,6 +58,7 @@ public struct GetDataObjectsPagedFiltersParameter: Codable, JSONEncodable, Hasha
         try container.encodeIfPresent(active, forKey: .active)
         try container.encodeIfPresent(environment, forKey: .environment)
         try container.encodeIfPresent(search, forKey: .search)
+        try container.encodeIfPresent(id, forKey: .id)
     }
 }
 

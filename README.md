@@ -25,23 +25,31 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthAPI* | [**signupCreateOrg**](docs/AuthAPI.md#signupcreateorg) | **POST** /auth/signup/create-org | Create and sync orgs to auth platform for new accounts
+*AuthAPI* | [**signupCreateUser**](docs/AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
+*AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
 *ChatAPI* | [**componentAssitant**](docs/ChatAPI.md#componentassitant) | **POST** /chat/components/{id} | Get chat components
 *ChatAPI* | [**getCodeGen**](docs/ChatAPI.md#getcodegen) | **POST** /chat/code-gen | Get chat code gen stream
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
+*CompletedWorkflowAPI* | [**getPagedWorkflows**](docs/CompletedWorkflowAPI.md#getpagedworkflows) | **GET** /completed-workflows | Get paginated completed workflows
 *CompletedWorkflowAPI* | [**updateCompletedWorkflow**](docs/CompletedWorkflowAPI.md#updatecompletedworkflow) | **POST** /completed-workflow/{id} | Update a completed workflow
 *ComponentAPI* | [**createComponent**](docs/ComponentAPI.md#createcomponent) | **POST** /component | Creates a new component
 *ComponentAPI* | [**getComponents**](docs/ComponentAPI.md#getcomponents) | **GET** /components | Get components for company
 *ComponentAPI* | [**getOneComponent**](docs/ComponentAPI.md#getonecomponent) | **GET** /component/{id} | Returns a component by id
 *ComponentAPI* | [**updateComponent**](docs/ComponentAPI.md#updatecomponent) | **POST** /component/{id} | Returns a component by id
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
+*DataObjectAPI* | [**createExplorerPage**](docs/DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
 *DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
+*DataObjectAPI* | [**getExplorerPages**](docs/DataObjectAPI.md#getexplorerpages) | **GET** /explorer-pages | Get all explorer pages
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 *DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
+*DataObjectTemplateAPI* | [**createDataObjectTemplate**](docs/DataObjectTemplateAPI.md#createdataobjecttemplate) | **POST** /data-object-template | Create a data object template
 *DataObjectTemplateAPI* | [**getManyDataObjectTemplates**](docs/DataObjectTemplateAPI.md#getmanydataobjecttemplates) | **GET** /data-object-templates | Get many data object templates
 *DataObjectTemplateAPI* | [**getOneDataObjectTemplate**](docs/DataObjectTemplateAPI.md#getonedataobjecttemplate) | **GET** /data-object-template/{id} | Get a data object template
+*DataObjectTemplateAPI* | [**updateDataObjectTemplate**](docs/DataObjectTemplateAPI.md#updatedataobjecttemplate) | **POST** /data-object-template/{id} | Update a data object template
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getDeployedWorkflowsQuery**](docs/DeployedWorfklowAPI.md#getdeployedworkflowsquery) | **GET** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
@@ -67,46 +75,58 @@ Class | Method | HTTP request | Description
 *OpenapiAPI* | [**getOpenAPIPage**](docs/OpenapiAPI.md#getopenapipage) | **GET** /openapi | Get OpenAPI Docs page
 *OpenapiAPI* | [**getOpenAPIYaml**](docs/OpenapiAPI.md#getopenapiyaml) | **GET** /openapi.yaml | Get OpenAPI YAML
 *OrgAPI* | [**createOrg**](docs/OrgAPI.md#createorg) | **PUT** /org | 
+*OrgAPI* | [**currentOrg**](docs/OrgAPI.md#currentorg) | **GET** /org/current | 
+*OrgAPI* | [**getAllOrgs**](docs/OrgAPI.md#getallorgs) | **GET** /org | 
+*OrgAPI* | [**getOrgWithUsers**](docs/OrgAPI.md#getorgwithusers) | **GET** /org/{id}/users | 
+*OrgAPI* | [**inviteUser**](docs/OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
+*OrgAPI* | [**updateOrgSettings**](docs/OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
 *SupportAPI* | [**sendFeedback**](docs/SupportAPI.md#sendfeedback) | **PUT** /support/feedback | Send feedback from user
+*UserAPI* | [**currentUser**](docs/UserAPI.md#currentuser) | **GET** /user | Get current user
 *UserAPI* | [**getAllUsers**](docs/UserAPI.md#getallusers) | **GET** /users | Get all users in the org
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
+*UserAPI* | [**updateUser**](docs/UserAPI.md#updateuser) | **POST** /user/{id} | Update a user
 *WorkflowAPI* | [**compileWorkflow**](docs/WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
 *WorkflowAPI* | [**createWorkflow**](docs/WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
+*WorkflowAPI* | [**deleteWorkflow**](docs/WorkflowAPI.md#deleteworkflow) | **DELETE** /workflow/{workflow_id} | 
 *WorkflowAPI* | [**duplicateWorkflow**](docs/WorkflowAPI.md#duplicateworkflow) | **POST** /workflow/duplicate | 
 *WorkflowAPI* | [**getAllWorkflows**](docs/WorkflowAPI.md#getallworkflows) | **GET** /workflows | Get all workflows
 *WorkflowAPI* | [**getWorkflow**](docs/WorkflowAPI.md#getworkflow) | **GET** /workflow/{workflow_id} | Get a workflow
-*WorkflowAPI* | [**saveWorkflow**](docs/WorkflowAPI.md#saveworkflow) | **POST** /workflow/save | Save a workflow
+*WorkflowAPI* | [**saveWorkflow**](docs/WorkflowAPI.md#saveworkflow) | **POST** /workflow/{id}/save | Save a workflow
 
 
 ## Documentation For Models
 
+ - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
+ - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
  - [ComponentAssitantRequestInner](docs/ComponentAssitantRequestInner.md)
  - [ComponentJSONSchema](docs/ComponentJSONSchema.md)
+ - [ComponentJSONSchemaCustomizableParametersInner](docs/ComponentJSONSchemaCustomizableParametersInner.md)
+ - [ComponentJSONSchemaInputsInner](docs/ComponentJSONSchemaInputsInner.md)
+ - [ComponentJSONSchemaOutputsInner](docs/ComponentJSONSchemaOutputsInner.md)
+ - [ComponentJSONSchemaResources](docs/ComponentJSONSchemaResources.md)
  - [ComponentSchema](docs/ComponentSchema.md)
  - [ComponentSchemaSchema](docs/ComponentSchemaSchema.md)
- - [ComponentSchemaSchemaCustomizableParametersInner](docs/ComponentSchemaSchemaCustomizableParametersInner.md)
- - [ComponentSchemaSchemaInputsInner](docs/ComponentSchemaSchemaInputsInner.md)
- - [ComponentSchemaSchemaOutputsInner](docs/ComponentSchemaSchemaOutputsInner.md)
- - [ComponentSchemaSchemaResources](docs/ComponentSchemaSchemaResources.md)
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
  - [CreateComponentRequest](docs/CreateComponentRequest.md)
  - [CreateComponentSchema](docs/CreateComponentSchema.md)
+ - [CreateDataObjectExplorerSchema](docs/CreateDataObjectExplorerSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
  - [CreateModelConversionJobRequest](docs/CreateModelConversionJobRequest.md)
  - [CreateModelConversionJobRequestParamsInner](docs/CreateModelConversionJobRequestParamsInner.md)
+ - [CreateModelConversionJobSchema](docs/CreateModelConversionJobSchema.md)
  - [CreateModelRequest](docs/CreateModelRequest.md)
  - [CreateModelSchema](docs/CreateModelSchema.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
+ - [CurrentOrg200Response](docs/CurrentOrg200Response.md)
+ - [DataObjectExplorerSchema](docs/DataObjectExplorerSchema.md)
  - [DataObjectSchema](docs/DataObjectSchema.md)
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
  - [DataObjectTemplateSchema](docs/DataObjectTemplateSchema.md)
- - [DataObjectTemplateSchemaFieldsInner](docs/DataObjectTemplateSchemaFieldsInner.md)
- - [DataObjectTemplateSchemaFieldsInnerFileInformation](docs/DataObjectTemplateSchemaFieldsInnerFileInformation.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -119,12 +139,13 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInner](docs/DeployedWorkflowSchemaObjectsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInner](docs/DeployedWorkflowSchemaObjectsInnerFieldsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
+ - [DeployedWorkflowSchemaResourcesInner](docs/DeployedWorkflowSchemaResourcesInner.md)
+ - [DeployedWorkflowSchemaResourcesInnerObjectsInner](docs/DeployedWorkflowSchemaResourcesInnerObjectsInner.md)
  - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [FileSchema](docs/FileSchema.md)
  - [GetCodeGenRequest](docs/GetCodeGenRequest.md)
  - [GetCodeGenRequestInputsInner](docs/GetCodeGenRequestInputsInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
- - [GetCompletedWorkflowsRequestFilters](docs/GetCompletedWorkflowsRequestFilters.md)
  - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
  - [GetDataObjectsRequest](docs/GetDataObjectsRequest.md)
@@ -137,11 +158,17 @@ Class | Method | HTTP request | Description
  - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
  - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
  - [GetManyFilesFiltersParameter](docs/GetManyFilesFiltersParameter.md)
+ - [GetManyFilesFiltersParameterAdditionalProperties](docs/GetManyFilesFiltersParameterAdditionalProperties.md)
  - [GetManyFilesFiltersParameterCreatedAt](docs/GetManyFilesFiltersParameterCreatedAt.md)
  - [GetManyFilesSortingParameter](docs/GetManyFilesSortingParameter.md)
  - [GetModelConversionJobsFiltersParameter](docs/GetModelConversionJobsFiltersParameter.md)
  - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
  - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
+ - [GetOrgWithUsers200Response](docs/GetOrgWithUsers200Response.md)
+ - [GetOrgWithUsers200ResponseUsersInner](docs/GetOrgWithUsers200ResponseUsersInner.md)
+ - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
+ - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
+ - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
  - [ModelConversionJobCompleteRequest](docs/ModelConversionJobCompleteRequest.md)
  - [ModelConversionJobSchema](docs/ModelConversionJobSchema.md)
@@ -155,14 +182,24 @@ Class | Method | HTTP request | Description
  - [OrgSchema](docs/OrgSchema.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
  - [SaveWorkflowRequest](docs/SaveWorkflowRequest.md)
- - [SaveWorkflowRequestWorkflow](docs/SaveWorkflowRequestWorkflow.md)
- - [SaveWorkflowRequestWorkflowBuilderObject](docs/SaveWorkflowRequestWorkflowBuilderObject.md)
- - [SaveWorkflowRequestWorkflowResourcesInner](docs/SaveWorkflowRequestWorkflowResourcesInner.md)
- - [SaveWorkflowRequestWorkflowResourcesInnerObjectsInner](docs/SaveWorkflowRequestWorkflowResourcesInnerObjectsInner.md)
+ - [SaveWorkflowRequestBuilderObject](docs/SaveWorkflowRequestBuilderObject.md)
+ - [SaveWorkflowRequestResourcesInner](docs/SaveWorkflowRequestResourcesInner.md)
+ - [SaveWorkflowRequestResourcesInnerObjectsInner](docs/SaveWorkflowRequestResourcesInnerObjectsInner.md)
  - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
+ - [SignupCreateOrg200Response](docs/SignupCreateOrg200Response.md)
+ - [SignupCreateOrgRequest](docs/SignupCreateOrgRequest.md)
+ - [SignupCreateUser200Response](docs/SignupCreateUser200Response.md)
+ - [SignupCreateUserRequest](docs/SignupCreateUserRequest.md)
+ - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
+ - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
+ - [UpdateDataObjectExplorerSchema](docs/UpdateDataObjectExplorerSchema.md)
  - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
+ - [UpdateDataObjectTemplateRequest](docs/UpdateDataObjectTemplateRequest.md)
+ - [UpdateDataObjectTemplateRequestFieldsInner](docs/UpdateDataObjectTemplateRequestFieldsInner.md)
+ - [UpdateDataObjectTemplateRequestFieldsInnerFileInformation](docs/UpdateDataObjectTemplateRequestFieldsInnerFileInformation.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
+ - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UserSchema](docs/UserSchema.md)
 
 

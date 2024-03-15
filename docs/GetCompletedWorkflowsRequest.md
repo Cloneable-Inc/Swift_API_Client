@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **[String]** |  | [optional] 
-**filters** | [**GetCompletedWorkflowsRequestFilters**](GetCompletedWorkflowsRequestFilters.md) |  | [optional] 
+**filters** | [**GetPagedWorkflowsFiltersParameter**](GetPagedWorkflowsFiltersParameter.md) |  | [optional] 
 **latest** | **String** |  | [optional] 
 **limit** | **Double** |  | [optional] 
 **skip** | **Double** |  | [optional] 

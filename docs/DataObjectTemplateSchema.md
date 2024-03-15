@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **companyId** | **String** |  | 
 **createdAt** | **Date** |  | 
 **createdBy** | **String** |  | 
-**fields** | [DataObjectTemplateSchemaFieldsInner] |  | [optional] 
+**fields** | [UpdateDataObjectTemplateRequestFieldsInner] |  | 
 **modifiedAt** | **Date** |  | 
 **objectDescription** | **String** |  | 
 **objectDisplayName** | **String** |  | 

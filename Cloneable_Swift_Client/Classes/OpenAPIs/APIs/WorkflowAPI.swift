@@ -15,13 +15,13 @@ open class WorkflowAPI {
     /**
      Compile a workflow
      
-     - parameter saveWorkflowRequest: (body) Body (optional)
+     - parameter compileWorkflowRequest: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func compileWorkflow(saveWorkflowRequest: SaveWorkflowRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
-        return compileWorkflowWithRequestBuilder(saveWorkflowRequest: saveWorkflowRequest).execute(apiResponseQueue) { result in
+    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
+        return compileWorkflowWithRequestBuilder(compileWorkflowRequest: compileWorkflowRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,13 +34,13 @@ open class WorkflowAPI {
     /**
      Compile a workflow
      - POST /workflow/compile
-     - parameter saveWorkflowRequest: (body) Body (optional)
+     - parameter compileWorkflowRequest: (body) Body (optional)
      - returns: RequestBuilder<DeployedWorkflowSchema> 
      */
-    open class func compileWorkflowWithRequestBuilder(saveWorkflowRequest: SaveWorkflowRequest? = nil) -> RequestBuilder<DeployedWorkflowSchema> {
+    open class func compileWorkflowWithRequestBuilder(compileWorkflowRequest: CompileWorkflowRequest? = nil) -> RequestBuilder<DeployedWorkflowSchema> {
         let localVariablePath = "/workflow/compile"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: saveWorkflowRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: compileWorkflowRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -94,6 +94,52 @@ open class WorkflowAPI {
         let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter workflowId: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deleteWorkflow(workflowId: String, body: AnyCodable? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return deleteWorkflowWithRequestBuilder(workflowId: workflowId, body: body).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - DELETE /workflow/{workflow_id}
+     - parameter workflowId: (path)  
+     - parameter body: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func deleteWorkflowWithRequestBuilder(workflowId: String, body: AnyCodable? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/workflow/{workflow_id}"
+        let workflowIdPreEscape = "\(APIHelper.mapValueToPathItem(workflowId))"
+        let workflowIdPostEscape = workflowIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{workflow_id}", with: workflowIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**
@@ -227,13 +273,14 @@ open class WorkflowAPI {
     /**
      Save a workflow
      
+     - parameter id: (path)  
      - parameter saveWorkflowRequest: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func saveWorkflow(saveWorkflowRequest: SaveWorkflowRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
-        return saveWorkflowWithRequestBuilder(saveWorkflowRequest: saveWorkflowRequest).execute(apiResponseQueue) { result in
+    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)) -> RequestTask {
+        return saveWorkflowWithRequestBuilder(id: id, saveWorkflowRequest: saveWorkflowRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -245,12 +292,16 @@ open class WorkflowAPI {
 
     /**
      Save a workflow
-     - POST /workflow/save
+     - POST /workflow/{id}/save
+     - parameter id: (path)  
      - parameter saveWorkflowRequest: (body) Body (optional)
      - returns: RequestBuilder<DeployedWorkflowSchema> 
      */
-    open class func saveWorkflowWithRequestBuilder(saveWorkflowRequest: SaveWorkflowRequest? = nil) -> RequestBuilder<DeployedWorkflowSchema> {
-        let localVariablePath = "/workflow/save"
+    open class func saveWorkflowWithRequestBuilder(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil) -> RequestBuilder<DeployedWorkflowSchema> {
+        var localVariablePath = "/workflow/{id}/save"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: saveWorkflowRequest)
 

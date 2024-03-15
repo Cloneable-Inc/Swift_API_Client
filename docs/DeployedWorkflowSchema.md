@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **createdBy** | **String** |  | 
 **environment** | **String** |  | 
 **typeRefId** | **String** |  | 
-**resources** | [SaveWorkflowRequestWorkflowResourcesInner] |  | [optional] 
+**resources** | [DeployedWorkflowSchemaResourcesInner] |  | [optional] 
 **edges** | [DeployedWorkflowSchemaEdgesInner] |  | 
 **components** | [DeployedWorkflowSchemaComponentsInner] |  | 
 **objects** | [DeployedWorkflowSchemaObjectsInner] |  | 
