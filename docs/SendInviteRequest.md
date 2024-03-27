@@ -1,12 +1,10 @@
-# SignupCreateOrgRequest
+# SendInviteRequest
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orgId** | **String** |  | 
-**orgName** | **String** |  | 
-**userFirstName** | **String** |  | 
-**userLastName** | **String** |  | 
+**emails** | **[String]** |  | 
+**orgId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,29 +12,41 @@ import AnyCodable
 
 public struct SignupCreateUserRequest: Codable, JSONEncodable, Hashable {
 
+    public var orgName: SignupCreateUserRequestOrgName?
     public var orgId: String
-    public var userFirstName: String
-    public var userLastName: String
+    public var firstName: String
+    public var lastName: String
+    public var password: SignupCreateUserRequestPassword?
+    public var phone: SignupCreateUserRequestPhone?
 
-    public init(orgId: String, userFirstName: String, userLastName: String) {
+    public init(orgName: SignupCreateUserRequestOrgName? = nil, orgId: String, firstName: String, lastName: String, password: SignupCreateUserRequestPassword? = nil, phone: SignupCreateUserRequestPhone? = nil) {
+        self.orgName = orgName
         self.orgId = orgId
-        self.userFirstName = userFirstName
-        self.userLastName = userLastName
+        self.firstName = firstName
+        self.lastName = lastName
+        self.password = password
+        self.phone = phone
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case orgName = "org_name"
         case orgId = "org_id"
-        case userFirstName = "user_first_name"
-        case userLastName = "user_last_name"
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case password
+        case phone
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(orgName, forKey: .orgName)
         try container.encode(orgId, forKey: .orgId)
-        try container.encode(userFirstName, forKey: .userFirstName)
-        try container.encode(userLastName, forKey: .userLastName)
+        try container.encode(firstName, forKey: .firstName)
+        try container.encode(lastName, forKey: .lastName)
+        try container.encodeIfPresent(password, forKey: .password)
+        try container.encodeIfPresent(phone, forKey: .phone)
     }
 }
 

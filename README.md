@@ -25,9 +25,11 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthAPI* | [**signupCreateOrg**](docs/AuthAPI.md#signupcreateorg) | **POST** /auth/signup/create-org | Create and sync orgs to auth platform for new accounts
+*AssociatedDomainAPI* | [**getAssociatedDomain**](docs/AssociatedDomainAPI.md#getassociateddomain) | **GET** /apple-app-site-association | Get associated domain
+*AssociatedDomainAPI* | [**getWellKnownAssociatedDomain**](docs/AssociatedDomainAPI.md#getwellknownassociateddomain) | **GET** /.well-known/apple-app-site-association | Get associated domain
 *AuthAPI* | [**signupCreateUser**](docs/AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
 *AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
+*AuthAPI* | [**verifyOrg**](docs/AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
 *ChatAPI* | [**componentAssitant**](docs/ChatAPI.md#componentassitant) | **POST** /chat/components/{id} | Get chat components
 *ChatAPI* | [**getCodeGen**](docs/ChatAPI.md#getcodegen) | **POST** /chat/code-gen | Get chat code gen stream
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
@@ -39,6 +41,7 @@ Class | Method | HTTP request | Description
 *ComponentAPI* | [**getComponents**](docs/ComponentAPI.md#getcomponents) | **GET** /components | Get components for company
 *ComponentAPI* | [**getOneComponent**](docs/ComponentAPI.md#getonecomponent) | **GET** /component/{id} | Returns a component by id
 *ComponentAPI* | [**updateComponent**](docs/ComponentAPI.md#updatecomponent) | **POST** /component/{id} | Returns a component by id
+*DashboardAPI* | [**getMetrics**](docs/DashboardAPI.md#getmetrics) | **GET** /dashboard | 
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**createExplorerPage**](docs/DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
@@ -74,11 +77,14 @@ Class | Method | HTTP request | Description
 *OpenapiAPI* | [**getOpenAPIJSON**](docs/OpenapiAPI.md#getopenapijson) | **GET** /openapi.json | Get OpenAPI JSON
 *OpenapiAPI* | [**getOpenAPIPage**](docs/OpenapiAPI.md#getopenapipage) | **GET** /openapi | Get OpenAPI Docs page
 *OpenapiAPI* | [**getOpenAPIYaml**](docs/OpenapiAPI.md#getopenapiyaml) | **GET** /openapi.yaml | Get OpenAPI YAML
+*OrgAPI* | [**cancelInvite**](docs/OrgAPI.md#cancelinvite) | **DELETE** /org/cancel-inivte | 
 *OrgAPI* | [**createOrg**](docs/OrgAPI.md#createorg) | **PUT** /org | 
 *OrgAPI* | [**currentOrg**](docs/OrgAPI.md#currentorg) | **GET** /org/current | 
 *OrgAPI* | [**getAllOrgs**](docs/OrgAPI.md#getallorgs) | **GET** /org | 
-*OrgAPI* | [**getOrgWithUsers**](docs/OrgAPI.md#getorgwithusers) | **GET** /org/{id}/users | 
+*OrgAPI* | [**getMembers**](docs/OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
+*OrgAPI* | [**getOrg**](docs/OrgAPI.md#getorg) | **GET** /org/{id} | 
 *OrgAPI* | [**inviteUser**](docs/OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
+*OrgAPI* | [**sendInvite**](docs/OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
 *OrgAPI* | [**updateOrgSettings**](docs/OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
 *SupportAPI* | [**sendFeedback**](docs/SupportAPI.md#sendfeedback) | **PUT** /support/feedback | Send feedback from user
 *UserAPI* | [**currentUser**](docs/UserAPI.md#currentuser) | **GET** /user | Get current user
@@ -96,6 +102,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CancelInviteRequest](docs/CancelInviteRequest.md)
  - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
  - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
@@ -159,11 +166,12 @@ Class | Method | HTTP request | Description
  - [GetManyFilesFiltersParameterAdditionalProperties](docs/GetManyFilesFiltersParameterAdditionalProperties.md)
  - [GetManyFilesFiltersParameterCreatedAt](docs/GetManyFilesFiltersParameterCreatedAt.md)
  - [GetManyFilesSortingParameter](docs/GetManyFilesSortingParameter.md)
+ - [GetMembers200ResponseInner](docs/GetMembers200ResponseInner.md)
+ - [GetMetrics200Response](docs/GetMetrics200Response.md)
+ - [GetMetrics200ResponseWorkflows](docs/GetMetrics200ResponseWorkflows.md)
  - [GetModelConversionJobsFiltersParameter](docs/GetModelConversionJobsFiltersParameter.md)
  - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
  - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
- - [GetOrgWithUsers200Response](docs/GetOrgWithUsers200Response.md)
- - [GetOrgWithUsers200ResponseUsersInner](docs/GetOrgWithUsers200ResponseUsersInner.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
@@ -184,10 +192,12 @@ Class | Method | HTTP request | Description
  - [SaveWorkflowRequestResourcesInner](docs/SaveWorkflowRequestResourcesInner.md)
  - [SaveWorkflowRequestResourcesInnerObjectsInner](docs/SaveWorkflowRequestResourcesInnerObjectsInner.md)
  - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
- - [SignupCreateOrg200Response](docs/SignupCreateOrg200Response.md)
- - [SignupCreateOrgRequest](docs/SignupCreateOrgRequest.md)
+ - [SendInviteRequest](docs/SendInviteRequest.md)
  - [SignupCreateUser200Response](docs/SignupCreateUser200Response.md)
  - [SignupCreateUserRequest](docs/SignupCreateUserRequest.md)
+ - [SignupCreateUserRequestOrgName](docs/SignupCreateUserRequestOrgName.md)
+ - [SignupCreateUserRequestPassword](docs/SignupCreateUserRequestPassword.md)
+ - [SignupCreateUserRequestPhone](docs/SignupCreateUserRequestPhone.md)
  - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
@@ -199,6 +209,8 @@ Class | Method | HTTP request | Description
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UserSchema](docs/UserSchema.md)
+ - [VerifyOrg200Response](docs/VerifyOrg200Response.md)
+ - [VerifyOrgRequest](docs/VerifyOrgRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

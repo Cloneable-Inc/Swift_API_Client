@@ -4,13 +4,63 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelInvite**](OrgAPI.md#cancelinvite) | **DELETE** /org/cancel-inivte | 
 [**createOrg**](OrgAPI.md#createorg) | **PUT** /org | 
 [**currentOrg**](OrgAPI.md#currentorg) | **GET** /org/current | 
 [**getAllOrgs**](OrgAPI.md#getallorgs) | **GET** /org | 
-[**getOrgWithUsers**](OrgAPI.md#getorgwithusers) | **GET** /org/{id}/users | 
+[**getMembers**](OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
+[**getOrg**](OrgAPI.md#getorg) | **GET** /org/{id} | 
 [**inviteUser**](OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
+[**sendInvite**](OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
 [**updateOrgSettings**](OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
 
+
+# **cancelInvite**
+```swift
+    open class func cancelInvite(cancelInviteRequest: CancelInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let cancelInviteRequest = cancelInvite_request(email: "email_example", orgId: "orgId_example") // CancelInviteRequest | Body (optional)
+
+OrgAPI.cancelInvite(cancelInviteRequest: cancelInviteRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cancelInviteRequest** | [**CancelInviteRequest**](CancelInviteRequest.md) | Body | [optional] 
+
+### Return type
+
+[**CreateFile400Response**](CreateFile400Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createOrg**
 ```swift
@@ -145,9 +195,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getOrgWithUsers**
+# **getMembers**
 ```swift
-    open class func getOrgWithUsers(id: String, completion: @escaping (_ data: GetOrgWithUsers200Response?, _ error: Error?) -> Void)
+    open class func getMembers(id: String, completion: @escaping (_ data: [GetMembers200ResponseInner]?, _ error: Error?) -> Void)
 ```
 
 
@@ -159,7 +209,7 @@ import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
-OrgAPI.getOrgWithUsers(id: id) { (response, error) in
+OrgAPI.getMembers(id: id) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -179,7 +229,54 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOrgWithUsers200Response**](GetOrgWithUsers200Response.md)
+[**[GetMembers200ResponseInner]**](GetMembers200ResponseInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOrg**
+```swift
+    open class func getOrg(id: String, completion: @escaping (_ data: CurrentOrg200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+
+OrgAPI.getOrg(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+
+### Return type
+
+[**CurrentOrg200Response**](CurrentOrg200Response.md)
 
 ### Authorization
 
@@ -230,6 +327,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateFile200Response**](UpdateFile200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sendInvite**
+```swift
+    open class func sendInvite(sendInviteRequest: SendInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+```
+
+Invite user to org
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let sendInviteRequest = sendInvite_request(emails: ["emails_example"], orgId: "orgId_example") // SendInviteRequest | Body (optional)
+
+// Invite user to org
+OrgAPI.sendInvite(sendInviteRequest: sendInviteRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sendInviteRequest** | [**SendInviteRequest**](SendInviteRequest.md) | Body | [optional] 
+
+### Return type
+
+[**CreateFile400Response**](CreateFile400Response.md)
 
 ### Authorization
 

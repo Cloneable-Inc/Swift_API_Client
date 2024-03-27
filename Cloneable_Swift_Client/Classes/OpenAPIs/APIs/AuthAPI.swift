@@ -13,49 +13,6 @@ import AnyCodable
 open class AuthAPI {
 
     /**
-     Create and sync orgs to auth platform for new accounts
-     
-     - parameter signupCreateOrgRequest: (body) Body (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func signupCreateOrg(signupCreateOrgRequest: SignupCreateOrgRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: SignupCreateOrg200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return signupCreateOrgWithRequestBuilder(signupCreateOrgRequest: signupCreateOrgRequest).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Create and sync orgs to auth platform for new accounts
-     - POST /auth/signup/create-org
-     - parameter signupCreateOrgRequest: (body) Body (optional)
-     - returns: RequestBuilder<SignupCreateOrg200Response> 
-     */
-    open class func signupCreateOrgWithRequestBuilder(signupCreateOrgRequest: SignupCreateOrgRequest? = nil) -> RequestBuilder<SignupCreateOrg200Response> {
-        let localVariablePath = "/auth/signup/create-org"
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: signupCreateOrgRequest)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<SignupCreateOrg200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
      Create and sync users to auth platform for new accounts
      
      - parameter signupCreateUserRequest: (body) Body (optional)
@@ -137,5 +94,48 @@ open class AuthAPI {
         let localVariableRequestBuilder: RequestBuilder<SignupNeeded200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Verify organization
+     
+     - parameter verifyOrgRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func verifyOrg(verifyOrgRequest: VerifyOrgRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: VerifyOrg200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return verifyOrgWithRequestBuilder(verifyOrgRequest: verifyOrgRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Verify organization
+     - POST /auth/verify-org
+     - parameter verifyOrgRequest: (body) Body (optional)
+     - returns: RequestBuilder<VerifyOrg200Response> 
+     */
+    open class func verifyOrgWithRequestBuilder(verifyOrgRequest: VerifyOrgRequest? = nil) -> RequestBuilder<VerifyOrg200Response> {
+        let localVariablePath = "/auth/verify-org"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: verifyOrgRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<VerifyOrg200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }
