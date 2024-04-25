@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **displayName** | **String** |  | 
 **dynamicInputId** | **String** |  | 
 **arraySubType** | **String** |  | [optional] 
+**jsonSchema** | **String** |  | [optional] 
+**jsonSchemaId** | **String** |  | [optional] 
 **arrayCloneableSubType** | **String** |  | [optional] 
 **dynamicOutputId** | **String** |  | 
 **fieldId** | **String** |  | 

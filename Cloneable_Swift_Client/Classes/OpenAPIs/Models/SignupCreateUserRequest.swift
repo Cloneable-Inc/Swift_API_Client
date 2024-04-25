@@ -16,15 +16,13 @@ public struct SignupCreateUserRequest: Codable, JSONEncodable, Hashable {
     public var orgId: String
     public var firstName: String
     public var lastName: String
-    public var password: SignupCreateUserRequestPassword?
     public var phone: SignupCreateUserRequestPhone?
 
-    public init(orgName: SignupCreateUserRequestOrgName? = nil, orgId: String, firstName: String, lastName: String, password: SignupCreateUserRequestPassword? = nil, phone: SignupCreateUserRequestPhone? = nil) {
+    public init(orgName: SignupCreateUserRequestOrgName? = nil, orgId: String, firstName: String, lastName: String, phone: SignupCreateUserRequestPhone? = nil) {
         self.orgName = orgName
         self.orgId = orgId
         self.firstName = firstName
         self.lastName = lastName
-        self.password = password
         self.phone = phone
     }
 
@@ -33,7 +31,6 @@ public struct SignupCreateUserRequest: Codable, JSONEncodable, Hashable {
         case orgId = "org_id"
         case firstName = "first_name"
         case lastName = "last_name"
-        case password
         case phone
     }
 
@@ -45,7 +42,6 @@ public struct SignupCreateUserRequest: Codable, JSONEncodable, Hashable {
         try container.encode(orgId, forKey: .orgId)
         try container.encode(firstName, forKey: .firstName)
         try container.encode(lastName, forKey: .lastName)
-        try container.encodeIfPresent(password, forKey: .password)
         try container.encodeIfPresent(phone, forKey: .phone)
     }
 }

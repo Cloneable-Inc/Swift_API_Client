@@ -41,14 +41,20 @@ Class | Method | HTTP request | Description
 *ComponentAPI* | [**getComponents**](docs/ComponentAPI.md#getcomponents) | **GET** /components | Get components for company
 *ComponentAPI* | [**getOneComponent**](docs/ComponentAPI.md#getonecomponent) | **GET** /component/{id} | Returns a component by id
 *ComponentAPI* | [**updateComponent**](docs/ComponentAPI.md#updatecomponent) | **POST** /component/{id} | Returns a component by id
+*CustomTypeAPI* | [**createCustomType**](docs/CustomTypeAPI.md#createcustomtype) | **POST** /custom-type | Create a custom type
+*CustomTypeAPI* | [**getCustomTypes**](docs/CustomTypeAPI.md#getcustomtypes) | **GET** /custom-types | Get custom types for company
+*CustomTypeAPI* | [**getOneCustomType**](docs/CustomTypeAPI.md#getonecustomtype) | **GET** /custom-type/{id} | Returns a custom type by id
+*CustomTypeAPI* | [**updateCustomType**](docs/CustomTypeAPI.md#updatecustomtype) | **PUT** /custom-type/{id} | Update a custom type
 *DashboardAPI* | [**getMetrics**](docs/DashboardAPI.md#getmetrics) | **GET** /dashboard | 
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**createExplorerPage**](docs/DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
+*DataObjectAPI* | [**deleteExplorerPage**](docs/DataObjectAPI.md#deleteexplorerpage) | **DELETE** /explorer-page/{id} | Delete an explorer page
 *DataObjectAPI* | [**getDataObjects**](docs/DataObjectAPI.md#getdataobjects) | **POST** /data-objects | Get all data objects
 *DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 *DataObjectAPI* | [**getExplorerPages**](docs/DataObjectAPI.md#getexplorerpages) | **GET** /explorer-pages | Get all explorer pages
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
 *DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
+*DataObjectAPI* | [**updateExplorerPage**](docs/DataObjectAPI.md#updateexplorerpage) | **POST** /explorer-page/{id} | Update an explorer page
 *DataObjectTemplateAPI* | [**createDataObjectTemplate**](docs/DataObjectTemplateAPI.md#createdataobjecttemplate) | **POST** /data-object-template | Create a data object template
 *DataObjectTemplateAPI* | [**getManyDataObjectTemplates**](docs/DataObjectTemplateAPI.md#getmanydataobjecttemplates) | **GET** /data-object-templates | Get many data object templates
 *DataObjectTemplateAPI* | [**getOneDataObjectTemplate**](docs/DataObjectTemplateAPI.md#getonedataobjecttemplate) | **GET** /data-object-template/{id} | Get a data object template
@@ -80,6 +86,7 @@ Class | Method | HTTP request | Description
 *OrgAPI* | [**cancelInvite**](docs/OrgAPI.md#cancelinvite) | **DELETE** /org/cancel-inivte | 
 *OrgAPI* | [**createOrg**](docs/OrgAPI.md#createorg) | **PUT** /org | 
 *OrgAPI* | [**currentOrg**](docs/OrgAPI.md#currentorg) | **GET** /org/current | 
+*OrgAPI* | [**deactivateUser**](docs/OrgAPI.md#deactivateuser) | **POST** /org/deactivate-user | 
 *OrgAPI* | [**getAllOrgs**](docs/OrgAPI.md#getallorgs) | **GET** /org | 
 *OrgAPI* | [**getMembers**](docs/OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
 *OrgAPI* | [**getOrg**](docs/OrgAPI.md#getorg) | **GET** /org/{id} | 
@@ -119,6 +126,8 @@ Class | Method | HTTP request | Description
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
  - [CreateComponentRequest](docs/CreateComponentRequest.md)
  - [CreateComponentSchema](docs/CreateComponentSchema.md)
+ - [CreateCustomTypeRequest](docs/CreateCustomTypeRequest.md)
+ - [CreateCustomTypeSchema](docs/CreateCustomTypeSchema.md)
  - [CreateDataObjectExplorerSchema](docs/CreateDataObjectExplorerSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
@@ -130,10 +139,12 @@ Class | Method | HTTP request | Description
  - [CreateModelSchema](docs/CreateModelSchema.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CurrentOrg200Response](docs/CurrentOrg200Response.md)
+ - [CustomTypeSchema](docs/CustomTypeSchema.md)
  - [DataObjectExplorerSchema](docs/DataObjectExplorerSchema.md)
  - [DataObjectSchema](docs/DataObjectSchema.md)
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
  - [DataObjectTemplateSchema](docs/DataObjectTemplateSchema.md)
+ - [DeactivateUserRequest](docs/DeactivateUserRequest.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -193,14 +204,17 @@ Class | Method | HTTP request | Description
  - [SaveWorkflowRequestResourcesInnerObjectsInner](docs/SaveWorkflowRequestResourcesInnerObjectsInner.md)
  - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
  - [SendInviteRequest](docs/SendInviteRequest.md)
+ - [SendInviteRequestInvitesInner](docs/SendInviteRequestInvitesInner.md)
  - [SignupCreateUser200Response](docs/SignupCreateUser200Response.md)
  - [SignupCreateUserRequest](docs/SignupCreateUserRequest.md)
  - [SignupCreateUserRequestOrgName](docs/SignupCreateUserRequestOrgName.md)
- - [SignupCreateUserRequestPassword](docs/SignupCreateUserRequestPassword.md)
  - [SignupCreateUserRequestPhone](docs/SignupCreateUserRequestPhone.md)
  - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
+ - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
+ - [UpdateCustomTypeRequestPropertiesValue](docs/UpdateCustomTypeRequestPropertiesValue.md)
+ - [UpdateCustomTypeSchema](docs/UpdateCustomTypeSchema.md)
  - [UpdateDataObjectExplorerSchema](docs/UpdateDataObjectExplorerSchema.md)
  - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
  - [UpdateDataObjectTemplateRequest](docs/UpdateDataObjectTemplateRequest.md)

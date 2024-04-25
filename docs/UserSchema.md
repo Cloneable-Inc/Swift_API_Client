@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **roles** | **[String]** |  | 
 **createdAt** | **Date** |  | 
 **updatedAt** | **Date** |  | 
+**deactiveAt** | **Date** |  | [optional] 
 **companyId** | **String** |  | 
 **phoneNumber** | **Double** |  | [optional] 
 **cloneableEmployeeRoles** | **[String]** |  | [optional] 

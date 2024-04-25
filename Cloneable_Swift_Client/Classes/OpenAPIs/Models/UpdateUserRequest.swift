@@ -22,12 +22,13 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
     public var auth0Id: String?
     public var companyRoles: [String]?
     public var roles: [String]?
+    public var deactiveAt: Date?
     public var phoneNumber: Double?
     public var cloneableEmployeeRoles: [String]?
     public var organizationId: String?
     public var memberId: String?
 
-    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, confirmed: Bool? = nil, active: Bool? = nil, auth0Id: String? = nil, companyRoles: [String]? = nil, roles: [String]? = nil, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
+    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, confirmed: Bool? = nil, active: Bool? = nil, auth0Id: String? = nil, companyRoles: [String]? = nil, roles: [String]? = nil, deactiveAt: Date? = nil, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
@@ -36,6 +37,7 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
         self.auth0Id = auth0Id
         self.companyRoles = companyRoles
         self.roles = roles
+        self.deactiveAt = deactiveAt
         self.phoneNumber = phoneNumber
         self.cloneableEmployeeRoles = cloneableEmployeeRoles
         self.organizationId = organizationId
@@ -51,6 +53,7 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
         case auth0Id = "auth0_id"
         case companyRoles = "company_roles"
         case roles
+        case deactiveAt = "deactive_at"
         case phoneNumber = "phone_number"
         case cloneableEmployeeRoles = "cloneable_employee_roles"
         case organizationId = "organization_id"
@@ -69,6 +72,7 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(auth0Id, forKey: .auth0Id)
         try container.encodeIfPresent(companyRoles, forKey: .companyRoles)
         try container.encodeIfPresent(roles, forKey: .roles)
+        try container.encodeIfPresent(deactiveAt, forKey: .deactiveAt)
         try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
         try container.encodeIfPresent(cloneableEmployeeRoles, forKey: .cloneableEmployeeRoles)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)

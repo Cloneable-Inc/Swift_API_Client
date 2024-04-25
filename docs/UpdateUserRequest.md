@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **auth0Id** | **String** |  | [optional] 
 **companyRoles** | **[String]** |  | [optional] 
 **roles** | **[String]** |  | [optional] 
+**deactiveAt** | **Date** |  | [optional] 
 **phoneNumber** | **Double** |  | [optional] 
 **cloneableEmployeeRoles** | **[String]** |  | [optional] 
 **organizationId** | **String** |  | [optional] 

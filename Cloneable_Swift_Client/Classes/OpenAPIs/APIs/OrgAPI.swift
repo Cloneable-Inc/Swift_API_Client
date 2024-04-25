@@ -135,6 +135,47 @@ open class OrgAPI {
 
     /**
 
+     - parameter deactivateUserRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deactivateUser(deactivateUserRequest: DeactivateUserRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return deactivateUserWithRequestBuilder(deactivateUserRequest: deactivateUserRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /org/deactivate-user
+     - parameter deactivateUserRequest: (body) Body (optional)
+     - returns: RequestBuilder<CreateFile400Response> 
+     */
+    open class func deactivateUserWithRequestBuilder(deactivateUserRequest: DeactivateUserRequest? = nil) -> RequestBuilder<CreateFile400Response> {
+        let localVariablePath = "/org/deactivate-user"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: deactivateUserRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateFile400Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */

@@ -21,7 +21,7 @@ Create and sync users to auth platform for new accounts
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let signupCreateUserRequest = signupCreateUser_request(orgName: signupCreateUser_request_org_name(), orgId: "orgId_example", firstName: "firstName_example", lastName: "lastName_example", password: signupCreateUser_request_password(), phone: signupCreateUser_request_phone()) // SignupCreateUserRequest | Body (optional)
+let signupCreateUserRequest = signupCreateUser_request(orgName: signupCreateUser_request_org_name(), orgId: "orgId_example", firstName: "firstName_example", lastName: "lastName_example", phone: signupCreateUser_request_phone()) // SignupCreateUserRequest | Body (optional)
 
 // Create and sync users to auth platform for new accounts
 AuthAPI.signupCreateUser(signupCreateUserRequest: signupCreateUserRequest) { (response, error) in

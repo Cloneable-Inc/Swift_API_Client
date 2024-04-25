@@ -15,6 +15,8 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
     public var displayName: String
     public var dynamicInputId: String
     public var arraySubType: String?
+    public var jsonSchema: String?
+    public var jsonSchemaId: String?
     public var arrayCloneableSubType: String?
     public var dynamicOutputId: String
     public var fieldId: String
@@ -28,10 +30,12 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
     public var fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation?
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]?
 
-    public init(displayName: String, dynamicInputId: String, arraySubType: String? = nil, arrayCloneableSubType: String? = nil, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectId: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, name: String, type: String, statusOptions: [String]? = nil, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
+    public init(displayName: String, dynamicInputId: String, arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, arrayCloneableSubType: String? = nil, dynamicOutputId: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectId: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, name: String, type: String, statusOptions: [String]? = nil, fileInformation: DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation? = nil, outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
         self.displayName = displayName
         self.dynamicInputId = dynamicInputId
         self.arraySubType = arraySubType
+        self.jsonSchema = jsonSchema
+        self.jsonSchemaId = jsonSchemaId
         self.arrayCloneableSubType = arrayCloneableSubType
         self.dynamicOutputId = dynamicOutputId
         self.fieldId = fieldId
@@ -50,6 +54,8 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         case displayName = "display_name"
         case dynamicInputId = "dynamic_input_id"
         case arraySubType = "array_sub_type"
+        case jsonSchema = "json_schema"
+        case jsonSchemaId = "json_schema_id"
         case arrayCloneableSubType = "array_cloneable_sub_type"
         case dynamicOutputId = "dynamic_output_id"
         case fieldId = "field_id"
@@ -71,6 +77,8 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInner: Codable, JSONEncoda
         try container.encode(displayName, forKey: .displayName)
         try container.encode(dynamicInputId, forKey: .dynamicInputId)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
+        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
+        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
         try container.encodeIfPresent(arrayCloneableSubType, forKey: .arrayCloneableSubType)
         try container.encode(dynamicOutputId, forKey: .dynamicOutputId)
         try container.encode(fieldId, forKey: .fieldId)

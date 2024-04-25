@@ -25,13 +25,14 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
     public var roles: [String]
     public var createdAt: Date
     public var updatedAt: Date
+    public var deactiveAt: Date?
     public var companyId: String
     public var phoneNumber: Double?
     public var cloneableEmployeeRoles: [String]?
     public var organizationId: String?
     public var memberId: String?
 
-    public init(id: String, email: String, firstName: String, lastName: String, confirmed: Bool, active: Bool, auth0Id: String, companyRoles: [String], roles: [String], createdAt: Date, updatedAt: Date, companyId: String, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
+    public init(id: String, email: String, firstName: String, lastName: String, confirmed: Bool, active: Bool, auth0Id: String, companyRoles: [String], roles: [String], createdAt: Date, updatedAt: Date, deactiveAt: Date? = nil, companyId: String, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
         self.id = id
         self.email = email
         self.firstName = firstName
@@ -43,6 +44,7 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
         self.roles = roles
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.deactiveAt = deactiveAt
         self.companyId = companyId
         self.phoneNumber = phoneNumber
         self.cloneableEmployeeRoles = cloneableEmployeeRoles
@@ -62,6 +64,7 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
         case roles
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case deactiveAt = "deactive_at"
         case companyId = "company_id"
         case phoneNumber = "phone_number"
         case cloneableEmployeeRoles = "cloneable_employee_roles"
@@ -84,6 +87,7 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
         try container.encode(roles, forKey: .roles)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(deactiveAt, forKey: .deactiveAt)
         try container.encode(companyId, forKey: .companyId)
         try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
         try container.encodeIfPresent(cloneableEmployeeRoles, forKey: .cloneableEmployeeRoles)

@@ -26,10 +26,10 @@ public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
     public var objectDisplayName: String
     public var objectName: String
     public var revision: Double
-    public var typeRefId: String?
+    public var typeRefId: String
     public var isTemplate: Bool
 
-    public init(id: String, objectId: String, companyId: String, createdAt: Date, createdBy: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectName: String, revision: Double, typeRefId: String? = nil, isTemplate: Bool) {
+    public init(id: String, objectId: String, companyId: String, createdAt: Date, createdBy: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectName: String, revision: Double, typeRefId: String, isTemplate: Bool) {
         self.id = id
         self.objectId = objectId
         self.companyId = companyId
@@ -76,7 +76,7 @@ public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
         try container.encode(objectDisplayName, forKey: .objectDisplayName)
         try container.encode(objectName, forKey: .objectName)
         try container.encode(revision, forKey: .revision)
-        try container.encodeIfPresent(typeRefId, forKey: .typeRefId)
+        try container.encode(typeRefId, forKey: .typeRefId)
         try container.encode(isTemplate, forKey: .isTemplate)
     }
 }

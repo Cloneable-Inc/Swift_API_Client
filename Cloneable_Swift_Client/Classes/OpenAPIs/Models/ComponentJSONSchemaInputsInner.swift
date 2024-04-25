@@ -22,8 +22,10 @@ public struct ComponentJSONSchemaInputsInner: Codable, JSONEncodable, Hashable {
     public var triggerNav: Bool?
     public var group: String?
     public var dynamicInputID: String?
+    public var jsonSchema: String?
+    public var jsonSchemaId: String?
 
-    public init(inputID: String, inputName: String, inputDataType: String, acceptsArray: Bool? = nil, _required: Bool, inputDescription: String, trigger: Bool? = nil, triggerNav: Bool? = nil, group: String? = nil, dynamicInputID: String? = nil) {
+    public init(inputID: String, inputName: String, inputDataType: String, acceptsArray: Bool? = nil, _required: Bool, inputDescription: String, trigger: Bool? = nil, triggerNav: Bool? = nil, group: String? = nil, dynamicInputID: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil) {
         self.inputID = inputID
         self.inputName = inputName
         self.inputDataType = inputDataType
@@ -34,6 +36,8 @@ public struct ComponentJSONSchemaInputsInner: Codable, JSONEncodable, Hashable {
         self.triggerNav = triggerNav
         self.group = group
         self.dynamicInputID = dynamicInputID
+        self.jsonSchema = jsonSchema
+        self.jsonSchemaId = jsonSchemaId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -47,6 +51,8 @@ public struct ComponentJSONSchemaInputsInner: Codable, JSONEncodable, Hashable {
         case triggerNav = "trigger_nav"
         case group
         case dynamicInputID
+        case jsonSchema
+        case jsonSchemaId
     }
 
     // Encodable protocol methods
@@ -63,6 +69,8 @@ public struct ComponentJSONSchemaInputsInner: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(triggerNav, forKey: .triggerNav)
         try container.encodeIfPresent(group, forKey: .group)
         try container.encodeIfPresent(dynamicInputID, forKey: .dynamicInputID)
+        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
+        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
     }
 }
 

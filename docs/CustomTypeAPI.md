@@ -1,30 +1,31 @@
-# UserAPI
+# CustomTypeAPI
 
 All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**currentUser**](UserAPI.md#currentuser) | **GET** /user | Get current user
-[**getAllUsers**](UserAPI.md#getallusers) | **GET** /users | Get all users in the org
-[**getUser**](UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
-[**updateUser**](UserAPI.md#updateuser) | **POST** /user/{id} | Update a user
+[**createCustomType**](CustomTypeAPI.md#createcustomtype) | **POST** /custom-type | Create a custom type
+[**getCustomTypes**](CustomTypeAPI.md#getcustomtypes) | **GET** /custom-types | Get custom types for company
+[**getOneCustomType**](CustomTypeAPI.md#getonecustomtype) | **GET** /custom-type/{id} | Returns a custom type by id
+[**updateCustomType**](CustomTypeAPI.md#updatecustomtype) | **PUT** /custom-type/{id} | Update a custom type
 
 
-# **currentUser**
+# **createCustomType**
 ```swift
-    open class func currentUser(completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
+    open class func createCustomType(createCustomTypeRequest: CreateCustomTypeRequest? = nil, completion: @escaping (_ data: CustomTypeSchema?, _ error: Error?) -> Void)
 ```
 
-Get current user
+Create a custom type
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
+let createCustomTypeRequest = createCustomType_request(id: 123, name: "name_example", description: "description_example", companyId: "companyId_example", createdAt: Date(), createdBy: "createdBy_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", version: "version_example", properties: "TODO", isPublic: false) // CreateCustomTypeRequest | Body (optional)
 
-// Get current user
-UserAPI.currentUser() { (response, error) in
+// Create a custom type
+CustomTypeAPI.createCustomType(createCustomTypeRequest: createCustomTypeRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -37,11 +38,14 @@ UserAPI.currentUser() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomTypeRequest** | [**CreateCustomTypeRequest**](CreateCustomTypeRequest.md) | Body | [optional] 
 
 ### Return type
 
-[**UserSchema**](UserSchema.md)
+[**CustomTypeSchema**](CustomTypeSchema.md)
 
 ### Authorization
 
@@ -49,26 +53,27 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAllUsers**
+# **getCustomTypes**
 ```swift
-    open class func getAllUsers(completion: @escaping (_ data: [UserSchema]?, _ error: Error?) -> Void)
+    open class func getCustomTypes(allForUse: Bool? = nil, completion: @escaping (_ data: [CustomTypeSchema]?, _ error: Error?) -> Void)
 ```
 
-Get all users in the org
+Get custom types for company
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
+let allForUse = true // Bool |  (optional)
 
-// Get all users in the org
-UserAPI.getAllUsers() { (response, error) in
+// Get custom types for company
+CustomTypeAPI.getCustomTypes(allForUse: allForUse) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -81,11 +86,14 @@ UserAPI.getAllUsers() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **allForUse** | **Bool** |  | [optional] 
 
 ### Return type
 
-[**[UserSchema]**](UserSchema.md)
+[**[CustomTypeSchema]**](CustomTypeSchema.md)
 
 ### Authorization
 
@@ -98,12 +106,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getUser**
+# **getOneCustomType**
 ```swift
-    open class func getUser(id: String, completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
+    open class func getOneCustomType(id: String, completion: @escaping (_ data: CustomTypeSchema?, _ error: Error?) -> Void)
 ```
 
-Get user by id
+Returns a custom type by id
 
 ### Example
 ```swift
@@ -112,8 +120,8 @@ import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 
-// Get user by id
-UserAPI.getUser(id: id) { (response, error) in
+// Returns a custom type by id
+CustomTypeAPI.getOneCustomType(id: id) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -133,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserSchema**](UserSchema.md)
+[**CustomTypeSchema**](CustomTypeSchema.md)
 
 ### Authorization
 
@@ -146,12 +154,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateUser**
+# **updateCustomType**
 ```swift
-    open class func updateUser(id: String, updateUserRequest: UpdateUserRequest? = nil, completion: @escaping (_ data: UserSchema?, _ error: Error?) -> Void)
+    open class func updateCustomType(id: String, updateCustomTypeRequest: UpdateCustomTypeRequest? = nil, completion: @escaping (_ data: CustomTypeSchema?, _ error: Error?) -> Void)
 ```
 
-Update a user
+Update a custom type
 
 ### Example
 ```swift
@@ -159,10 +167,10 @@ Update a user
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateUserRequest = updateUser_request(email: "email_example", firstName: "firstName_example", lastName: "lastName_example", confirmed: false, active: false, auth0Id: "auth0Id_example", companyRoles: ["companyRoles_example"], roles: ["roles_example"], deactiveAt: Date(), phoneNumber: 123, cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example") // UpdateUserRequest | Body (optional)
+let updateCustomTypeRequest = updateCustomType_request(name: "name_example", description: "description_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", version: "version_example", properties: "TODO", isPublic: false) // UpdateCustomTypeRequest | Body (optional)
 
-// Update a user
-UserAPI.updateUser(id: id, updateUserRequest: updateUserRequest) { (response, error) in
+// Update a custom type
+CustomTypeAPI.updateCustomType(id: id, updateCustomTypeRequest: updateCustomTypeRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -179,11 +187,11 @@ UserAPI.updateUser(id: id, updateUserRequest: updateUserRequest) { (response, er
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md) | Body | [optional] 
+ **updateCustomTypeRequest** | [**UpdateCustomTypeRequest**](UpdateCustomTypeRequest.md) | Body | [optional] 
 
 ### Return type
 
-[**UserSchema**](UserSchema.md)
+[**CustomTypeSchema**](CustomTypeSchema.md)
 
 ### Authorization
 
