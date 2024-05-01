@@ -25,8 +25,10 @@ public struct ComponentJSONSchemaOutputsInner: Codable, JSONEncodable, Hashable 
     public var instantTrigger: Bool?
     public var userCanChooseIfInstant: Bool?
     public var dynamicOutputID: String?
+    public var jsonSchema: String?
+    public var jsonSchemaId: String?
 
-    public init(outputID: String, outputName: String, outputDescription: String, outputDataType: String, outputsArray: Bool? = nil, outputClassification: String? = nil, outputImmediately: Bool? = nil, _required: Bool, group: String? = nil, outputImmediatelyUserDefinable: Bool? = nil, instantTrigger: Bool? = nil, userCanChooseIfInstant: Bool? = nil, dynamicOutputID: String? = nil) {
+    public init(outputID: String, outputName: String, outputDescription: String, outputDataType: String, outputsArray: Bool? = nil, outputClassification: String? = nil, outputImmediately: Bool? = nil, _required: Bool, group: String? = nil, outputImmediatelyUserDefinable: Bool? = nil, instantTrigger: Bool? = nil, userCanChooseIfInstant: Bool? = nil, dynamicOutputID: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil) {
         self.outputID = outputID
         self.outputName = outputName
         self.outputDescription = outputDescription
@@ -40,6 +42,8 @@ public struct ComponentJSONSchemaOutputsInner: Codable, JSONEncodable, Hashable 
         self.instantTrigger = instantTrigger
         self.userCanChooseIfInstant = userCanChooseIfInstant
         self.dynamicOutputID = dynamicOutputID
+        self.jsonSchema = jsonSchema
+        self.jsonSchemaId = jsonSchemaId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,6 +60,8 @@ public struct ComponentJSONSchemaOutputsInner: Codable, JSONEncodable, Hashable 
         case instantTrigger
         case userCanChooseIfInstant
         case dynamicOutputID
+        case jsonSchema
+        case jsonSchemaId
     }
 
     // Encodable protocol methods
@@ -75,6 +81,8 @@ public struct ComponentJSONSchemaOutputsInner: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(instantTrigger, forKey: .instantTrigger)
         try container.encodeIfPresent(userCanChooseIfInstant, forKey: .userCanChooseIfInstant)
         try container.encodeIfPresent(dynamicOutputID, forKey: .dynamicOutputID)
+        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
+        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
     }
 }
 

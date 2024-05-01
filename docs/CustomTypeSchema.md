@@ -1,21 +1,19 @@
-# DataObjectSchema
+# CustomTypeSchema
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
+**id** | **UUID** |  | 
+**name** | **String** |  | 
+**description** | **String** |  | 
 **companyId** | **String** |  | 
 **createdAt** | **Date** |  | 
 **createdBy** | **String** |  | 
-**fields** | [DataObjectSchemaFieldsInner] |  | 
 **modifiedAt** | **Date** |  | 
-**objectDescription** | **String** |  | 
-**objectDisplayName** | **String** |  | 
-**objectTemplateId** | **String** | Object template ID | 
-**objectName** | **String** |  | 
-**objectRevision** | **Double** |  | 
-**objectTemplateRevision** | **Double** |  | 
-**typeRefId** | **String** |  | 
+**modifiedBy** | **String** |  | 
+**version** | **String** |  | 
+**properties** | [String: UpdateCustomTypeRequestPropertiesValue] |  | 
+**isPublic** | **Bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
