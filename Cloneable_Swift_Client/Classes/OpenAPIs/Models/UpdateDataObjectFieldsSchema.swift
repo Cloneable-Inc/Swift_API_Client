@@ -21,9 +21,8 @@ public struct UpdateDataObjectFieldsSchema: Codable, JSONEncodable, Hashable {
     public var modifiedAt: Date
     public var modifiedBy: String
     public var storedValue: String?
-    public var jsonSchema: String?
 
-    public init(id: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, storedValue: String? = nil, jsonSchema: String? = nil) {
+    public init(id: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, storedValue: String? = nil) {
         self.id = id
         self.fieldId = fieldId
         self.linkedObjectDisplayName = linkedObjectDisplayName
@@ -33,7 +32,6 @@ public struct UpdateDataObjectFieldsSchema: Codable, JSONEncodable, Hashable {
         self.modifiedAt = modifiedAt
         self.modifiedBy = modifiedBy
         self.storedValue = storedValue
-        self.jsonSchema = jsonSchema
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,7 +44,6 @@ public struct UpdateDataObjectFieldsSchema: Codable, JSONEncodable, Hashable {
         case modifiedAt = "modified_at"
         case modifiedBy = "modified_by"
         case storedValue = "stored_value"
-        case jsonSchema = "json_schema"
     }
 
     // Encodable protocol methods
@@ -62,7 +59,6 @@ public struct UpdateDataObjectFieldsSchema: Codable, JSONEncodable, Hashable {
         try container.encode(modifiedAt, forKey: .modifiedAt)
         try container.encode(modifiedBy, forKey: .modifiedBy)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
-        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
     }
 }
 

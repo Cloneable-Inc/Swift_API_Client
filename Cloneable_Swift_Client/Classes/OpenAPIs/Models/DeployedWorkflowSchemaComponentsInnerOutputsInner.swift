@@ -25,10 +25,8 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
     public var outputImmediatelyUserDefinable: Bool?
     public var additionalProperties: [String: AnyCodable]
     public var outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]?
-    public var jsonSchema: String?
-    public var jsonSchemaId: String?
 
-    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool? = nil, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable], outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil) {
+    public init(dynamicOutputId: String, group: String? = nil, outputImmediately: Bool? = nil, outputClassification: String? = nil, outputDataType: String, outputDescription: String? = nil, outputId: String, outputName: String, _required: Bool? = nil, outputsArray: Bool? = nil, outputImmediatelyUserDefinable: Bool? = nil, additionalProperties: [String: AnyCodable], outputConnections: [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner]? = nil) {
         self.dynamicOutputId = dynamicOutputId
         self.group = group
         self.outputImmediately = outputImmediately
@@ -42,8 +40,6 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
         self.outputImmediatelyUserDefinable = outputImmediatelyUserDefinable
         self.additionalProperties = additionalProperties
         self.outputConnections = outputConnections
-        self.jsonSchema = jsonSchema
-        self.jsonSchemaId = jsonSchemaId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -60,8 +56,6 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
         case outputImmediatelyUserDefinable = "output_immediately_user_definable"
         case additionalProperties = "additional_properties"
         case outputConnections = "output_connections"
-        case jsonSchema = "json_schema"
-        case jsonSchemaId = "json_schema_id"
     }
 
     // Encodable protocol methods
@@ -81,8 +75,6 @@ public struct DeployedWorkflowSchemaComponentsInnerOutputsInner: Codable, JSONEn
         try container.encodeIfPresent(outputImmediatelyUserDefinable, forKey: .outputImmediatelyUserDefinable)
         try container.encode(additionalProperties, forKey: .additionalProperties)
         try container.encodeIfPresent(outputConnections, forKey: .outputConnections)
-        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
-        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
     }
 }
 

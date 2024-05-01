@@ -25,9 +25,8 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     public var name: String
     public var storedValue: String?
     public var type: String
-    public var jsonSchema: String?
 
-    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String, jsonSchema: String? = nil) {
+    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String) {
         self.id = id
         self.arraySubType = arraySubType
         self.displayName = displayName
@@ -41,7 +40,6 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         self.name = name
         self.storedValue = storedValue
         self.type = type
-        self.jsonSchema = jsonSchema
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -58,7 +56,6 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         case name
         case storedValue = "stored_value"
         case type
-        case jsonSchema = "json_schema"
     }
 
     // Encodable protocol methods
@@ -78,7 +75,6 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
     }
 }
 

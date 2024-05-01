@@ -41,11 +41,8 @@ Class | Method | HTTP request | Description
 *ComponentAPI* | [**getComponents**](docs/ComponentAPI.md#getcomponents) | **GET** /components | Get components for company
 *ComponentAPI* | [**getOneComponent**](docs/ComponentAPI.md#getonecomponent) | **GET** /component/{id} | Returns a component by id
 *ComponentAPI* | [**updateComponent**](docs/ComponentAPI.md#updatecomponent) | **POST** /component/{id} | Returns a component by id
-*CustomTypeAPI* | [**createCustomType**](docs/CustomTypeAPI.md#createcustomtype) | **POST** /custom-type | Create a custom type
-*CustomTypeAPI* | [**getCustomTypes**](docs/CustomTypeAPI.md#getcustomtypes) | **GET** /custom-types | Get custom types for company
-*CustomTypeAPI* | [**getOneCustomType**](docs/CustomTypeAPI.md#getonecustomtype) | **GET** /custom-type/{id} | Returns a custom type by id
-*CustomTypeAPI* | [**updateCustomType**](docs/CustomTypeAPI.md#updatecustomtype) | **PUT** /custom-type/{id} | Update a custom type
 *DashboardAPI* | [**getMetrics**](docs/DashboardAPI.md#getmetrics) | **GET** /dashboard | 
+*DataObjectAPI* | [**archiveDataObject**](docs/DataObjectAPI.md#archivedataobject) | **POST** /data-object/{id}/archive | Archive a data object
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**createExplorerPage**](docs/DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
 *DataObjectAPI* | [**deleteExplorerPage**](docs/DataObjectAPI.md#deleteexplorerpage) | **DELETE** /explorer-page/{id} | Delete an explorer page
@@ -126,8 +123,6 @@ Class | Method | HTTP request | Description
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
  - [CreateComponentRequest](docs/CreateComponentRequest.md)
  - [CreateComponentSchema](docs/CreateComponentSchema.md)
- - [CreateCustomTypeRequest](docs/CreateCustomTypeRequest.md)
- - [CreateCustomTypeSchema](docs/CreateCustomTypeSchema.md)
  - [CreateDataObjectExplorerSchema](docs/CreateDataObjectExplorerSchema.md)
  - [CreateFile201Response](docs/CreateFile201Response.md)
  - [CreateFile400Response](docs/CreateFile400Response.md)
@@ -139,7 +134,6 @@ Class | Method | HTTP request | Description
  - [CreateModelSchema](docs/CreateModelSchema.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CurrentOrg200Response](docs/CurrentOrg200Response.md)
- - [CustomTypeSchema](docs/CustomTypeSchema.md)
  - [DataObjectExplorerSchema](docs/DataObjectExplorerSchema.md)
  - [DataObjectSchema](docs/DataObjectSchema.md)
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
@@ -212,9 +206,6 @@ Class | Method | HTTP request | Description
  - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
- - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
- - [UpdateCustomTypeRequestPropertiesValue](docs/UpdateCustomTypeRequestPropertiesValue.md)
- - [UpdateCustomTypeSchema](docs/UpdateCustomTypeSchema.md)
  - [UpdateDataObjectExplorerSchema](docs/UpdateDataObjectExplorerSchema.md)
  - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
  - [UpdateDataObjectTemplateRequest](docs/UpdateDataObjectTemplateRequest.md)

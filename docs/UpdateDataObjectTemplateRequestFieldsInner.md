@@ -4,8 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arraySubType** | **String** |  | [optional] 
-**jsonSchema** | **String** |  | [optional] 
-**jsonSchemaId** | **String** |  | [optional] 
 **displayName** | **String** |  | 
 **fieldId** | **String** |  | 
 **linkedObjectDisplayName** | **String** |  | [optional] 

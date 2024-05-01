@@ -23,10 +23,8 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
     public var acceptsArray: Bool?
     public var trigger: Bool?
     public var additionalProperties: [String: AnyCodable]
-    public var jsonSchema: String?
-    public var jsonSchemaId: String?
 
-    public init(dynamicInputId: String, inputClassification: String? = nil, group: String? = nil, inputDataType: String, inputDescription: String? = nil, inputId: String, inputName: String, _required: Bool? = nil, acceptsArray: Bool? = nil, trigger: Bool? = nil, additionalProperties: [String: AnyCodable], jsonSchema: String? = nil, jsonSchemaId: String? = nil) {
+    public init(dynamicInputId: String, inputClassification: String? = nil, group: String? = nil, inputDataType: String, inputDescription: String? = nil, inputId: String, inputName: String, _required: Bool? = nil, acceptsArray: Bool? = nil, trigger: Bool? = nil, additionalProperties: [String: AnyCodable]) {
         self.dynamicInputId = dynamicInputId
         self.inputClassification = inputClassification
         self.group = group
@@ -38,8 +36,6 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
         self.acceptsArray = acceptsArray
         self.trigger = trigger
         self.additionalProperties = additionalProperties
-        self.jsonSchema = jsonSchema
-        self.jsonSchemaId = jsonSchemaId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -54,8 +50,6 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
         case acceptsArray = "accepts_array"
         case trigger
         case additionalProperties = "additional_properties"
-        case jsonSchema = "json_schema"
-        case jsonSchemaId = "json_schema_id"
     }
 
     // Encodable protocol methods
@@ -73,8 +67,6 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
         try container.encodeIfPresent(acceptsArray, forKey: .acceptsArray)
         try container.encodeIfPresent(trigger, forKey: .trigger)
         try container.encode(additionalProperties, forKey: .additionalProperties)
-        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
-        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
     }
 }
 

@@ -13,8 +13,6 @@ import AnyCodable
 public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable, Hashable {
 
     public var arraySubType: String?
-    public var jsonSchema: String?
-    public var jsonSchemaId: String?
     public var displayName: String
     public var fieldId: String
     public var linkedObjectDisplayName: String?
@@ -30,10 +28,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
     public var fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation?
     public var statusOptions: [String]?
 
-    public init(arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, storedValue: String? = nil, type: String, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil) {
+    public init(arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, storedValue: String? = nil, type: String, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil) {
         self.arraySubType = arraySubType
-        self.jsonSchema = jsonSchema
-        self.jsonSchemaId = jsonSchemaId
         self.displayName = displayName
         self.fieldId = fieldId
         self.linkedObjectDisplayName = linkedObjectDisplayName
@@ -52,8 +48,6 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case arraySubType = "array_sub_type"
-        case jsonSchema = "json_schema"
-        case jsonSchemaId = "json_schema_id"
         case displayName = "display_name"
         case fieldId = "field_id"
         case linkedObjectDisplayName = "linked_object_display_name"
@@ -75,8 +69,6 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(arraySubType, forKey: .arraySubType)
-        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
-        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
         try container.encode(displayName, forKey: .displayName)
         try container.encode(fieldId, forKey: .fieldId)
         try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
