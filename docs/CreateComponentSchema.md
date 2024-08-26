@@ -12,12 +12,13 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **description** | **String** |  | [optional] 
 **version** | **String** |  | 
-**tags** | **String** |  | 
+**target** | **String** |  | 
 **isPublic** | **Bool** |  | [optional] 
 **isActive** | **Bool** |  | [optional] 
 **deletedAt** | **Date** |  | [optional] 
 **documentation** | **String** |  | [optional] 
 **promptInstructions** | **String** |  | [optional] 
+**code** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

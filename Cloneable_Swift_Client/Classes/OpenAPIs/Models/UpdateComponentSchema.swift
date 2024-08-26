@@ -15,35 +15,38 @@ public struct UpdateComponentSchema: Codable, JSONEncodable, Hashable {
     public var schema: ComponentSchemaSchema?
     public var name: String?
     public var description: String?
-    public var tags: String?
+    public var target: String?
     public var isPublic: Bool?
     public var isActive: Bool?
     public var deletedAt: Date?
     public var documentation: String?
     public var promptInstructions: String?
+    public var code: String?
 
-    public init(schema: ComponentSchemaSchema? = nil, name: String? = nil, description: String? = nil, tags: String? = nil, isPublic: Bool? = nil, isActive: Bool? = nil, deletedAt: Date? = nil, documentation: String? = nil, promptInstructions: String? = nil) {
+    public init(schema: ComponentSchemaSchema? = nil, name: String? = nil, description: String? = nil, target: String? = nil, isPublic: Bool? = nil, isActive: Bool? = nil, deletedAt: Date? = nil, documentation: String? = nil, promptInstructions: String? = nil, code: String? = nil) {
         self.schema = schema
         self.name = name
         self.description = description
-        self.tags = tags
+        self.target = target
         self.isPublic = isPublic
         self.isActive = isActive
         self.deletedAt = deletedAt
         self.documentation = documentation
         self.promptInstructions = promptInstructions
+        self.code = code
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case schema
         case name
         case description
-        case tags
+        case target
         case isPublic = "is_public"
         case isActive = "is_active"
         case deletedAt = "deleted_at"
         case documentation
         case promptInstructions = "prompt_instructions"
+        case code
     }
 
     // Encodable protocol methods
@@ -53,12 +56,13 @@ public struct UpdateComponentSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(schema, forKey: .schema)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(target, forKey: .target)
         try container.encodeIfPresent(isPublic, forKey: .isPublic)
         try container.encodeIfPresent(isActive, forKey: .isActive)
         try container.encodeIfPresent(deletedAt, forKey: .deletedAt)
         try container.encodeIfPresent(documentation, forKey: .documentation)
         try container.encodeIfPresent(promptInstructions, forKey: .promptInstructions)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }
 

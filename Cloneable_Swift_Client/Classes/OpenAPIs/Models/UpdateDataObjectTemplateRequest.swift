@@ -15,6 +15,7 @@ public struct UpdateDataObjectTemplateRequest: Codable, JSONEncodable, Hashable 
     static let objectNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let objectDisplayNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let objectDescriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fieldsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     public var objectName: String
     public var objectDisplayName: String
     public var objectDescription: String

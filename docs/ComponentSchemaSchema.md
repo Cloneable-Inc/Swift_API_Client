@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **customizableParameters** | [ComponentJSONSchemaCustomizableParametersInner] |  | [optional] 
 **additionalProperties** | **AnyCodable** |  | [optional] 
 **resources** | [**ComponentJSONSchemaResources**](ComponentJSONSchemaResources.md) |  | [optional] 
+**code** | **String** |  | [optional] 
+**target** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

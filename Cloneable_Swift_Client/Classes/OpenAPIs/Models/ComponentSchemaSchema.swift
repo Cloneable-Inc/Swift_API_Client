@@ -44,8 +44,10 @@ public struct ComponentSchemaSchema: Codable, JSONEncodable, Hashable {
     public var customizableParameters: [ComponentJSONSchemaCustomizableParametersInner]?
     public var additionalProperties: AnyCodable?
     public var resources: ComponentJSONSchemaResources?
+    public var code: String?
+    public var target: String?
 
-    public init(title: String, componentID: String, dynamicComponentID: String? = nil, componentType: ComponentType, revision: Double, availableDevices: [String], implementationURL: String, builderCompatibility: String, availableToAllCompanies: Bool, useCustomViewForParams: Bool? = nil, componentDescription: String, defaultDrawerSize: String? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, docsUrl: String? = nil, iosHWRequirements: [String]? = nil, outputs: [ComponentJSONSchemaOutputsInner]? = nil, inputs: [ComponentJSONSchemaInputsInner]? = nil, dynamicComponentRenderer: Bool, customizableParameters: [ComponentJSONSchemaCustomizableParametersInner]? = nil, additionalProperties: AnyCodable? = nil, resources: ComponentJSONSchemaResources? = nil) {
+    public init(title: String, componentID: String, dynamicComponentID: String? = nil, componentType: ComponentType, revision: Double, availableDevices: [String], implementationURL: String, builderCompatibility: String, availableToAllCompanies: Bool, useCustomViewForParams: Bool? = nil, componentDescription: String, defaultDrawerSize: String? = nil, nextButtonInBar: Bool? = nil, nextButtonInBarText: String? = nil, docsUrl: String? = nil, iosHWRequirements: [String]? = nil, outputs: [ComponentJSONSchemaOutputsInner]? = nil, inputs: [ComponentJSONSchemaInputsInner]? = nil, dynamicComponentRenderer: Bool, customizableParameters: [ComponentJSONSchemaCustomizableParametersInner]? = nil, additionalProperties: AnyCodable? = nil, resources: ComponentJSONSchemaResources? = nil, code: String? = nil, target: String? = nil) {
         self.title = title
         self.componentID = componentID
         self.dynamicComponentID = dynamicComponentID
@@ -68,6 +70,8 @@ public struct ComponentSchemaSchema: Codable, JSONEncodable, Hashable {
         self.customizableParameters = customizableParameters
         self.additionalProperties = additionalProperties
         self.resources = resources
+        self.code = code
+        self.target = target
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -93,6 +97,8 @@ public struct ComponentSchemaSchema: Codable, JSONEncodable, Hashable {
         case customizableParameters
         case additionalProperties
         case resources
+        case code
+        case target
     }
 
     // Encodable protocol methods
@@ -121,6 +127,8 @@ public struct ComponentSchemaSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customizableParameters, forKey: .customizableParameters)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
         try container.encodeIfPresent(resources, forKey: .resources)
+        try container.encodeIfPresent(code, forKey: .code)
+        try container.encodeIfPresent(target, forKey: .target)
     }
 }
 

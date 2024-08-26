@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **workflowDescription** | **String** |  | 
 **workflowId** | **String** |  | 
 **workflowName** | **String** |  | 
+**renderOrder** | **[String]** |  | [optional] 
+**icon** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

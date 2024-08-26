@@ -12,45 +12,29 @@ import AnyCodable
 
 public struct UpdateCustomTypeRequest: Codable, JSONEncodable, Hashable {
 
-    public var name: String?
+    public var name: String
     public var description: String?
-    public var modifiedAt: Date?
-    public var modifiedBy: String?
-    public var version: String?
-    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]?
-    public var isPublic: Bool?
+    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]
 
-    public init(name: String? = nil, description: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, version: String? = nil, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil, isPublic: Bool? = nil) {
+    public init(name: String, description: String?, properties: [String: UpdateCustomTypeRequestPropertiesValue]) {
         self.name = name
         self.description = description
-        self.modifiedAt = modifiedAt
-        self.modifiedBy = modifiedBy
-        self.version = version
         self.properties = properties
-        self.isPublic = isPublic
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
-        case modifiedAt = "modified_at"
-        case modifiedBy = "modified_by"
-        case version
         case properties
-        case isPublic = "is_public"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(version, forKey: .version)
-        try container.encodeIfPresent(properties, forKey: .properties)
-        try container.encodeIfPresent(isPublic, forKey: .isPublic)
+        try container.encode(name, forKey: .name)
+        try container.encode(description, forKey: .description)
+        try container.encode(properties, forKey: .properties)
     }
 }
 

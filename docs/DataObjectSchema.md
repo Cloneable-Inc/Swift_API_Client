@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **createdBy** | **String** |  | 
 **fields** | [DataObjectSchemaFieldsInner] |  | 
 **modifiedAt** | **Date** |  | 
+**archivedAt** | **Date** |  | [optional] 
 **objectDescription** | **String** |  | 
 **objectDisplayName** | **String** |  | 
 **objectTemplateId** | **String** | Object template ID | 

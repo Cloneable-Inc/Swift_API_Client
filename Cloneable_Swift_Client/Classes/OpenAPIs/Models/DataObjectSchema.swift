@@ -18,6 +18,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var createdBy: String
     public var fields: [DataObjectSchemaFieldsInner]
     public var modifiedAt: Date
+    public var archivedAt: Date?
     public var objectDescription: String
     public var objectDisplayName: String
     /** Object template ID */
@@ -27,13 +28,14 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var objectTemplateRevision: Double
     public var typeRefId: String
 
-    public init(id: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String) {
+    public init(id: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, archivedAt: Date? = nil, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
         self.createdBy = createdBy
         self.fields = fields
         self.modifiedAt = modifiedAt
+        self.archivedAt = archivedAt
         self.objectDescription = objectDescription
         self.objectDisplayName = objectDisplayName
         self.objectTemplateId = objectTemplateId
@@ -50,6 +52,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         case createdBy = "created_by"
         case fields
         case modifiedAt = "modified_at"
+        case archivedAt = "archived_at"
         case objectDescription = "object_description"
         case objectDisplayName = "object_display_name"
         case objectTemplateId = "object_template_id"
@@ -69,6 +72,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(fields, forKey: .fields)
         try container.encode(modifiedAt, forKey: .modifiedAt)
+        try container.encodeIfPresent(archivedAt, forKey: .archivedAt)
         try container.encode(objectDescription, forKey: .objectDescription)
         try container.encode(objectDisplayName, forKey: .objectDisplayName)
         try container.encode(objectTemplateId, forKey: .objectTemplateId)

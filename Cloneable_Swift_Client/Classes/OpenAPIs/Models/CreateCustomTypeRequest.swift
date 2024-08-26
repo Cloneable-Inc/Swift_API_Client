@@ -12,61 +12,29 @@ import AnyCodable
 
 public struct CreateCustomTypeRequest: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
     public var name: String
     public var description: String?
-    public var companyId: String
-    public var createdAt: Date?
-    public var createdBy: String
-    public var modifiedAt: Date?
-    public var modifiedBy: String
-    public var version: String
     public var properties: [String: UpdateCustomTypeRequestPropertiesValue]?
-    public var isPublic: Bool?
 
-    public init(id: UUID? = nil, name: String, description: String? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, modifiedAt: Date? = nil, modifiedBy: String, version: String, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil, isPublic: Bool? = nil) {
-        self.id = id
+    public init(name: String, description: String? = nil, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil) {
         self.name = name
         self.description = description
-        self.companyId = companyId
-        self.createdAt = createdAt
-        self.createdBy = createdBy
-        self.modifiedAt = modifiedAt
-        self.modifiedBy = modifiedBy
-        self.version = version
         self.properties = properties
-        self.isPublic = isPublic
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
         case name
         case description
-        case companyId = "company_id"
-        case createdAt = "created_at"
-        case createdBy = "created_by"
-        case modifiedAt = "modified_at"
-        case modifiedBy = "modified_by"
-        case version
         case properties
-        case isPublic = "is_public"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(companyId, forKey: .companyId)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encode(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encode(modifiedBy, forKey: .modifiedBy)
-        try container.encode(version, forKey: .version)
         try container.encodeIfPresent(properties, forKey: .properties)
-        try container.encodeIfPresent(isPublic, forKey: .isPublic)
     }
 }
 

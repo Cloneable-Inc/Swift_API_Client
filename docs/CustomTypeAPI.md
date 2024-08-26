@@ -22,7 +22,7 @@ Create a custom type
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createCustomTypeRequest = createCustomType_request(id: 123, name: "name_example", description: "description_example", companyId: "companyId_example", createdAt: Date(), createdBy: "createdBy_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", version: "version_example", properties: "TODO", isPublic: false) // CreateCustomTypeRequest | Body (optional)
+let createCustomTypeRequest = createCustomType_request(name: "name_example", description: "description_example", properties: "TODO") // CreateCustomTypeRequest | Body (optional)
 
 // Create a custom type
 CustomTypeAPI.createCustomType(createCustomTypeRequest: createCustomTypeRequest) { (response, error) in
@@ -167,7 +167,7 @@ Update a custom type
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateCustomTypeRequest = updateCustomType_request(name: "name_example", description: "description_example", modifiedAt: Date(), modifiedBy: "modifiedBy_example", version: "version_example", properties: "TODO", isPublic: false) // UpdateCustomTypeRequest | Body (optional)
+let updateCustomTypeRequest = updateCustomType_request(name: "name_example", description: "description_example", properties: "TODO") // UpdateCustomTypeRequest | Body (optional)
 
 // Update a custom type
 CustomTypeAPI.updateCustomType(id: id, updateCustomTypeRequest: updateCustomTypeRequest) { (response, error) in

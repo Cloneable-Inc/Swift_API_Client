@@ -21,14 +21,15 @@ public struct CreateComponentSchema: Codable, JSONEncodable, Hashable {
     public var name: String
     public var description: String?
     public var version: String
-    public var tags: String
+    public var target: String
     public var isPublic: Bool?
     public var isActive: Bool?
     public var deletedAt: Date?
     public var documentation: String?
     public var promptInstructions: String?
+    public var code: String?
 
-    public init(id: UUID? = nil, schema: ComponentSchemaSchema, companyId: String, createdAt: Date? = nil, createdBy: String, updatedAt: Date? = nil, name: String, description: String? = nil, version: String, tags: String, isPublic: Bool? = nil, isActive: Bool? = nil, deletedAt: Date? = nil, documentation: String? = nil, promptInstructions: String? = nil) {
+    public init(id: UUID? = nil, schema: ComponentSchemaSchema, companyId: String, createdAt: Date? = nil, createdBy: String, updatedAt: Date? = nil, name: String, description: String? = nil, version: String, target: String, isPublic: Bool? = nil, isActive: Bool? = nil, deletedAt: Date? = nil, documentation: String? = nil, promptInstructions: String? = nil, code: String? = nil) {
         self.id = id
         self.schema = schema
         self.companyId = companyId
@@ -38,12 +39,13 @@ public struct CreateComponentSchema: Codable, JSONEncodable, Hashable {
         self.name = name
         self.description = description
         self.version = version
-        self.tags = tags
+        self.target = target
         self.isPublic = isPublic
         self.isActive = isActive
         self.deletedAt = deletedAt
         self.documentation = documentation
         self.promptInstructions = promptInstructions
+        self.code = code
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,12 +58,13 @@ public struct CreateComponentSchema: Codable, JSONEncodable, Hashable {
         case name
         case description
         case version
-        case tags
+        case target
         case isPublic = "is_public"
         case isActive = "is_active"
         case deletedAt = "deleted_at"
         case documentation
         case promptInstructions = "prompt_instructions"
+        case code
     }
 
     // Encodable protocol methods
@@ -77,12 +80,13 @@ public struct CreateComponentSchema: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(version, forKey: .version)
-        try container.encode(tags, forKey: .tags)
+        try container.encode(target, forKey: .target)
         try container.encodeIfPresent(isPublic, forKey: .isPublic)
         try container.encodeIfPresent(isActive, forKey: .isActive)
         try container.encodeIfPresent(deletedAt, forKey: .deletedAt)
         try container.encodeIfPresent(documentation, forKey: .documentation)
         try container.encodeIfPresent(promptInstructions, forKey: .promptInstructions)
+        try container.encodeIfPresent(code, forKey: .code)
     }
 }
 

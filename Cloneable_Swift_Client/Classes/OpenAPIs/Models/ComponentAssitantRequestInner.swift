@@ -13,20 +13,28 @@ import AnyCodable
 public struct ComponentAssitantRequestInner: Codable, JSONEncodable, Hashable {
 
     public enum Role: String, Codable, CaseIterable {
-        case assistant = "assistant"
+        case system = "system"
         case user = "user"
+        case assistant = "assistant"
+        case function = "function"
     }
+    /** The role of the message sender (system, user, assistant, or function) */
     public var role: Role
+    /** The content of the message */
     public var content: String
+    /** The name of the function, if applicable */
+    public var name: String?
 
-    public init(role: Role, content: String) {
+    public init(role: Role, content: String, name: String? = nil) {
         self.role = role
         self.content = content
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case role
         case content
+        case name
     }
 
     // Encodable protocol methods
@@ -35,6 +43,7 @@ public struct ComponentAssitantRequestInner: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(role, forKey: .role)
         try container.encode(content, forKey: .content)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

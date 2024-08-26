@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **_default** | **String** |  | [optional] 
 **properties** | **[String: AnyCodable]** |  | [optional] 
+**oneOf** | [UpdateCustomTypeRequestPropertiesValueOneOfInner] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

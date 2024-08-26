@@ -24,17 +24,20 @@ public struct CreateComponentRequest: Codable, JSONEncodable, Hashable {
     }
     public var name: String
     public var description: String
+    public var target: String
     public var type: ModelType
 
-    public init(name: String, description: String, type: ModelType) {
+    public init(name: String, description: String, target: String, type: ModelType) {
         self.name = name
         self.description = description
+        self.target = target
         self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
+        case target
         case type
     }
 
@@ -44,6 +47,7 @@ public struct CreateComponentRequest: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
+        try container.encode(target, forKey: .target)
         try container.encode(type, forKey: .type)
     }
 }

@@ -17,13 +17,15 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
     public var description: String?
     public var _default: String?
     public var properties: [String: AnyCodable]?
+    public var oneOf: [UpdateCustomTypeRequestPropertiesValueOneOfInner]?
 
-    public init(type: String, arrayType: String? = nil, description: String? = nil, _default: String? = nil, properties: [String: AnyCodable]? = nil) {
+    public init(type: String, arrayType: String? = nil, description: String? = nil, _default: String? = nil, properties: [String: AnyCodable]? = nil, oneOf: [UpdateCustomTypeRequestPropertiesValueOneOfInner]? = nil) {
         self.type = type
         self.arrayType = arrayType
         self.description = description
         self._default = _default
         self.properties = properties
+        self.oneOf = oneOf
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +34,7 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
         case description
         case _default = "default"
         case properties
+        case oneOf
     }
 
     // Encodable protocol methods
@@ -43,6 +46,7 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(_default, forKey: ._default)
         try container.encodeIfPresent(properties, forKey: .properties)
+        try container.encodeIfPresent(oneOf, forKey: .oneOf)
     }
 }
 

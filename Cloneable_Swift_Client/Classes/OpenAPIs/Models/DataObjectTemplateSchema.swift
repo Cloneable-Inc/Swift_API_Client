@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct DataObjectTemplateSchema: Codable, JSONEncodable, Hashable {
 
+    static let fieldsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     static let objectDescriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let objectDisplayNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let objectNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
