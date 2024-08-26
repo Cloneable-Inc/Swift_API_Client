@@ -28,12 +28,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssociatedDomainAPI* | [**getAssociatedDomain**](docs/AssociatedDomainAPI.md#getassociateddomain) | **GET** /apple-app-site-association | Get associated domain
 *AssociatedDomainAPI* | [**getWellKnownAssociatedDomain**](docs/AssociatedDomainAPI.md#getwellknownassociateddomain) | **GET** /.well-known/apple-app-site-association | Get associated domain
-*AuthAPI* | [**signupCreateUser**](docs/AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
-*AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
-*AuthAPI* | [**verifyOrg**](docs/AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
-*ChatAPI* | [**chat**](docs/ChatAPI.md#chat) | **POST** /llm/gpt-4o | 
-*ChatAPI* | [**componentAssitant**](docs/ChatAPI.md#componentassitant) | **POST** /chat/components/{id} | Get chat components
-*ChatAPI* | [**getCodeGen**](docs/ChatAPI.md#getcodegen) | **POST** /chat/code-gen | Get chat code gen stream
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
@@ -56,7 +50,6 @@ Class | Method | HTTP request | Description
 *DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 *DataObjectAPI* | [**getExplorerPages**](docs/DataObjectAPI.md#getexplorerpages) | **GET** /explorer-pages | Get all explorer pages
 *DataObjectAPI* | [**getOneDataObject**](docs/DataObjectAPI.md#getonedataobject) | **GET** /data-object/{id} | Returns a data object by id
-*DataObjectAPI* | [**getRelatedDataObjects**](docs/DataObjectAPI.md#getrelateddataobjects) | **GET** /related-data-object/{id} | Returns an array of data objects related to the data object id
 *DataObjectAPI* | [**updateDataObjectField**](docs/DataObjectAPI.md#updatedataobjectfield) | **POST** /data-object/{id}/fields | Update a fields for a data object
 *DataObjectAPI* | [**updateExplorerPage**](docs/DataObjectAPI.md#updateexplorerpage) | **POST** /explorer-page/{id} | Update an explorer page
 *DataObjectTemplateAPI* | [**createDataObjectTemplate**](docs/DataObjectTemplateAPI.md#createdataobjecttemplate) | **POST** /data-object-template | Create a data object template
@@ -114,20 +107,11 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CancelInviteRequest](docs/CancelInviteRequest.md)
- - [ChatRequest](docs/ChatRequest.md)
- - [ChatRequestResponseFormat](docs/ChatRequestResponseFormat.md)
- - [ChatRequestStop](docs/ChatRequestStop.md)
- - [ChatRequestToolChoice](docs/ChatRequestToolChoice.md)
- - [ChatRequestToolChoiceOneOf](docs/ChatRequestToolChoiceOneOf.md)
- - [ChatRequestToolChoiceOneOfFunction](docs/ChatRequestToolChoiceOneOfFunction.md)
- - [ChatRequestToolsInner](docs/ChatRequestToolsInner.md)
- - [ChatRequestToolsInnerFunction](docs/ChatRequestToolsInnerFunction.md)
  - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
  - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
- - [ComponentAssitantRequestInner](docs/ComponentAssitantRequestInner.md)
  - [ComponentJSONSchema](docs/ComponentJSONSchema.md)
  - [ComponentJSONSchemaCustomizableParametersInner](docs/ComponentJSONSchemaCustomizableParametersInner.md)
  - [ComponentJSONSchemaInputsInner](docs/ComponentJSONSchemaInputsInner.md)
@@ -171,8 +155,6 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
  - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [FileSchema](docs/FileSchema.md)
- - [GetCodeGenRequest](docs/GetCodeGenRequest.md)
- - [GetCodeGenRequestInputsInner](docs/GetCodeGenRequestInputsInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
@@ -217,11 +199,6 @@ Class | Method | HTTP request | Description
  - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
  - [SendInviteRequest](docs/SendInviteRequest.md)
  - [SendInviteRequestInvitesInner](docs/SendInviteRequestInvitesInner.md)
- - [SignupCreateUser200Response](docs/SignupCreateUser200Response.md)
- - [SignupCreateUserRequest](docs/SignupCreateUserRequest.md)
- - [SignupCreateUserRequestOrgName](docs/SignupCreateUserRequestOrgName.md)
- - [SignupCreateUserRequestPhone](docs/SignupCreateUserRequestPhone.md)
- - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
  - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
@@ -237,8 +214,6 @@ Class | Method | HTTP request | Description
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UserSchema](docs/UserSchema.md)
- - [VerifyOrg200Response](docs/VerifyOrg200Response.md)
- - [VerifyOrgRequest](docs/VerifyOrgRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

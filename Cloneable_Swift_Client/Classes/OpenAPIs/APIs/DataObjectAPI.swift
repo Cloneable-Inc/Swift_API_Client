@@ -383,52 +383,6 @@ open class DataObjectAPI {
     }
 
     /**
-     Returns an array of data objects related to the data object id
-     
-     - parameter id: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func getRelatedDataObjects(id: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [DataObjectSchema]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getRelatedDataObjectsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Returns an array of data objects related to the data object id
-     - GET /related-data-object/{id}
-     - parameter id: (path)  
-     - returns: RequestBuilder<[DataObjectSchema]> 
-     */
-    open class func getRelatedDataObjectsWithRequestBuilder(id: String) -> RequestBuilder<[DataObjectSchema]> {
-        var localVariablePath = "/related-data-object/{id}"
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<[DataObjectSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
-    }
-
-    /**
      Update a fields for a data object
      
      - parameter id: (path)  
