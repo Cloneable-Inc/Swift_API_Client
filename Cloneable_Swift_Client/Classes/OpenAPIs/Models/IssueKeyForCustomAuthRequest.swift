@@ -12,12 +12,14 @@ import AnyCodable
 
 public struct IssueKeyForCustomAuthRequest: Codable, JSONEncodable, Hashable {
 
+    public var jwt: String
     public var firstName: String
     public var lastName: String
     public var orgId: String
     public var orgSlug: String
 
-    public init(firstName: String, lastName: String, orgId: String, orgSlug: String) {
+    public init(jwt: String, firstName: String, lastName: String, orgId: String, orgSlug: String) {
+        self.jwt = jwt
         self.firstName = firstName
         self.lastName = lastName
         self.orgId = orgId
@@ -25,6 +27,7 @@ public struct IssueKeyForCustomAuthRequest: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case jwt
         case firstName = "first_name"
         case lastName = "last_name"
         case orgId = "org_id"
@@ -35,6 +38,7 @@ public struct IssueKeyForCustomAuthRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(jwt, forKey: .jwt)
         try container.encode(firstName, forKey: .firstName)
         try container.encode(lastName, forKey: .lastName)
         try container.encode(orgId, forKey: .orgId)

@@ -162,7 +162,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let issueKeyForCustomAuthRequest = issueKeyForCustomAuth_request(firstName: "firstName_example", lastName: "lastName_example", orgId: "orgId_example", orgSlug: "orgSlug_example") // IssueKeyForCustomAuthRequest | Body (optional)
+let issueKeyForCustomAuthRequest = issueKeyForCustomAuth_request(jwt: "jwt_example", firstName: "firstName_example", lastName: "lastName_example", orgId: "orgId_example", orgSlug: "orgSlug_example") // IssueKeyForCustomAuthRequest | Body (optional)
 
 AuthAPI.issueKeyForCustomAuth(issueKeyForCustomAuthRequest: issueKeyForCustomAuthRequest) { (response, error) in
     guard error == nil else {

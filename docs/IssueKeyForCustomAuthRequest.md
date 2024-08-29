@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**jwt** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
 **orgId** | **String** |  | 
