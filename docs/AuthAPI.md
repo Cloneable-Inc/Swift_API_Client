@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**signupCreateUser**](AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
 [**signupNeeded**](AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
 [**verifyOrg**](AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
+[**whoami**](AuthAPI.md#whoami) | **GET** /auth/whoami | 
 
 
 # **createApiKey**
@@ -333,6 +334,49 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **whoami**
+```swift
+    open class func whoami(completion: @escaping (_ data: Whoami200Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+
+AuthAPI.whoami() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Whoami200Response**](Whoami200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -35,6 +35,7 @@ Class | Method | HTTP request | Description
 *AuthAPI* | [**signupCreateUser**](docs/AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
 *AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
 *AuthAPI* | [**verifyOrg**](docs/AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
+*AuthAPI* | [**whoami**](docs/AuthAPI.md#whoami) | **GET** /auth/whoami | 
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
@@ -234,6 +235,7 @@ Class | Method | HTTP request | Description
  - [UserSchema](docs/UserSchema.md)
  - [VerifyOrg200Response](docs/VerifyOrg200Response.md)
  - [VerifyOrgRequest](docs/VerifyOrgRequest.md)
+ - [Whoami200Response](docs/Whoami200Response.md)
 
 
 <a id="documentation-for-authorization"></a>
