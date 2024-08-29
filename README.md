@@ -28,6 +28,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssociatedDomainAPI* | [**getAssociatedDomain**](docs/AssociatedDomainAPI.md#getassociateddomain) | **GET** /apple-app-site-association | Get associated domain
 *AssociatedDomainAPI* | [**getWellKnownAssociatedDomain**](docs/AssociatedDomainAPI.md#getwellknownassociateddomain) | **GET** /.well-known/apple-app-site-association | Get associated domain
+*AuthAPI* | [**createApiKey**](docs/AuthAPI.md#createapikey) | **POST** /auth/api-key | 
+*AuthAPI* | [**deactivateApiKey**](docs/AuthAPI.md#deactivateapikey) | **POST** /auth/api-key/deactivate | 
+*AuthAPI* | [**getApiKeys**](docs/AuthAPI.md#getapikeys) | **GET** /auth/api-key | 
+*AuthAPI* | [**issueKeyForCustomAuth**](docs/AuthAPI.md#issuekeyforcustomauth) | **POST** /auth/issue-key | 
 *AuthAPI* | [**signupCreateUser**](docs/AuthAPI.md#signupcreateuser) | **POST** /auth/signup/create-user | Create and sync users to auth platform for new accounts
 *AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
 *AuthAPI* | [**verifyOrg**](docs/AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
@@ -110,6 +114,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ApiKeySchema](docs/ApiKeySchema.md)
  - [CancelInviteRequest](docs/CancelInviteRequest.md)
  - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
  - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
@@ -123,6 +128,9 @@ Class | Method | HTTP request | Description
  - [ComponentJSONSchemaResources](docs/ComponentJSONSchemaResources.md)
  - [ComponentSchema](docs/ComponentSchema.md)
  - [ComponentSchemaSchema](docs/ComponentSchemaSchema.md)
+ - [CreateApiKey200Response](docs/CreateApiKey200Response.md)
+ - [CreateApiKeyRequest](docs/CreateApiKeyRequest.md)
+ - [CreateApiKeySchema](docs/CreateApiKeySchema.md)
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
  - [CreateComponentRequest](docs/CreateComponentRequest.md)
  - [CreateComponentSchema](docs/CreateComponentSchema.md)
@@ -159,6 +167,7 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
  - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [FileSchema](docs/FileSchema.md)
+ - [GetApiKeys200ResponseInner](docs/GetApiKeys200ResponseInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
@@ -185,6 +194,7 @@ Class | Method | HTTP request | Description
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
+ - [IssueKeyForCustomAuthRequest](docs/IssueKeyForCustomAuthRequest.md)
  - [ModelConversionJobCompleteRequest](docs/ModelConversionJobCompleteRequest.md)
  - [ModelConversionJobSchema](docs/ModelConversionJobSchema.md)
  - [ModelConversionJobStatusRequest](docs/ModelConversionJobStatusRequest.md)

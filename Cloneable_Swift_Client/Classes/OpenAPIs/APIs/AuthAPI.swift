@@ -13,6 +13,168 @@ import AnyCodable
 open class AuthAPI {
 
     /**
+
+     - parameter createApiKeyRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createApiKey(createApiKeyRequest: CreateApiKeyRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateApiKey200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createApiKeyWithRequestBuilder(createApiKeyRequest: createApiKeyRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /auth/api-key
+     - parameter createApiKeyRequest: (body) Body (optional)
+     - returns: RequestBuilder<CreateApiKey200Response> 
+     */
+    open class func createApiKeyWithRequestBuilder(createApiKeyRequest: CreateApiKeyRequest? = nil) -> RequestBuilder<CreateApiKey200Response> {
+        let localVariablePath = "/auth/api-key"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createApiKeyRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateApiKey200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter updateFile200Response: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func deactivateApiKey(updateFile200Response: UpdateFile200Response? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return deactivateApiKeyWithRequestBuilder(updateFile200Response: updateFile200Response).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /auth/api-key/deactivate
+     - parameter updateFile200Response: (body) Body (optional)
+     - returns: RequestBuilder<CreateFile400Response> 
+     */
+    open class func deactivateApiKeyWithRequestBuilder(updateFile200Response: UpdateFile200Response? = nil) -> RequestBuilder<CreateFile400Response> {
+        let localVariablePath = "/auth/api-key/deactivate"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateFile200Response)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateFile400Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getApiKeys(apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [GetApiKeys200ResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getApiKeysWithRequestBuilder().execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /auth/api-key
+     - returns: RequestBuilder<[GetApiKeys200ResponseInner]> 
+     */
+    open class func getApiKeysWithRequestBuilder() -> RequestBuilder<[GetApiKeys200ResponseInner]> {
+        let localVariablePath = "/auth/api-key"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[GetApiKeys200ResponseInner]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter issueKeyForCustomAuthRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func issueKeyForCustomAuth(issueKeyForCustomAuthRequest: IssueKeyForCustomAuthRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateApiKey200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return issueKeyForCustomAuthWithRequestBuilder(issueKeyForCustomAuthRequest: issueKeyForCustomAuthRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /auth/issue-key
+     - parameter issueKeyForCustomAuthRequest: (body) Body (optional)
+     - returns: RequestBuilder<CreateApiKey200Response> 
+     */
+    open class func issueKeyForCustomAuthWithRequestBuilder(issueKeyForCustomAuthRequest: IssueKeyForCustomAuthRequest? = nil) -> RequestBuilder<CreateApiKey200Response> {
+        let localVariablePath = "/auth/issue-key"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: issueKeyForCustomAuthRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateApiKey200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Create and sync users to auth platform for new accounts
      
      - parameter signupCreateUserRequest: (body) Body (optional)
