@@ -222,8 +222,6 @@ Class | Method | HTTP request | Description
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
  - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
- - [UpdateCustomTypeRequestPropertiesValue](docs/UpdateCustomTypeRequestPropertiesValue.md)
- - [UpdateCustomTypeRequestPropertiesValueEnumInner](docs/UpdateCustomTypeRequestPropertiesValueEnumInner.md)
  - [UpdateCustomTypeSchema](docs/UpdateCustomTypeSchema.md)
  - [UpdateDataObjectExplorerSchema](docs/UpdateDataObjectExplorerSchema.md)
  - [UpdateDataObjectFieldsSchema](docs/UpdateDataObjectFieldsSchema.md)
