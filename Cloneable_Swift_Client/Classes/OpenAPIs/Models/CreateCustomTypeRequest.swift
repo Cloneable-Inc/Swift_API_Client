@@ -14,9 +14,9 @@ public struct CreateCustomTypeRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var description: String?
-    public var properties: [String: AnyCodable]?
+    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]?
 
-    public init(name: String, description: String? = nil, properties: [String: AnyCodable]? = nil) {
+    public init(name: String, description: String? = nil, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil) {
         self.name = name
         self.description = description
         self.properties = properties

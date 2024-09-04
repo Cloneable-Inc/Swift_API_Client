@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **modifiedAt** | **Date** |  | 
 **modifiedBy** | **String** |  | 
 **version** | **String** |  | 
-**properties** | **[String: AnyCodable]** |  | 
+**properties** | [String: UpdateCustomTypeRequestPropertiesValue] |  | 
 **isPublic** | **Bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

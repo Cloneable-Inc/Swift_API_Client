@@ -21,10 +21,10 @@ public struct CreateCustomTypeSchema: Codable, JSONEncodable, Hashable {
     public var modifiedAt: Date?
     public var modifiedBy: String
     public var version: String
-    public var properties: [String: AnyCodable]?
+    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]?
     public var isPublic: Bool?
 
-    public init(id: UUID? = nil, name: String, description: String? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, modifiedAt: Date? = nil, modifiedBy: String, version: String, properties: [String: AnyCodable]? = nil, isPublic: Bool? = nil) {
+    public init(id: UUID? = nil, name: String, description: String? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, modifiedAt: Date? = nil, modifiedBy: String, version: String, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil, isPublic: Bool? = nil) {
         self.id = id
         self.name = name
         self.description = description
