@@ -64,6 +64,7 @@ Class | Method | HTTP request | Description
 *DataObjectTemplateAPI* | [**createDataObjectTemplate**](docs/DataObjectTemplateAPI.md#createdataobjecttemplate) | **POST** /data-object-template | Create a data object template
 *DataObjectTemplateAPI* | [**getManyDataObjectTemplates**](docs/DataObjectTemplateAPI.md#getmanydataobjecttemplates) | **GET** /data-object-templates | Get many data object templates
 *DataObjectTemplateAPI* | [**getOneDataObjectTemplate**](docs/DataObjectTemplateAPI.md#getonedataobjecttemplate) | **GET** /data-object-template/{id} | Get a data object template
+*DataObjectTemplateAPI* | [**getOneDataObjectTemplateByObjectTemplateId**](docs/DataObjectTemplateAPI.md#getonedataobjecttemplatebyobjecttemplateid) | **GET** /data-object-template/object-template/{id} | 
 *DataObjectTemplateAPI* | [**updateDataObjectTemplate**](docs/DataObjectTemplateAPI.md#updatedataobjecttemplate) | **POST** /data-object-template/{id} | Update a data object template
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getDeployedWorkflowsQuery**](docs/DeployedWorfklowAPI.md#getdeployedworkflowsquery) | **GET** /deployed-workflows | Get all deployed workflows
@@ -191,6 +192,7 @@ Class | Method | HTTP request | Description
  - [GetModelConversionJobsFiltersParameter](docs/GetModelConversionJobsFiltersParameter.md)
  - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
  - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
+ - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
