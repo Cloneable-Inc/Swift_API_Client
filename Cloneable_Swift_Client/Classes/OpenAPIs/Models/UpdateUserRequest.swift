@@ -12,52 +12,50 @@ import AnyCodable
 
 public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
 
-    static let firstNameRule = StringRule(minLength: 2, maxLength: nil, pattern: nil)
-    static let lastNameRule = StringRule(minLength: 2, maxLength: nil, pattern: nil)
     public var email: String?
     public var firstName: String?
     public var lastName: String?
-    public var confirmed: Bool?
-    public var active: Bool?
     public var auth0Id: String?
-    public var companyRoles: [String]?
-    public var roles: [String]?
-    public var deactiveAt: Date?
     public var phoneNumber: Double?
+    public var roles: [String]?
+    public var companyRoles: [String]?
     public var cloneableEmployeeRoles: [String]?
     public var organizationId: String?
     public var memberId: String?
+    public var active: Bool?
+    public var confirmed: Bool?
+    public var deactiveAt: Date?
 
-    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, confirmed: Bool? = nil, active: Bool? = nil, auth0Id: String? = nil, companyRoles: [String]? = nil, roles: [String]? = nil, deactiveAt: Date? = nil, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
+    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, auth0Id: String? = nil, phoneNumber: Double? = nil, roles: [String]? = nil, companyRoles: [String]? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil, active: Bool? = nil, confirmed: Bool? = nil, deactiveAt: Date? = nil) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
-        self.confirmed = confirmed
-        self.active = active
         self.auth0Id = auth0Id
-        self.companyRoles = companyRoles
-        self.roles = roles
-        self.deactiveAt = deactiveAt
         self.phoneNumber = phoneNumber
+        self.roles = roles
+        self.companyRoles = companyRoles
         self.cloneableEmployeeRoles = cloneableEmployeeRoles
         self.organizationId = organizationId
         self.memberId = memberId
+        self.active = active
+        self.confirmed = confirmed
+        self.deactiveAt = deactiveAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case firstName = "first_name"
         case lastName = "last_name"
-        case confirmed
-        case active
         case auth0Id = "auth0_id"
-        case companyRoles = "company_roles"
-        case roles
-        case deactiveAt = "deactive_at"
         case phoneNumber = "phone_number"
+        case roles
+        case companyRoles = "company_roles"
         case cloneableEmployeeRoles = "cloneable_employee_roles"
         case organizationId = "organization_id"
         case memberId = "member_id"
+        case active
+        case confirmed
+        case deactiveAt = "deactive_at"
     }
 
     // Encodable protocol methods
@@ -67,16 +65,16 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)
-        try container.encodeIfPresent(confirmed, forKey: .confirmed)
-        try container.encodeIfPresent(active, forKey: .active)
         try container.encodeIfPresent(auth0Id, forKey: .auth0Id)
-        try container.encodeIfPresent(companyRoles, forKey: .companyRoles)
-        try container.encodeIfPresent(roles, forKey: .roles)
-        try container.encodeIfPresent(deactiveAt, forKey: .deactiveAt)
         try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
+        try container.encodeIfPresent(roles, forKey: .roles)
+        try container.encodeIfPresent(companyRoles, forKey: .companyRoles)
         try container.encodeIfPresent(cloneableEmployeeRoles, forKey: .cloneableEmployeeRoles)
         try container.encodeIfPresent(organizationId, forKey: .organizationId)
         try container.encodeIfPresent(memberId, forKey: .memberId)
+        try container.encodeIfPresent(active, forKey: .active)
+        try container.encodeIfPresent(confirmed, forKey: .confirmed)
+        try container.encodeIfPresent(deactiveAt, forKey: .deactiveAt)
     }
 }
 

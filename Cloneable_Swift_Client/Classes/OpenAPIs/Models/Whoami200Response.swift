@@ -17,13 +17,17 @@ public struct Whoami200Response: Codable, JSONEncodable, Hashable {
     public var userId: String
     public var orgId: String
     public var role: String?
+    public var teamId: String?
+    public var memberId: String
 
-    public init(email: String, companyId: String, userId: String, orgId: String, role: String? = nil) {
+    public init(email: String, companyId: String, userId: String, orgId: String, role: String? = nil, teamId: String? = nil, memberId: String) {
         self.email = email
         self.companyId = companyId
         self.userId = userId
         self.orgId = orgId
         self.role = role
+        self.teamId = teamId
+        self.memberId = memberId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +36,8 @@ public struct Whoami200Response: Codable, JSONEncodable, Hashable {
         case userId = "user_id"
         case orgId = "org_id"
         case role
+        case teamId = "team_id"
+        case memberId = "member_id"
     }
 
     // Encodable protocol methods
@@ -43,6 +49,8 @@ public struct Whoami200Response: Codable, JSONEncodable, Hashable {
         try container.encode(userId, forKey: .userId)
         try container.encode(orgId, forKey: .orgId)
         try container.encodeIfPresent(role, forKey: .role)
+        try container.encodeIfPresent(teamId, forKey: .teamId)
+        try container.encode(memberId, forKey: .memberId)
     }
 }
 

@@ -14,13 +14,13 @@ open class OrgAPI {
 
     /**
 
-     - parameter cancelInviteRequest: (body) Body (optional)
+     - parameter resendInviteRequest: (body) Body (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func cancelInvite(cancelInviteRequest: CancelInviteRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return cancelInviteWithRequestBuilder(cancelInviteRequest: cancelInviteRequest).execute(apiResponseQueue) { result in
+    open class func cancelInvite(resendInviteRequest: ResendInviteRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return cancelInviteWithRequestBuilder(resendInviteRequest: resendInviteRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -32,13 +32,13 @@ open class OrgAPI {
 
     /**
      - DELETE /org/cancel-inivte
-     - parameter cancelInviteRequest: (body) Body (optional)
+     - parameter resendInviteRequest: (body) Body (optional)
      - returns: RequestBuilder<CreateFile400Response> 
      */
-    open class func cancelInviteWithRequestBuilder(cancelInviteRequest: CancelInviteRequest? = nil) -> RequestBuilder<CreateFile400Response> {
+    open class func cancelInviteWithRequestBuilder(resendInviteRequest: ResendInviteRequest? = nil) -> RequestBuilder<CreateFile400Response> {
         let localVariablePath = "/org/cancel-inivte"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cancelInviteRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: resendInviteRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -215,6 +215,50 @@ open class OrgAPI {
 
     /**
 
+     - parameter key: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getCacheItem(key: String, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
+        return getCacheItemWithRequestBuilder(key: key).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /org/cache/{key}
+     - parameter key: (path)  
+     - returns: RequestBuilder<String> 
+     */
+    open class func getCacheItemWithRequestBuilder(key: String) -> RequestBuilder<String> {
+        var localVariablePath = "/org/cache/{key}"
+        let keyPreEscape = "\(APIHelper.mapValueToPathItem(key))"
+        let keyPostEscape = keyPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{key}", with: keyPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
      - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -345,6 +389,93 @@ open class OrgAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter key: (path)  
+     - parameter putCacheItemRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func putCacheItem(key: String, putCacheItemRequest: PutCacheItemRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return putCacheItemWithRequestBuilder(key: key, putCacheItemRequest: putCacheItemRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /org/cache/{key}
+     - parameter key: (path)  
+     - parameter putCacheItemRequest: (body) Body (optional)
+     - returns: RequestBuilder<CreateFile400Response> 
+     */
+    open class func putCacheItemWithRequestBuilder(key: String, putCacheItemRequest: PutCacheItemRequest? = nil) -> RequestBuilder<CreateFile400Response> {
+        var localVariablePath = "/org/cache/{key}"
+        let keyPreEscape = "\(APIHelper.mapValueToPathItem(key))"
+        let keyPostEscape = keyPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{key}", with: keyPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: putCacheItemRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateFile400Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+
+     - parameter resendInviteRequest: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func resendInvite(resendInviteRequest: ResendInviteRequest? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateFile400Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return resendInviteWithRequestBuilder(resendInviteRequest: resendInviteRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /org/resend-invite
+     - parameter resendInviteRequest: (body) Body (optional)
+     - returns: RequestBuilder<CreateFile400Response> 
+     */
+    open class func resendInviteWithRequestBuilder(resendInviteRequest: ResendInviteRequest? = nil) -> RequestBuilder<CreateFile400Response> {
+        let localVariablePath = "/org/resend-invite"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: resendInviteRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateFile400Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

@@ -14,15 +14,18 @@ public struct SendInviteRequestInvitesInner: Codable, JSONEncodable, Hashable {
 
     public var email: String
     public var roles: [String]?
+    public var teams: [String]?
 
-    public init(email: String, roles: [String]? = nil) {
+    public init(email: String, roles: [String]? = nil, teams: [String]? = nil) {
         self.email = email
         self.roles = roles
+        self.teams = teams
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case roles
+        case teams
     }
 
     // Encodable protocol methods
@@ -31,6 +34,7 @@ public struct SendInviteRequestInvitesInner: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(email, forKey: .email)
         try container.encodeIfPresent(roles, forKey: .roles)
+        try container.encodeIfPresent(teams, forKey: .teams)
     }
 }
 

@@ -12,44 +12,42 @@ import AnyCodable
 
 public struct UserSchema: Codable, JSONEncodable, Hashable {
 
-    static let firstNameRule = StringRule(minLength: 2, maxLength: nil, pattern: nil)
-    static let lastNameRule = StringRule(minLength: 2, maxLength: nil, pattern: nil)
     public var id: String
     public var email: String
-    public var firstName: String
-    public var lastName: String
-    public var confirmed: Bool
-    public var active: Bool
-    public var auth0Id: String
-    public var companyRoles: [String]
-    public var roles: [String]
-    public var createdAt: Date
-    public var updatedAt: Date
-    public var deactiveAt: Date?
-    public var companyId: String
+    public var firstName: String?
+    public var lastName: String?
+    public var auth0Id: String?
     public var phoneNumber: Double?
+    public var roles: [String]?
+    public var companyRoles: [String]?
     public var cloneableEmployeeRoles: [String]?
     public var organizationId: String?
     public var memberId: String?
+    public var active: Bool?
+    public var confirmed: Bool?
+    public var createdAt: Date?
+    public var updatedAt: Date?
+    public var deactiveAt: Date?
+    public var companyId: String?
 
-    public init(id: String, email: String, firstName: String, lastName: String, confirmed: Bool, active: Bool, auth0Id: String, companyRoles: [String], roles: [String], createdAt: Date, updatedAt: Date, deactiveAt: Date? = nil, companyId: String, phoneNumber: Double? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil) {
+    public init(id: String, email: String, firstName: String?, lastName: String?, auth0Id: String?, phoneNumber: Double?, roles: [String]?, companyRoles: [String]?, cloneableEmployeeRoles: [String]?, organizationId: String?, memberId: String?, active: Bool?, confirmed: Bool?, createdAt: Date?, updatedAt: Date?, deactiveAt: Date?, companyId: String?) {
         self.id = id
         self.email = email
         self.firstName = firstName
         self.lastName = lastName
-        self.confirmed = confirmed
-        self.active = active
         self.auth0Id = auth0Id
-        self.companyRoles = companyRoles
+        self.phoneNumber = phoneNumber
         self.roles = roles
+        self.companyRoles = companyRoles
+        self.cloneableEmployeeRoles = cloneableEmployeeRoles
+        self.organizationId = organizationId
+        self.memberId = memberId
+        self.active = active
+        self.confirmed = confirmed
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.deactiveAt = deactiveAt
         self.companyId = companyId
-        self.phoneNumber = phoneNumber
-        self.cloneableEmployeeRoles = cloneableEmployeeRoles
-        self.organizationId = organizationId
-        self.memberId = memberId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -57,19 +55,19 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
         case email
         case firstName = "first_name"
         case lastName = "last_name"
-        case confirmed
-        case active
         case auth0Id = "auth0_id"
-        case companyRoles = "company_roles"
+        case phoneNumber = "phone_number"
         case roles
+        case companyRoles = "company_roles"
+        case cloneableEmployeeRoles = "cloneable_employee_roles"
+        case organizationId = "organization_id"
+        case memberId = "member_id"
+        case active
+        case confirmed
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case deactiveAt = "deactive_at"
         case companyId = "company_id"
-        case phoneNumber = "phone_number"
-        case cloneableEmployeeRoles = "cloneable_employee_roles"
-        case organizationId = "organization_id"
-        case memberId = "member_id"
     }
 
     // Encodable protocol methods
@@ -80,19 +78,22 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
         try container.encode(email, forKey: .email)
         try container.encode(firstName, forKey: .firstName)
         try container.encode(lastName, forKey: .lastName)
-        try container.encode(confirmed, forKey: .confirmed)
-        try container.encode(active, forKey: .active)
         try container.encode(auth0Id, forKey: .auth0Id)
-        try container.encode(companyRoles, forKey: .companyRoles)
+        try container.encode(phoneNumber, forKey: .phoneNumber)
         try container.encode(roles, forKey: .roles)
+        try container.encode(companyRoles, forKey: .companyRoles)
+        try container.encode(cloneableEmployeeRoles, forKey: .cloneableEmployeeRoles)
+        try container.encode(organizationId, forKey: .organizationId)
+        try container.encode(memberId, forKey: .memberId)
+        try container.encode(active, forKey: .active)
+        try container.encode(confirmed, forKey: .confirmed)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
-        try container.encodeIfPresent(deactiveAt, forKey: .deactiveAt)
+        try container.encode(deactiveAt, forKey: .deactiveAt)
         try container.encode(companyId, forKey: .companyId)
-        try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
-        try container.encodeIfPresent(cloneableEmployeeRoles, forKey: .cloneableEmployeeRoles)
-        try container.encodeIfPresent(organizationId, forKey: .organizationId)
-        try container.encodeIfPresent(memberId, forKey: .memberId)
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension UserSchema: Identifiable {}

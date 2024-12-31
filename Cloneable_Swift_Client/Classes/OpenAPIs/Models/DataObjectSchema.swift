@@ -27,8 +27,9 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
     public var objectRevision: Double
     public var objectTemplateRevision: Double
     public var typeRefId: String
+    public var teamId: String?
 
-    public init(id: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, archivedAt: Date? = nil, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String) {
+    public init(id: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, archivedAt: Date? = nil, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String, teamId: String? = nil) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -43,6 +44,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         self.objectRevision = objectRevision
         self.objectTemplateRevision = objectTemplateRevision
         self.typeRefId = typeRefId
+        self.teamId = teamId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -60,6 +62,7 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         case objectRevision = "object_revision"
         case objectTemplateRevision = "object_template_revision"
         case typeRefId = "type_ref_id"
+        case teamId = "team_id"
     }
 
     // Encodable protocol methods
@@ -80,6 +83,10 @@ public struct DataObjectSchema: Codable, JSONEncodable, Hashable {
         try container.encode(objectRevision, forKey: .objectRevision)
         try container.encode(objectTemplateRevision, forKey: .objectTemplateRevision)
         try container.encode(typeRefId, forKey: .typeRefId)
+        try container.encodeIfPresent(teamId, forKey: .teamId)
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension DataObjectSchema: Identifiable {}

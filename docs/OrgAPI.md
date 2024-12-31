@@ -9,16 +9,19 @@ Method | HTTP request | Description
 [**currentOrg**](OrgAPI.md#currentorg) | **GET** /org/current | 
 [**deactivateUser**](OrgAPI.md#deactivateuser) | **POST** /org/deactivate-user | 
 [**getAllOrgs**](OrgAPI.md#getallorgs) | **GET** /org | 
+[**getCacheItem**](OrgAPI.md#getcacheitem) | **GET** /org/cache/{key} | 
 [**getMembers**](OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
 [**getOrg**](OrgAPI.md#getorg) | **GET** /org/{id} | 
 [**inviteUser**](OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
+[**putCacheItem**](OrgAPI.md#putcacheitem) | **POST** /org/cache/{key} | 
+[**resendInvite**](OrgAPI.md#resendinvite) | **POST** /org/resend-invite | 
 [**sendInvite**](OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
 [**updateOrgSettings**](OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
 
 
 # **cancelInvite**
 ```swift
-    open class func cancelInvite(cancelInviteRequest: CancelInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+    open class func cancelInvite(resendInviteRequest: ResendInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
 
@@ -28,9 +31,9 @@ Method | HTTP request | Description
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let cancelInviteRequest = cancelInvite_request(email: "email_example", orgId: "orgId_example") // CancelInviteRequest | Body (optional)
+let resendInviteRequest = resendInvite_request(email: "email_example", orgId: "orgId_example") // ResendInviteRequest | Body (optional)
 
-OrgAPI.cancelInvite(cancelInviteRequest: cancelInviteRequest) { (response, error) in
+OrgAPI.cancelInvite(resendInviteRequest: resendInviteRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,7 +49,7 @@ OrgAPI.cancelInvite(cancelInviteRequest: cancelInviteRequest) { (response, error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cancelInviteRequest** | [**CancelInviteRequest**](CancelInviteRequest.md) | Body | [optional] 
+ **resendInviteRequest** | [**ResendInviteRequest**](ResendInviteRequest.md) | Body | [optional] 
 
 ### Return type
 
@@ -75,7 +78,7 @@ No authorization required
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let orgSchema = OrgSchema(id: "id_example", name: "name_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", roles: ["roles_example"], roboflowApiKey: "roboflowApiKey_example", organizationId: "organizationId_example") // OrgSchema | Body (optional)
+let orgSchema = OrgSchema(key: 123, id: "id_example", name: "name_example", createdAt: Date(), updatedAt: Date(), organizationId: "organizationId_example", roboflowApiKey: "roboflowApiKey_example") // OrgSchema | Body (optional)
 
 OrgAPI.createOrg(orgSchema: orgSchema) { (response, error) in
     guard error == nil else {
@@ -243,6 +246,53 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getCacheItem**
+```swift
+    open class func getCacheItem(key: String, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let key = "key_example" // String | 
+
+OrgAPI.getCacheItem(key: key) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **String** |  | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getMembers**
 ```swift
     open class func getMembers(id: String, completion: @escaping (_ data: [GetMembers200ResponseInner]?, _ error: Error?) -> Void)
@@ -350,7 +400,7 @@ Invite a user to the org
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let userSchema = UserSchema(id: "id_example", email: "email_example", firstName: "firstName_example", lastName: "lastName_example", confirmed: false, active: false, auth0Id: "auth0Id_example", companyRoles: ["companyRoles_example"], roles: ["roles_example"], createdAt: Date(), updatedAt: Date(), deactiveAt: Date(), companyId: "companyId_example", phoneNumber: 123, cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example") // UserSchema | Body (optional)
+let userSchema = UserSchema(id: "id_example", email: "email_example", firstName: "firstName_example", lastName: "lastName_example", auth0Id: "auth0Id_example", phoneNumber: 123, roles: ["roles_example"], companyRoles: ["companyRoles_example"], cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example", active: false, confirmed: false, createdAt: Date(), updatedAt: Date(), deactiveAt: Date(), companyId: "companyId_example") // UserSchema | Body (optional)
 
 // Invite a user to the org
 OrgAPI.inviteUser(id: id, userSchema: userSchema) { (response, error) in
@@ -387,6 +437,102 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **putCacheItem**
+```swift
+    open class func putCacheItem(key: String, putCacheItemRequest: PutCacheItemRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let key = "key_example" // String | 
+let putCacheItemRequest = putCacheItem_request(value: "value_example") // PutCacheItemRequest | Body (optional)
+
+OrgAPI.putCacheItem(key: key, putCacheItemRequest: putCacheItemRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **String** |  | 
+ **putCacheItemRequest** | [**PutCacheItemRequest**](PutCacheItemRequest.md) | Body | [optional] 
+
+### Return type
+
+[**CreateFile400Response**](CreateFile400Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **resendInvite**
+```swift
+    open class func resendInvite(resendInviteRequest: ResendInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let resendInviteRequest = resendInvite_request(email: "email_example", orgId: "orgId_example") // ResendInviteRequest | Body (optional)
+
+OrgAPI.resendInvite(resendInviteRequest: resendInviteRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resendInviteRequest** | [**ResendInviteRequest**](ResendInviteRequest.md) | Body | [optional] 
+
+### Return type
+
+[**CreateFile400Response**](CreateFile400Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **sendInvite**
 ```swift
     open class func sendInvite(sendInviteRequest: SendInviteRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
@@ -399,7 +545,7 @@ Invite user to org
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"])], orgId: "orgId_example") // SendInviteRequest | Body (optional)
+let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"], teams: ["teams_example"])], orgId: "orgId_example") // SendInviteRequest | Body (optional)
 
 // Invite user to org
 OrgAPI.sendInvite(sendInviteRequest: sendInviteRequest) { (response, error) in
@@ -448,7 +594,7 @@ No authorization required
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let orgSchema = OrgSchema(id: "id_example", name: "name_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", roles: ["roles_example"], roboflowApiKey: "roboflowApiKey_example", organizationId: "organizationId_example") // OrgSchema | Body (optional)
+let orgSchema = OrgSchema(key: 123, id: "id_example", name: "name_example", createdAt: Date(), updatedAt: Date(), organizationId: "organizationId_example", roboflowApiKey: "roboflowApiKey_example") // OrgSchema | Body (optional)
 
 OrgAPI.updateOrgSettings(id: id, orgSchema: orgSchema) { (response, error) in
     guard error == nil else {

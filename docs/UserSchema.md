@@ -7,19 +7,19 @@ Name | Type | Description | Notes
 **email** | **String** |  | 
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
-**confirmed** | **Bool** |  | 
-**active** | **Bool** |  | 
 **auth0Id** | **String** |  | 
-**companyRoles** | **[String]** |  | 
+**phoneNumber** | **Double** |  | 
 **roles** | **[String]** |  | 
+**companyRoles** | **[String]** |  | 
+**cloneableEmployeeRoles** | **[String]** |  | 
+**organizationId** | **String** |  | 
+**memberId** | **String** |  | 
+**active** | **Bool** |  | 
+**confirmed** | **Bool** |  | 
 **createdAt** | **Date** |  | 
 **updatedAt** | **Date** |  | 
-**deactiveAt** | **Date** |  | [optional] 
+**deactiveAt** | **Date** |  | 
 **companyId** | **String** |  | 
-**phoneNumber** | **Double** |  | [optional] 
-**cloneableEmployeeRoles** | **[String]** |  | [optional] 
-**organizationId** | **String** |  | [optional] 
-**memberId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

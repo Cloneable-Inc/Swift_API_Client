@@ -159,7 +159,7 @@ Update a user
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateUserRequest = updateUser_request(email: "email_example", firstName: "firstName_example", lastName: "lastName_example", confirmed: false, active: false, auth0Id: "auth0Id_example", companyRoles: ["companyRoles_example"], roles: ["roles_example"], deactiveAt: Date(), phoneNumber: 123, cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example") // UpdateUserRequest | Body (optional)
+let updateUserRequest = updateUser_request(email: "email_example", firstName: "firstName_example", lastName: "lastName_example", auth0Id: "auth0Id_example", phoneNumber: 123, roles: ["roles_example"], companyRoles: ["companyRoles_example"], cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example", active: false, confirmed: false, deactiveAt: Date()) // UpdateUserRequest | Body (optional)
 
 // Update a user
 UserAPI.updateUser(id: id, updateUserRequest: updateUserRequest) { (response, error) in

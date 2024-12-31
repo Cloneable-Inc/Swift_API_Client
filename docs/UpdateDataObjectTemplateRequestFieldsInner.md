@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **modifiedAt** | **Date** |  | [optional] 
 **modifiedBy** | **String** |  | [optional] 
 **name** | **String** |  | 
-**storedValue** | **String** |  | [optional] 
 **type** | **String** |  | 
 **fileInformation** | [**UpdateDataObjectTemplateRequestFieldsInnerFileInformation**](UpdateDataObjectTemplateRequestFieldsInnerFileInformation.md) |  | [optional] 
 **statusOptions** | **[String]** |  | [optional] 

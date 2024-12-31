@@ -26,8 +26,10 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
     public var storedValue: String?
     public var type: String
     public var jsonSchema: String?
+    public var jsonSchemaId: String?
+    public var teamId: String?
 
-    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String, jsonSchema: String? = nil) {
+    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String, jsonSchema: String? = nil, jsonSchemaId: String? = nil, teamId: String? = nil) {
         self.id = id
         self.arraySubType = arraySubType
         self.displayName = displayName
@@ -42,6 +44,8 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         self.storedValue = storedValue
         self.type = type
         self.jsonSchema = jsonSchema
+        self.jsonSchemaId = jsonSchemaId
+        self.teamId = teamId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +63,8 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         case storedValue = "stored_value"
         case type
         case jsonSchema = "json_schema"
+        case jsonSchemaId = "json_schema_id"
+        case teamId = "team_id"
     }
 
     // Encodable protocol methods
@@ -79,6 +85,11 @@ public struct DataObjectSchemaFieldsInner: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
+        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
+        try container.encodeIfPresent(teamId, forKey: .teamId)
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension DataObjectSchemaFieldsInner: Identifiable {}
