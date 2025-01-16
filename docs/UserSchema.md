@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **firstName** | **String** |  | 
 **lastName** | **String** |  | 
 **auth0Id** | **String** |  | 
-**phoneNumber** | **Double** |  | 
+**phoneNumber** | **Int** |  | 
 **roles** | **[String]** |  | 
 **companyRoles** | **[String]** |  | 
 **cloneableEmployeeRoles** | **[String]** |  | 

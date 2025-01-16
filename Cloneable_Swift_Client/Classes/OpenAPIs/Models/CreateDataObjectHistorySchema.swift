@@ -20,9 +20,9 @@ public struct CreateDataObjectHistorySchema: Codable, JSONEncodable, Hashable {
     public var type: String
     public var label: String?
     public var teamId: String?
-    public var metaData: SyncDataObjectRequestInnerMetaData?
+    public var metaData: SyncDataObjectRequestInnerMetaData
 
-    public init(id: UUID? = nil, dataObjectId: String, dataObjectTemplateNameId: String, key: String, value: AnyCodable? = nil, type: String, label: String? = nil, teamId: String? = nil, metaData: SyncDataObjectRequestInnerMetaData? = nil) {
+    public init(id: UUID? = nil, dataObjectId: String, dataObjectTemplateNameId: String, key: String, value: AnyCodable? = nil, type: String, label: String? = nil, teamId: String? = nil, metaData: SyncDataObjectRequestInnerMetaData) {
         self.id = id
         self.dataObjectId = dataObjectId
         self.dataObjectTemplateNameId = dataObjectTemplateNameId
@@ -58,7 +58,7 @@ public struct CreateDataObjectHistorySchema: Codable, JSONEncodable, Hashable {
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(label, forKey: .label)
         try container.encodeIfPresent(teamId, forKey: .teamId)
-        try container.encodeIfPresent(metaData, forKey: .metaData)
+        try container.encode(metaData, forKey: .metaData)
     }
 }
 

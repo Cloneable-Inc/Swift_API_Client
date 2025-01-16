@@ -28,7 +28,7 @@ Add a member to a team
 import Cloneable_Swift_Client
 
 let teamId = "teamId_example" // String | 
-let addMemberRequest = addMember_request(userId: "userId_example", role: "role_example") // AddMemberRequest | Body (optional)
+let addMemberRequest = addMember_request(userId: "userId_example", role: "role_example", orgName: "orgName_example", teamName: "teamName_example") // AddMemberRequest | Body (optional)
 
 // Add a member to a team
 TeamAPI.addMember(teamId: teamId, addMemberRequest: addMemberRequest) { (response, error) in

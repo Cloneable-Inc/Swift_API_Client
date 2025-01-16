@@ -14,9 +14,9 @@ public struct CreateCustomTypeRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var description: String?
-    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]?
+    public var properties: [String: UpdateCustomTypeRequestPropertiesValue]
 
-    public init(name: String, description: String? = nil, properties: [String: UpdateCustomTypeRequestPropertiesValue]? = nil) {
+    public init(name: String, description: String? = nil, properties: [String: UpdateCustomTypeRequestPropertiesValue]) {
         self.name = name
         self.description = description
         self.properties = properties
@@ -34,7 +34,7 @@ public struct CreateCustomTypeRequest: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(properties, forKey: .properties)
+        try container.encode(properties, forKey: .properties)
     }
 }
 

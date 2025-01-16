@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **updatedAt** | **Date** |  | [optional] 
 **trainingFileId** | **UUID** |  | [optional] 
 **exportFormat** | **String** |  | 
-**params** | [CreateModelConversionJobRequestParamsInner] |  | [optional] 
+**params** | [CreateModelConversionJobRequestParamsInner] |  | 
 **jobRunnerId** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
 **originModelId** | **UUID** |  | 

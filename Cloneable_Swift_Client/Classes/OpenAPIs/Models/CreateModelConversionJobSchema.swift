@@ -25,7 +25,7 @@ public struct CreateModelConversionJobSchema: Codable, JSONEncodable, Hashable {
     public var updatedAt: Date?
     public var trainingFileId: UUID?
     public var exportFormat: String
-    public var params: [CreateModelConversionJobRequestParamsInner]?
+    public var params: [CreateModelConversionJobRequestParamsInner]
     public var jobRunnerId: String?
     public var status: Status?
     public var originModelId: UUID
@@ -34,7 +34,7 @@ public struct CreateModelConversionJobSchema: Codable, JSONEncodable, Hashable {
     public var errorStack: String?
     public var errorCode: String?
 
-    public init(id: UUID? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, updatedAt: Date? = nil, trainingFileId: UUID? = nil, exportFormat: String, params: [CreateModelConversionJobRequestParamsInner]? = nil, jobRunnerId: String? = nil, status: Status? = nil, originModelId: UUID, convertedModelId: UUID? = nil, errorMessage: String? = nil, errorStack: String? = nil, errorCode: String? = nil) {
+    public init(id: UUID? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, updatedAt: Date? = nil, trainingFileId: UUID? = nil, exportFormat: String, params: [CreateModelConversionJobRequestParamsInner], jobRunnerId: String? = nil, status: Status? = nil, originModelId: UUID, convertedModelId: UUID? = nil, errorMessage: String? = nil, errorStack: String? = nil, errorCode: String? = nil) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -81,7 +81,7 @@ public struct CreateModelConversionJobSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encodeIfPresent(trainingFileId, forKey: .trainingFileId)
         try container.encode(exportFormat, forKey: .exportFormat)
-        try container.encodeIfPresent(params, forKey: .params)
+        try container.encode(params, forKey: .params)
         try container.encodeIfPresent(jobRunnerId, forKey: .jobRunnerId)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encode(originModelId, forKey: .originModelId)

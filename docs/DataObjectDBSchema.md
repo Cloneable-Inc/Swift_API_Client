@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **teamId** | **String** |  | 
 **updatedAt** | **Date** |  | 
 **updatedBy** | **String** |  | 
-**expiresAt** | **Double** |  | 
+**expiresAt** | **Int** |  | 
 **metaData** | **AnyCodable** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

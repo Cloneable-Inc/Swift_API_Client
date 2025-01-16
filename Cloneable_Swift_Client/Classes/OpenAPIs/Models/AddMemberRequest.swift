@@ -18,15 +18,21 @@ public struct AddMemberRequest: Codable, JSONEncodable, Hashable {
     }
     public var userId: String
     public var role: Role
+    public var orgName: String
+    public var teamName: String?
 
-    public init(userId: String, role: Role) {
+    public init(userId: String, role: Role, orgName: String, teamName: String? = nil) {
         self.userId = userId
         self.role = role
+        self.orgName = orgName
+        self.teamName = teamName
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case userId = "user_id"
         case role
+        case orgName = "org_name"
+        case teamName = "team_name"
     }
 
     // Encodable protocol methods
@@ -35,6 +41,8 @@ public struct AddMemberRequest: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(userId, forKey: .userId)
         try container.encode(role, forKey: .role)
+        try container.encode(orgName, forKey: .orgName)
+        try container.encodeIfPresent(teamName, forKey: .teamName)
     }
 }
 

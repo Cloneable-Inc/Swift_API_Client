@@ -15,7 +15,7 @@ public struct CreateEditDataObjectFieldSchema: Codable, JSONEncodable, Hashable 
     public var id: UUID?
     public var dataObjectId: UUID
     public var key: String
-    public var value: CreateEditDataObjectFieldSchemaValue?
+    public var value: CreateEditDataObjectFieldSchemaValue
     public var type: String
     public var label: String?
     public var teamId: String?
@@ -26,7 +26,7 @@ public struct CreateEditDataObjectFieldSchema: Codable, JSONEncodable, Hashable 
     public var updatedAt: Date?
     public var updatedBy: String?
 
-    public init(id: UUID? = nil, dataObjectId: UUID, key: String, value: CreateEditDataObjectFieldSchemaValue? = nil, type: String, label: String? = nil, teamId: String? = nil, metaData: AnyCodable? = nil, dataObjectTemplateNameId: String, createdAt: Date? = nil, createdBy: String? = nil, updatedAt: Date? = nil, updatedBy: String? = nil) {
+    public init(id: UUID? = nil, dataObjectId: UUID, key: String, value: CreateEditDataObjectFieldSchemaValue, type: String, label: String? = nil, teamId: String? = nil, metaData: AnyCodable? = nil, dataObjectTemplateNameId: String, createdAt: Date? = nil, createdBy: String? = nil, updatedAt: Date? = nil, updatedBy: String? = nil) {
         self.id = id
         self.dataObjectId = dataObjectId
         self.key = key
@@ -65,7 +65,7 @@ public struct CreateEditDataObjectFieldSchema: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(dataObjectId, forKey: .dataObjectId)
         try container.encode(key, forKey: .key)
-        try container.encodeIfPresent(value, forKey: .value)
+        try container.encode(value, forKey: .value)
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(label, forKey: .label)
         try container.encodeIfPresent(teamId, forKey: .teamId)

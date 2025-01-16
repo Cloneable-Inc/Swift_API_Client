@@ -22,9 +22,9 @@ public struct CreateDataObjectExplorerSchema: Codable, JSONEncodable, Hashable {
     public var modifiedBy: String
     public var objectTemplateId: String
     public var hasLocations: Bool?
-    public var tableFields: [String]?
+    public var tableFields: [String]
 
-    public init(id: UUID? = nil, name: String, description: String? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, modifiedAt: Date? = nil, modifiedBy: String, objectTemplateId: String, hasLocations: Bool? = nil, tableFields: [String]? = nil) {
+    public init(id: UUID? = nil, name: String, description: String? = nil, companyId: String, createdAt: Date? = nil, createdBy: String, modifiedAt: Date? = nil, modifiedBy: String, objectTemplateId: String, hasLocations: Bool? = nil, tableFields: [String]) {
         self.id = id
         self.name = name
         self.description = description
@@ -66,7 +66,7 @@ public struct CreateDataObjectExplorerSchema: Codable, JSONEncodable, Hashable {
         try container.encode(modifiedBy, forKey: .modifiedBy)
         try container.encode(objectTemplateId, forKey: .objectTemplateId)
         try container.encodeIfPresent(hasLocations, forKey: .hasLocations)
-        try container.encodeIfPresent(tableFields, forKey: .tableFields)
+        try container.encode(tableFields, forKey: .tableFields)
     }
 }
 

@@ -25,7 +25,7 @@ public struct ModelConversionJobSchema: Codable, JSONEncodable, Hashable {
     public var updatedAt: Date
     public var trainingFileId: UUID?
     public var exportFormat: String
-    public var params: [CreateModelConversionJobRequestParamsInner]?
+    public var params: [CreateModelConversionJobRequestParamsInner]
     public var jobRunnerId: String?
     public var status: Status
     public var originModelId: UUID
@@ -34,7 +34,7 @@ public struct ModelConversionJobSchema: Codable, JSONEncodable, Hashable {
     public var errorStack: String?
     public var errorCode: String?
 
-    public init(id: UUID, companyId: String, createdAt: Date, createdBy: String, updatedAt: Date, trainingFileId: UUID?, exportFormat: String, params: [CreateModelConversionJobRequestParamsInner]?, jobRunnerId: String?, status: Status, originModelId: UUID, convertedModelId: UUID?, errorMessage: String?, errorStack: String?, errorCode: String?) {
+    public init(id: UUID, companyId: String, createdAt: Date, createdBy: String, updatedAt: Date, trainingFileId: UUID?, exportFormat: String, params: [CreateModelConversionJobRequestParamsInner], jobRunnerId: String?, status: Status, originModelId: UUID, convertedModelId: UUID?, errorMessage: String?, errorStack: String?, errorCode: String?) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt

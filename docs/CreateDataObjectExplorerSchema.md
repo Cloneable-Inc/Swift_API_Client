@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **modifiedBy** | **String** |  | 
 **objectTemplateId** | **String** |  | 
 **hasLocations** | **Bool** |  | [optional] 
-**tableFields** | **[String]** |  | [optional] 
+**tableFields** | **[String]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

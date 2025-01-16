@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **dataObjectId** | **UUID** |  | 
 **key** | **String** |  | 
-**value** | [**CreateEditDataObjectFieldSchemaValue**](CreateEditDataObjectFieldSchemaValue.md) |  | [optional] 
+**value** | [**CreateEditDataObjectFieldSchemaValue**](CreateEditDataObjectFieldSchemaValue.md) |  | 
 **type** | **String** |  | 
 **label** | **String** |  | [optional] 
 **teamId** | **String** |  | [optional] 

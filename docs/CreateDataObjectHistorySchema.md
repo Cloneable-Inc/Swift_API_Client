@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **type** | **String** |  | 
 **label** | **String** |  | [optional] 
 **teamId** | **String** |  | [optional] 
-**metaData** | [**SyncDataObjectRequestInnerMetaData**](SyncDataObjectRequestInnerMetaData.md) |  | [optional] 
+**metaData** | [**SyncDataObjectRequestInnerMetaData**](SyncDataObjectRequestInnerMetaData.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -103,7 +103,6 @@ Class | Method | HTTP request | Description
 *OrgAPI* | [**getCacheItem**](docs/OrgAPI.md#getcacheitem) | **GET** /org/cache/{key} | 
 *OrgAPI* | [**getMembers**](docs/OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
 *OrgAPI* | [**getOrg**](docs/OrgAPI.md#getorg) | **GET** /org/{id} | 
-*OrgAPI* | [**inviteUser**](docs/OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
 *OrgAPI* | [**putCacheItem**](docs/OrgAPI.md#putcacheitem) | **POST** /org/cache/{key} | 
 *OrgAPI* | [**resendInvite**](docs/OrgAPI.md#resendinvite) | **POST** /org/resend-invite | 
 *OrgAPI* | [**sendInvite**](docs/OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
@@ -264,6 +263,7 @@ Class | Method | HTTP request | Description
  - [SendFeedbackRequest](docs/SendFeedbackRequest.md)
  - [SendInviteRequest](docs/SendInviteRequest.md)
  - [SendInviteRequestInvitesInner](docs/SendInviteRequestInvitesInner.md)
+ - [SendInviteRequestInvitesInnerTeam](docs/SendInviteRequestInvitesInnerTeam.md)
  - [SignupCreateUser200Response](docs/SignupCreateUser200Response.md)
  - [SignupCreateUserRequest](docs/SignupCreateUserRequest.md)
  - [SignupCreateUserRequestOrgName](docs/SignupCreateUserRequestOrgName.md)

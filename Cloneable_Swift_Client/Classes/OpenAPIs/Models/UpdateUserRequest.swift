@@ -12,11 +12,12 @@ import AnyCodable
 
 public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
 
+    public static let phoneNumberRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var email: String?
     public var firstName: String?
     public var lastName: String?
     public var auth0Id: String?
-    public var phoneNumber: Double?
+    public var phoneNumber: Int?
     public var roles: [String]?
     public var companyRoles: [String]?
     public var cloneableEmployeeRoles: [String]?
@@ -26,7 +27,7 @@ public struct UpdateUserRequest: Codable, JSONEncodable, Hashable {
     public var confirmed: Bool?
     public var deactiveAt: Date?
 
-    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, auth0Id: String? = nil, phoneNumber: Double? = nil, roles: [String]? = nil, companyRoles: [String]? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil, active: Bool? = nil, confirmed: Bool? = nil, deactiveAt: Date? = nil) {
+    public init(email: String? = nil, firstName: String? = nil, lastName: String? = nil, auth0Id: String? = nil, phoneNumber: Int? = nil, roles: [String]? = nil, companyRoles: [String]? = nil, cloneableEmployeeRoles: [String]? = nil, organizationId: String? = nil, memberId: String? = nil, active: Bool? = nil, confirmed: Bool? = nil, deactiveAt: Date? = nil) {
         self.email = email
         self.firstName = firstName
         self.lastName = lastName

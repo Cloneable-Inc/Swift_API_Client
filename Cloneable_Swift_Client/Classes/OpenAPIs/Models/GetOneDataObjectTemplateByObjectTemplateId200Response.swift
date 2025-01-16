@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct GetOneDataObjectTemplateByObjectTemplateId200Response: Codable, JSONEncodable, Hashable {
 
+    public static let revisionRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: String
     public var nameId: String
     public var objectId: UUID
@@ -19,7 +20,7 @@ public struct GetOneDataObjectTemplateByObjectTemplateId200Response: Codable, JS
     public var objectDisplayName: String
     public var objectName: String
     public var fields: [UpdateDataObjectTemplateRequestFieldsInner]
-    public var revision: Double
+    public var revision: Int
     public var typeRefId: String?
     public var modifiedBy: String?
     public var createdBy: String?
@@ -28,7 +29,7 @@ public struct GetOneDataObjectTemplateByObjectTemplateId200Response: Codable, JS
     public var isTemplate: Bool
     public var companyId: String?
 
-    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Double, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, companyId: String? = nil) {
+    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, companyId: String? = nil) {
         self.id = id
         self.nameId = nameId
         self.objectId = objectId

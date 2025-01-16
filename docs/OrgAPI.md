@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**getCacheItem**](OrgAPI.md#getcacheitem) | **GET** /org/cache/{key} | 
 [**getMembers**](OrgAPI.md#getmembers) | **GET** /org/{id}/members | 
 [**getOrg**](OrgAPI.md#getorg) | **GET** /org/{id} | 
-[**inviteUser**](OrgAPI.md#inviteuser) | **POST** /org/{id}/invite-user | Invite a user to the org
 [**putCacheItem**](OrgAPI.md#putcacheitem) | **POST** /org/cache/{key} | 
 [**resendInvite**](OrgAPI.md#resendinvite) | **POST** /org/resend-invite | 
 [**sendInvite**](OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
@@ -387,56 +386,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **inviteUser**
-```swift
-    open class func inviteUser(id: String, userSchema: UserSchema? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
-```
-
-Invite a user to the org
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
-
-let id = "id_example" // String | 
-let userSchema = UserSchema(id: "id_example", email: "email_example", firstName: "firstName_example", lastName: "lastName_example", auth0Id: "auth0Id_example", phoneNumber: 123, roles: ["roles_example"], companyRoles: ["companyRoles_example"], cloneableEmployeeRoles: ["cloneableEmployeeRoles_example"], organizationId: "organizationId_example", memberId: "memberId_example", active: false, confirmed: false, createdAt: Date(), updatedAt: Date(), deactiveAt: Date(), companyId: "companyId_example") // UserSchema | Body (optional)
-
-// Invite a user to the org
-OrgAPI.inviteUser(id: id, userSchema: userSchema) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
- **userSchema** | [**UserSchema**](UserSchema.md) | Body | [optional] 
-
-### Return type
-
-[**UpdateFile200Response**](UpdateFile200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **putCacheItem**
 ```swift
     open class func putCacheItem(key: String, putCacheItemRequest: PutCacheItemRequest? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
@@ -545,7 +494,7 @@ Invite user to org
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"], teams: ["teams_example"])], orgId: "orgId_example") // SendInviteRequest | Body (optional)
+let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"], team: sendInvite_request_invites_inner_team(id: "id_example", role: "role_example"), orgName: "orgName_example", teamName: "teamName_example")], orgId: "orgId_example") // SendInviteRequest | Body (optional)
 
 // Invite user to org
 OrgAPI.sendInvite(sendInviteRequest: sendInviteRequest) { (response, error) in

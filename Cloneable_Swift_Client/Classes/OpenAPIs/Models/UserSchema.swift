@@ -12,12 +12,13 @@ import AnyCodable
 
 public struct UserSchema: Codable, JSONEncodable, Hashable {
 
+    public static let phoneNumberRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: String
     public var email: String
     public var firstName: String?
     public var lastName: String?
     public var auth0Id: String?
-    public var phoneNumber: Double?
+    public var phoneNumber: Int?
     public var roles: [String]?
     public var companyRoles: [String]?
     public var cloneableEmployeeRoles: [String]?
@@ -30,7 +31,7 @@ public struct UserSchema: Codable, JSONEncodable, Hashable {
     public var deactiveAt: Date?
     public var companyId: String?
 
-    public init(id: String, email: String, firstName: String?, lastName: String?, auth0Id: String?, phoneNumber: Double?, roles: [String]?, companyRoles: [String]?, cloneableEmployeeRoles: [String]?, organizationId: String?, memberId: String?, active: Bool?, confirmed: Bool?, createdAt: Date?, updatedAt: Date?, deactiveAt: Date?, companyId: String?) {
+    public init(id: String, email: String, firstName: String?, lastName: String?, auth0Id: String?, phoneNumber: Int?, roles: [String]?, companyRoles: [String]?, cloneableEmployeeRoles: [String]?, organizationId: String?, memberId: String?, active: Bool?, confirmed: Bool?, createdAt: Date?, updatedAt: Date?, deactiveAt: Date?, companyId: String?) {
         self.id = id
         self.email = email
         self.firstName = firstName

@@ -17,13 +17,15 @@ public struct GetDataObjectsPaged200Response: Codable, JSONEncodable, Hashable {
     public var count: Int
     public var pages: Int
     public var items: [DataObjectSchema]
+    public var archived: [String]?
 
-    public init(index: Int, size: Int, count: Int, pages: Int, items: [DataObjectSchema]) {
+    public init(index: Int, size: Int, count: Int, pages: Int, items: [DataObjectSchema], archived: [String]? = nil) {
         self.index = index
         self.size = size
         self.count = count
         self.pages = pages
         self.items = items
+        self.archived = archived
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +34,7 @@ public struct GetDataObjectsPaged200Response: Codable, JSONEncodable, Hashable {
         case count
         case pages
         case items
+        case archived
     }
 
     // Encodable protocol methods
@@ -43,6 +46,7 @@ public struct GetDataObjectsPaged200Response: Codable, JSONEncodable, Hashable {
         try container.encode(count, forKey: .count)
         try container.encode(pages, forKey: .pages)
         try container.encode(items, forKey: .items)
+        try container.encodeIfPresent(archived, forKey: .archived)
     }
 }
 

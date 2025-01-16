@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct DataObjectDBSchema: Codable, JSONEncodable, Hashable {
 
+    public static let expiresAtRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: UUID
     public var dataObjectTemplateId: UUID
     public var dataObjectTemplateNameId: String
@@ -20,10 +21,10 @@ public struct DataObjectDBSchema: Codable, JSONEncodable, Hashable {
     public var teamId: String?
     public var updatedAt: Date?
     public var updatedBy: String?
-    public var expiresAt: Double?
+    public var expiresAt: Int?
     public var metaData: AnyCodable?
 
-    public init(id: UUID, dataObjectTemplateId: UUID, dataObjectTemplateNameId: String, createdAt: Date?, createdBy: String?, teamId: String?, updatedAt: Date?, updatedBy: String?, expiresAt: Double?, metaData: AnyCodable?) {
+    public init(id: UUID, dataObjectTemplateId: UUID, dataObjectTemplateNameId: String, createdAt: Date?, createdBy: String?, teamId: String?, updatedAt: Date?, updatedBy: String?, expiresAt: Int?, metaData: AnyCodable?) {
         self.id = id
         self.dataObjectTemplateId = dataObjectTemplateId
         self.dataObjectTemplateNameId = dataObjectTemplateNameId

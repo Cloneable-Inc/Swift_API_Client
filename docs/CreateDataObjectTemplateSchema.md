@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **objectDisplayName** | **String** |  | 
 **objectName** | **String** |  | 
 **fields** | [UpdateDataObjectTemplateRequestFieldsInner] |  | 
-**revision** | **Double** |  | [optional] 
+**revision** | **Int** |  | [optional] 
 **typeRefId** | **String** |  | [optional] 
 **modifiedBy** | **String** |  | [optional] 
 **createdBy** | **String** |  | [optional] 
