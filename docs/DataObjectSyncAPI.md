@@ -201,7 +201,7 @@ No authorization required
 
 # **syncDataObject**
 ```swift
-    open class func syncDataObject(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil, completion: @escaping (_ data: DataObjectSchema?, _ error: Error?) -> Void)
+    open class func syncDataObject(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Sync a data object
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataObjectSchema**](DataObjectSchema.md)
+**String**
 
 ### Authorization
 

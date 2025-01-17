@@ -199,7 +199,7 @@ open class DataObjectSyncAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func syncDataObject(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: DataObjectSchema?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func syncDataObject(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: String?, _ error: Error?) -> Void)) -> RequestTask {
         return syncDataObjectWithRequestBuilder(syncDataObjectRequestInner: syncDataObjectRequestInner).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -214,9 +214,9 @@ open class DataObjectSyncAPI {
      Sync a data object
      - POST /data-object-sync/data-object
      - parameter syncDataObjectRequestInner: (body) Body (optional)
-     - returns: RequestBuilder<DataObjectSchema> 
+     - returns: RequestBuilder<String> 
      */
-    open class func syncDataObjectWithRequestBuilder(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil) -> RequestBuilder<DataObjectSchema> {
+    open class func syncDataObjectWithRequestBuilder(syncDataObjectRequestInner: [SyncDataObjectRequestInner]? = nil) -> RequestBuilder<String> {
         let localVariablePath = "/data-object-sync/data-object"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: syncDataObjectRequestInner)
@@ -229,7 +229,7 @@ open class DataObjectSyncAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DataObjectSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<String>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }

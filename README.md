@@ -269,6 +269,7 @@ Class | Method | HTTP request | Description
  - [SignupCreateUserRequestOrgName](docs/SignupCreateUserRequestOrgName.md)
  - [SignupCreateUserRequestPhone](docs/SignupCreateUserRequestPhone.md)
  - [SignupNeeded200Response](docs/SignupNeeded200Response.md)
+ - [SyncDataObject500Response](docs/SyncDataObject500Response.md)
  - [SyncDataObjectRequestInner](docs/SyncDataObjectRequestInner.md)
  - [SyncDataObjectRequestInnerMetaData](docs/SyncDataObjectRequestInnerMetaData.md)
  - [TeamInsertSchema](docs/TeamInsertSchema.md)
