@@ -20,10 +20,11 @@ public struct SyncDataObjectRequestInnerMetaData: Codable, JSONEncodable, Hashab
     public var jsonSchema: String?
     public var jsonSchemaId: String?
     public var objectTemplateId: String?
+    public var objectTemplateFieldId: String?
     public var displayName: String?
     public var data: AnyCodable?
 
-    public init(linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, objectTemplateId: String? = nil, displayName: String? = nil, data: AnyCodable? = nil) {
+    public init(linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, objectTemplateId: String? = nil, objectTemplateFieldId: String? = nil, displayName: String? = nil, data: AnyCodable? = nil) {
         self.linkedObjectDisplayName = linkedObjectDisplayName
         self.linkedObjectName = linkedObjectName
         self.linkedObjectRevision = linkedObjectRevision
@@ -32,6 +33,7 @@ public struct SyncDataObjectRequestInnerMetaData: Codable, JSONEncodable, Hashab
         self.jsonSchema = jsonSchema
         self.jsonSchemaId = jsonSchemaId
         self.objectTemplateId = objectTemplateId
+        self.objectTemplateFieldId = objectTemplateFieldId
         self.displayName = displayName
         self.data = data
     }
@@ -45,6 +47,7 @@ public struct SyncDataObjectRequestInnerMetaData: Codable, JSONEncodable, Hashab
         case jsonSchema = "json_schema"
         case jsonSchemaId = "json_schema_id"
         case objectTemplateId = "object_template_id"
+        case objectTemplateFieldId = "object_template_field_id"
         case displayName = "display_name"
         case data
     }
@@ -61,6 +64,7 @@ public struct SyncDataObjectRequestInnerMetaData: Codable, JSONEncodable, Hashab
         try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
         try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
         try container.encodeIfPresent(objectTemplateId, forKey: .objectTemplateId)
+        try container.encodeIfPresent(objectTemplateFieldId, forKey: .objectTemplateFieldId)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(data, forKey: .data)
     }

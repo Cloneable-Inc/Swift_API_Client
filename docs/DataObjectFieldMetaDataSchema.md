@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **jsonSchema** | **String** |  | [optional] 
 **jsonSchemaId** | **String** |  | [optional] 
 **objectTemplateId** | **String** |  | [optional] 
+**objectTemplateFieldId** | **String** |  | [optional] 
 **displayName** | **String** |  | [optional] 
 **data** | **AnyCodable** |  | [optional] 
 
