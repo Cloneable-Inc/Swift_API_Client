@@ -21,8 +21,9 @@ public struct SyncDataObjectRequestInner: Codable, JSONEncodable, Hashable {
     public var label: String?
     public var teamId: String?
     public var metaData: SyncDataObjectRequestInnerMetaData
+    public var createdAt: Date?
 
-    public init(id: UUID? = nil, dataObjectId: String, dataObjectTemplateNameId: String, key: String, value: AnyCodable? = nil, type: String, label: String? = nil, teamId: String? = nil, metaData: SyncDataObjectRequestInnerMetaData) {
+    public init(id: UUID? = nil, dataObjectId: String, dataObjectTemplateNameId: String, key: String, value: AnyCodable? = nil, type: String, label: String? = nil, teamId: String? = nil, metaData: SyncDataObjectRequestInnerMetaData, createdAt: Date? = nil) {
         self.id = id
         self.dataObjectId = dataObjectId
         self.dataObjectTemplateNameId = dataObjectTemplateNameId
@@ -32,6 +33,7 @@ public struct SyncDataObjectRequestInner: Codable, JSONEncodable, Hashable {
         self.label = label
         self.teamId = teamId
         self.metaData = metaData
+        self.createdAt = createdAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +46,7 @@ public struct SyncDataObjectRequestInner: Codable, JSONEncodable, Hashable {
         case label
         case teamId = "team_id"
         case metaData = "meta_data"
+        case createdAt = "created_at"
     }
 
     // Encodable protocol methods
@@ -59,6 +62,7 @@ public struct SyncDataObjectRequestInner: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(label, forKey: .label)
         try container.encodeIfPresent(teamId, forKey: .teamId)
         try container.encode(metaData, forKey: .metaData)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
     }
 }
 
