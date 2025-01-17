@@ -17,9 +17,9 @@ public struct GetManyFiles200Response: Codable, JSONEncodable, Hashable {
     public var count: Int
     public var pages: Int
     public var items: [FileSchema]
-    public var archived: [String]?
+    public var archived: [String]
 
-    public init(index: Int, size: Int, count: Int, pages: Int, items: [FileSchema], archived: [String]? = nil) {
+    public init(index: Int, size: Int, count: Int, pages: Int, items: [FileSchema], archived: [String]) {
         self.index = index
         self.size = size
         self.count = count
@@ -46,7 +46,7 @@ public struct GetManyFiles200Response: Codable, JSONEncodable, Hashable {
         try container.encode(count, forKey: .count)
         try container.encode(pages, forKey: .pages)
         try container.encode(items, forKey: .items)
-        try container.encodeIfPresent(archived, forKey: .archived)
+        try container.encode(archived, forKey: .archived)
     }
 }
 

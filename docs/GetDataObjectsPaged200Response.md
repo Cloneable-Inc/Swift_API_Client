@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **count** | **Int** |  | 
 **pages** | **Int** |  | 
 **items** | [DataObjectSchema] |  | 
-**archived** | **[String]** |  | [optional] 
+**archived** | **[String]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
