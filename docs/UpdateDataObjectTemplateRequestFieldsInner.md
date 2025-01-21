@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **type** | **String** |  | 
 **fileInformation** | [**UpdateDataObjectTemplateRequestFieldsInnerFileInformation**](UpdateDataObjectTemplateRequestFieldsInnerFileInformation.md) |  | [optional] 
 **statusOptions** | **[String]** |  | [optional] 
+**customTypeId** | **String** |  | [optional] 
+**customTypeProperty** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,8 +28,10 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
     public var type: String
     public var fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation?
     public var statusOptions: [String]?
+    public var customTypeId: String?
+    public var customTypeProperty: String?
 
-    public init(arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, type: String, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil) {
+    public init(arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, type: String, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil, customTypeId: String? = nil, customTypeProperty: String? = nil) {
         self.arraySubType = arraySubType
         self.jsonSchema = jsonSchema
         self.jsonSchemaId = jsonSchemaId
@@ -46,6 +48,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
         self.type = type
         self.fileInformation = fileInformation
         self.statusOptions = statusOptions
+        self.customTypeId = customTypeId
+        self.customTypeProperty = customTypeProperty
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -65,6 +69,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
         case type
         case fileInformation = "file_information"
         case statusOptions = "status_options"
+        case customTypeId = "custom_type_id"
+        case customTypeProperty = "custom_type_property"
     }
 
     // Encodable protocol methods
@@ -87,6 +93,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Codable, JSONEncodable
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(fileInformation, forKey: .fileInformation)
         try container.encodeIfPresent(statusOptions, forKey: .statusOptions)
+        try container.encodeIfPresent(customTypeId, forKey: .customTypeId)
+        try container.encodeIfPresent(customTypeProperty, forKey: .customTypeProperty)
     }
 }
 
