@@ -1,11 +1,11 @@
-# TriggerExport200Response
+# GetGeocodeResult200Response
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** |  | 
-**exportId** | **String** |  | 
-**data** | **AnyCodable** |  | [optional] 
+**address** | **String** |  | 
+**location** | [**GetGeocodeResult200ResponseLocation**](GetGeocodeResult200ResponseLocation.md) |  | 
+**score** | **Double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

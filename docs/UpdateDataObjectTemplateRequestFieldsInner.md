@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **modifiedBy** | **String** |  | [optional] 
 **name** | **String** |  | 
 **type** | **String** |  | 
+**requiredFor** | [**UpdateDataObjectTemplateRequestFieldsInnerRequiredFor**](UpdateDataObjectTemplateRequestFieldsInnerRequiredFor.md) |  | [optional] 
 **fileInformation** | [**UpdateDataObjectTemplateRequestFieldsInnerFileInformation**](UpdateDataObjectTemplateRequestFieldsInnerFileInformation.md) |  | [optional] 
 **statusOptions** | **[String]** |  | [optional] 
 **customTypeId** | **String** |  | [optional] 

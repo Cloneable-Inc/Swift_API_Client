@@ -73,6 +73,8 @@ Class | Method | HTTP request | Description
 *DeployedWorfklowAPI* | [**getDeployedWorkflows**](docs/DeployedWorfklowAPI.md#getdeployedworkflows) | **POST** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getDeployedWorkflowsQuery**](docs/DeployedWorfklowAPI.md#getdeployedworkflowsquery) | **GET** /deployed-workflows | Get all deployed workflows
 *DeployedWorfklowAPI* | [**getOneDeployedWorkflow**](docs/DeployedWorfklowAPI.md#getonedeployedworkflow) | **GET** /deployed-workflow/{id} | Returns a deployed workflow by id
+*EsriAPI* | [**getGeocodeResult**](docs/EsriAPI.md#getgeocoderesult) | **GET** /esri/geocode | Get geocode result from ESRI
+*EsriAPI* | [**getSuggestions**](docs/EsriAPI.md#getsuggestions) | **GET** /esri/suggestions | Get geocoding suggestions from ESRI
 *ExportAPI* | [**triggerExport**](docs/ExportAPI.md#triggerexport) | **POST** /exports/{exportType} | Trigger an export to external system
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
 *FileAPI* | [**deleteFile**](docs/FileAPI.md#deletefile) | **DELETE** /file/{id} | Delete a single file
@@ -216,6 +218,8 @@ Class | Method | HTTP request | Description
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
+ - [GetGeocodeResult200Response](docs/GetGeocodeResult200Response.md)
+ - [GetGeocodeResult200ResponseLocation](docs/GetGeocodeResult200ResponseLocation.md)
  - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
  - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
  - [GetManyFilesFiltersParameter](docs/GetManyFilesFiltersParameter.md)
@@ -229,10 +233,13 @@ Class | Method | HTTP request | Description
  - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
  - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
  - [GetOne200Response](docs/GetOne200Response.md)
+ - [GetOneDataObjectTemplate400Response](docs/GetOneDataObjectTemplate400Response.md)
  - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
+ - [GetSuggestions200Response](docs/GetSuggestions200Response.md)
+ - [GetSuggestions200ResponseSuggestionsInner](docs/GetSuggestions200ResponseSuggestionsInner.md)
  - [GetTeamMembers200ResponseInner](docs/GetTeamMembers200ResponseInner.md)
  - [GetTeamMembers200ResponseInnerUser](docs/GetTeamMembers200ResponseInnerUser.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
@@ -294,6 +301,7 @@ Class | Method | HTTP request | Description
  - [UpdateDataObjectTemplateRequest](docs/UpdateDataObjectTemplateRequest.md)
  - [UpdateDataObjectTemplateRequestFieldsInner](docs/UpdateDataObjectTemplateRequestFieldsInner.md)
  - [UpdateDataObjectTemplateRequestFieldsInnerFileInformation](docs/UpdateDataObjectTemplateRequestFieldsInnerFileInformation.md)
+ - [UpdateDataObjectTemplateRequestFieldsInnerRequiredFor](docs/UpdateDataObjectTemplateRequestFieldsInnerRequiredFor.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UpdateMemberRoleRequest](docs/UpdateMemberRoleRequest.md)
  - [UpdateOrgSettings](docs/UpdateOrgSettings.md)
