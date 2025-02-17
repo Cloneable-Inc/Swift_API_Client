@@ -192,6 +192,55 @@ open class DataObjectSyncAPI {
     }
 
     /**
+     Query data objects by template name and field values
+     
+     - parameter templateNameId: (query)  
+     - parameter fieldFilters: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func queryDataObjectFields(templateNameId: String, fieldFilters: [String: AnyCodable]? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [QueryDataObjectFields200ResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return queryDataObjectFieldsWithRequestBuilder(templateNameId: templateNameId, fieldFilters: fieldFilters).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Query data objects by template name and field values
+     - GET /data-objects-sync/query
+     - parameter templateNameId: (query)  
+     - parameter fieldFilters: (query)  (optional)
+     - returns: RequestBuilder<[QueryDataObjectFields200ResponseInner]> 
+     */
+    open class func queryDataObjectFieldsWithRequestBuilder(templateNameId: String, fieldFilters: [String: AnyCodable]? = nil) -> RequestBuilder<[QueryDataObjectFields200ResponseInner]> {
+        let localVariablePath = "/data-objects-sync/query"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "template_name_id": (wrappedValue: templateNameId.encodeToJSON(), isExplode: true),
+            "field_filters": (wrappedValue: fieldFilters?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[QueryDataObjectFields200ResponseInner]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Sync a data object
      
      - parameter syncDataObjectRequestInner: (body) Body (optional)

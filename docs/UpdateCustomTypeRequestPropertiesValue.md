@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **oneOf** | **AnyCodable** |  | [optional] 
 **fileType** | **String** |  | [optional] 
 **title** | **String** |  | [optional] 
+**_required** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

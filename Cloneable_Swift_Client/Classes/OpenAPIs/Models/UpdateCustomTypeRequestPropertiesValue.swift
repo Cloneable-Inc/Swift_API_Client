@@ -21,8 +21,9 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
     public var oneOf: AnyCodable?
     public var fileType: String?
     public var title: String?
+    public var _required: Bool?
 
-    public init(type: String, arrayType: String? = nil, description: String? = nil, _default: String? = nil, properties: AnyCodable? = nil, _enum: [UpdateCustomTypeRequestPropertiesValueEnumInner]? = nil, oneOf: AnyCodable? = nil, fileType: String? = nil, title: String? = nil) {
+    public init(type: String, arrayType: String? = nil, description: String? = nil, _default: String? = nil, properties: AnyCodable? = nil, _enum: [UpdateCustomTypeRequestPropertiesValueEnumInner]? = nil, oneOf: AnyCodable? = nil, fileType: String? = nil, title: String? = nil, _required: Bool? = nil) {
         self.type = type
         self.arrayType = arrayType
         self.description = description
@@ -32,6 +33,7 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
         self.oneOf = oneOf
         self.fileType = fileType
         self.title = title
+        self._required = _required
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +46,7 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
         case oneOf
         case fileType
         case title
+        case _required = "required"
     }
 
     // Encodable protocol methods
@@ -59,6 +62,7 @@ public struct UpdateCustomTypeRequestPropertiesValue: Codable, JSONEncodable, Ha
         try container.encodeIfPresent(oneOf, forKey: .oneOf)
         try container.encodeIfPresent(fileType, forKey: .fileType)
         try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(_required, forKey: ._required)
     }
 }
 

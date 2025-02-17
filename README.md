@@ -64,6 +64,7 @@ Class | Method | HTTP request | Description
 *DataObjectSyncAPI* | [**getOne**](docs/DataObjectSyncAPI.md#getone) | **GET** /data-object-sync/data-object/{id} | Get a flattened data object
 *DataObjectSyncAPI* | [**getTemplate**](docs/DataObjectSyncAPI.md#gettemplate) | **GET** /data-object-sync/template/{id} | Get a data object template
 *DataObjectSyncAPI* | [**listTemplates**](docs/DataObjectSyncAPI.md#listtemplates) | **GET** /data-object-sync/templates | List all data object templates
+*DataObjectSyncAPI* | [**queryDataObjectFields**](docs/DataObjectSyncAPI.md#querydataobjectfields) | **GET** /data-objects-sync/query | Query data objects by template name and field values
 *DataObjectSyncAPI* | [**syncDataObject**](docs/DataObjectSyncAPI.md#syncdataobject) | **POST** /data-object-sync/data-object | Sync a data object
 *DataObjectTemplateAPI* | [**createDataObjectTemplate**](docs/DataObjectTemplateAPI.md#createdataobjecttemplate) | **POST** /data-object-template | Create a data object template
 *DataObjectTemplateAPI* | [**getManyDataObjectTemplates**](docs/DataObjectTemplateAPI.md#getmanydataobjecttemplates) | **GET** /data-object-templates | Get many data object templates
@@ -123,6 +124,20 @@ Class | Method | HTTP request | Description
 *TeamAPI* | [**listTeams**](docs/TeamAPI.md#listteams) | **GET** /teams | List all teams in an organization
 *TeamAPI* | [**removeMember**](docs/TeamAPI.md#removemember) | **DELETE** /teams/{teamId}/members/{userId} | Remove a member from a team
 *TeamAPI* | [**updateMemberRole**](docs/TeamAPI.md#updatememberrole) | **PATCH** /teams/{teamId}/members/{userId}/role | Update a team member&#39;s role
+*TriggerAPI* | [**attachSecret**](docs/TriggerAPI.md#attachsecret) | **POST** /trigger/{id}/secrets/{secret_id} | Attach a secret to a trigger
+*TriggerAPI* | [**createTrigger**](docs/TriggerAPI.md#createtrigger) | **POST** /trigger | Create a new trigger
+*TriggerAPI* | [**deleteTrigger**](docs/TriggerAPI.md#deletetrigger) | **DELETE** /trigger/{id} | Delete a trigger
+*TriggerAPI* | [**detachSecret**](docs/TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
+*TriggerAPI* | [**getExecutionLogs**](docs/TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
+*TriggerAPI* | [**getOneTrigger**](docs/TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
+*TriggerAPI* | [**getTriggerExecutions**](docs/TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
+*TriggerAPI* | [**getTriggerSecrets**](docs/TriggerAPI.md#gettriggersecrets) | **GET** /trigger/{id}/secrets | Get all secrets attached to a trigger
+*TriggerAPI* | [**getTriggers**](docs/TriggerAPI.md#gettriggers) | **GET** /triggers | Get all triggers for organization
+*TriggerAPI* | [**runTrigger**](docs/TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger
+*TriggerAPI* | [**triggerExecutionStart**](docs/TriggerAPI.md#triggerexecutionstart) | **POST** /trigger/{id}/execution/start | Start a trigger container
+*TriggerAPI* | [**triggerExecutionStop**](docs/TriggerAPI.md#triggerexecutionstop) | **POST** /trigger/{id}/execution/stop | Stop a trigger container
+*TriggerAPI* | [**updateTrigger**](docs/TriggerAPI.md#updatetrigger) | **PUT** /trigger/{id} | Update an existing trigger
+*TriggerAPI* | [**updateTriggerSecrets**](docs/TriggerAPI.md#updatetriggersecrets) | **PUT** /trigger/{id}/secrets | Update all secrets for a trigger
 *UserAPI* | [**currentUser**](docs/UserAPI.md#currentuser) | **GET** /user | Get current user
 *UserAPI* | [**getAllUsers**](docs/UserAPI.md#getallusers) | **GET** /users | Get all users in the org
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
@@ -182,6 +197,7 @@ Class | Method | HTTP request | Description
  - [CreateSecretSchema](docs/CreateSecretSchema.md)
  - [CreateTeam201Response](docs/CreateTeam201Response.md)
  - [CreateTeamRequest](docs/CreateTeamRequest.md)
+ - [CreateTriggerRequest](docs/CreateTriggerRequest.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CurrentOrg200Response](docs/CurrentOrg200Response.md)
  - [CustomTypeSchema](docs/CustomTypeSchema.md)
@@ -192,6 +208,7 @@ Class | Method | HTTP request | Description
  - [DataObjectSchemaFieldsInner](docs/DataObjectSchemaFieldsInner.md)
  - [DataObjectTemplateSchema](docs/DataObjectTemplateSchema.md)
  - [DeactivateUserRequest](docs/DeactivateUserRequest.md)
+ - [DeleteTrigger200Response](docs/DeleteTrigger200Response.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSchemaComponentsInner](docs/DeployedWorkflowSchemaComponentsInner.md)
  - [DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner](docs/DeployedWorkflowSchemaComponentsInnerCustomizableParametersInner.md)
@@ -242,7 +259,17 @@ Class | Method | HTTP request | Description
  - [GetSuggestions200ResponseSuggestionsInner](docs/GetSuggestions200ResponseSuggestionsInner.md)
  - [GetTeamMembers200ResponseInner](docs/GetTeamMembers200ResponseInner.md)
  - [GetTeamMembers200ResponseInnerUser](docs/GetTeamMembers200ResponseInnerUser.md)
+ - [GetTriggerSecrets200ResponseInner](docs/GetTriggerSecrets200ResponseInner.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
+ - [InsertTriggerExecutionSchema](docs/InsertTriggerExecutionSchema.md)
+ - [InsertTriggerExecutionSchemaInputs](docs/InsertTriggerExecutionSchemaInputs.md)
+ - [InsertTriggerExecutionSchemaInputsParametersInner](docs/InsertTriggerExecutionSchemaInputsParametersInner.md)
+ - [InsertTriggerExecutionSchemaMetadata](docs/InsertTriggerExecutionSchemaMetadata.md)
+ - [InsertTriggerExecutionSchemaResourceUsage](docs/InsertTriggerExecutionSchemaResourceUsage.md)
+ - [InsertTriggerLogSchema](docs/InsertTriggerLogSchema.md)
+ - [InsertTriggerSchema](docs/InsertTriggerSchema.md)
+ - [InsertTriggerSchemaEventConfig](docs/InsertTriggerSchemaEventConfig.md)
+ - [InsertTriggerSchemaResourceLimits](docs/InsertTriggerSchemaResourceLimits.md)
  - [IssueKeyForCustomAuthRequest](docs/IssueKeyForCustomAuthRequest.md)
  - [ListSecrets200ResponseInner](docs/ListSecrets200ResponseInner.md)
  - [ListTeams200ResponseInner](docs/ListTeams200ResponseInner.md)
@@ -258,10 +285,12 @@ Class | Method | HTTP request | Description
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaCreate](docs/OrgSchemaCreate.md)
  - [PutCacheItemRequest](docs/PutCacheItemRequest.md)
+ - [QueryDataObjectFields200ResponseInner](docs/QueryDataObjectFields200ResponseInner.md)
  - [ResendInviteRequest](docs/ResendInviteRequest.md)
  - [ResourceTeamAccessInsertSchema](docs/ResourceTeamAccessInsertSchema.md)
  - [ResourceTeamAccessSchema](docs/ResourceTeamAccessSchema.md)
  - [RetryFileUploadUrl200Response](docs/RetryFileUploadUrl200Response.md)
+ - [RunTriggerRequest](docs/RunTriggerRequest.md)
  - [SaveWorkflowRequest](docs/SaveWorkflowRequest.md)
  - [SaveWorkflowRequestBuilderObject](docs/SaveWorkflowRequestBuilderObject.md)
  - [SaveWorkflowRequestResourcesInner](docs/SaveWorkflowRequestResourcesInner.md)
@@ -284,12 +313,19 @@ Class | Method | HTTP request | Description
  - [TeamMemberRoleEnum](docs/TeamMemberRoleEnum.md)
  - [TeamMemberSchema](docs/TeamMemberSchema.md)
  - [TeamSchema](docs/TeamSchema.md)
+ - [TriggerExecutionSchema](docs/TriggerExecutionSchema.md)
+ - [TriggerExecutionStart200Response](docs/TriggerExecutionStart200Response.md)
+ - [TriggerExecutionStopRequest](docs/TriggerExecutionStopRequest.md)
+ - [TriggerExecutionStopRequestLogsInner](docs/TriggerExecutionStopRequestLogsInner.md)
+ - [TriggerExecutionStopRequestLogsInnerMetadata](docs/TriggerExecutionStopRequestLogsInnerMetadata.md)
  - [TriggerExport200Response](docs/TriggerExport200Response.md)
  - [TriggerExportRequest](docs/TriggerExportRequest.md)
  - [TriggerExportRequestOneOf](docs/TriggerExportRequestOneOf.md)
  - [TriggerExportRequestOneOf1](docs/TriggerExportRequestOneOf1.md)
  - [TriggerExportRequestOneOfAttachmentsInner](docs/TriggerExportRequestOneOfAttachmentsInner.md)
  - [TriggerExportRequestOneOfAttachmentsInnerPixelSelectionInner](docs/TriggerExportRequestOneOfAttachmentsInnerPixelSelectionInner.md)
+ - [TriggerLogSchema](docs/TriggerLogSchema.md)
+ - [TriggerSchema](docs/TriggerSchema.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
  - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
@@ -305,6 +341,10 @@ Class | Method | HTTP request | Description
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
  - [UpdateMemberRoleRequest](docs/UpdateMemberRoleRequest.md)
  - [UpdateOrgSettings](docs/UpdateOrgSettings.md)
+ - [UpdateTriggerRequest](docs/UpdateTriggerRequest.md)
+ - [UpdateTriggerRequestInputSchema](docs/UpdateTriggerRequestInputSchema.md)
+ - [UpdateTriggerRequestInputSchemaParametersInner](docs/UpdateTriggerRequestInputSchemaParametersInner.md)
+ - [UpdateTriggerSecretsRequest](docs/UpdateTriggerSecretsRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UserSchema](docs/UserSchema.md)
  - [VerifyOrg200Response](docs/VerifyOrg200Response.md)
