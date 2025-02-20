@@ -25,8 +25,10 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var workflowInstanceId: String
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
+    public var relatedDataSynced: Bool?
+    public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
         self.id = id
         self.name = name
         self.companyId = companyId
@@ -40,6 +42,8 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         self.workflowInstanceId = workflowInstanceId
         self.relatedWorkflowTemplateId = relatedWorkflowTemplateId
         self.auditTimeline = auditTimeline
+        self.relatedDataSynced = relatedDataSynced
+        self.triggers = triggers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,6 +60,8 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case workflowInstanceId = "workflow_instance_id"
         case relatedWorkflowTemplateId = "related_workflow_template_id"
         case auditTimeline = "audit_timeline"
+        case relatedDataSynced = "related_data_synced"
+        case triggers
     }
 
     // Encodable protocol methods
@@ -75,6 +81,8 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
         try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
+        try container.encodeIfPresent(relatedDataSynced, forKey: .relatedDataSynced)
+        try container.encodeIfPresent(triggers, forKey: .triggers)
     }
 }
 

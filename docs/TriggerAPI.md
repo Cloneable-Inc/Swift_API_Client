@@ -420,7 +420,7 @@ No authorization required
 
 # **getTriggers**
 ```swift
-    open class func getTriggers(completion: @escaping (_ data: [TriggerSchema]?, _ error: Error?) -> Void)
+    open class func getTriggers(minimal: Bool? = nil, completion: @escaping (_ data: [TriggerSchema]?, _ error: Error?) -> Void)
 ```
 
 Get all triggers for organization
@@ -430,9 +430,10 @@ Get all triggers for organization
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
+let minimal = true // Bool |  (optional)
 
 // Get all triggers for organization
-TriggerAPI.getTriggers() { (response, error) in
+TriggerAPI.getTriggers(minimal: minimal) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -445,7 +446,10 @@ TriggerAPI.getTriggers() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **minimal** | **Bool** |  | [optional] 
 
 ### Return type
 

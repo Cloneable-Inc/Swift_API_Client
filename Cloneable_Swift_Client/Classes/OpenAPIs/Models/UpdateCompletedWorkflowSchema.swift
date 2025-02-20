@@ -20,8 +20,10 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
+    public var relatedDataSynced: Bool?
+    public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(name: String, finalized: Bool, finalizedAt: Date? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(name: String, finalized: Bool, finalizedAt: Date? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
         self.name = name
         self.finalized = finalized
         self.finalizedAt = finalizedAt
@@ -30,6 +32,8 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         self.relatedObjectTypes = relatedObjectTypes
         self.relatedWorkflowTemplateId = relatedWorkflowTemplateId
         self.auditTimeline = auditTimeline
+        self.relatedDataSynced = relatedDataSynced
+        self.triggers = triggers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,6 +45,8 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case relatedObjectTypes = "related_object_types"
         case relatedWorkflowTemplateId = "related_workflow_template_id"
         case auditTimeline = "audit_timeline"
+        case relatedDataSynced = "related_data_synced"
+        case triggers
     }
 
     // Encodable protocol methods
@@ -55,6 +61,8 @@ public struct UpdateCompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
         try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
+        try container.encodeIfPresent(relatedDataSynced, forKey: .relatedDataSynced)
+        try container.encodeIfPresent(triggers, forKey: .triggers)
     }
 }
 

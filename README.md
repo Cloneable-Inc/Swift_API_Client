@@ -163,6 +163,7 @@ Class | Method | HTTP request | Description
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
+ - [CompletedWorkflowSchemaTriggersInner](docs/CompletedWorkflowSchemaTriggersInner.md)
  - [ComponentJSONSchema](docs/ComponentJSONSchema.md)
  - [ComponentJSONSchemaCustomizableParametersInner](docs/ComponentJSONSchemaCustomizableParametersInner.md)
  - [ComponentJSONSchemaInputsInner](docs/ComponentJSONSchemaInputsInner.md)

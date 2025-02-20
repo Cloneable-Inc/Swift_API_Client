@@ -404,12 +404,13 @@ open class TriggerAPI {
     /**
      Get all triggers for organization
      
+     - parameter minimal: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTriggers(apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TriggerSchema]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTriggersWithRequestBuilder().execute(apiResponseQueue) { result in
+    open class func getTriggers(minimal: Bool? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TriggerSchema]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getTriggersWithRequestBuilder(minimal: minimal).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -422,14 +423,18 @@ open class TriggerAPI {
     /**
      Get all triggers for organization
      - GET /triggers
+     - parameter minimal: (query)  (optional)
      - returns: RequestBuilder<[TriggerSchema]> 
      */
-    open class func getTriggersWithRequestBuilder() -> RequestBuilder<[TriggerSchema]> {
+    open class func getTriggersWithRequestBuilder(minimal: Bool? = nil) -> RequestBuilder<[TriggerSchema]> {
         let localVariablePath = "/triggers"
         let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "minimal": (wrappedValue: minimal?.encodeToJSON(), isExplode: true),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

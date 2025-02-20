@@ -21,6 +21,7 @@ public struct ComponentJSONSchema: Codable, JSONEncodable, Hashable {
         case cloudWorkflowStart = "cloud_workflow_start"
         case cloudWorkflowEnd = "cloud_workflow_end"
         case iosWorkflowEnd = "ios_workflow_end"
+        case trigger = "trigger"
     }
     public var title: String
     public var componentID: String
