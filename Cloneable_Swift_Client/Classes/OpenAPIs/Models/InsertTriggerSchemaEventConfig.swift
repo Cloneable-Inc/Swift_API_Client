@@ -16,7 +16,7 @@ public struct InsertTriggerSchemaEventConfig: Codable, JSONEncodable, Hashable {
     public var conditions: [String: AnyCodable]?
     public var filters: [String: AnyCodable]?
 
-    public init(eventType: String? = nil, conditions: [String: AnyCodable]? = nil, filters: [String: AnyCodable]? = nil) {
+    public init(eventType: String?, conditions: [String: AnyCodable]?, filters: [String: AnyCodable]?) {
         self.eventType = eventType
         self.conditions = conditions
         self.filters = filters
@@ -32,9 +32,9 @@ public struct InsertTriggerSchemaEventConfig: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(eventType, forKey: .eventType)
-        try container.encodeIfPresent(conditions, forKey: .conditions)
-        try container.encodeIfPresent(filters, forKey: .filters)
+        try container.encode(eventType, forKey: .eventType)
+        try container.encode(conditions, forKey: .conditions)
+        try container.encode(filters, forKey: .filters)
     }
 }
 

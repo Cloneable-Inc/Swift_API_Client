@@ -270,6 +270,7 @@ Class | Method | HTTP request | Description
  - [InsertTriggerLogSchema](docs/InsertTriggerLogSchema.md)
  - [InsertTriggerSchema](docs/InsertTriggerSchema.md)
  - [InsertTriggerSchemaEventConfig](docs/InsertTriggerSchemaEventConfig.md)
+ - [InsertTriggerSchemaInputSchema](docs/InsertTriggerSchemaInputSchema.md)
  - [InsertTriggerSchemaResourceLimits](docs/InsertTriggerSchemaResourceLimits.md)
  - [IssueKeyForCustomAuthRequest](docs/IssueKeyForCustomAuthRequest.md)
  - [ListSecrets200ResponseInner](docs/ListSecrets200ResponseInner.md)

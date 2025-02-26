@@ -16,7 +16,7 @@ public struct InsertTriggerExecutionSchemaResourceUsage: Codable, JSONEncodable,
     public var memoryUsed: Double?
     public var duration: Double?
 
-    public init(cpuUsed: Double? = nil, memoryUsed: Double? = nil, duration: Double? = nil) {
+    public init(cpuUsed: Double?, memoryUsed: Double?, duration: Double?) {
         self.cpuUsed = cpuUsed
         self.memoryUsed = memoryUsed
         self.duration = duration
@@ -32,9 +32,9 @@ public struct InsertTriggerExecutionSchemaResourceUsage: Codable, JSONEncodable,
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(cpuUsed, forKey: .cpuUsed)
-        try container.encodeIfPresent(memoryUsed, forKey: .memoryUsed)
-        try container.encodeIfPresent(duration, forKey: .duration)
+        try container.encode(cpuUsed, forKey: .cpuUsed)
+        try container.encode(memoryUsed, forKey: .memoryUsed)
+        try container.encode(duration, forKey: .duration)
     }
 }
 

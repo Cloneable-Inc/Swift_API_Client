@@ -17,7 +17,7 @@ public struct InsertTriggerExecutionSchemaMetadata: Codable, JSONEncodable, Hash
     public var attempt: Double?
     public var retryCount: Double?
 
-    public init(workerId: String? = nil, region: String? = nil, attempt: Double? = nil, retryCount: Double? = nil) {
+    public init(workerId: String?, region: String?, attempt: Double?, retryCount: Double?) {
         self.workerId = workerId
         self.region = region
         self.attempt = attempt
@@ -35,10 +35,10 @@ public struct InsertTriggerExecutionSchemaMetadata: Codable, JSONEncodable, Hash
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(workerId, forKey: .workerId)
-        try container.encodeIfPresent(region, forKey: .region)
-        try container.encodeIfPresent(attempt, forKey: .attempt)
-        try container.encodeIfPresent(retryCount, forKey: .retryCount)
+        try container.encode(workerId, forKey: .workerId)
+        try container.encode(region, forKey: .region)
+        try container.encode(attempt, forKey: .attempt)
+        try container.encode(retryCount, forKey: .retryCount)
     }
 }
 

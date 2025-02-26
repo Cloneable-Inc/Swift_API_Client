@@ -20,16 +20,16 @@ public struct InsertTriggerSchema: Codable, JSONEncodable, Hashable {
     public var code: String?
     public var runtime: String
     public var schedule: String?
-    public var eventConfig: InsertTriggerSchemaEventConfig
-    public var environmentVariables: [String: String]
-    public var resourceLimits: InsertTriggerSchemaResourceLimits
-    public var inputSchema: InsertTriggerExecutionSchemaInputs
-    public var outputSchema: InsertTriggerExecutionSchemaInputs
-    public var state: [String: AnyCodable]
+    public var eventConfig: InsertTriggerSchemaEventConfig?
+    public var environmentVariables: [String: String]?
+    public var resourceLimits: InsertTriggerSchemaResourceLimits?
+    public var inputSchema: InsertTriggerSchemaInputSchema?
+    public var outputSchema: InsertTriggerSchemaInputSchema?
+    public var state: [String: AnyCodable]?
     public var createdAt: Date?
     public var updatedAt: Date?
 
-    public init(id: UUID? = nil, name: String, description: String? = nil, type: String, enabled: Bool? = nil, code: String? = nil, runtime: String, schedule: String? = nil, eventConfig: InsertTriggerSchemaEventConfig, environmentVariables: [String: String], resourceLimits: InsertTriggerSchemaResourceLimits, inputSchema: InsertTriggerExecutionSchemaInputs, outputSchema: InsertTriggerExecutionSchemaInputs, state: [String: AnyCodable], createdAt: Date? = nil, updatedAt: Date? = nil) {
+    public init(id: UUID? = nil, name: String, description: String? = nil, type: String, enabled: Bool? = nil, code: String? = nil, runtime: String, schedule: String? = nil, eventConfig: InsertTriggerSchemaEventConfig?, environmentVariables: [String: String]?, resourceLimits: InsertTriggerSchemaResourceLimits?, inputSchema: InsertTriggerSchemaInputSchema?, outputSchema: InsertTriggerSchemaInputSchema?, state: [String: AnyCodable]?, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.name = name
         self.description = description

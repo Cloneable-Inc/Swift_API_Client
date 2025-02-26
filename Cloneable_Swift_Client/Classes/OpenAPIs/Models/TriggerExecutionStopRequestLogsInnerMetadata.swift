@@ -16,7 +16,7 @@ public struct TriggerExecutionStopRequestLogsInnerMetadata: Codable, JSONEncodab
     public var correlationId: String?
     public var additionalContext: [String: AnyCodable]?
 
-    public init(source: String? = nil, correlationId: String? = nil, additionalContext: [String: AnyCodable]? = nil) {
+    public init(source: String?, correlationId: String?, additionalContext: [String: AnyCodable]?) {
         self.source = source
         self.correlationId = correlationId
         self.additionalContext = additionalContext
@@ -32,9 +32,9 @@ public struct TriggerExecutionStopRequestLogsInnerMetadata: Codable, JSONEncodab
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(source, forKey: .source)
-        try container.encodeIfPresent(correlationId, forKey: .correlationId)
-        try container.encodeIfPresent(additionalContext, forKey: .additionalContext)
+        try container.encode(source, forKey: .source)
+        try container.encode(correlationId, forKey: .correlationId)
+        try container.encode(additionalContext, forKey: .additionalContext)
     }
 }
 

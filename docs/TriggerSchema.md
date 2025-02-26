@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **eventConfig** | [**InsertTriggerSchemaEventConfig**](InsertTriggerSchemaEventConfig.md) |  | 
 **environmentVariables** | **[String: String]** |  | 
 **resourceLimits** | [**InsertTriggerSchemaResourceLimits**](InsertTriggerSchemaResourceLimits.md) |  | 
-**inputSchema** | [**InsertTriggerExecutionSchemaInputs**](InsertTriggerExecutionSchemaInputs.md) |  | 
-**outputSchema** | [**InsertTriggerExecutionSchemaInputs**](InsertTriggerExecutionSchemaInputs.md) |  | 
+**inputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
+**outputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
 **state** | **[String: AnyCodable]** |  | 
 **createdAt** | **Date** |  | 
 **updatedAt** | **Date** |  | 

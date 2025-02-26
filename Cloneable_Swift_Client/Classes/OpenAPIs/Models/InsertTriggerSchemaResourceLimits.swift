@@ -16,7 +16,7 @@ public struct InsertTriggerSchemaResourceLimits: Codable, JSONEncodable, Hashabl
     public var memory: Double?
     public var timeout: Double?
 
-    public init(cpu: Double? = nil, memory: Double? = nil, timeout: Double? = nil) {
+    public init(cpu: Double?, memory: Double?, timeout: Double?) {
         self.cpu = cpu
         self.memory = memory
         self.timeout = timeout
@@ -32,9 +32,9 @@ public struct InsertTriggerSchemaResourceLimits: Codable, JSONEncodable, Hashabl
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(cpu, forKey: .cpu)
-        try container.encodeIfPresent(memory, forKey: .memory)
-        try container.encodeIfPresent(timeout, forKey: .timeout)
+        try container.encode(cpu, forKey: .cpu)
+        try container.encode(memory, forKey: .memory)
+        try container.encode(timeout, forKey: .timeout)
     }
 }
 
