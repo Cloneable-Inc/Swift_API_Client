@@ -1,13 +1,13 @@
-// swift-tools-version:5.1
+// swift-tools-version:6.0
 
 import PackageDescription
 
 let package = Package(
     name: "Cloneable_Swift_Client",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v12),
         .macOS(.v10_13),
-        .tvOS(.v11),
+        .tvOS(.v12),
         .watchOS(.v4),
     ],
     products: [
@@ -19,16 +19,16 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/Flight-School/AnyCodable", .upToNextMajor(from: "0.6.1")),
-        .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: "5.7.0")),
+        .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: "5.10.2")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Cloneable_Swift_Client",
-            dependencies: ["AnyCodable", "Alamofire", ],
-            path: "Cloneable_Swift_Client/Classes"
+            dependencies: ["Alamofire", ],
+            path: "Sources/Cloneable_Swift_Client"
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )

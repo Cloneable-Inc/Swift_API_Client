@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **sectionId** | **String** |  | [optional] 
 **attachments** | [TriggerExportRequestOneOfAttachmentsInner] |  | [optional] 
 **columns** | **[String]** |  | 
-**data** | [[String: AnyCodable]] |  | 
+**data** | [[String: JSONValue]] |  | 
 **filename** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

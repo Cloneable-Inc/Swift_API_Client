@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **dataObjectId** | **String** |  | 
 **dataObjectTemplateNameId** | **String** |  | 
 **key** | **String** |  | 
-**value** | **AnyCodable** |  | [optional] 
+**value** | **JSONValue** |  | [optional] 
 **type** | **String** |  | 
 **label** | **String** |  | [optional] 
 **teamId** | **String** |  | [optional] 
