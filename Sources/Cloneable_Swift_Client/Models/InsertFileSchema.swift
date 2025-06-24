@@ -13,11 +13,11 @@ public struct InsertFileSchema: Sendable, Codable, ParameterConvertible, Hashabl
     public var savedToCloud: Bool?
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool?
-    public var relatedWorkflowId: String?
-    public var relatedObjectId: String?
+    public var relatedWorkflowId: UUID?
+    public var relatedObjectId: UUID?
     public var typeRefIds: [String]?
 
-    public init(savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, relatedWorkflowId: String? = nil, relatedObjectId: String? = nil, typeRefIds: [String]? = nil) {
+    public init(savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, relatedWorkflowId: UUID? = nil, relatedObjectId: UUID? = nil, typeRefIds: [String]? = nil) {
         self.savedToCloud = savedToCloud
         self.syncToEdge = syncToEdge
         self.relatedWorkflowId = relatedWorkflowId

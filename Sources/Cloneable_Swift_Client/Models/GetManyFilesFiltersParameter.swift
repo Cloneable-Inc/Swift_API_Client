@@ -9,31 +9,31 @@ import Foundation
 
 public struct GetManyFilesFiltersParameter: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var createdBy: String?
     public var createdAt: GetManyFilesFiltersParameterCreatedAt?
-    public var type: [String]?
+    public var search: String?
     public var savedToCloud: Bool?
     public var syncToEdge: Bool?
-    public var search: String?
-    public var additionalProperties: GetManyFilesFiltersParameterAdditionalProperties?
+    public var type: [String]?
+    public var createdBy: String?
+    public var additionalProperties: [String: JSONValue]?
 
-    public init(createdBy: String? = nil, createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, type: [String]? = nil, savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, search: String? = nil, additionalProperties: GetManyFilesFiltersParameterAdditionalProperties? = nil) {
-        self.createdBy = createdBy
+    public init(createdAt: GetManyFilesFiltersParameterCreatedAt? = nil, search: String? = nil, savedToCloud: Bool? = nil, syncToEdge: Bool? = nil, type: [String]? = nil, createdBy: String? = nil, additionalProperties: [String: JSONValue]? = nil) {
         self.createdAt = createdAt
-        self.type = type
+        self.search = search
         self.savedToCloud = savedToCloud
         self.syncToEdge = syncToEdge
-        self.search = search
+        self.type = type
+        self.createdBy = createdBy
         self.additionalProperties = additionalProperties
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case createdBy = "created_by"
         case createdAt = "created_at"
-        case type
+        case search
         case savedToCloud = "saved_to_cloud"
         case syncToEdge = "sync_to_edge"
-        case search
+        case type
+        case createdBy = "created_by"
         case additionalProperties = "additional_properties"
     }
 
@@ -41,12 +41,12 @@ public struct GetManyFilesFiltersParameter: Sendable, Codable, ParameterConverti
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(search, forKey: .search)
         try container.encodeIfPresent(savedToCloud, forKey: .savedToCloud)
         try container.encodeIfPresent(syncToEdge, forKey: .syncToEdge)
-        try container.encodeIfPresent(search, forKey: .search)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
     }
 }

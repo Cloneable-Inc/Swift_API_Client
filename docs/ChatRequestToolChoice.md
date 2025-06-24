@@ -1,10 +1,10 @@
-# DuplicateWorkflowRequest
+# ChatRequestToolChoice
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflowId** | **String** |  | 
-**companyId** | **String** |  | 
+**type** | **String** |  | 
+**function** | [**ChatRequestToolChoiceOneOfFunction**](ChatRequestToolChoiceOneOfFunction.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
