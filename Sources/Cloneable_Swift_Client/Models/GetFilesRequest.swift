@@ -10,10 +10,10 @@ import Foundation
 public struct GetFilesRequest: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: [String]?
-    public var filters: GetFilesRequestFilters?
+    public var filters: GetManyFilesFiltersParameter?
     public var latest: String?
 
-    public init(id: [String]? = nil, filters: GetFilesRequestFilters? = nil, latest: String? = nil) {
+    public init(id: [String]? = nil, filters: GetManyFilesFiltersParameter? = nil, latest: String? = nil) {
         self.id = id
         self.filters = filters
         self.latest = latest

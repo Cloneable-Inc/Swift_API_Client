@@ -26,7 +26,7 @@ Add a new file after upload
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createFileSchema = CreateFileSchema(id: "id_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdBy: "createdBy_example", createdAt: "createdAt_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: "TODO", url: "url_example", savedToCloud: false, storageProvider: "storageProvider_example", storageAuthProviderName: "storageAuthProviderName_example") // CreateFileSchema | Body (optional)
+let createFileSchema = CreateFileSchema(id: 123, relatedObjectId: 123, relatedWorkflowId: 123, typeRefIds: ["typeRefIds_example"], company: "company_example", contentType: "contentType_example", createdAt: Date(), createdBy: "createdBy_example", _extension: "_extension_example", name: "name_example", displayName: "displayName_example", size: 123, type: "type_example", url: "url_example", savedToCloud: false, storageAuthProviderName: "storageAuthProviderName_example", storageProvider: "storageProvider_example", syncToEdge: false, typeRefID: "typeRefID_example", additionalProperties: "TODO") // CreateFileSchema | Body (optional)
 
 // Add a new file after upload
 FileAPI.createFile(createFileSchema: createFileSchema) { (response, error) in
@@ -172,7 +172,7 @@ Get all files
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let getFilesRequest = getFiles_request(id: ["id_example"], filters: getFiles_request_filters(company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", type: "type_example", typeRefId: "typeRefId_example", relatedObjectId: "relatedObjectId_example", relatedWorkflowId: "relatedWorkflowId_example", savedToCloud: false, syncToEdge: false), latest: "latest_example") // GetFilesRequest | Body (optional)
+let getFilesRequest = getFiles_request(id: ["id_example"], filters: getManyFiles_filters_parameter(createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), search: "search_example", savedToCloud: false, syncToEdge: false, type: ["type_example"], createdBy: "createdBy_example", additionalProperties: "TODO"), latest: "latest_example") // GetFilesRequest | Body (optional)
 
 // Get all files
 FileAPI.getFiles(getFilesRequest: getFilesRequest) { (response, error) in
@@ -222,7 +222,7 @@ import Cloneable_Swift_Client
 
 let index = 987 // Int |  (optional)
 let size = 987 // Int |  (optional)
-let filters = getManyFiles_filters_parameter(createdBy: "createdBy_example", createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), type: ["type_example"], savedToCloud: false, syncToEdge: false, search: "search_example", additionalProperties: getManyFiles_filters_parameter_additional_properties(modelType: "modelType_example", modelVersion: "modelVersion_example", modelDescription: "modelDescription_example", modelDevice: "modelDevice_example", isTemplate: false)) // GetManyFilesFiltersParameter |  (optional)
+let filters = getManyFiles_filters_parameter(createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), search: "search_example", savedToCloud: false, syncToEdge: false, type: ["type_example"], createdBy: "createdBy_example", additionalProperties: "TODO") // GetManyFilesFiltersParameter |  (optional)
 let id = ["inner_example"] // [String] |  (optional)
 let latest = "latest_example" // String |  (optional)
 let sorting = getManyFiles_sorting_parameter(column: "column_example", desc: false) // GetManyFilesSortingParameter |  (optional)
@@ -377,7 +377,7 @@ Update a single file
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let insertFileSchema = InsertFileSchema(savedToCloud: false, syncToEdge: false, relatedWorkflowId: "relatedWorkflowId_example", relatedObjectId: "relatedObjectId_example", typeRefIds: ["typeRefIds_example"]) // InsertFileSchema | Body (optional)
+let insertFileSchema = InsertFileSchema(savedToCloud: false, syncToEdge: false, relatedWorkflowId: 123, relatedObjectId: 123, typeRefIds: ["typeRefIds_example"]) // InsertFileSchema | Body (optional)
 
 // Update a single file
 FileAPI.updateFile(id: id, insertFileSchema: insertFileSchema) { (response, error) in

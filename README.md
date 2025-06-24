@@ -36,6 +36,9 @@ Class | Method | HTTP request | Description
 *AuthAPI* | [**signupNeeded**](docs/AuthAPI.md#signupneeded) | **GET** /auth/signup-needed | Check if signup is needed
 *AuthAPI* | [**verifyOrg**](docs/AuthAPI.md#verifyorg) | **POST** /auth/verify-org | Verify organization
 *AuthAPI* | [**whoami**](docs/AuthAPI.md#whoami) | **GET** /auth/whoami | 
+*ChatAPI* | [**chat**](docs/ChatAPI.md#chat) | **POST** /llm/gpt-4o | 
+*ChatAPI* | [**componentAssitant**](docs/ChatAPI.md#componentassitant) | **POST** /chat/components/{id} | Get chat components
+*ChatAPI* | [**getCodeGen**](docs/ChatAPI.md#getcodegen) | **POST** /chat/code-gen | Get chat code gen stream
 *CompletedWorkflowAPI* | [**createCompletedWorkflow**](docs/CompletedWorkflowAPI.md#createcompletedworkflow) | **PUT** /completed-workflow | Add a new completed workflow
 *CompletedWorkflowAPI* | [**getCompletedWorkflows**](docs/CompletedWorkflowAPI.md#getcompletedworkflows) | **POST** /completed-workflows | Get all completed workflows
 *CompletedWorkflowAPI* | [**getOneCompletedWorkflow**](docs/CompletedWorkflowAPI.md#getonecompletedworkflow) | **GET** /completed-workflow/{id} | Returns a completed workflow by id
@@ -99,8 +102,6 @@ Class | Method | HTTP request | Description
 *ModelAPI* | [**getModelConversionJobs**](docs/ModelAPI.md#getmodelconversionjobs) | **GET** /model-conversion-jobs | Get model conversion jobs for company
 *ModelAPI* | [**getModels**](docs/ModelAPI.md#getmodels) | **GET** /models | Get models for company
 *ModelAPI* | [**getOneModel**](docs/ModelAPI.md#getonemodel) | **GET** /model/{id} | Get model for company
-*NotificationAPI* | [**createNotification**](docs/NotificationAPI.md#createnotification) | **PUT** /notification | Create a new notification request
-*NotificationAPI* | [**getNotifications**](docs/NotificationAPI.md#getnotifications) | **POST** /notifications | Get all notifications
 *OpenapiAPI* | [**getOpenAPIJSON**](docs/OpenapiAPI.md#getopenapijson) | **GET** /openapi.json | Get OpenAPI JSON
 *OpenapiAPI* | [**getOpenAPIPage**](docs/OpenapiAPI.md#getopenapipage) | **GET** /openapi | Get OpenAPI Docs page
 *OpenapiAPI* | [**getOpenAPIYaml**](docs/OpenapiAPI.md#getopenapiyaml) | **GET** /openapi.yaml | Get OpenAPI YAML
@@ -157,7 +158,6 @@ Class | Method | HTTP request | Description
 *WorkflowAPI* | [**compileWorkflow**](docs/WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
 *WorkflowAPI* | [**createWorkflow**](docs/WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
 *WorkflowAPI* | [**deleteWorkflow**](docs/WorkflowAPI.md#deleteworkflow) | **DELETE** /workflow/{workflow_id} | 
-*WorkflowAPI* | [**duplicateWorkflow**](docs/WorkflowAPI.md#duplicateworkflow) | **POST** /workflow/duplicate | 
 *WorkflowAPI* | [**getAllWorkflows**](docs/WorkflowAPI.md#getallworkflows) | **GET** /workflows | Get all workflows
 *WorkflowAPI* | [**getWorkflow**](docs/WorkflowAPI.md#getworkflow) | **GET** /workflow/{workflow_id} | Get a workflow
 *WorkflowAPI* | [**saveWorkflow**](docs/WorkflowAPI.md#saveworkflow) | **POST** /workflow/{id}/save | Save a workflow
@@ -172,12 +172,21 @@ Class | Method | HTTP request | Description
  - [ArchiveDataObjects200Response](docs/ArchiveDataObjects200Response.md)
  - [ArchiveDataObjectsRequest](docs/ArchiveDataObjectsRequest.md)
  - [ChangeTeamRequest](docs/ChangeTeamRequest.md)
+ - [ChatRequest](docs/ChatRequest.md)
+ - [ChatRequestResponseFormat](docs/ChatRequestResponseFormat.md)
+ - [ChatRequestStop](docs/ChatRequestStop.md)
+ - [ChatRequestToolChoice](docs/ChatRequestToolChoice.md)
+ - [ChatRequestToolChoiceOneOf](docs/ChatRequestToolChoiceOneOf.md)
+ - [ChatRequestToolChoiceOneOfFunction](docs/ChatRequestToolChoiceOneOfFunction.md)
+ - [ChatRequestToolsInner](docs/ChatRequestToolsInner.md)
+ - [ChatRequestToolsInnerFunction](docs/ChatRequestToolsInnerFunction.md)
  - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
  - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
  - [CompletedWorkflowSchema](docs/CompletedWorkflowSchema.md)
  - [CompletedWorkflowSchemaAuditTimelineInner](docs/CompletedWorkflowSchemaAuditTimelineInner.md)
  - [CompletedWorkflowSchemaRelatedObjectTypesInner](docs/CompletedWorkflowSchemaRelatedObjectTypesInner.md)
  - [CompletedWorkflowSchemaTriggersInner](docs/CompletedWorkflowSchemaTriggersInner.md)
+ - [ComponentAssitantRequestInner](docs/ComponentAssitantRequestInner.md)
  - [ComponentJSONSchema](docs/ComponentJSONSchema.md)
  - [ComponentJSONSchemaCustomizableParametersInner](docs/ComponentJSONSchemaCustomizableParametersInner.md)
  - [ComponentJSONSchemaInputsInner](docs/ComponentJSONSchemaInputsInner.md)
@@ -239,21 +248,22 @@ Class | Method | HTTP request | Description
  - [DeployedWorkflowSchemaObjectsInner](docs/DeployedWorkflowSchemaObjectsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInner](docs/DeployedWorkflowSchemaObjectsInnerFieldsInner.md)
  - [DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation](docs/DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation.md)
- - [DuplicateWorkflowRequest](docs/DuplicateWorkflowRequest.md)
  - [ExportStatus200Response](docs/ExportStatus200Response.md)
  - [FileSchema](docs/FileSchema.md)
  - [FindDataObjectFieldsByArrayValue200ResponseInner](docs/FindDataObjectFieldsByArrayValue200ResponseInner.md)
  - [FindDataObjectFieldsByArrayValue200ResponseInnerFieldsInner](docs/FindDataObjectFieldsByArrayValue200ResponseInnerFieldsInner.md)
  - [GetApiKeys200ResponseInner](docs/GetApiKeys200ResponseInner.md)
+ - [GetCodeGenRequest](docs/GetCodeGenRequest.md)
+ - [GetCodeGenRequestInputsInner](docs/GetCodeGenRequestInputsInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
  - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
+ - [GetDataObjectsPagedSortingParameter](docs/GetDataObjectsPagedSortingParameter.md)
  - [GetDeployedWorkflowsQueryFiltersParameter](docs/GetDeployedWorkflowsQueryFiltersParameter.md)
  - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
  - [GetDeployedWorkflowsRequestFilters](docs/GetDeployedWorkflowsRequestFilters.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
- - [GetFilesRequestFilters](docs/GetFilesRequestFilters.md)
  - [GetFilteredDataObjectsFiltersParameter](docs/GetFilteredDataObjectsFiltersParameter.md)
  - [GetFilteredDataObjectsFiltersParameterFieldFiltersInner](docs/GetFilteredDataObjectsFiltersParameterFieldFiltersInner.md)
  - [GetGeocodeResult200Response](docs/GetGeocodeResult200Response.md)
@@ -262,18 +272,16 @@ Class | Method | HTTP request | Description
  - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
  - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
  - [GetManyFilesFiltersParameter](docs/GetManyFilesFiltersParameter.md)
- - [GetManyFilesFiltersParameterAdditionalProperties](docs/GetManyFilesFiltersParameterAdditionalProperties.md)
  - [GetManyFilesFiltersParameterCreatedAt](docs/GetManyFilesFiltersParameterCreatedAt.md)
  - [GetManyFilesSortingParameter](docs/GetManyFilesSortingParameter.md)
  - [GetMembers200ResponseInner](docs/GetMembers200ResponseInner.md)
  - [GetMetrics200Response](docs/GetMetrics200Response.md)
  - [GetMetrics200ResponseWorkflows](docs/GetMetrics200ResponseWorkflows.md)
  - [GetModelConversionJobsFiltersParameter](docs/GetModelConversionJobsFiltersParameter.md)
- - [GetNotificationsRequest](docs/GetNotificationsRequest.md)
- - [GetNotificationsRequestFilters](docs/GetNotificationsRequestFilters.md)
  - [GetOne200Response](docs/GetOne200Response.md)
  - [GetOneDataObjectTemplate400Response](docs/GetOneDataObjectTemplate400Response.md)
  - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
+ - [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner](docs/GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner.md)
  - [GetOneExecution200Response](docs/GetOneExecution200Response.md)
  - [GetOneExecution200ResponseInputs](docs/GetOneExecution200ResponseInputs.md)
  - [GetOneExecution200ResponseInputsParametersInner](docs/GetOneExecution200ResponseInputsParametersInner.md)
@@ -304,9 +312,6 @@ Class | Method | HTTP request | Description
  - [ModelConversionJobUpload201Response](docs/ModelConversionJobUpload201Response.md)
  - [ModelConversionJobUploadRequest](docs/ModelConversionJobUploadRequest.md)
  - [ModelSchema](docs/ModelSchema.md)
- - [NotificationRequestSchema](docs/NotificationRequestSchema.md)
- - [NotificationRequestSchemaTargetSmsNumbersInner](docs/NotificationRequestSchemaTargetSmsNumbersInner.md)
- - [NotificationSchema](docs/NotificationSchema.md)
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaCreate](docs/OrgSchemaCreate.md)
  - [PutCacheItemRequest](docs/PutCacheItemRequest.md)

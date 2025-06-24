@@ -122,41 +122,6 @@ open class WorkflowAPI {
     }
 
     /**
-
-     - parameter duplicateWorkflowRequest: (body) Body (optional)
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: String
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func duplicateWorkflow(duplicateWorkflowRequest: DuplicateWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> String {
-        return try await duplicateWorkflowWithRequestBuilder(duplicateWorkflowRequest: duplicateWorkflowRequest, apiConfiguration: apiConfiguration).execute().body
-    }
-
-    /**
-     - POST /workflow/duplicate
-     - parameter duplicateWorkflowRequest: (body) Body (optional)
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<String> 
-     */
-    open class func duplicateWorkflowWithRequestBuilder(duplicateWorkflowRequest: DuplicateWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<String> {
-        let localVariablePath = "/workflow/duplicate"
-        let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: duplicateWorkflowRequest, codableHelper: apiConfiguration.codableHelper)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<String>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
-    }
-
-    /**
      Get all workflows
      
      - parameter apiConfiguration: The configuration for the http request.

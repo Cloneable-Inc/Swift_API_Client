@@ -24,8 +24,9 @@ public struct CreateDataObjectTemplateSchema: Sendable, Codable, ParameterConver
     public var createdAt: Date?
     public var modifiedAt: Date?
     public var isTemplate: Bool?
+    public var icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]
 
-    public init(id: String, nameId: String, objectId: UUID? = nil, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int? = nil, typeRefId: String? = nil, modifiedBy: String? = nil, createdBy: String? = nil, createdAt: Date? = nil, modifiedAt: Date? = nil, isTemplate: Bool? = nil) {
+    public init(id: String, nameId: String, objectId: UUID? = nil, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int? = nil, typeRefId: String? = nil, modifiedBy: String? = nil, createdBy: String? = nil, createdAt: Date? = nil, modifiedAt: Date? = nil, isTemplate: Bool? = nil, icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]) {
         self.id = id
         self.nameId = nameId
         self.objectId = objectId
@@ -40,6 +41,7 @@ public struct CreateDataObjectTemplateSchema: Sendable, Codable, ParameterConver
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
         self.isTemplate = isTemplate
+        self.icons = icons
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -57,6 +59,7 @@ public struct CreateDataObjectTemplateSchema: Sendable, Codable, ParameterConver
         case createdAt = "created_at"
         case modifiedAt = "modified_at"
         case isTemplate = "is_template"
+        case icons
     }
 
     // Encodable protocol methods
@@ -77,6 +80,7 @@ public struct CreateDataObjectTemplateSchema: Sendable, Codable, ParameterConver
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
         try container.encodeIfPresent(isTemplate, forKey: .isTemplate)
+        try container.encode(icons, forKey: .icons)
     }
 }
 

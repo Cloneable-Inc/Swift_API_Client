@@ -24,9 +24,10 @@ public struct DataObjectTemplateSchema: Sendable, Codable, ParameterConvertible,
     public var createdAt: Date
     public var modifiedAt: Date
     public var isTemplate: Bool
+    public var icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]
     public var companyId: String?
 
-    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, companyId: String? = nil) {
+    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner], companyId: String? = nil) {
         self.id = id
         self.nameId = nameId
         self.objectId = objectId
@@ -41,6 +42,7 @@ public struct DataObjectTemplateSchema: Sendable, Codable, ParameterConvertible,
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
         self.isTemplate = isTemplate
+        self.icons = icons
         self.companyId = companyId
     }
 
@@ -59,6 +61,7 @@ public struct DataObjectTemplateSchema: Sendable, Codable, ParameterConvertible,
         case createdAt = "created_at"
         case modifiedAt = "modified_at"
         case isTemplate = "is_template"
+        case icons
         case companyId = "company_id"
     }
 
@@ -80,6 +83,7 @@ public struct DataObjectTemplateSchema: Sendable, Codable, ParameterConvertible,
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(modifiedAt, forKey: .modifiedAt)
         try container.encode(isTemplate, forKey: .isTemplate)
+        try container.encode(icons, forKey: .icons)
         try container.encodeIfPresent(companyId, forKey: .companyId)
     }
 }

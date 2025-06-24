@@ -99,7 +99,7 @@ open class DataObjectSyncAPI {
      - returns: GetDataObjectsPaged200Response
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getFilteredDataObjects(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetDataObjectsPaged200Response {
+    open class func getFilteredDataObjects(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetDataObjectsPaged200Response {
         return try await getFilteredDataObjectsWithRequestBuilder(id: id, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -115,7 +115,7 @@ open class DataObjectSyncAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetDataObjectsPaged200Response> 
      */
-    open class func getFilteredDataObjectsWithRequestBuilder(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetDataObjectsPaged200Response> {
+    open class func getFilteredDataObjectsWithRequestBuilder(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetDataObjectsPaged200Response> {
         let localVariablePath = "/data-object-sync/filtered-data-objects"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil

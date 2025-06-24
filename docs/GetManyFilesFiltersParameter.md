@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createdBy** | **String** |  | [optional] 
 **createdAt** | [**GetManyFilesFiltersParameterCreatedAt**](GetManyFilesFiltersParameterCreatedAt.md) |  | [optional] 
-**type** | **[String]** |  | [optional] 
+**search** | **String** |  | [optional] 
 **savedToCloud** | **Bool** |  | [optional] 
 **syncToEdge** | **Bool** |  | [optional] 
-**search** | **String** |  | [optional] 
-**additionalProperties** | [**GetManyFilesFiltersParameterAdditionalProperties**](GetManyFilesFiltersParameterAdditionalProperties.md) |  | [optional] 
+**type** | **[String]** |  | [optional] 
+**createdBy** | **String** |  | [optional] 
+**additionalProperties** | **[String: JSONValue]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**compileWorkflow**](WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
 [**createWorkflow**](WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
 [**deleteWorkflow**](WorkflowAPI.md#deleteworkflow) | **DELETE** /workflow/{workflow_id} | 
-[**duplicateWorkflow**](WorkflowAPI.md#duplicateworkflow) | **POST** /workflow/duplicate | 
 [**getAllWorkflows**](WorkflowAPI.md#getallworkflows) | **GET** /workflows | Get all workflows
 [**getWorkflow**](WorkflowAPI.md#getworkflow) | **GET** /workflow/{workflow_id} | Get a workflow
 [**saveWorkflow**](WorkflowAPI.md#saveworkflow) | **POST** /workflow/{id}/save | Save a workflow
@@ -145,53 +144,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateFile200Response**](UpdateFile200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **duplicateWorkflow**
-```swift
-    open class func duplicateWorkflow(duplicateWorkflowRequest: DuplicateWorkflowRequest? = nil, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
-
-let duplicateWorkflowRequest = duplicateWorkflow_request(workflowId: "workflowId_example", companyId: "companyId_example") // DuplicateWorkflowRequest | Body (optional)
-
-WorkflowAPI.duplicateWorkflow(duplicateWorkflowRequest: duplicateWorkflowRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **duplicateWorkflowRequest** | [**DuplicateWorkflowRequest**](DuplicateWorkflowRequest.md) | Body | [optional] 
-
-### Return type
-
-**String**
 
 ### Authorization
 

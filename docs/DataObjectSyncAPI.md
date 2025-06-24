@@ -112,7 +112,7 @@ No authorization required
 
 # **getFilteredDataObjects**
 ```swift
-    open class func getFilteredDataObjects(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetManyFilesSortingParameter? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
+    open class func getFilteredDataObjects(id: [String]? = nil, pageIndex: Int? = nil, pageSize: Int? = nil, filters: GetFilteredDataObjectsFiltersParameter? = nil, latest: String? = nil, sorting: GetDataObjectsPagedSortingParameter? = nil, completion: @escaping (_ data: GetDataObjectsPaged200Response?, _ error: Error?) -> Void)
 ```
 
 Get filtered and paginated data objects
@@ -127,7 +127,7 @@ let pageIndex = 987 // Int |  (optional)
 let pageSize = 987 // Int |  (optional)
 let filters = getFilteredDataObjects_filters_parameter(companyId: "companyId_example", createdBy: "createdBy_example", createdAt: getManyFiles_filters_parameter_created_at(from: "from_example", to: "to_example"), objectTemplateId: ["objectTemplateId_example"], typeRefId: "typeRefId_example", active: false, environment: "environment_example", search: "search_example", id: ["id_example"], teamId: "teamId_example", fieldFilters: [getFilteredDataObjects_filters_parameter_field_filters_inner(key: "key_example", _operator: "_operator_example", value: 123, values: [123])], fieldFilterLogic: "fieldFilterLogic_example") // GetFilteredDataObjectsFiltersParameter |  (optional)
 let latest = "latest_example" // String |  (optional)
-let sorting = getManyFiles_sorting_parameter(column: "column_example", desc: false) // GetManyFilesSortingParameter |  (optional)
+let sorting = getDataObjectsPaged_sorting_parameter(column: "column_example", desc: false) // GetDataObjectsPagedSortingParameter |  (optional)
 
 // Get filtered and paginated data objects
 DataObjectSyncAPI.getFilteredDataObjects(id: id, pageIndex: pageIndex, pageSize: pageSize, filters: filters, latest: latest, sorting: sorting) { (response, error) in
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
  **pageSize** | **Int** |  | [optional] 
  **filters** | [**GetFilteredDataObjectsFiltersParameter**](.md) |  | [optional] 
  **latest** | **String** |  | [optional] 
- **sorting** | [**GetManyFilesSortingParameter**](.md) |  | [optional] 
+ **sorting** | [**GetDataObjectsPagedSortingParameter**](.md) |  | [optional] 
 
 ### Return type
 

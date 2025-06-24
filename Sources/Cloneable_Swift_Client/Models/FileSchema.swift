@@ -9,18 +9,18 @@ import Foundation
 
 public struct FileSchema: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var id: String
-    public var relatedObjectId: String?
-    public var relatedWorkflowId: String?
+    public var id: UUID
+    public var relatedObjectId: UUID?
+    public var relatedWorkflowId: UUID?
     public var typeRefIds: [String]?
     /** The company ID */
     public var company: String
     /** The content type of the file */
     public var contentType: String
     /** The date the file was created */
-    public var createdAt: String
+    public var createdAt: Date?
     /** The date the file was last updated */
-    public var updatedAt: String?
+    public var updatedAt: Date?
     /** The user ID of the user who created the file */
     public var createdBy: String
     /** The file extension */
@@ -38,16 +38,13 @@ public struct FileSchema: Sendable, Codable, ParameterConvertible, Hashable {
     /** Whether the file is saved to the cloud */
     public var savedToCloud: Bool
     public var storageAuthProviderName: String
-    public var storageAuthProviderRefID: String?
     public var storageProvider: String
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
     public var additionalProperties: [String: JSONValue]?
-    public var globalAccess: Bool?
-    public var downloadUrl: String?
 
-    public init(id: String, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, updatedAt: String? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageAuthProviderRefID: String? = nil, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: [String: JSONValue]? = nil, globalAccess: Bool? = nil, downloadUrl: String? = nil) {
+    public init(id: UUID, relatedObjectId: UUID? = nil, relatedWorkflowId: UUID? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: Date?, updatedAt: Date? = nil, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, url: String, savedToCloud: Bool, storageAuthProviderName: String, storageProvider: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: [String: JSONValue]? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
@@ -65,13 +62,10 @@ public struct FileSchema: Sendable, Codable, ParameterConvertible, Hashable {
         self.url = url
         self.savedToCloud = savedToCloud
         self.storageAuthProviderName = storageAuthProviderName
-        self.storageAuthProviderRefID = storageAuthProviderRefID
         self.storageProvider = storageProvider
         self.syncToEdge = syncToEdge
         self.typeRefID = typeRefID
         self.additionalProperties = additionalProperties
-        self.globalAccess = globalAccess
-        self.downloadUrl = downloadUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -92,13 +86,10 @@ public struct FileSchema: Sendable, Codable, ParameterConvertible, Hashable {
         case url
         case savedToCloud = "saved_to_cloud"
         case storageAuthProviderName = "storage_auth_provider_name"
-        case storageAuthProviderRefID = "storage_auth_provider_ref_ID"
         case storageProvider = "storage_provider"
         case syncToEdge = "sync_to_edge"
         case typeRefID = "type_ref_ID"
         case additionalProperties = "additional_properties"
-        case globalAccess = "global_access"
-        case downloadUrl = "download_url"
     }
 
     // Encodable protocol methods
@@ -122,13 +113,10 @@ public struct FileSchema: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(url, forKey: .url)
         try container.encode(savedToCloud, forKey: .savedToCloud)
         try container.encode(storageAuthProviderName, forKey: .storageAuthProviderName)
-        try container.encodeIfPresent(storageAuthProviderRefID, forKey: .storageAuthProviderRefID)
         try container.encode(storageProvider, forKey: .storageProvider)
         try container.encode(syncToEdge, forKey: .syncToEdge)
         try container.encodeIfPresent(typeRefID, forKey: .typeRefID)
         try container.encodeIfPresent(additionalProperties, forKey: .additionalProperties)
-        try container.encodeIfPresent(globalAccess, forKey: .globalAccess)
-        try container.encodeIfPresent(downloadUrl, forKey: .downloadUrl)
     }
 }
 
