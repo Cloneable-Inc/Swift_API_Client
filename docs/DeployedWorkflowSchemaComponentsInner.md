@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **userCustomizedTitle** | **String** |  | [optional] 
 **userCustomizedInstructions** | **String** |  | [optional] 
 **dynamicComponentId** | **String** |  | 
-**additionalProperties** | **[String: AnyCodable]** |  | [optional] 
+**additionalProperties** | **[String: JSONValue]** |  | [optional] 
 **nextButtonInBar** | **Bool** |  | [optional] 
 **nextButtonInBarText** | **String** |  | [optional] 
 **iosHwRequirements** | **[String]** |  | [optional] 

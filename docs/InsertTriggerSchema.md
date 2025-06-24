@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **resourceLimits** | [**InsertTriggerSchemaResourceLimits**](InsertTriggerSchemaResourceLimits.md) |  | 
 **inputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
 **outputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
-**state** | **[String: AnyCodable]** |  | 
+**state** | **[String: JSONValue]** |  | 
 **createdAt** | **Date** |  | [optional] 
 **updatedAt** | **Date** |  | [optional] 
 

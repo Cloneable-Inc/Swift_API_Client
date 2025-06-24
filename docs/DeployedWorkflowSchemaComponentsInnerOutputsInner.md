@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **_required** | **Bool** |  | [optional] 
 **outputsArray** | **Bool** |  | [optional] 
 **outputImmediatelyUserDefinable** | **Bool** |  | [optional] 
-**additionalProperties** | **[String: AnyCodable]** |  | 
+**additionalProperties** | **[String: JSONValue]** |  | 
 **outputConnections** | [DeployedWorkflowSchemaComponentsInnerOutputsInnerOutputConnectionsInner] |  | [optional] 
 **jsonSchema** | **String** |  | [optional] 
 **jsonSchemaId** | **String** |  | [optional] 

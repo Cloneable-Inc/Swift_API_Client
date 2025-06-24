@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **paramDataType** | **String** |  | 
 **paramInputType** | **String** |  | [optional] 
 **paramID** | **String** |  | 
-**selectedValue** | **AnyCodable** |  | [optional] 
+**selectedValue** | **JSONValue** |  | [optional] 
 **userCustomizable** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

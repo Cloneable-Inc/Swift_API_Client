@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **updatedAt** | **Date** |  | 
 **updatedBy** | **String** |  | 
 **expiresAt** | **Int** |  | 
-**metaData** | **AnyCodable** |  | 
+**metaData** | **JSONValue** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

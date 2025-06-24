@@ -110,7 +110,7 @@ No authorization required
 
 # **deleteWorkflow**
 ```swift
-    open class func deleteWorkflow(workflowId: String, body: AnyCodable? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+    open class func deleteWorkflow(workflowId: String, body: JSONValue? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
 
@@ -121,7 +121,7 @@ No authorization required
 import Cloneable_Swift_Client
 
 let workflowId = "workflowId_example" // String | 
-let body = "TODO" // AnyCodable | Body (optional)
+let body = "TODO" // JSONValue | Body (optional)
 
 WorkflowAPI.deleteWorkflow(workflowId: workflowId, body: body) { (response, error) in
     guard error == nil else {
@@ -140,7 +140,7 @@ WorkflowAPI.deleteWorkflow(workflowId: workflowId, body: body) { (response, erro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workflowId** | **String** |  | 
- **body** | **AnyCodable** | Body | [optional] 
+ **body** | **JSONValue** | Body | [optional] 
 
 ### Return type
 
