@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **relatedObjectId** | **String** |  | [optional] 
 **relatedWorkflowId** | **String** |  | [optional] 
 **typeRefIds** | **[String]** |  | [optional] 
-**company** | **String** | The company ID | 
+**company** | **String** | The company ID | [optional] 
 **contentType** | **String** | The content type of the file | 
-**createdAt** | **String** | The date the file was created | 
-**createdBy** | **String** | The user ID of the user who created the file | 
+**createdBy** | **String** | The user ID of the user who created the file | [optional] 
+**createdAt** | **String** | The date the file was created | [optional] 
 **_extension** | **String** | The file extension | 
 **name** | **String** | The file name | 
 **displayName** | **String** | The file display name | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **type** | **String** | The file type | 
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 
-**additionalProperties** | [**FileSchemaAdditionalProperties**](FileSchemaAdditionalProperties.md) |  | [optional] 
+**additionalProperties** | **[String: JSONValue]** |  | [optional] 
 **url** | **String** | The stored file path | [optional] 
 **savedToCloud** | **Bool** | Whether the file is saved to the cloud | [optional] 
 **storageProvider** | **String** |  | [optional] 

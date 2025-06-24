@@ -24,7 +24,9 @@ Name | Type | Description | Notes
 **storageProvider** | **String** |  | 
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 
-**additionalProperties** | [**FileSchemaAdditionalProperties**](FileSchemaAdditionalProperties.md) |  | [optional] 
+**additionalProperties** | **[String: JSONValue]** |  | [optional] 
+**globalAccess** | **Bool** |  | [optional] 
+**downloadUrl** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
