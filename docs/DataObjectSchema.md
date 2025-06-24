@@ -5,23 +5,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **companyId** | **String** |  | 
-**createdAt** | **String** |  | 
+**createdAt** | **Date** |  | 
 **createdBy** | **String** |  | 
-**dynamicObjectId** | **String** |  | 
-**fields** | [DataObjectSchemaFieldsInner] |  | [optional] 
-**instanceObjectId** | **String** |  | [optional] 
-**modifiedAt** | **String** |  | [optional] 
-**objectDescription** | **String** |  | [optional] 
-**objectDisplayName** | **String** |  | [optional] 
-**objectDynamicCreateNewHandleId** | **String** |  | [optional] 
-**objectId** | **String** |  | [optional] 
-**objectName** | **String** |  | [optional] 
-**objectOutputDynamicId** | **String** |  | [optional] 
-**objectRevision** | **Double** |  | [optional] 
-**objectTemplateRevision** | **Double** |  | [optional] 
-**relatedWorkflowInstanceIds** | [DataObjectSchemaRelatedWorkflowInstanceIdsInner] |  | [optional] 
-**typeRefId** | **String** |  | [optional] 
-**workflowFinalized** | **Bool** |  | [optional] 
+**fields** | [DataObjectSchemaFieldsInner] |  | 
+**modifiedAt** | **Date** |  | 
+**archivedAt** | **Date** |  | [optional] 
+**objectDescription** | **String** |  | 
+**objectDisplayName** | **String** |  | 
+**objectTemplateId** | **String** | Object template ID | 
+**objectName** | **String** |  | 
+**objectRevision** | **Double** |  | 
+**objectTemplateRevision** | **Double** |  | 
+**typeRefId** | **String** |  | 
+**teamId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.summary = 'Cloneable_Swift_Client Swift SDK'
   s.source_files = 'Cloneable_Swift_Client/Classes/**/*.swift'
   s.dependency 'AnyCodable-FlightSchool', '~> 0.6'
-  s.dependency 'Alamofire', '~> 5.4'
+  s.dependency 'Alamofire', '~> 5.7'
 end

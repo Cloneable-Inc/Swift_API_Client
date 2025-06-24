@@ -13,18 +13,20 @@ import AnyCodable
 public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEncodable, Hashable {
 
     public var dynamicInputId: String
-    public var inputClassification: String
-    public var group: String
+    public var inputClassification: String?
+    public var group: String?
     public var inputDataType: String
-    public var inputDescription: String
+    public var inputDescription: String?
     public var inputId: String
     public var inputName: String
-    public var _required: Bool
-    public var acceptsArray: Bool
-    public var trigger: Bool
+    public var _required: Bool?
+    public var acceptsArray: Bool?
+    public var trigger: Bool?
     public var additionalProperties: [String: AnyCodable]
+    public var jsonSchema: String?
+    public var jsonSchemaId: String?
 
-    public init(dynamicInputId: String, inputClassification: String, group: String, inputDataType: String, inputDescription: String, inputId: String, inputName: String, _required: Bool, acceptsArray: Bool, trigger: Bool, additionalProperties: [String: AnyCodable]) {
+    public init(dynamicInputId: String, inputClassification: String? = nil, group: String? = nil, inputDataType: String, inputDescription: String? = nil, inputId: String, inputName: String, _required: Bool? = nil, acceptsArray: Bool? = nil, trigger: Bool? = nil, additionalProperties: [String: AnyCodable], jsonSchema: String? = nil, jsonSchemaId: String? = nil) {
         self.dynamicInputId = dynamicInputId
         self.inputClassification = inputClassification
         self.group = group
@@ -36,6 +38,8 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
         self.acceptsArray = acceptsArray
         self.trigger = trigger
         self.additionalProperties = additionalProperties
+        self.jsonSchema = jsonSchema
+        self.jsonSchemaId = jsonSchemaId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -50,6 +54,8 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
         case acceptsArray = "accepts_array"
         case trigger
         case additionalProperties = "additional_properties"
+        case jsonSchema = "json_schema"
+        case jsonSchemaId = "json_schema_id"
     }
 
     // Encodable protocol methods
@@ -57,16 +63,18 @@ public struct DeployedWorkflowSchemaComponentsInnerInputsInner: Codable, JSONEnc
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(dynamicInputId, forKey: .dynamicInputId)
-        try container.encode(inputClassification, forKey: .inputClassification)
-        try container.encode(group, forKey: .group)
+        try container.encodeIfPresent(inputClassification, forKey: .inputClassification)
+        try container.encodeIfPresent(group, forKey: .group)
         try container.encode(inputDataType, forKey: .inputDataType)
-        try container.encode(inputDescription, forKey: .inputDescription)
+        try container.encodeIfPresent(inputDescription, forKey: .inputDescription)
         try container.encode(inputId, forKey: .inputId)
         try container.encode(inputName, forKey: .inputName)
-        try container.encode(_required, forKey: ._required)
-        try container.encode(acceptsArray, forKey: .acceptsArray)
-        try container.encode(trigger, forKey: .trigger)
+        try container.encodeIfPresent(_required, forKey: ._required)
+        try container.encodeIfPresent(acceptsArray, forKey: .acceptsArray)
+        try container.encodeIfPresent(trigger, forKey: .trigger)
         try container.encode(additionalProperties, forKey: .additionalProperties)
+        try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
+        try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
     }
 }
 

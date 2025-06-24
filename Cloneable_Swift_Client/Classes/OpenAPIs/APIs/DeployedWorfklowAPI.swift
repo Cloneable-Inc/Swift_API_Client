@@ -45,7 +45,7 @@ open class DeployedWorfklowAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -53,6 +53,58 @@ open class DeployedWorfklowAPI {
         let localVariableRequestBuilder: RequestBuilder<[DeployedWorkflowSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get all deployed workflows
+     
+     - parameter id: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getDeployedWorkflowsQuery(id: [String]? = nil, filters: GetDeployedWorkflowsQueryFiltersParameter? = nil, latest: String? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: [DeployedWorkflowSchema]?, _ error: Error?) -> Void)) -> RequestTask {
+        return getDeployedWorkflowsQueryWithRequestBuilder(id: id, filters: filters, latest: latest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get all deployed workflows
+     - GET /deployed-workflows
+     - parameter id: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - returns: RequestBuilder<[DeployedWorkflowSchema]> 
+     */
+    open class func getDeployedWorkflowsQueryWithRequestBuilder(id: [String]? = nil, filters: GetDeployedWorkflowsQueryFiltersParameter? = nil, latest: String? = nil) -> RequestBuilder<[DeployedWorkflowSchema]> {
+        let localVariablePath = "/deployed-workflows"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
+            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[DeployedWorkflowSchema]>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 
     /**

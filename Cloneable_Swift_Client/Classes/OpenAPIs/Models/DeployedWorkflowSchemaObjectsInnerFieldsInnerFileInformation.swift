@@ -12,17 +12,17 @@ import AnyCodable
 
 public struct DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation: Codable, JSONEncodable, Hashable {
 
-    public var fileName: String
-    public var fileUrl: String
-    public var storageProvider: String
-    public var storageAuthProviderRefId: String
-    public var storageAuthProviderName: String
+    public var fileName: String?
+    public var fileUrl: String?
+    public var storageProvider: String?
+    public var storageAuthProviderRefId: String?
+    public var storageAuthProviderName: String?
     public var fileType: String
-    public var fileExtension: String
-    public var fileSize: Double
+    public var fileExtension: String?
+    public var fileSize: Double?
     public var oneWaySync: Bool
 
-    public init(fileName: String, fileUrl: String, storageProvider: String, storageAuthProviderRefId: String, storageAuthProviderName: String, fileType: String, fileExtension: String, fileSize: Double, oneWaySync: Bool) {
+    public init(fileName: String? = nil, fileUrl: String? = nil, storageProvider: String? = nil, storageAuthProviderRefId: String? = nil, storageAuthProviderName: String? = nil, fileType: String, fileExtension: String? = nil, fileSize: Double? = nil, oneWaySync: Bool) {
         self.fileName = fileName
         self.fileUrl = fileUrl
         self.storageProvider = storageProvider
@@ -50,14 +50,14 @@ public struct DeployedWorkflowSchemaObjectsInnerFieldsInnerFileInformation: Coda
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(fileName, forKey: .fileName)
-        try container.encode(fileUrl, forKey: .fileUrl)
-        try container.encode(storageProvider, forKey: .storageProvider)
-        try container.encode(storageAuthProviderRefId, forKey: .storageAuthProviderRefId)
-        try container.encode(storageAuthProviderName, forKey: .storageAuthProviderName)
+        try container.encodeIfPresent(fileName, forKey: .fileName)
+        try container.encodeIfPresent(fileUrl, forKey: .fileUrl)
+        try container.encodeIfPresent(storageProvider, forKey: .storageProvider)
+        try container.encodeIfPresent(storageAuthProviderRefId, forKey: .storageAuthProviderRefId)
+        try container.encodeIfPresent(storageAuthProviderName, forKey: .storageAuthProviderName)
         try container.encode(fileType, forKey: .fileType)
-        try container.encode(fileExtension, forKey: .fileExtension)
-        try container.encode(fileSize, forKey: .fileSize)
+        try container.encodeIfPresent(fileExtension, forKey: .fileExtension)
+        try container.encodeIfPresent(fileSize, forKey: .fileSize)
         try container.encode(oneWaySync, forKey: .oneWaySync)
     }
 }

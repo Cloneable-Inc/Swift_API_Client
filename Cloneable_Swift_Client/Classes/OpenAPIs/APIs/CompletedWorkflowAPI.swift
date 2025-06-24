@@ -13,6 +13,49 @@ import AnyCodable
 open class CompletedWorkflowAPI {
 
     /**
+     Add a new completed workflow
+     
+     - parameter createCompletedWorkflowSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func createCompletedWorkflow(createCompletedWorkflowSchema: CreateCompletedWorkflowSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return createCompletedWorkflowWithRequestBuilder(createCompletedWorkflowSchema: createCompletedWorkflowSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Add a new completed workflow
+     - PUT /completed-workflow
+     - parameter createCompletedWorkflowSchema: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func createCompletedWorkflowWithRequestBuilder(createCompletedWorkflowSchema: CreateCompletedWorkflowSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+        let localVariablePath = "/completed-workflow"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createCompletedWorkflowSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get all completed workflows
      
      - parameter getCompletedWorkflowsRequest: (body) Body (optional)
@@ -45,7 +88,7 @@ open class CompletedWorkflowAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -99,5 +142,114 @@ open class CompletedWorkflowAPI {
         let localVariableRequestBuilder: RequestBuilder<CompletedWorkflowSchema>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Get paginated completed workflows
+     
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func getPagedWorkflows(index: Int? = nil, size: Int? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetPagedWorkflowsSortingParameter? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetPagedWorkflows200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return getPagedWorkflowsWithRequestBuilder(index: index, size: size, filters: filters, id: id, latest: latest, sorting: sorting).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get paginated completed workflows
+     - GET /completed-workflows
+     - parameter index: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter filters: (query)  (optional)
+     - parameter id: (query)  (optional)
+     - parameter latest: (query)  (optional)
+     - parameter sorting: (query)  (optional)
+     - returns: RequestBuilder<GetPagedWorkflows200Response> 
+     */
+    open class func getPagedWorkflowsWithRequestBuilder(index: Int? = nil, size: Int? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, id: [String]? = nil, latest: String? = nil, sorting: GetPagedWorkflowsSortingParameter? = nil) -> RequestBuilder<GetPagedWorkflows200Response> {
+        let localVariablePath = "/completed-workflows"
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "index": (wrappedValue: index?.encodeToJSON(), isExplode: true),
+            "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
+            "filters": (wrappedValue: filters?.encodeToJSON(), isExplode: true),
+            "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
+            "latest": (wrappedValue: latest?.encodeToJSON(), isExplode: true),
+            "sorting": (wrappedValue: sorting?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetPagedWorkflows200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
+     Update a completed workflow
+     
+     - parameter id: (path)  
+     - parameter updateCompletedWorkflowSchema: (body) Body (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func updateCompletedWorkflow(id: String, updateCompletedWorkflowSchema: UpdateCompletedWorkflowSchema? = nil, apiResponseQueue: DispatchQueue = Cloneable_Swift_ClientAPI.apiResponseQueue, completion: @escaping ((_ data: UpdateFile200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateCompletedWorkflowWithRequestBuilder(id: id, updateCompletedWorkflowSchema: updateCompletedWorkflowSchema).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update a completed workflow
+     - POST /completed-workflow/{id}
+     - parameter id: (path)  
+     - parameter updateCompletedWorkflowSchema: (body) Body (optional)
+     - returns: RequestBuilder<UpdateFile200Response> 
+     */
+    open class func updateCompletedWorkflowWithRequestBuilder(id: String, updateCompletedWorkflowSchema: UpdateCompletedWorkflowSchema? = nil) -> RequestBuilder<UpdateFile200Response> {
+        var localVariablePath = "/completed-workflow/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = Cloneable_Swift_ClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateCompletedWorkflowSchema)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UpdateFile200Response>.Type = Cloneable_Swift_ClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
     }
 }

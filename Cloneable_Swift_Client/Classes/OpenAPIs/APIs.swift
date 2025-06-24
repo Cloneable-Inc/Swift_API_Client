@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 open class Cloneable_Swift_ClientAPI {
     public static var basePath = "https://app.cloneable.ai/api/v1"
     public static var customHeaders: [String: String] = [:]
@@ -33,6 +36,7 @@ open class RequestBuilder<T> {
         self.requiresAuthentication = requiresAuthentication
 
         addHeaders(Cloneable_Swift_ClientAPI.customHeaders)
+        addCredential()
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -53,9 +57,8 @@ open class RequestBuilder<T> {
         return self
     }
 
-    open func addCredential() -> Self {
+    open func addCredential() {
         credential = Cloneable_Swift_ClientAPI.credential
-        return self
     }
 }
 

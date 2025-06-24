@@ -13,19 +13,25 @@ import AnyCodable
 public struct GetCompletedWorkflowsRequest: Codable, JSONEncodable, Hashable {
 
     public var id: [String]?
-    public var filters: GetCompletedWorkflowsRequestFilters?
+    public var filters: GetPagedWorkflowsFiltersParameter?
     public var latest: String?
+    public var limit: Double?
+    public var skip: Double?
 
-    public init(id: [String]? = nil, filters: GetCompletedWorkflowsRequestFilters? = nil, latest: String? = nil) {
+    public init(id: [String]? = nil, filters: GetPagedWorkflowsFiltersParameter? = nil, latest: String? = nil, limit: Double? = nil, skip: Double? = nil) {
         self.id = id
         self.filters = filters
         self.latest = latest
+        self.limit = limit
+        self.skip = skip
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case filters
         case latest
+        case limit
+        case skip
     }
 
     // Encodable protocol methods
@@ -35,6 +41,8 @@ public struct GetCompletedWorkflowsRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(filters, forKey: .filters)
         try container.encodeIfPresent(latest, forKey: .latest)
+        try container.encodeIfPresent(limit, forKey: .limit)
+        try container.encodeIfPresent(skip, forKey: .skip)
     }
 }
 

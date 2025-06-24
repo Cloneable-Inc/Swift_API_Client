@@ -17,13 +17,13 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     public var relatedWorkflowId: String?
     public var typeRefIds: [String]?
     /** The company ID */
-    public var company: String
+    public var company: String?
     /** The content type of the file */
     public var contentType: String
-    /** The date the file was created */
-    public var createdAt: String
     /** The user ID of the user who created the file */
-    public var createdBy: String
+    public var createdBy: String?
+    /** The date the file was created */
+    public var createdAt: String?
     /** The file extension */
     public var _extension: String
     /** The file name */
@@ -37,7 +37,7 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     /** Whether the file should be synced to the edge device */
     public var syncToEdge: Bool
     public var typeRefID: String?
-    public var additionalProperties: FileSchemaAdditionalProperties?
+    public var additionalProperties: [String: AnyCodable]?
     /** The stored file path */
     public var url: String?
     /** Whether the file is saved to the cloud */
@@ -45,15 +45,15 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     public var storageProvider: String?
     public var storageAuthProviderName: String?
 
-    public init(id: String? = nil, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String, contentType: String, createdAt: String, createdBy: String, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: FileSchemaAdditionalProperties? = nil, url: String? = nil, savedToCloud: Bool? = nil, storageProvider: String? = nil, storageAuthProviderName: String? = nil) {
+    public init(id: String? = nil, relatedObjectId: String? = nil, relatedWorkflowId: String? = nil, typeRefIds: [String]? = nil, company: String? = nil, contentType: String, createdBy: String? = nil, createdAt: String? = nil, _extension: String, name: String, displayName: String, size: Double, type: String, syncToEdge: Bool, typeRefID: String? = nil, additionalProperties: [String: AnyCodable]? = nil, url: String? = nil, savedToCloud: Bool? = nil, storageProvider: String? = nil, storageAuthProviderName: String? = nil) {
         self.id = id
         self.relatedObjectId = relatedObjectId
         self.relatedWorkflowId = relatedWorkflowId
         self.typeRefIds = typeRefIds
         self.company = company
         self.contentType = contentType
-        self.createdAt = createdAt
         self.createdBy = createdBy
+        self.createdAt = createdAt
         self._extension = _extension
         self.name = name
         self.displayName = displayName
@@ -75,8 +75,8 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
         case typeRefIds = "type_ref_ids"
         case company
         case contentType = "content_type"
-        case createdAt = "created_at"
         case createdBy = "created_by"
+        case createdAt = "created_at"
         case _extension = "extension"
         case name
         case displayName = "display_name"
@@ -99,10 +99,10 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(relatedObjectId, forKey: .relatedObjectId)
         try container.encodeIfPresent(relatedWorkflowId, forKey: .relatedWorkflowId)
         try container.encodeIfPresent(typeRefIds, forKey: .typeRefIds)
-        try container.encode(company, forKey: .company)
+        try container.encodeIfPresent(company, forKey: .company)
         try container.encode(contentType, forKey: .contentType)
-        try container.encode(createdAt, forKey: .createdAt)
-        try container.encode(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encode(_extension, forKey: ._extension)
         try container.encode(name, forKey: .name)
         try container.encode(displayName, forKey: .displayName)
@@ -118,3 +118,6 @@ public struct CreateFileSchema: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CreateFileSchema: Identifiable {}

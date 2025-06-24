@@ -16,15 +16,19 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
     public var name: String
     public var companyId: String
     public var finalized: Bool
-    public var finalizedAt: String
-    public var createdAt: String
+    public var finalizedAt: Date?
+    public var createdAt: Date
     public var createdBy: String
+    public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
     public var workflowInstanceId: String
+    public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
+    public var relatedDataSynced: Bool?
+    public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: String, createdAt: String, createdBy: String, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil) {
+    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
         self.id = id
         self.name = name
         self.companyId = companyId
@@ -32,10 +36,14 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         self.finalizedAt = finalizedAt
         self.createdAt = createdAt
         self.createdBy = createdBy
+        self.updatedAt = updatedAt
         self.typeRefId = typeRefId
         self.relatedObjectTypes = relatedObjectTypes
         self.workflowInstanceId = workflowInstanceId
+        self.relatedWorkflowTemplateId = relatedWorkflowTemplateId
         self.auditTimeline = auditTimeline
+        self.relatedDataSynced = relatedDataSynced
+        self.triggers = triggers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -46,10 +54,14 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         case finalizedAt = "finalized_at"
         case createdAt = "created_at"
         case createdBy = "created_by"
+        case updatedAt = "updated_at"
         case typeRefId = "type_ref_id"
         case relatedObjectTypes = "related_object_types"
         case workflowInstanceId = "workflow_instance_id"
+        case relatedWorkflowTemplateId = "related_workflow_template_id"
         case auditTimeline = "audit_timeline"
+        case relatedDataSynced = "related_data_synced"
+        case triggers
     }
 
     // Encodable protocol methods
@@ -60,13 +72,20 @@ public struct CompletedWorkflowSchema: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(companyId, forKey: .companyId)
         try container.encode(finalized, forKey: .finalized)
-        try container.encode(finalizedAt, forKey: .finalizedAt)
+        try container.encodeIfPresent(finalizedAt, forKey: .finalizedAt)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
         try container.encode(workflowInstanceId, forKey: .workflowInstanceId)
+        try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
+        try container.encodeIfPresent(relatedDataSynced, forKey: .relatedDataSynced)
+        try container.encodeIfPresent(triggers, forKey: .triggers)
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CompletedWorkflowSchema: Identifiable {}
