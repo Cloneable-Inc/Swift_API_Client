@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **type** | **String** | The file type | 
 **syncToEdge** | **Bool** | Whether the file should be synced to the edge device | 
 **typeRefID** | **String** |  | [optional] 
-**additionalProperties** | **[String: JSONValue]** |  | [optional] 
+**additionalProperties** | **[String: AnyCodable]** |  | [optional] 
 **url** | **String** | The stored file path | [optional] 
 **savedToCloud** | **Bool** | Whether the file is saved to the cloud | [optional] 
 **storageProvider** | **String** |  | [optional] 

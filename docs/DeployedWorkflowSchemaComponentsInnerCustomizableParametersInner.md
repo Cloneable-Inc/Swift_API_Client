@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **paramGroup** | **String** |  | [optional] 
 **paramInputType** | **String** |  | [optional] 
 **paramName** | **String** |  | 
-**selectedValue** | **JSONValue** |  | [optional] 
+**selectedValue** | **AnyCodable** |  | [optional] 
 **userCustomizable** | **Bool** |  | [optional] 
 **relatedInputDynamicId** | **String** |  | [optional] 
 **relatedOutputDynamicId** | **String** |  | [optional] 
 **selectedValueIsArray** | **Bool** |  | [optional] 
-**selectedValueArray** | **[JSONValue]** |  | [optional] 
+**selectedValueArray** | **[AnyCodable]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

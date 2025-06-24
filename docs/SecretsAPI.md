@@ -60,7 +60,7 @@ No authorization required
 
 # **deleteSecret**
 ```swift
-    open class func deleteSecret(id: String, body: JSONValue? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+    open class func deleteSecret(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
 Delete a secret
@@ -71,7 +71,7 @@ Delete a secret
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Delete a secret
 SecretsAPI.deleteSecret(id: id, body: body) { (response, error) in
@@ -91,7 +91,7 @@ SecretsAPI.deleteSecret(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 

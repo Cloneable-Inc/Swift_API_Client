@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 # **archiveDataObject**
 ```swift
-    open class func archiveDataObject(id: String, body: JSONValue? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+    open class func archiveDataObject(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
 Archive a data object
@@ -30,7 +30,7 @@ Archive a data object
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Archive a data object
 DataObjectAPI.archiveDataObject(id: id, body: body) { (response, error) in
@@ -50,7 +50,7 @@ DataObjectAPI.archiveDataObject(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -165,7 +165,7 @@ No authorization required
 
 # **deleteExplorerPage**
 ```swift
-    open class func deleteExplorerPage(id: String, body: JSONValue? = nil, completion: @escaping (_ data: DataObjectSchema?, _ error: Error?) -> Void)
+    open class func deleteExplorerPage(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: DataObjectSchema?, _ error: Error?) -> Void)
 ```
 
 Delete an explorer page
@@ -176,7 +176,7 @@ Delete an explorer page
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Delete an explorer page
 DataObjectAPI.deleteExplorerPage(id: id, body: body) { (response, error) in
@@ -196,7 +196,7 @@ DataObjectAPI.deleteExplorerPage(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -413,7 +413,7 @@ No authorization required
 
 # **unarchiveDataObject**
 ```swift
-    open class func unarchiveDataObject(id: String, body: JSONValue? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
+    open class func unarchiveDataObject(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: UpdateFile200Response?, _ error: Error?) -> Void)
 ```
 
 Unarchive a data object
@@ -424,7 +424,7 @@ Unarchive a data object
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Unarchive a data object
 DataObjectAPI.unarchiveDataObject(id: id, body: body) { (response, error) in
@@ -444,7 +444,7 @@ DataObjectAPI.unarchiveDataObject(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 

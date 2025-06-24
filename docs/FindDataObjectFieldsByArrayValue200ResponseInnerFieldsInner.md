@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **dataObjectId** | **String** |  | 
 **fieldName** | **String** |  | 
-**value** | **JSONValue** |  | [optional] 
+**value** | **AnyCodable** |  | [optional] 
 **createdAt** | **Date** |  | 
 **updatedAt** | **Date** |  | 
 

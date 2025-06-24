@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **getOpenAPIJSON**
 ```swift
-    open class func getOpenAPIJSON(completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
+    open class func getOpenAPIJSON(completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get OpenAPI JSON
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**JSONValue**
+**AnyCodable**
 
 ### Authorization
 

@@ -351,7 +351,7 @@ No authorization required
 
 # **removeMember**
 ```swift
-    open class func removeMember(teamId: String, userId: String, body: JSONValue? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+    open class func removeMember(teamId: String, userId: String, body: AnyCodable? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
 Remove a member from a team
@@ -363,7 +363,7 @@ import Cloneable_Swift_Client
 
 let teamId = "teamId_example" // String | 
 let userId = "userId_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Remove a member from a team
 TeamAPI.removeMember(teamId: teamId, userId: userId, body: body) { (response, error) in
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **String** |  | 
  **userId** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 

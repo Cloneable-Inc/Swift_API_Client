@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **type** | **String** |  | 
 **label** | **String** |  | [optional] 
 **teamId** | **String** |  | [optional] 
-**metaData** | **JSONValue** |  | [optional] 
+**metaData** | **AnyCodable** |  | [optional] 
 **dataObjectTemplateNameId** | **String** |  | 
 **createdAt** | **Date** |  | [optional] 
 **createdBy** | **String** |  | [optional] 

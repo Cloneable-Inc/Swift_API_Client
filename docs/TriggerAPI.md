@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 # **archiveTrigger**
 ```swift
-    open class func archiveTrigger(id: String, body: JSONValue? = nil, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
+    open class func archiveTrigger(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
 ```
 
 Archive a trigger
@@ -39,7 +39,7 @@ Archive a trigger
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Archive a trigger
 TriggerAPI.archiveTrigger(id: id, body: body) { (response, error) in
@@ -59,7 +59,7 @@ TriggerAPI.archiveTrigger(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -78,7 +78,7 @@ No authorization required
 
 # **attachSecret**
 ```swift
-    open class func attachSecret(id: String, secretId: String, body: JSONValue? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+    open class func attachSecret(id: String, secretId: String, body: AnyCodable? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
 Attach a secret to a trigger
@@ -90,7 +90,7 @@ import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 let secretId = "secretId_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Attach a secret to a trigger
 TriggerAPI.attachSecret(id: id, secretId: secretId, body: body) { (response, error) in
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
  **secretId** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -178,7 +178,7 @@ No authorization required
 
 # **debugGet**
 ```swift
-    open class func debugGet(id: String, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
+    open class func debugGet(id: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Get debug state for a trigger Durable Object
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**JSONValue**
+**AnyCodable**
 
 ### Authorization
 
@@ -226,7 +226,7 @@ No authorization required
 
 # **debugPost**
 ```swift
-    open class func debugPost(id: String, debugPostRequest: DebugPostRequest? = nil, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
+    open class func debugPost(id: String, debugPostRequest: DebugPostRequest? = nil, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Control debug state for a trigger Durable Object
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**JSONValue**
+**AnyCodable**
 
 ### Authorization
 
@@ -276,7 +276,7 @@ No authorization required
 
 # **deleteTrigger**
 ```swift
-    open class func deleteTrigger(id: String, body: JSONValue? = nil, completion: @escaping (_ data: DeleteTrigger200Response?, _ error: Error?) -> Void)
+    open class func deleteTrigger(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: DeleteTrigger200Response?, _ error: Error?) -> Void)
 ```
 
 Delete a trigger
@@ -287,7 +287,7 @@ Delete a trigger
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Delete a trigger
 TriggerAPI.deleteTrigger(id: id, body: body) { (response, error) in
@@ -307,7 +307,7 @@ TriggerAPI.deleteTrigger(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -326,7 +326,7 @@ No authorization required
 
 # **detachSecret**
 ```swift
-    open class func detachSecret(id: String, secretId: String, body: JSONValue? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
+    open class func detachSecret(id: String, secretId: String, body: AnyCodable? = nil, completion: @escaping (_ data: CreateFile400Response?, _ error: Error?) -> Void)
 ```
 
 Remove a secret from a trigger
@@ -338,7 +338,7 @@ import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
 let secretId = "secretId_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Remove a secret from a trigger
 TriggerAPI.detachSecret(id: id, secretId: secretId, body: body) { (response, error) in
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
  **secretId** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -776,7 +776,7 @@ No authorization required
 
 # **triggerExecutionStart**
 ```swift
-    open class func triggerExecutionStart(id: String, body: JSONValue? = nil, completion: @escaping (_ data: TriggerExecutionStart200Response?, _ error: Error?) -> Void)
+    open class func triggerExecutionStart(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: TriggerExecutionStart200Response?, _ error: Error?) -> Void)
 ```
 
 Start a trigger container
@@ -787,7 +787,7 @@ Start a trigger container
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Start a trigger container
 TriggerAPI.triggerExecutionStart(id: id, body: body) { (response, error) in
@@ -807,7 +807,7 @@ TriggerAPI.triggerExecutionStart(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 
@@ -876,7 +876,7 @@ No authorization required
 
 # **unarchiveTrigger**
 ```swift
-    open class func unarchiveTrigger(id: String, body: JSONValue? = nil, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
+    open class func unarchiveTrigger(id: String, body: AnyCodable? = nil, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
 ```
 
 Unarchive a trigger
@@ -887,7 +887,7 @@ Unarchive a trigger
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let body = "TODO" // JSONValue | Body (optional)
+let body = "TODO" // AnyCodable | Body (optional)
 
 // Unarchive a trigger
 TriggerAPI.unarchiveTrigger(id: id, body: body) { (response, error) in
@@ -907,7 +907,7 @@ TriggerAPI.unarchiveTrigger(id: id, body: body) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
- **body** | **JSONValue** | Body | [optional] 
+ **body** | **AnyCodable** | Body | [optional] 
 
 ### Return type
 

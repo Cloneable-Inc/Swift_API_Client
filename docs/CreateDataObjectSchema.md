@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **dataObjectId** | **UUID** |  | 
 **key** | **String** |  | 
-**value** | **JSONValue** |  | [optional] 
+**value** | **AnyCodable** |  | [optional] 
 **type** | **String** |  | 
 **label** | **String** |  | [optional] 
 **teamId** | **String** |  | [optional] 
-**metaData** | **JSONValue** |  | [optional] 
+**metaData** | **AnyCodable** |  | [optional] 
 **dataObjectTemplateNameId** | **String** |  | 
 **createdAt** | **Date** |  | [optional] 
 **createdBy** | **String** |  | [optional] 

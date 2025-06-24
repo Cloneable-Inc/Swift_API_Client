@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **inputs** | [ComponentJSONSchemaInputsInner] |  | [optional] 
 **dynamicComponentRenderer** | **Bool** |  | 
 **customizableParameters** | [ComponentJSONSchemaCustomizableParametersInner] |  | [optional] 
-**additionalProperties** | **JSONValue** |  | [optional] 
+**additionalProperties** | **AnyCodable** |  | [optional] 
 **resources** | [**ComponentJSONSchemaResources**](ComponentJSONSchemaResources.md) |  | [optional] 
 **code** | **String** |  | [optional] 
 **target** | **String** |  | [optional] 

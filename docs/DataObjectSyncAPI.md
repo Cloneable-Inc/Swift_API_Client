@@ -310,7 +310,7 @@ No authorization required
 
 # **queryDataObjectFields**
 ```swift
-    open class func queryDataObjectFields(templateNameId: String, fieldFilters: [String: JSONValue]? = nil, completion: @escaping (_ data: [QueryDataObjectFields200ResponseInner]?, _ error: Error?) -> Void)
+    open class func queryDataObjectFields(templateNameId: String, fieldFilters: [String: AnyCodable]? = nil, completion: @escaping (_ data: [QueryDataObjectFields200ResponseInner]?, _ error: Error?) -> Void)
 ```
 
 Query data objects by template name and field values
@@ -321,7 +321,7 @@ Query data objects by template name and field values
 import Cloneable_Swift_Client
 
 let templateNameId = "templateNameId_example" // String | 
-let fieldFilters = "TODO" // [String: JSONValue] |  (optional)
+let fieldFilters = "TODO" // [String: AnyCodable] |  (optional)
 
 // Query data objects by template name and field values
 DataObjectSyncAPI.queryDataObjectFields(templateNameId: templateNameId, fieldFilters: fieldFilters) { (response, error) in
@@ -341,7 +341,7 @@ DataObjectSyncAPI.queryDataObjectFields(templateNameId: templateNameId, fieldFil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **templateNameId** | **String** |  | 
- **fieldFilters** | [**[String: JSONValue]**](JSONValue.md) |  | [optional] 
+ **fieldFilters** | [**[String: AnyCodable]**](AnyCodable.md) |  | [optional] 
 
 ### Return type
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **_required** | **Bool** |  | [optional] 
 **acceptsArray** | **Bool** |  | [optional] 
 **trigger** | **Bool** |  | [optional] 
-**additionalProperties** | **[String: JSONValue]** |  | 
+**additionalProperties** | **[String: AnyCodable]** |  | 
 **jsonSchema** | **String** |  | [optional] 
 **jsonSchemaId** | **String** |  | [optional] 
 
