@@ -136,12 +136,10 @@ Class | Method | HTTP request | Description
 *TriggerAPI* | [**detachSecret**](docs/TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
 *TriggerAPI* | [**getAllExecutions**](docs/TriggerAPI.md#getallexecutions) | **GET** /triggers/executions | Get recent executions across all triggers
 *TriggerAPI* | [**getExecutionLogs**](docs/TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
-*TriggerAPI* | [**getOneExecution**](docs/TriggerAPI.md#getoneexecution) | **GET** /trigger/execution/{execution_id} | Get a single execution by ID
 *TriggerAPI* | [**getOneTrigger**](docs/TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
 *TriggerAPI* | [**getTriggerExecutions**](docs/TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
 *TriggerAPI* | [**getTriggerSecrets**](docs/TriggerAPI.md#gettriggersecrets) | **GET** /trigger/{id}/secrets | Get all secrets attached to a trigger
 *TriggerAPI* | [**getTriggers**](docs/TriggerAPI.md#gettriggers) | **GET** /triggers | Get all triggers for organization
-*TriggerAPI* | [**healthCheck**](docs/TriggerAPI.md#healthcheck) | **GET** /trigger/{id}/health | Get health status for a trigger Durable Object
 *TriggerAPI* | [**runTrigger**](docs/TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger
 *TriggerAPI* | [**triggerExecutionStart**](docs/TriggerAPI.md#triggerexecutionstart) | **POST** /trigger/{id}/execution/start | Start a trigger container
 *TriggerAPI* | [**triggerExecutionStop**](docs/TriggerAPI.md#triggerexecutionstop) | **POST** /trigger/{id}/execution/stop | Stop a trigger container
@@ -276,12 +274,6 @@ Class | Method | HTTP request | Description
  - [GetOne200Response](docs/GetOne200Response.md)
  - [GetOneDataObjectTemplate400Response](docs/GetOneDataObjectTemplate400Response.md)
  - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
- - [GetOneExecution200Response](docs/GetOneExecution200Response.md)
- - [GetOneExecution200ResponseInputs](docs/GetOneExecution200ResponseInputs.md)
- - [GetOneExecution200ResponseInputsParametersInner](docs/GetOneExecution200ResponseInputsParametersInner.md)
- - [GetOneExecution200ResponseMetadata](docs/GetOneExecution200ResponseMetadata.md)
- - [GetOneExecution200ResponseResourceLimits](docs/GetOneExecution200ResponseResourceLimits.md)
- - [GetOneExecution200ResponseResourceUsage](docs/GetOneExecution200ResponseResourceUsage.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
@@ -291,13 +283,13 @@ Class | Method | HTTP request | Description
  - [GetTeamMembers200ResponseInnerUser](docs/GetTeamMembers200ResponseInnerUser.md)
  - [GetTriggerSecrets200ResponseInner](docs/GetTriggerSecrets200ResponseInner.md)
  - [GetUploadUrl200Response](docs/GetUploadUrl200Response.md)
- - [HealthCheck200Response](docs/HealthCheck200Response.md)
- - [HealthCheck200ResponseContainer](docs/HealthCheck200ResponseContainer.md)
- - [HealthCheck200ResponseDurableObject](docs/HealthCheck200ResponseDurableObject.md)
- - [HealthCheck200ResponseExecution](docs/HealthCheck200ResponseExecution.md)
- - [HealthCheck200ResponseQueue](docs/HealthCheck200ResponseQueue.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
  - [InsertTriggerExecutionSchema](docs/InsertTriggerExecutionSchema.md)
+ - [InsertTriggerExecutionSchemaInputs](docs/InsertTriggerExecutionSchemaInputs.md)
+ - [InsertTriggerExecutionSchemaInputsParametersInner](docs/InsertTriggerExecutionSchemaInputsParametersInner.md)
+ - [InsertTriggerExecutionSchemaMetadata](docs/InsertTriggerExecutionSchemaMetadata.md)
+ - [InsertTriggerExecutionSchemaResourceLimits](docs/InsertTriggerExecutionSchemaResourceLimits.md)
+ - [InsertTriggerExecutionSchemaResourceUsage](docs/InsertTriggerExecutionSchemaResourceUsage.md)
  - [InsertTriggerLogSchema](docs/InsertTriggerLogSchema.md)
  - [InsertTriggerSchema](docs/InsertTriggerSchema.md)
  - [InsertTriggerSchemaInputSchema](docs/InsertTriggerSchemaInputSchema.md)
