@@ -14,13 +14,15 @@ public struct UpdateDataObjectTemplateRequest: Sendable, Codable, ParameterConve
     public var objectDescription: String
     public var fields: [UpdateDataObjectTemplateRequestFieldsInner]
     public var isTemplate: Bool
+    public var icons: [UpdateDataObjectTemplateRequestIconsInner]
 
-    public init(objectName: String, objectDisplayName: String, objectDescription: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], isTemplate: Bool) {
+    public init(objectName: String, objectDisplayName: String, objectDescription: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], isTemplate: Bool, icons: [UpdateDataObjectTemplateRequestIconsInner]) {
         self.objectName = objectName
         self.objectDisplayName = objectDisplayName
         self.objectDescription = objectDescription
         self.fields = fields
         self.isTemplate = isTemplate
+        self.icons = icons
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct UpdateDataObjectTemplateRequest: Sendable, Codable, ParameterConve
         case objectDescription = "object_description"
         case fields
         case isTemplate = "is_template"
+        case icons
     }
 
     // Encodable protocol methods
@@ -40,6 +43,7 @@ public struct UpdateDataObjectTemplateRequest: Sendable, Codable, ParameterConve
         try container.encode(objectDescription, forKey: .objectDescription)
         try container.encode(fields, forKey: .fields)
         try container.encode(isTemplate, forKey: .isTemplate)
+        try container.encode(icons, forKey: .icons)
     }
 }
 

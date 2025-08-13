@@ -494,7 +494,7 @@ Invite user to org
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"], team: sendInvite_request_invites_inner_team(id: "id_example", role: "role_example"), orgName: "orgName_example", teamName: "teamName_example")], orgId: "orgId_example") // SendInviteRequest | Body (optional)
+let sendInviteRequest = sendInvite_request(invites: [sendInvite_request_invites_inner(email: "email_example", roles: ["roles_example"], team: sendInvite_request_invites_inner_team(id: "id_example", role: "role_example"))], orgId: "orgId_example") // SendInviteRequest | Body (optional)
 
 // Invite user to org
 OrgAPI.sendInvite(sendInviteRequest: sendInviteRequest) { (response, error) in

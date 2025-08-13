@@ -9,23 +9,23 @@ import Foundation
 
 public struct CompletedWorkflowSchema: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var id: String
+    public var id: UUID
     public var name: String
     public var companyId: String
     public var finalized: Bool
     public var finalizedAt: Date?
-    public var createdAt: Date
+    public var createdAt: Date?
     public var createdBy: String
     public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
-    public var workflowInstanceId: String
+    public var workflowInstanceId: UUID
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
     public var relatedDataSynced: Bool?
     public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(id: String, name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
+    public init(id: UUID, name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date?, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: UUID, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
         self.id = id
         self.name = name
         self.companyId = companyId

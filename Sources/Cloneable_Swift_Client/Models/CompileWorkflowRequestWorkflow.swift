@@ -10,25 +10,25 @@ import Foundation
 public struct CompileWorkflowRequestWorkflow: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String
+    public var companyId: String
     public var workflowName: String
     public var workflowDescription: String
     public var draft: Bool
-    public var company: String
     public var createdBy: String
-    public var createdAt: String
-    public var updatedAt: String
-    public var lastModifiedAt: String
+    public var createdAt: Date?
+    public var updatedAt: Date?
+    public var lastModifiedAt: Date?
     public var revision: Double
     public var typeRefId: String
     public var builderObject: SaveWorkflowRequestBuilderObject
     public var resources: [SaveWorkflowRequestResourcesInner]
 
-    public init(id: String, workflowName: String, workflowDescription: String, draft: Bool, company: String, createdBy: String, createdAt: String, updatedAt: String, lastModifiedAt: String, revision: Double, typeRefId: String, builderObject: SaveWorkflowRequestBuilderObject, resources: [SaveWorkflowRequestResourcesInner]) {
+    public init(id: String, companyId: String, workflowName: String, workflowDescription: String, draft: Bool, createdBy: String, createdAt: Date?, updatedAt: Date?, lastModifiedAt: Date?, revision: Double, typeRefId: String, builderObject: SaveWorkflowRequestBuilderObject, resources: [SaveWorkflowRequestResourcesInner]) {
         self.id = id
+        self.companyId = companyId
         self.workflowName = workflowName
         self.workflowDescription = workflowDescription
         self.draft = draft
-        self.company = company
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.updatedAt = updatedAt
@@ -40,11 +40,11 @@ public struct CompileWorkflowRequestWorkflow: Sendable, Codable, ParameterConver
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id = "_id"
+        case id
+        case companyId = "company_id"
         case workflowName = "workflow_name"
         case workflowDescription = "workflow_description"
         case draft
-        case company
         case createdBy = "created_by"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
@@ -60,10 +60,10 @@ public struct CompileWorkflowRequestWorkflow: Sendable, Codable, ParameterConver
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encode(companyId, forKey: .companyId)
         try container.encode(workflowName, forKey: .workflowName)
         try container.encode(workflowDescription, forKey: .workflowDescription)
         try container.encode(draft, forKey: .draft)
-        try container.encode(company, forKey: .company)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
@@ -75,3 +75,6 @@ public struct CompileWorkflowRequestWorkflow: Sendable, Codable, ParameterConver
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CompileWorkflowRequestWorkflow: Identifiable {}

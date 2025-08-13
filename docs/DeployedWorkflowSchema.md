@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **environment** | **String** |  | 
 **typeRefId** | **String** |  | 
 **resources** | [SaveWorkflowRequestResourcesInner] |  | [optional] 
-**edges** | [DeployedWorkflowSchemaEdgesInner] |  | 
-**components** | [DeployedWorkflowSchemaComponentsInner] |  | 
-**objects** | [DeployedWorkflowSchemaObjectsInner] |  | 
+**edges** | [CreateDeployedWorkflowSchemaEdgesInner] |  | 
+**components** | [CreateDeployedWorkflowSchemaComponentsInner] |  | 
+**objects** | [CreateDeployedWorkflowSchemaObjectsInner] |  | 
 **revision** | **Double** |  | 
 **workflowDescription** | **String** |  | 
 **workflowId** | **String** |  | 

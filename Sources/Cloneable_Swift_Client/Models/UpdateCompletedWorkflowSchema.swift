@@ -9,18 +9,18 @@ import Foundation
 
 public struct UpdateCompletedWorkflowSchema: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var name: String
-    public var finalized: Bool
+    public var name: String?
+    public var finalized: Bool?
     public var finalizedAt: Date?
     public var updatedAt: Date?
-    public var typeRefId: String
+    public var typeRefId: String?
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
-    public var relatedWorkflowTemplateId: String
+    public var relatedWorkflowTemplateId: String?
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
     public var relatedDataSynced: Bool?
     public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(name: String, finalized: Bool, finalizedAt: Date? = nil, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
+    public init(name: String? = nil, finalized: Bool? = nil, finalizedAt: Date? = nil, updatedAt: Date? = nil, typeRefId: String? = nil, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, relatedWorkflowTemplateId: String? = nil, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
         self.name = name
         self.finalized = finalized
         self.finalizedAt = finalizedAt
@@ -50,13 +50,13 @@ public struct UpdateCompletedWorkflowSchema: Sendable, Codable, ParameterConvert
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(finalized, forKey: .finalized)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(finalized, forKey: .finalized)
         try container.encodeIfPresent(finalizedAt, forKey: .finalizedAt)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
-        try container.encode(typeRefId, forKey: .typeRefId)
+        try container.encodeIfPresent(typeRefId, forKey: .typeRefId)
         try container.encodeIfPresent(relatedObjectTypes, forKey: .relatedObjectTypes)
-        try container.encode(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
+        try container.encodeIfPresent(relatedWorkflowTemplateId, forKey: .relatedWorkflowTemplateId)
         try container.encodeIfPresent(auditTimeline, forKey: .auditTimeline)
         try container.encodeIfPresent(relatedDataSynced, forKey: .relatedDataSynced)
         try container.encodeIfPresent(triggers, forKey: .triggers)

@@ -4,14 +4,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**companyId** | **String** |  | [optional] 
 **workflowName** | **String** |  | [optional] 
 **workflowDescription** | **String** |  | [optional] 
 **draft** | **Bool** |  | [optional] 
-**company** | **String** |  | [optional] 
 **createdBy** | **String** |  | [optional] 
-**createdAt** | **String** |  | [optional] 
-**updatedAt** | **String** |  | [optional] 
-**lastModifiedAt** | **String** |  | [optional] 
+**createdAt** | **Date** |  | [optional] 
+**updatedAt** | **Date** |  | [optional] 
+**lastModifiedAt** | **Date** |  | [optional] 
 **revision** | **Double** |  | [optional] 
 **typeRefId** | **String** |  | [optional] 
 **builderObject** | [**SaveWorkflowRequestBuilderObject**](SaveWorkflowRequestBuilderObject.md) |  | [optional] 
