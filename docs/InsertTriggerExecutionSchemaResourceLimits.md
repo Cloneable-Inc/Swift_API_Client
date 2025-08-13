@@ -1,13 +1,11 @@
-# HealthCheck200ResponseContainer
+# InsertTriggerExecutionSchemaResourceLimits
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**available** | **Bool** |  | 
-**id** | **String** |  | 
-**launching** | **Bool** |  | 
-**socketConnected** | **Bool** |  | 
-**lastHeartbeat** | **Double** |  | 
+**cpuKind** | **String** |  | 
+**cpus** | **Double** |  | 
+**memoryMb** | **Double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
