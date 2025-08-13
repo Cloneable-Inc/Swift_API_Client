@@ -14,10 +14,10 @@ open class WorkflowAPI {
      
      - parameter compileWorkflowRequest: (body) Body (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: DeployedWorkflowSchema
+     - returns: WorkflowDraftSchema
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeployedWorkflowSchema {
+    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> WorkflowDraftSchema {
         return try await compileWorkflowWithRequestBuilder(compileWorkflowRequest: compileWorkflowRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -26,9 +26,9 @@ open class WorkflowAPI {
      - POST /workflow/compile
      - parameter compileWorkflowRequest: (body) Body (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<DeployedWorkflowSchema> 
+     - returns: RequestBuilder<WorkflowDraftSchema> 
      */
-    open class func compileWorkflowWithRequestBuilder(compileWorkflowRequest: CompileWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<DeployedWorkflowSchema> {
+    open class func compileWorkflowWithRequestBuilder(compileWorkflowRequest: CompileWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<WorkflowDraftSchema> {
         let localVariablePath = "/workflow/compile"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: compileWorkflowRequest, codableHelper: apiConfiguration.codableHelper)
@@ -41,7 +41,7 @@ open class WorkflowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowDraftSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
@@ -125,10 +125,10 @@ open class WorkflowAPI {
      Get all workflows
      
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: DeployedWorkflowSchema
+     - returns: WorkflowDraftSchema
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getAllWorkflows(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeployedWorkflowSchema {
+    open class func getAllWorkflows(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> WorkflowDraftSchema {
         return try await getAllWorkflowsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -136,9 +136,9 @@ open class WorkflowAPI {
      Get all workflows
      - GET /workflows
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<DeployedWorkflowSchema> 
+     - returns: RequestBuilder<WorkflowDraftSchema> 
      */
-    open class func getAllWorkflowsWithRequestBuilder(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<DeployedWorkflowSchema> {
+    open class func getAllWorkflowsWithRequestBuilder(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<WorkflowDraftSchema> {
         let localVariablePath = "/workflows"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -151,7 +151,7 @@ open class WorkflowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowDraftSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
@@ -161,10 +161,10 @@ open class WorkflowAPI {
      
      - parameter workflowId: (path)  
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: DeployedWorkflowSchema
+     - returns: WorkflowDraftSchema
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getWorkflow(workflowId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeployedWorkflowSchema {
+    open class func getWorkflow(workflowId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> WorkflowDraftSchema {
         return try await getWorkflowWithRequestBuilder(workflowId: workflowId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -173,9 +173,9 @@ open class WorkflowAPI {
      - GET /workflow/{workflow_id}
      - parameter workflowId: (path)  
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<DeployedWorkflowSchema> 
+     - returns: RequestBuilder<WorkflowDraftSchema> 
      */
-    open class func getWorkflowWithRequestBuilder(workflowId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<DeployedWorkflowSchema> {
+    open class func getWorkflowWithRequestBuilder(workflowId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<WorkflowDraftSchema> {
         var localVariablePath = "/workflow/{workflow_id}"
         let workflowIdPreEscape = "\(APIHelper.mapValueToPathItem(workflowId))"
         let workflowIdPostEscape = workflowIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -191,7 +191,7 @@ open class WorkflowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowDraftSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
@@ -202,10 +202,10 @@ open class WorkflowAPI {
      - parameter id: (path)  
      - parameter saveWorkflowRequest: (body) Body (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: DeployedWorkflowSchema
+     - returns: WorkflowDraftSchema
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeployedWorkflowSchema {
+    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> WorkflowDraftSchema {
         return try await saveWorkflowWithRequestBuilder(id: id, saveWorkflowRequest: saveWorkflowRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -215,9 +215,9 @@ open class WorkflowAPI {
      - parameter id: (path)  
      - parameter saveWorkflowRequest: (body) Body (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<DeployedWorkflowSchema> 
+     - returns: RequestBuilder<WorkflowDraftSchema> 
      */
-    open class func saveWorkflowWithRequestBuilder(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<DeployedWorkflowSchema> {
+    open class func saveWorkflowWithRequestBuilder(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<WorkflowDraftSchema> {
         var localVariablePath = "/workflow/{id}/save"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -233,7 +233,7 @@ open class WorkflowAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<DeployedWorkflowSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowDraftSchema>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }

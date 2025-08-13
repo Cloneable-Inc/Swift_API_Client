@@ -10,25 +10,25 @@ import Foundation
 public struct SaveWorkflowRequest: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var id: String?
+    public var companyId: String?
     public var workflowName: String?
     public var workflowDescription: String?
     public var draft: Bool?
-    public var company: String?
     public var createdBy: String?
-    public var createdAt: String?
-    public var updatedAt: String?
-    public var lastModifiedAt: String?
+    public var createdAt: Date?
+    public var updatedAt: Date?
+    public var lastModifiedAt: Date?
     public var revision: Double?
     public var typeRefId: String?
     public var builderObject: SaveWorkflowRequestBuilderObject?
     public var resources: [SaveWorkflowRequestResourcesInner]?
 
-    public init(id: String? = nil, workflowName: String? = nil, workflowDescription: String? = nil, draft: Bool? = nil, company: String? = nil, createdBy: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, lastModifiedAt: String? = nil, revision: Double? = nil, typeRefId: String? = nil, builderObject: SaveWorkflowRequestBuilderObject? = nil, resources: [SaveWorkflowRequestResourcesInner]? = nil) {
+    public init(id: String? = nil, companyId: String? = nil, workflowName: String? = nil, workflowDescription: String? = nil, draft: Bool? = nil, createdBy: String? = nil, createdAt: Date? = nil, updatedAt: Date? = nil, lastModifiedAt: Date? = nil, revision: Double? = nil, typeRefId: String? = nil, builderObject: SaveWorkflowRequestBuilderObject? = nil, resources: [SaveWorkflowRequestResourcesInner]? = nil) {
         self.id = id
+        self.companyId = companyId
         self.workflowName = workflowName
         self.workflowDescription = workflowDescription
         self.draft = draft
-        self.company = company
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.updatedAt = updatedAt
@@ -40,11 +40,11 @@ public struct SaveWorkflowRequest: Sendable, Codable, ParameterConvertible, Hash
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id = "_id"
+        case id
+        case companyId = "company_id"
         case workflowName = "workflow_name"
         case workflowDescription = "workflow_description"
         case draft
-        case company
         case createdBy = "created_by"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
@@ -60,10 +60,10 @@ public struct SaveWorkflowRequest: Sendable, Codable, ParameterConvertible, Hash
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(companyId, forKey: .companyId)
         try container.encodeIfPresent(workflowName, forKey: .workflowName)
         try container.encodeIfPresent(workflowDescription, forKey: .workflowDescription)
         try container.encodeIfPresent(draft, forKey: .draft)
-        try container.encodeIfPresent(company, forKey: .company)
         try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
@@ -75,3 +75,6 @@ public struct SaveWorkflowRequest: Sendable, Codable, ParameterConvertible, Hash
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension SaveWorkflowRequest: Identifiable {}

@@ -24,9 +24,9 @@ public struct CreateDataObjectTemplateSchema: Sendable, Codable, ParameterConver
     public var createdAt: Date?
     public var modifiedAt: Date?
     public var isTemplate: Bool?
-    public var icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]
+    public var icons: [UpdateDataObjectTemplateRequestIconsInner]
 
-    public init(id: String, nameId: String, objectId: UUID? = nil, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int? = nil, typeRefId: String? = nil, modifiedBy: String? = nil, createdBy: String? = nil, createdAt: Date? = nil, modifiedAt: Date? = nil, isTemplate: Bool? = nil, icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]) {
+    public init(id: String, nameId: String, objectId: UUID? = nil, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int? = nil, typeRefId: String? = nil, modifiedBy: String? = nil, createdBy: String? = nil, createdAt: Date? = nil, modifiedAt: Date? = nil, isTemplate: Bool? = nil, icons: [UpdateDataObjectTemplateRequestIconsInner]) {
         self.id = id
         self.nameId = nameId
         self.objectId = objectId

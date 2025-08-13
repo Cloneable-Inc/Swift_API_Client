@@ -12,23 +12,17 @@ public struct SendInviteRequestInvitesInner: Sendable, Codable, ParameterConvert
     public var email: String
     public var roles: [String]?
     public var team: SendInviteRequestInvitesInnerTeam?
-    public var orgName: String
-    public var teamName: String?
 
-    public init(email: String, roles: [String]? = nil, team: SendInviteRequestInvitesInnerTeam? = nil, orgName: String, teamName: String? = nil) {
+    public init(email: String, roles: [String]? = nil, team: SendInviteRequestInvitesInnerTeam? = nil) {
         self.email = email
         self.roles = roles
         self.team = team
-        self.orgName = orgName
-        self.teamName = teamName
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case roles
         case team
-        case orgName = "org_name"
-        case teamName = "team_name"
     }
 
     // Encodable protocol methods
@@ -38,8 +32,6 @@ public struct SendInviteRequestInvitesInner: Sendable, Codable, ParameterConvert
         try container.encode(email, forKey: .email)
         try container.encodeIfPresent(roles, forKey: .roles)
         try container.encodeIfPresent(team, forKey: .team)
-        try container.encode(orgName, forKey: .orgName)
-        try container.encodeIfPresent(teamName, forKey: .teamName)
     }
 }
 

@@ -24,10 +24,10 @@ public struct GetOneDataObjectTemplateByObjectTemplateId200Response: Sendable, C
     public var createdAt: Date
     public var modifiedAt: Date
     public var isTemplate: Bool
-    public var icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner]
+    public var icons: [UpdateDataObjectTemplateRequestIconsInner]
     public var companyId: String?
 
-    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, icons: [GetOneDataObjectTemplateByObjectTemplateId200ResponseIconsInner], companyId: String? = nil) {
+    public init(id: String, nameId: String, objectId: UUID, objectDescription: String, objectDisplayName: String, objectName: String, fields: [UpdateDataObjectTemplateRequestFieldsInner], revision: Int, typeRefId: String?, modifiedBy: String?, createdBy: String?, createdAt: Date, modifiedAt: Date, isTemplate: Bool, icons: [UpdateDataObjectTemplateRequestIconsInner], companyId: String? = nil) {
         self.id = id
         self.nameId = nameId
         self.objectId = objectId

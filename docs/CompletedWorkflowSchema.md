@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
+**id** | **UUID** |  | 
 **name** | **String** |  | 
 **companyId** | **String** |  | 
 **finalized** | **Bool** |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **updatedAt** | **Date** |  | [optional] 
 **typeRefId** | **String** |  | 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
-**workflowInstanceId** | **String** |  | 
+**workflowInstanceId** | **UUID** |  | 
 **relatedWorkflowTemplateId** | **String** |  | 
 **auditTimeline** | [CompletedWorkflowSchemaAuditTimelineInner] |  | [optional] 
 **relatedDataSynced** | **Bool** |  | [optional] 

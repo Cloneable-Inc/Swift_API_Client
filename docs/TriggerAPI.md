@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**getTriggerExecutions**](TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
 [**getTriggerSecrets**](TriggerAPI.md#gettriggersecrets) | **GET** /trigger/{id}/secrets | Get all secrets attached to a trigger
 [**getTriggers**](TriggerAPI.md#gettriggers) | **GET** /triggers | Get all triggers for organization
+[**healthCheck**](TriggerAPI.md#healthcheck) | **GET** /trigger/{id}/health | Get health status for a trigger Durable Object
 [**runTrigger**](TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger
 [**triggerExecutionStart**](TriggerAPI.md#triggerexecutionstart) | **POST** /trigger/{id}/execution/start | Start a trigger container
 [**triggerExecutionStop**](TriggerAPI.md#triggerexecutionstop) | **POST** /trigger/{id}/execution/stop | Stop a trigger container
@@ -712,6 +713,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[TriggerSchema]**](TriggerSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **healthCheck**
+```swift
+    open class func healthCheck(id: String, completion: @escaping (_ data: HealthCheck200Response?, _ error: Error?) -> Void)
+```
+
+Get health status for a trigger Durable Object
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+
+// Get health status for a trigger Durable Object
+TriggerAPI.healthCheck(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+
+### Return type
+
+[**HealthCheck200Response**](HealthCheck200Response.md)
 
 ### Authorization
 

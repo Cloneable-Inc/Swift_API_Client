@@ -118,7 +118,7 @@ Trigger an export to external system
 import Cloneable_Swift_Client
 
 let exportType = "exportType_example" // String | 
-let triggerExportRequest = triggerExport_request(fileId: "fileId_example", exportType: "exportType_example", nodeUrl: "nodeUrl_example", jobId: "jobId_example", nodeId: "nodeId_example", connectionId: "connectionId_example", sectionId: "sectionId_example", attachments: [triggerExport_request_oneOf_attachments_inner(manualHeight: "manualHeight_example", height: "height_example", pixelSelection: [triggerExport_request_oneOf_attachments_inner_pixel_selection_inner(percentX: 123, percentY: 123)], type: "type_example")], columns: ["columns_example"], data: ["TODO"], filename: "filename_example") // TriggerExportRequest | Body (optional)
+let triggerExportRequest = triggerExport_request(fileId: "fileId_example", exportType: "exportType_example", nodeUrl: "nodeUrl_example", jobId: "jobId_example", nodeId: "nodeId_example", connectionId: "connectionId_example", sectionId: "sectionId_example", attachments: [triggerExport_request_oneOf_attachments_inner(manualHeight: "manualHeight_example", height: "height_example", pixelSelection: [triggerExport_request_oneOf_attachments_inner_pixel_selection_inner(percentX: 123, percentY: 123)], type: "type_example")], elements: ["elements_example"], columns: ["columns_example"], data: ["TODO"], filename: "filename_example") // TriggerExportRequest | Body (optional)
 
 // Trigger an export to external system
 ExportAPI.triggerExport(exportType: exportType, triggerExportRequest: triggerExportRequest) { (response, error) in

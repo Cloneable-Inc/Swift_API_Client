@@ -17,9 +17,9 @@ public struct DeployedWorkflowSchema: Sendable, Codable, ParameterConvertible, H
     public var environment: String
     public var typeRefId: String
     public var resources: [SaveWorkflowRequestResourcesInner]?
-    public var edges: [DeployedWorkflowSchemaEdgesInner]
-    public var components: [DeployedWorkflowSchemaComponentsInner]
-    public var objects: [DeployedWorkflowSchemaObjectsInner]
+    public var edges: [CreateDeployedWorkflowSchemaEdgesInner]
+    public var components: [CreateDeployedWorkflowSchemaComponentsInner]
+    public var objects: [CreateDeployedWorkflowSchemaObjectsInner]
     public var revision: Double
     public var workflowDescription: String
     public var workflowId: String
@@ -27,7 +27,7 @@ public struct DeployedWorkflowSchema: Sendable, Codable, ParameterConvertible, H
     public var renderOrder: [String]?
     public var icon: String?
 
-    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [SaveWorkflowRequestResourcesInner]? = nil, edges: [DeployedWorkflowSchemaEdgesInner], components: [DeployedWorkflowSchemaComponentsInner], objects: [DeployedWorkflowSchemaObjectsInner], revision: Double, workflowDescription: String, workflowId: String, workflowName: String, renderOrder: [String]? = nil, icon: String? = nil) {
+    public init(id: String, companyId: String, createdAt: String, updatedAt: String, createdBy: String, environment: String, typeRefId: String, resources: [SaveWorkflowRequestResourcesInner]? = nil, edges: [CreateDeployedWorkflowSchemaEdgesInner], components: [CreateDeployedWorkflowSchemaComponentsInner], objects: [CreateDeployedWorkflowSchemaObjectsInner], revision: Double, workflowDescription: String, workflowId: String, workflowName: String, renderOrder: [String]? = nil, icon: String? = nil) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt

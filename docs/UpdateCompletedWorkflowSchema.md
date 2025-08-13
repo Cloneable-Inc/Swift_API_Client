@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
-**finalized** | **Bool** |  | 
+**name** | **String** |  | [optional] 
+**finalized** | **Bool** |  | [optional] 
 **finalizedAt** | **Date** |  | [optional] 
 **updatedAt** | **Date** |  | [optional] 
-**typeRefId** | **String** |  | 
+**typeRefId** | **String** |  | [optional] 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
-**relatedWorkflowTemplateId** | **String** |  | 
+**relatedWorkflowTemplateId** | **String** |  | [optional] 
 **auditTimeline** | [CompletedWorkflowSchemaAuditTimelineInner] |  | [optional] 
 **relatedDataSynced** | **Bool** |  | [optional] 
 **triggers** | [CompletedWorkflowSchemaTriggersInner] |  | [optional] 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **compileWorkflow**
 ```swift
-    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func compileWorkflow(compileWorkflowRequest: CompileWorkflowRequest? = nil, completion: @escaping (_ data: WorkflowDraftSchema?, _ error: Error?) -> Void)
 ```
 
 Compile a workflow
@@ -24,7 +24,7 @@ Compile a workflow
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let compileWorkflowRequest = compileWorkflow_request(workflow: compileWorkflow_request_workflow(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])])) // CompileWorkflowRequest | Body (optional)
+let compileWorkflowRequest = compileWorkflow_request(workflow: compileWorkflow_request_workflow(id: "id_example", companyId: "companyId_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, createdBy: "createdBy_example", createdAt: Date(), updatedAt: Date(), lastModifiedAt: Date(), revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])])) // CompileWorkflowRequest | Body (optional)
 
 // Compile a workflow
 WorkflowAPI.compileWorkflow(compileWorkflowRequest: compileWorkflowRequest) { (response, error) in
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeployedWorkflowSchema**](DeployedWorkflowSchema.md)
+[**WorkflowDraftSchema**](WorkflowDraftSchema.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ No authorization required
 
 # **getAllWorkflows**
 ```swift
-    open class func getAllWorkflows(completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func getAllWorkflows(completion: @escaping (_ data: WorkflowDraftSchema?, _ error: Error?) -> Void)
 ```
 
 Get all workflows
@@ -187,7 +187,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**DeployedWorkflowSchema**](DeployedWorkflowSchema.md)
+[**WorkflowDraftSchema**](WorkflowDraftSchema.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ No authorization required
 
 # **getWorkflow**
 ```swift
-    open class func getWorkflow(workflowId: String, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func getWorkflow(workflowId: String, completion: @escaping (_ data: WorkflowDraftSchema?, _ error: Error?) -> Void)
 ```
 
 Get a workflow
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeployedWorkflowSchema**](DeployedWorkflowSchema.md)
+[**WorkflowDraftSchema**](WorkflowDraftSchema.md)
 
 ### Authorization
 
@@ -250,7 +250,7 @@ No authorization required
 
 # **saveWorkflow**
 ```swift
-    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, completion: @escaping (_ data: DeployedWorkflowSchema?, _ error: Error?) -> Void)
+    open class func saveWorkflow(id: String, saveWorkflowRequest: SaveWorkflowRequest? = nil, completion: @escaping (_ data: WorkflowDraftSchema?, _ error: Error?) -> Void)
 ```
 
 Save a workflow
@@ -261,7 +261,7 @@ Save a workflow
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let saveWorkflowRequest = saveWorkflow_request(id: "id_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, company: "company_example", createdBy: "createdBy_example", createdAt: "createdAt_example", updatedAt: "updatedAt_example", lastModifiedAt: "lastModifiedAt_example", revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])]) // SaveWorkflowRequest | Body (optional)
+let saveWorkflowRequest = saveWorkflow_request(id: "id_example", companyId: "companyId_example", workflowName: "workflowName_example", workflowDescription: "workflowDescription_example", draft: false, createdBy: "createdBy_example", createdAt: Date(), updatedAt: Date(), lastModifiedAt: Date(), revision: 123, typeRefId: "typeRefId_example", builderObject: saveWorkflow_request_builder_object(nodes: [123], edges: [123]), resources: [saveWorkflow_request_resources_inner(componentId: "componentId_example", files: ["files_example"], objects: [saveWorkflow_request_resources_inner_objects_inner(templateId: "templateId_example", createdAfter: "createdAfter_example")])]) // SaveWorkflowRequest | Body (optional)
 
 // Save a workflow
 WorkflowAPI.saveWorkflow(id: id, saveWorkflowRequest: saveWorkflowRequest) { (response, error) in
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeployedWorkflowSchema**](DeployedWorkflowSchema.md)
+[**WorkflowDraftSchema**](WorkflowDraftSchema.md)
 
 ### Authorization
 

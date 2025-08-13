@@ -9,22 +9,24 @@ import Foundation
 
 public struct CreateCompletedWorkflowSchema: Sendable, Codable, ParameterConvertible, Hashable {
 
+    public var id: UUID?
     public var name: String
     public var companyId: String
-    public var finalized: Bool
+    public var finalized: Bool?
     public var finalizedAt: Date?
-    public var createdAt: Date
+    public var createdAt: Date?
     public var createdBy: String
     public var updatedAt: Date?
     public var typeRefId: String
     public var relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]?
-    public var workflowInstanceId: String
+    public var workflowInstanceId: UUID
     public var relatedWorkflowTemplateId: String
     public var auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]?
     public var relatedDataSynced: Bool?
     public var triggers: [CompletedWorkflowSchemaTriggersInner]?
 
-    public init(name: String, companyId: String, finalized: Bool, finalizedAt: Date? = nil, createdAt: Date, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: String, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
+    public init(id: UUID? = nil, name: String, companyId: String, finalized: Bool? = nil, finalizedAt: Date? = nil, createdAt: Date? = nil, createdBy: String, updatedAt: Date? = nil, typeRefId: String, relatedObjectTypes: [CompletedWorkflowSchemaRelatedObjectTypesInner]? = nil, workflowInstanceId: UUID, relatedWorkflowTemplateId: String, auditTimeline: [CompletedWorkflowSchemaAuditTimelineInner]? = nil, relatedDataSynced: Bool? = nil, triggers: [CompletedWorkflowSchemaTriggersInner]? = nil) {
+        self.id = id
         self.name = name
         self.companyId = companyId
         self.finalized = finalized
@@ -42,6 +44,7 @@ public struct CreateCompletedWorkflowSchema: Sendable, Codable, ParameterConvert
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case name
         case companyId = "company_id"
         case finalized
@@ -62,11 +65,12 @@ public struct CreateCompletedWorkflowSchema: Sendable, Codable, ParameterConvert
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(companyId, forKey: .companyId)
-        try container.encode(finalized, forKey: .finalized)
+        try container.encodeIfPresent(finalized, forKey: .finalized)
         try container.encodeIfPresent(finalizedAt, forKey: .finalizedAt)
-        try container.encode(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encode(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
         try container.encode(typeRefId, forKey: .typeRefId)
@@ -79,3 +83,6 @@ public struct CreateCompletedWorkflowSchema: Sendable, Codable, ParameterConvert
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension CreateCompletedWorkflowSchema: Identifiable {}

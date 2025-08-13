@@ -3,16 +3,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **UUID** |  | [optional] 
 **name** | **String** |  | 
 **companyId** | **String** |  | 
-**finalized** | **Bool** |  | 
+**finalized** | **Bool** |  | [optional] 
 **finalizedAt** | **Date** |  | [optional] 
-**createdAt** | **Date** |  | 
+**createdAt** | **Date** |  | [optional] 
 **createdBy** | **String** |  | 
 **updatedAt** | **Date** |  | [optional] 
 **typeRefId** | **String** |  | 
 **relatedObjectTypes** | [CompletedWorkflowSchemaRelatedObjectTypesInner] |  | [optional] 
-**workflowInstanceId** | **String** |  | 
+**workflowInstanceId** | **UUID** |  | 
 **relatedWorkflowTemplateId** | **String** |  | 
 **auditTimeline** | [CompletedWorkflowSchemaAuditTimelineInner] |  | [optional] 
 **relatedDataSynced** | **Bool** |  | [optional] 
