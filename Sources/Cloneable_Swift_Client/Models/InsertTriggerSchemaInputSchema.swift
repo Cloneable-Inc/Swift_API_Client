@@ -9,9 +9,9 @@ import Foundation
 
 public struct InsertTriggerSchemaInputSchema: Sendable, Codable, ParameterConvertible, Hashable {
 
-    public var parameters: [GetOneExecution200ResponseInputsParametersInner]
+    public var parameters: [InsertTriggerExecutionSchemaInputsParametersInner]
 
-    public init(parameters: [GetOneExecution200ResponseInputsParametersInner]) {
+    public init(parameters: [InsertTriggerExecutionSchemaInputsParametersInner]) {
         self.parameters = parameters
     }
 

@@ -396,46 +396,6 @@ open class TriggerAPI {
     }
 
     /**
-     Get a single execution by ID
-     
-     - parameter executionId: (path)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: GetOneExecution200Response
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getOneExecution(executionId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetOneExecution200Response {
-        return try await getOneExecutionWithRequestBuilder(executionId: executionId, apiConfiguration: apiConfiguration).execute().body
-    }
-
-    /**
-     Get a single execution by ID
-     - GET /trigger/execution/{execution_id}
-     - parameter executionId: (path)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<GetOneExecution200Response> 
-     */
-    open class func getOneExecutionWithRequestBuilder(executionId: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetOneExecution200Response> {
-        var localVariablePath = "/trigger/execution/{execution_id}"
-        let executionIdPreEscape = "\(APIHelper.mapValueToPathItem(executionId))"
-        let executionIdPostEscape = executionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{execution_id}", with: executionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: any Sendable]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<GetOneExecution200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
-    }
-
-    /**
      Get a single trigger by ID
      
      - parameter id: (path)  
@@ -602,46 +562,6 @@ open class TriggerAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<[TriggerSchema]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
-    }
-
-    /**
-     Get health status for a trigger Durable Object
-     
-     - parameter id: (path)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: HealthCheck200Response
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func healthCheck(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> HealthCheck200Response {
-        return try await healthCheckWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
-    }
-
-    /**
-     Get health status for a trigger Durable Object
-     - GET /trigger/{id}/health
-     - parameter id: (path)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<HealthCheck200Response> 
-     */
-    open class func healthCheckWithRequestBuilder(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<HealthCheck200Response> {
-        var localVariablePath = "/trigger/{id}/health"
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters: [String: any Sendable]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: (any Sendable)?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<HealthCheck200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }
