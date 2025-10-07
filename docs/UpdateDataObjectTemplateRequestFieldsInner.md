@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **jsonSchema** | **String** |  | [optional] 
 **jsonSchemaId** | **String** |  | [optional] 
 **displayName** | **String** |  | 
+**objectDescription** | **String** |  | [optional] 
 **fieldId** | **String** |  | 
 **linkedObjectDisplayName** | **String** |  | [optional] 
 **linkedObjectName** | **String** |  | [optional] 
@@ -22,6 +23,8 @@ Name | Type | Description | Notes
 **statusOptions** | **[String]** |  | [optional] 
 **customTypeId** | **String** |  | [optional] 
 **customTypeProperty** | **String** |  | [optional] 
+**visible** | **Bool** |  | [optional] 
+**readonly** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

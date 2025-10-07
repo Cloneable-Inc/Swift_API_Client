@@ -13,6 +13,7 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
     public var jsonSchema: String?
     public var jsonSchemaId: String?
     public var displayName: String
+    public var objectDescription: String?
     public var fieldId: String
     public var linkedObjectDisplayName: String?
     public var linkedObjectName: String?
@@ -28,12 +29,15 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
     public var statusOptions: [String]?
     public var customTypeId: String?
     public var customTypeProperty: String?
+    public var visible: Bool?
+    public var readonly: Bool?
 
-    public init(arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, type: String, requiredFor: UpdateDataObjectTemplateRequestFieldsInnerRequiredFor? = nil, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil, customTypeId: String? = nil, customTypeProperty: String? = nil) {
+    public init(arraySubType: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, displayName: String, objectDescription: String? = nil, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, linkedObjectId: String? = nil, modifiedAt: Date? = nil, modifiedBy: String? = nil, name: String, type: String, requiredFor: UpdateDataObjectTemplateRequestFieldsInnerRequiredFor? = nil, fileInformation: UpdateDataObjectTemplateRequestFieldsInnerFileInformation? = nil, statusOptions: [String]? = nil, customTypeId: String? = nil, customTypeProperty: String? = nil, visible: Bool? = nil, readonly: Bool? = nil) {
         self.arraySubType = arraySubType
         self.jsonSchema = jsonSchema
         self.jsonSchemaId = jsonSchemaId
         self.displayName = displayName
+        self.objectDescription = objectDescription
         self.fieldId = fieldId
         self.linkedObjectDisplayName = linkedObjectDisplayName
         self.linkedObjectName = linkedObjectName
@@ -49,6 +53,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
         self.statusOptions = statusOptions
         self.customTypeId = customTypeId
         self.customTypeProperty = customTypeProperty
+        self.visible = visible
+        self.readonly = readonly
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -56,6 +62,7 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
         case jsonSchema = "json_schema"
         case jsonSchemaId = "json_schema_id"
         case displayName = "display_name"
+        case objectDescription = "object_description"
         case fieldId = "field_id"
         case linkedObjectDisplayName = "linked_object_display_name"
         case linkedObjectName = "linked_object_name"
@@ -71,6 +78,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
         case statusOptions = "status_options"
         case customTypeId = "custom_type_id"
         case customTypeProperty = "custom_type_property"
+        case visible
+        case readonly
     }
 
     // Encodable protocol methods
@@ -81,6 +90,7 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
         try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
         try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)
         try container.encode(displayName, forKey: .displayName)
+        try container.encodeIfPresent(objectDescription, forKey: .objectDescription)
         try container.encode(fieldId, forKey: .fieldId)
         try container.encodeIfPresent(linkedObjectDisplayName, forKey: .linkedObjectDisplayName)
         try container.encodeIfPresent(linkedObjectName, forKey: .linkedObjectName)
@@ -96,6 +106,8 @@ public struct UpdateDataObjectTemplateRequestFieldsInner: Sendable, Codable, Par
         try container.encodeIfPresent(statusOptions, forKey: .statusOptions)
         try container.encodeIfPresent(customTypeId, forKey: .customTypeId)
         try container.encodeIfPresent(customTypeProperty, forKey: .customTypeProperty)
+        try container.encodeIfPresent(visible, forKey: .visible)
+        try container.encodeIfPresent(readonly, forKey: .readonly)
     }
 }
 

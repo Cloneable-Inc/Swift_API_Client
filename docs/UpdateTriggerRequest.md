@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | [optional] 
+**nameId** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
 **runtime** | **String** |  | [optional] 
@@ -15,6 +16,8 @@ Name | Type | Description | Notes
 **environmentVariables** | **[String: String]** |  | [optional] 
 **enabled** | **Bool** |  | [optional] 
 **inputSchema** | [**UpdateTriggerRequestInputSchema**](UpdateTriggerRequestInputSchema.md) |  | [optional] 
+**templateId** | **String** |  | [optional] 
+**configParams** | **[String: JSONValue]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

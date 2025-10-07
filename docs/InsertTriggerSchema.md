@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **name** | **String** |  | 
+**nameId** | **String** |  | 
 **description** | **String** |  | [optional] 
 **type** | **String** |  | 
 **enabled** | **Bool** |  | [optional] 
@@ -19,6 +20,8 @@ Name | Type | Description | Notes
 **inputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
 **outputSchema** | [**InsertTriggerSchemaInputSchema**](InsertTriggerSchemaInputSchema.md) |  | 
 **state** | **[String: JSONValue]** |  | 
+**templateId** | **String** |  | 
+**configParams** | **[String: JSONValue]** |  | 
 **createdAt** | **Date** |  | [optional] 
 **updatedAt** | **Date** |  | [optional] 
 
