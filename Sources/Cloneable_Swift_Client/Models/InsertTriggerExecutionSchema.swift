@@ -16,13 +16,13 @@ public struct InsertTriggerExecutionSchema: Sendable, Codable, ParameterConverti
     public var startedAt: Date?
     public var completedAt: Date?
     public var error: String?
-    public var inputs: GetOneExecution200ResponseInputs
-    public var outputs: GetOneExecution200ResponseInputs
-    public var metadata: GetOneExecution200ResponseMetadata
-    public var resourceLimits: GetOneExecution200ResponseResourceLimits
-    public var resourceUsage: GetOneExecution200ResponseResourceUsage
+    public var inputs: GetTriggerTemplates200ResponseInnerInputSchema
+    public var outputs: GetTriggerTemplates200ResponseInnerInputSchema
+    public var metadata: InsertTriggerExecutionSchemaMetadata
+    public var resourceLimits: GetTriggerTemplates200ResponseInnerResourceLimits
+    public var resourceUsage: InsertTriggerExecutionSchemaResourceUsage
 
-    public init(id: UUID? = nil, triggerId: UUID, status: String, createdAt: Date? = nil, startedAt: Date? = nil, completedAt: Date? = nil, error: String? = nil, inputs: GetOneExecution200ResponseInputs, outputs: GetOneExecution200ResponseInputs, metadata: GetOneExecution200ResponseMetadata, resourceLimits: GetOneExecution200ResponseResourceLimits, resourceUsage: GetOneExecution200ResponseResourceUsage) {
+    public init(id: UUID? = nil, triggerId: UUID, status: String, createdAt: Date? = nil, startedAt: Date? = nil, completedAt: Date? = nil, error: String? = nil, inputs: GetTriggerTemplates200ResponseInnerInputSchema, outputs: GetTriggerTemplates200ResponseInnerInputSchema, metadata: InsertTriggerExecutionSchemaMetadata, resourceLimits: GetTriggerTemplates200ResponseInnerResourceLimits, resourceUsage: InsertTriggerExecutionSchemaResourceUsage) {
         self.id = id
         self.triggerId = triggerId
         self.status = status

@@ -29,15 +29,17 @@ public struct CreateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
     }
     public var name: String
     public var description: String
-    public var code: String
+    public var code: String?
     public var runtime: Runtime
     public var schedule: String?
     public var type: ModelType
     public var executionType: ExecutionType?
     public var executionWaitTime: Double?
     public var resourcePreset: ResourcePreset?
+    public var templateId: String?
+    public var configParams: [String: JSONValue]?
 
-    public init(name: String, description: String, code: String, runtime: Runtime, schedule: String? = nil, type: ModelType, executionType: ExecutionType? = nil, executionWaitTime: Double? = nil, resourcePreset: ResourcePreset? = nil) {
+    public init(name: String, description: String, code: String? = nil, runtime: Runtime, schedule: String? = nil, type: ModelType, executionType: ExecutionType? = nil, executionWaitTime: Double? = nil, resourcePreset: ResourcePreset? = nil, templateId: String? = nil, configParams: [String: JSONValue]? = nil) {
         self.name = name
         self.description = description
         self.code = code
@@ -47,6 +49,8 @@ public struct CreateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         self.executionType = executionType
         self.executionWaitTime = executionWaitTime
         self.resourcePreset = resourcePreset
+        self.templateId = templateId
+        self.configParams = configParams
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +63,8 @@ public struct CreateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         case executionType = "execution_type"
         case executionWaitTime = "execution_wait_time"
         case resourcePreset = "resource_preset"
+        case templateId = "template_id"
+        case configParams = "config_params"
     }
 
     // Encodable protocol methods
@@ -67,13 +73,15 @@ public struct CreateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
-        try container.encode(code, forKey: .code)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encode(runtime, forKey: .runtime)
         try container.encodeIfPresent(schedule, forKey: .schedule)
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(executionType, forKey: .executionType)
         try container.encodeIfPresent(executionWaitTime, forKey: .executionWaitTime)
         try container.encodeIfPresent(resourcePreset, forKey: .resourcePreset)
+        try container.encodeIfPresent(templateId, forKey: .templateId)
+        try container.encodeIfPresent(configParams, forKey: .configParams)
     }
 }
 

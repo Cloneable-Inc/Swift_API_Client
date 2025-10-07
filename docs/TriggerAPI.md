@@ -13,13 +13,15 @@ Method | HTTP request | Description
 [**detachSecret**](TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
 [**getAllExecutions**](TriggerAPI.md#getallexecutions) | **GET** /triggers/executions | Get recent executions across all triggers
 [**getExecutionLogs**](TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
-[**getOneExecution**](TriggerAPI.md#getoneexecution) | **GET** /trigger/execution/{execution_id} | Get a single execution by ID
 [**getOneTrigger**](TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
+[**getTriggerByNameId**](TriggerAPI.md#gettriggerbynameid) | **GET** /trigger/by-name/{name_id} | Get a single trigger by name_id
 [**getTriggerExecutions**](TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
 [**getTriggerSecrets**](TriggerAPI.md#gettriggersecrets) | **GET** /trigger/{id}/secrets | Get all secrets attached to a trigger
+[**getTriggerTemplate**](TriggerAPI.md#gettriggertemplate) | **GET** /trigger/template/{templateId} | Get a specific trigger template
+[**getTriggerTemplateCode**](TriggerAPI.md#gettriggertemplatecode) | **GET** /trigger/template/{templateId}/code | Get the code for a specific trigger template
+[**getTriggerTemplates**](TriggerAPI.md#gettriggertemplates) | **GET** /trigger/templates | Get all available trigger templates
 [**getTriggers**](TriggerAPI.md#gettriggers) | **GET** /triggers | Get all triggers for organization
-[**healthCheck**](TriggerAPI.md#healthcheck) | **GET** /trigger/{id}/health | Get health status for a trigger Durable Object
-[**runTrigger**](TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger
+[**runTrigger**](TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger (id can be UUID or name_id)
 [**triggerExecutionStart**](TriggerAPI.md#triggerexecutionstart) | **POST** /trigger/{id}/execution/start | Start a trigger container
 [**triggerExecutionStop**](TriggerAPI.md#triggerexecutionstop) | **POST** /trigger/{id}/execution/stop | Stop a trigger container
 [**unarchiveTrigger**](TriggerAPI.md#unarchivetrigger) | **POST** /trigger/{id}/unarchive | Unarchive a trigger
@@ -141,7 +143,7 @@ Create a new trigger
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createTriggerRequest = createTrigger_request(name: "name_example", description: "description_example", code: "code_example", runtime: "runtime_example", schedule: "schedule_example", type: "type_example", executionType: "executionType_example", executionWaitTime: 123, resourcePreset: "resourcePreset_example") // CreateTriggerRequest | Body (optional)
+let createTriggerRequest = createTrigger_request(name: "name_example", description: "description_example", code: "code_example", runtime: "runtime_example", schedule: "schedule_example", type: "type_example", executionType: "executionType_example", executionWaitTime: 123, resourcePreset: "resourcePreset_example", templateId: "templateId_example", configParams: "TODO") // CreateTriggerRequest | Body (optional)
 
 // Create a new trigger
 TriggerAPI.createTrigger(createTriggerRequest: createTriggerRequest) { (response, error) in
@@ -479,54 +481,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getOneExecution**
-```swift
-    open class func getOneExecution(executionId: String, completion: @escaping (_ data: GetOneExecution200Response?, _ error: Error?) -> Void)
-```
-
-Get a single execution by ID
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
-
-let executionId = "executionId_example" // String | 
-
-// Get a single execution by ID
-TriggerAPI.getOneExecution(executionId: executionId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **executionId** | **String** |  | 
-
-### Return type
-
-[**GetOneExecution200Response**](GetOneExecution200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getOneTrigger**
 ```swift
     open class func getOneTrigger(id: String, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
@@ -559,6 +513,54 @@ TriggerAPI.getOneTrigger(id: id) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** |  | 
+
+### Return type
+
+[**TriggerSchema**](TriggerSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTriggerByNameId**
+```swift
+    open class func getTriggerByNameId(nameId: String, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
+```
+
+Get a single trigger by name_id
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let nameId = "nameId_example" // String | 
+
+// Get a single trigger by name_id
+TriggerAPI.getTriggerByNameId(nameId: nameId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nameId** | **String** |  | 
 
 ### Return type
 
@@ -675,6 +677,146 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getTriggerTemplate**
+```swift
+    open class func getTriggerTemplate(templateId: String, completion: @escaping (_ data: GetTriggerTemplates200ResponseInner?, _ error: Error?) -> Void)
+```
+
+Get a specific trigger template
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let templateId = "templateId_example" // String | 
+
+// Get a specific trigger template
+TriggerAPI.getTriggerTemplate(templateId: templateId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **templateId** | **String** |  | 
+
+### Return type
+
+[**GetTriggerTemplates200ResponseInner**](GetTriggerTemplates200ResponseInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTriggerTemplateCode**
+```swift
+    open class func getTriggerTemplateCode(templateId: String, completion: @escaping (_ data: GetTriggerTemplateCode200Response?, _ error: Error?) -> Void)
+```
+
+Get the code for a specific trigger template
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let templateId = "templateId_example" // String | 
+
+// Get the code for a specific trigger template
+TriggerAPI.getTriggerTemplateCode(templateId: templateId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **templateId** | **String** |  | 
+
+### Return type
+
+[**GetTriggerTemplateCode200Response**](GetTriggerTemplateCode200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTriggerTemplates**
+```swift
+    open class func getTriggerTemplates(completion: @escaping (_ data: [GetTriggerTemplates200ResponseInner]?, _ error: Error?) -> Void)
+```
+
+Get all available trigger templates
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+
+// Get all available trigger templates
+TriggerAPI.getTriggerTemplates() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[GetTriggerTemplates200ResponseInner]**](GetTriggerTemplates200ResponseInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getTriggers**
 ```swift
     open class func getTriggers(minimal: Bool? = nil, includeArchived: Bool? = nil, completion: @escaping (_ data: [TriggerSchema]?, _ error: Error?) -> Void)
@@ -725,60 +867,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **healthCheck**
-```swift
-    open class func healthCheck(id: String, completion: @escaping (_ data: HealthCheck200Response?, _ error: Error?) -> Void)
-```
-
-Get health status for a trigger Durable Object
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import Cloneable_Swift_Client
-
-let id = "id_example" // String | 
-
-// Get health status for a trigger Durable Object
-TriggerAPI.healthCheck(id: id) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
-
-### Return type
-
-[**HealthCheck200Response**](HealthCheck200Response.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **runTrigger**
 ```swift
     open class func runTrigger(id: String, runTriggerRequest: RunTriggerRequest? = nil, completion: @escaping (_ data: TriggerExecutionSchema?, _ error: Error?) -> Void)
 ```
 
-Manually execute a trigger
+Manually execute a trigger (id can be UUID or name_id)
 
 ### Example
 ```swift
@@ -788,7 +882,7 @@ import Cloneable_Swift_Client
 let id = "id_example" // String | 
 let runTriggerRequest = runTrigger_request(inputParameters: "TODO") // RunTriggerRequest | Body (optional)
 
-// Manually execute a trigger
+// Manually execute a trigger (id can be UUID or name_id)
 TriggerAPI.runTrigger(id: id, runTriggerRequest: runTriggerRequest) { (response, error) in
     guard error == nil else {
         print(error)
@@ -986,7 +1080,7 @@ Update an existing trigger
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateTriggerRequest = updateTrigger_request(name: "name_example", description: "description_example", code: "code_example", runtime: "runtime_example", schedule: "schedule_example", type: "type_example", executionType: "executionType_example", executionWaitTime: 123, resourcePreset: "resourcePreset_example", environmentVariables: "TODO", enabled: false, inputSchema: updateTrigger_request_input_schema(parameters: [updateTrigger_request_input_schema_parameters_inner(name: "name_example", type: "type_example", _required: false)])) // UpdateTriggerRequest | Body (optional)
+let updateTriggerRequest = updateTrigger_request(name: "name_example", nameId: "nameId_example", description: "description_example", code: "code_example", runtime: "runtime_example", schedule: "schedule_example", type: "type_example", executionType: "executionType_example", executionWaitTime: 123, resourcePreset: "resourcePreset_example", environmentVariables: "TODO", enabled: false, inputSchema: updateTrigger_request_input_schema(parameters: [updateTrigger_request_input_schema_parameters_inner(name: "name_example", type: "type_example", _required: false)]), templateId: "templateId_example", configParams: "TODO") // UpdateTriggerRequest | Body (optional)
 
 // Update an existing trigger
 TriggerAPI.updateTrigger(id: id, updateTriggerRequest: updateTriggerRequest) { (response, error) in

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **companyId** | **String** |  | 
 **createdAt** | **Date** |  | 
-**createdBy** | **String** |  | 
+**createdBy** | **String** |  | [optional] 
 **fields** | [DataObjectSchemaFieldsInner] |  | 
 **modifiedAt** | **Date** |  | 
 **archivedAt** | **Date** |  | [optional] 

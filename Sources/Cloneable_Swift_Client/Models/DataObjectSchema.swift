@@ -12,7 +12,7 @@ public struct DataObjectSchema: Sendable, Codable, ParameterConvertible, Hashabl
     public var id: String
     public var companyId: String
     public var createdAt: Date
-    public var createdBy: String
+    public var createdBy: String?
     public var fields: [DataObjectSchemaFieldsInner]
     public var modifiedAt: Date
     public var archivedAt: Date?
@@ -26,7 +26,7 @@ public struct DataObjectSchema: Sendable, Codable, ParameterConvertible, Hashabl
     public var typeRefId: String
     public var teamId: String?
 
-    public init(id: String, companyId: String, createdAt: Date, createdBy: String, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, archivedAt: Date? = nil, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String, teamId: String? = nil) {
+    public init(id: String, companyId: String, createdAt: Date, createdBy: String? = nil, fields: [DataObjectSchemaFieldsInner], modifiedAt: Date, archivedAt: Date? = nil, objectDescription: String, objectDisplayName: String, objectTemplateId: String, objectName: String, objectRevision: Double, objectTemplateRevision: Double, typeRefId: String, teamId: String? = nil) {
         self.id = id
         self.companyId = companyId
         self.createdAt = createdAt
@@ -69,7 +69,7 @@ public struct DataObjectSchema: Sendable, Codable, ParameterConvertible, Hashabl
         try container.encode(id, forKey: .id)
         try container.encode(companyId, forKey: .companyId)
         try container.encode(createdAt, forKey: .createdAt)
-        try container.encode(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encode(fields, forKey: .fields)
         try container.encode(modifiedAt, forKey: .modifiedAt)
         try container.encodeIfPresent(archivedAt, forKey: .archivedAt)

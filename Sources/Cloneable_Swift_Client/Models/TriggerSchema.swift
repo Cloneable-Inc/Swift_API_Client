@@ -12,6 +12,7 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
     public static let executionWaitTimeRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: UUID
     public var name: String
+    public var nameId: String
     public var description: String?
     public var type: String
     public var enabled: Bool
@@ -26,12 +27,15 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
     public var inputSchema: InsertTriggerSchemaInputSchema?
     public var outputSchema: InsertTriggerSchemaInputSchema?
     public var state: [String: JSONValue]?
+    public var templateId: String?
+    public var configParams: [String: JSONValue]?
     public var createdAt: Date
     public var updatedAt: Date
 
-    public init(id: UUID, name: String, description: String?, type: String, enabled: Bool, archived: Bool, code: String?, runtime: String, schedule: String?, executionType: String, executionWaitTime: Int?, environmentVariables: [String: String]?, resourceLimits: InsertTriggerSchemaResourceLimits?, inputSchema: InsertTriggerSchemaInputSchema?, outputSchema: InsertTriggerSchemaInputSchema?, state: [String: JSONValue]?, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, name: String, nameId: String, description: String?, type: String, enabled: Bool, archived: Bool, code: String?, runtime: String, schedule: String?, executionType: String, executionWaitTime: Int?, environmentVariables: [String: String]?, resourceLimits: InsertTriggerSchemaResourceLimits?, inputSchema: InsertTriggerSchemaInputSchema?, outputSchema: InsertTriggerSchemaInputSchema?, state: [String: JSONValue]?, templateId: String?, configParams: [String: JSONValue]?, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.name = name
+        self.nameId = nameId
         self.description = description
         self.type = type
         self.enabled = enabled
@@ -46,6 +50,8 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
         self.inputSchema = inputSchema
         self.outputSchema = outputSchema
         self.state = state
+        self.templateId = templateId
+        self.configParams = configParams
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -53,6 +59,7 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
+        case nameId = "name_id"
         case description
         case type
         case enabled
@@ -67,6 +74,8 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
         case inputSchema = "input_schema"
         case outputSchema = "output_schema"
         case state
+        case templateId = "template_id"
+        case configParams = "config_params"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
@@ -77,6 +86,7 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
+        try container.encode(nameId, forKey: .nameId)
         try container.encode(description, forKey: .description)
         try container.encode(type, forKey: .type)
         try container.encode(enabled, forKey: .enabled)
@@ -91,6 +101,8 @@ public struct TriggerSchema: Sendable, Codable, ParameterConvertible, Hashable {
         try container.encode(inputSchema, forKey: .inputSchema)
         try container.encode(outputSchema, forKey: .outputSchema)
         try container.encode(state, forKey: .state)
+        try container.encode(templateId, forKey: .templateId)
+        try container.encode(configParams, forKey: .configParams)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
     }

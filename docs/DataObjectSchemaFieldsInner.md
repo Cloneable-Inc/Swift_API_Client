@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **linkedObjectRevision** | **Double** |  | [optional] 
 **linkedObjectTemplateId** | **String** |  | [optional] 
 **modifiedAt** | **Date** |  | 
-**modifiedBy** | **String** |  | 
+**modifiedBy** | **String** |  | [optional] 
 **name** | **String** |  | 
 **storedValue** | **String** |  | [optional] 
 **type** | **String** |  | 

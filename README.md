@@ -26,6 +26,13 @@ All URIs are relative to *https://app.cloneable.ai/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AnalyticsAPI* | [**getAccountAnalytics**](docs/AnalyticsAPI.md#getaccountanalytics) | **GET** /analytics/account/{org_id} | Get analytics data for an organization from Intercom
+*AnalyticsAPI* | [**getDailyUsage**](docs/AnalyticsAPI.md#getdailyusage) | **GET** /analytics/usage/{org_id} | Get daily pole measurement usage for an organization
+*AnalyticsAPI* | [**getOrgEvents**](docs/AnalyticsAPI.md#getorgevents) | **GET** /analytics/events/{org_id} | Get events for an entire organization
+*AnalyticsAPI* | [**getSessionTrends**](docs/AnalyticsAPI.md#getsessiontrends) | **GET** /analytics/sessions/{org_id} | Get session trends over time for an organization
+*AnalyticsAPI* | [**getUserAnalytics**](docs/AnalyticsAPI.md#getuseranalytics) | **GET** /analytics/users/{org_id} | Get detailed user analytics for an organization
+*AnalyticsAPI* | [**getUserEvents**](docs/AnalyticsAPI.md#getuserevents) | **GET** /analytics/events/user/{user_id} | Get recent events for a specific user
+*AnalyticsAPI* | [**refreshAnalytics**](docs/AnalyticsAPI.md#refreshanalytics) | **POST** /analytics/refresh/{org_id} | Refresh analytics cache for an organization
 *AssociatedDomainAPI* | [**getAssociatedDomain**](docs/AssociatedDomainAPI.md#getassociateddomain) | **GET** /apple-app-site-association | Get associated domain
 *AssociatedDomainAPI* | [**getWellKnownAssociatedDomain**](docs/AssociatedDomainAPI.md#getwellknownassociateddomain) | **GET** /.well-known/apple-app-site-association | Get associated domain
 *AuthAPI* | [**createApiKey**](docs/AuthAPI.md#createapikey) | **POST** /auth/api-key | 
@@ -52,6 +59,7 @@ Class | Method | HTTP request | Description
 *DataObjectAPI* | [**archiveDataObject**](docs/DataObjectAPI.md#archivedataobject) | **POST** /data-object/{id}/archive | Archive a data object
 *DataObjectAPI* | [**createDataObject**](docs/DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 *DataObjectAPI* | [**createExplorerPage**](docs/DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
+*DataObjectAPI* | [**deleteDataObjectField**](docs/DataObjectAPI.md#deletedataobjectfield) | **DELETE** /data-object/{id}/field/{fieldId} | Delete a specific field from a data object
 *DataObjectAPI* | [**deleteExplorerPage**](docs/DataObjectAPI.md#deleteexplorerpage) | **DELETE** /explorer-page/{id} | Delete an explorer page
 *DataObjectAPI* | [**getDataObjectsPaged**](docs/DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 *DataObjectAPI* | [**getExplorerPages**](docs/DataObjectAPI.md#getexplorerpages) | **GET** /explorer-pages | Get all explorer pages
@@ -64,6 +72,7 @@ Class | Method | HTTP request | Description
 *DataObjectSyncAPI* | [**findDataObjectFieldsByArrayValue**](docs/DataObjectSyncAPI.md#finddataobjectfieldsbyarrayvalue) | **GET** /data-objects-sync/fields-by-array | Find data objects containing a specific value in their array fields
 *DataObjectSyncAPI* | [**getFilteredDataObjects**](docs/DataObjectSyncAPI.md#getfiltereddataobjects) | **GET** /data-object-sync/filtered-data-objects | Get filtered and paginated data objects
 *DataObjectSyncAPI* | [**getOne**](docs/DataObjectSyncAPI.md#getone) | **GET** /data-object-sync/data-object/{id} | Get a flattened data object
+*DataObjectSyncAPI* | [**getSyncFields**](docs/DataObjectSyncAPI.md#getsyncfields) | **GET** /data-object-sync/fields | Get individual data object fields for sync operations with optional timestamp filtering
 *DataObjectSyncAPI* | [**getTemplate**](docs/DataObjectSyncAPI.md#gettemplate) | **GET** /data-object-sync/template/{id} | Get a data object template
 *DataObjectSyncAPI* | [**listTemplates**](docs/DataObjectSyncAPI.md#listtemplates) | **GET** /data-object-sync/templates | List all data object templates
 *DataObjectSyncAPI* | [**queryDataObjectFields**](docs/DataObjectSyncAPI.md#querydataobjectfields) | **GET** /data-objects-sync/query | Query data objects by template name and field values
@@ -113,6 +122,20 @@ Class | Method | HTTP request | Description
 *OrgAPI* | [**resendInvite**](docs/OrgAPI.md#resendinvite) | **POST** /org/resend-invite | 
 *OrgAPI* | [**sendInvite**](docs/OrgAPI.md#sendinvite) | **POST** /org/send-invite | Invite user to org
 *OrgAPI* | [**updateOrgSettings**](docs/OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
+*PoleInspectionAPI* | [**bulkUpdateJobStatus**](docs/PoleInspectionAPI.md#bulkupdatejobstatus) | **POST** /pole-inspection/jobs/bulk/status | Bulk update job statuses
+*PoleInspectionAPI* | [**createConfiguration**](docs/PoleInspectionAPI.md#createconfiguration) | **POST** /pole-inspection/configurations | Create a new pole inspection configuration
+*PoleInspectionAPI* | [**createJob**](docs/PoleInspectionAPI.md#createjob) | **POST** /pole-inspection/jobs | Create a new pole inspection job
+*PoleInspectionAPI* | [**deleteConfiguration**](docs/PoleInspectionAPI.md#deleteconfiguration) | **DELETE** /pole-inspection/configurations/{id} | Delete a pole inspection configuration
+*PoleInspectionAPI* | [**deleteJob**](docs/PoleInspectionAPI.md#deletejob) | **DELETE** /pole-inspection/jobs/{id} | Delete a pole inspection job
+*PoleInspectionAPI* | [**getConfigurationById**](docs/PoleInspectionAPI.md#getconfigurationbyid) | **GET** /pole-inspection/configurations/{id} | Get a single pole inspection configuration by ID
+*PoleInspectionAPI* | [**getConfigurations**](docs/PoleInspectionAPI.md#getconfigurations) | **GET** /pole-inspection/configurations | Get all pole inspection configurations
+*PoleInspectionAPI* | [**getJobById**](docs/PoleInspectionAPI.md#getjobbyid) | **GET** /pole-inspection/jobs/{id} | Get a single pole inspection job by ID
+*PoleInspectionAPI* | [**getJobStatistics**](docs/PoleInspectionAPI.md#getjobstatistics) | **GET** /pole-inspection/jobs/statistics | Get job statistics and analytics
+*PoleInspectionAPI* | [**getJobs**](docs/PoleInspectionAPI.md#getjobs) | **GET** /pole-inspection/jobs | Get all pole inspection jobs with filtering and pagination
+*PoleInspectionAPI* | [**getMigrationStatus**](docs/PoleInspectionAPI.md#getmigrationstatus) | **GET** /pole-inspection/migrate/status | Get the current migration status
+*PoleInspectionAPI* | [**migrateFromKV**](docs/PoleInspectionAPI.md#migratefromkv) | **POST** /pole-inspection/migrate | Migrate pole inspection data from KV storage to database
+*PoleInspectionAPI* | [**updateConfiguration**](docs/PoleInspectionAPI.md#updateconfiguration) | **PUT** /pole-inspection/configurations/{id} | Update an existing pole inspection configuration
+*PoleInspectionAPI* | [**updateJob**](docs/PoleInspectionAPI.md#updatejob) | **PUT** /pole-inspection/jobs/{id} | Update an existing pole inspection job
 *SecretsAPI* | [**createSecret**](docs/SecretsAPI.md#createsecret) | **POST** /secrets | Create a new secret
 *SecretsAPI* | [**deleteSecret**](docs/SecretsAPI.md#deletesecret) | **DELETE** /secrets/{id} | Delete a secret
 *SecretsAPI* | [**listSecrets**](docs/SecretsAPI.md#listsecrets) | **GET** /secrets | List all secrets
@@ -136,13 +159,15 @@ Class | Method | HTTP request | Description
 *TriggerAPI* | [**detachSecret**](docs/TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
 *TriggerAPI* | [**getAllExecutions**](docs/TriggerAPI.md#getallexecutions) | **GET** /triggers/executions | Get recent executions across all triggers
 *TriggerAPI* | [**getExecutionLogs**](docs/TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
-*TriggerAPI* | [**getOneExecution**](docs/TriggerAPI.md#getoneexecution) | **GET** /trigger/execution/{execution_id} | Get a single execution by ID
 *TriggerAPI* | [**getOneTrigger**](docs/TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
+*TriggerAPI* | [**getTriggerByNameId**](docs/TriggerAPI.md#gettriggerbynameid) | **GET** /trigger/by-name/{name_id} | Get a single trigger by name_id
 *TriggerAPI* | [**getTriggerExecutions**](docs/TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
 *TriggerAPI* | [**getTriggerSecrets**](docs/TriggerAPI.md#gettriggersecrets) | **GET** /trigger/{id}/secrets | Get all secrets attached to a trigger
+*TriggerAPI* | [**getTriggerTemplate**](docs/TriggerAPI.md#gettriggertemplate) | **GET** /trigger/template/{templateId} | Get a specific trigger template
+*TriggerAPI* | [**getTriggerTemplateCode**](docs/TriggerAPI.md#gettriggertemplatecode) | **GET** /trigger/template/{templateId}/code | Get the code for a specific trigger template
+*TriggerAPI* | [**getTriggerTemplates**](docs/TriggerAPI.md#gettriggertemplates) | **GET** /trigger/templates | Get all available trigger templates
 *TriggerAPI* | [**getTriggers**](docs/TriggerAPI.md#gettriggers) | **GET** /triggers | Get all triggers for organization
-*TriggerAPI* | [**healthCheck**](docs/TriggerAPI.md#healthcheck) | **GET** /trigger/{id}/health | Get health status for a trigger Durable Object
-*TriggerAPI* | [**runTrigger**](docs/TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger
+*TriggerAPI* | [**runTrigger**](docs/TriggerAPI.md#runtrigger) | **POST** /trigger/{id}/run | Manually execute a trigger (id can be UUID or name_id)
 *TriggerAPI* | [**triggerExecutionStart**](docs/TriggerAPI.md#triggerexecutionstart) | **POST** /trigger/{id}/execution/start | Start a trigger container
 *TriggerAPI* | [**triggerExecutionStop**](docs/TriggerAPI.md#triggerexecutionstop) | **POST** /trigger/{id}/execution/stop | Stop a trigger container
 *TriggerAPI* | [**unarchiveTrigger**](docs/TriggerAPI.md#unarchivetrigger) | **POST** /trigger/{id}/unarchive | Unarchive a trigger
@@ -152,6 +177,7 @@ Class | Method | HTTP request | Description
 *UserAPI* | [**getAllUsers**](docs/UserAPI.md#getallusers) | **GET** /users | Get all users in the org
 *UserAPI* | [**getUser**](docs/UserAPI.md#getuser) | **GET** /user/{id} | Get user by id
 *UserAPI* | [**updateUser**](docs/UserAPI.md#updateuser) | **POST** /user/{id} | Update a user
+*WeatherAPI* | [**getHistoricalWeather**](docs/WeatherAPI.md#gethistoricalweather) | **POST** /weather/historical | Get historical weather data for a specific location and time
 *WorkflowAPI* | [**compileWorkflow**](docs/WorkflowAPI.md#compileworkflow) | **POST** /workflow/compile | Compile a workflow
 *WorkflowAPI* | [**createWorkflow**](docs/WorkflowAPI.md#createworkflow) | **POST** /workflow/create | 
 *WorkflowAPI* | [**deleteWorkflow**](docs/WorkflowAPI.md#deleteworkflow) | **DELETE** /workflow/{workflow_id} | 
@@ -170,6 +196,9 @@ Class | Method | HTTP request | Description
  - [ArchiveDataObjectsRequest](docs/ArchiveDataObjectsRequest.md)
  - [AuditTimelineSchema](docs/AuditTimelineSchema.md)
  - [BuilderObjectSchema](docs/BuilderObjectSchema.md)
+ - [BulkUpdateJobStatus200Response](docs/BulkUpdateJobStatus200Response.md)
+ - [BulkUpdateJobStatus200ResponseFailedInner](docs/BulkUpdateJobStatus200ResponseFailedInner.md)
+ - [BulkUpdateJobStatusRequest](docs/BulkUpdateJobStatusRequest.md)
  - [ChangeTeamRequest](docs/ChangeTeamRequest.md)
  - [CompileWorkflowRequest](docs/CompileWorkflowRequest.md)
  - [CompileWorkflowRequestWorkflow](docs/CompileWorkflowRequestWorkflow.md)
@@ -194,6 +223,7 @@ Class | Method | HTTP request | Description
  - [CreateCompletedWorkflowSchema](docs/CreateCompletedWorkflowSchema.md)
  - [CreateComponentRequest](docs/CreateComponentRequest.md)
  - [CreateComponentSchema](docs/CreateComponentSchema.md)
+ - [CreateConfigurationRequest](docs/CreateConfigurationRequest.md)
  - [CreateCustomTypeRequest](docs/CreateCustomTypeRequest.md)
  - [CreateCustomTypeSchema](docs/CreateCustomTypeSchema.md)
  - [CreateDataObjectExplorerSchema](docs/CreateDataObjectExplorerSchema.md)
@@ -218,6 +248,7 @@ Class | Method | HTTP request | Description
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFile409Response](docs/CreateFile409Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
+ - [CreateJobRequest](docs/CreateJobRequest.md)
  - [CreateModelConversionJobRequest](docs/CreateModelConversionJobRequest.md)
  - [CreateModelConversionJobRequestParamsInner](docs/CreateModelConversionJobRequestParamsInner.md)
  - [CreateModelConversionJobSchema](docs/CreateModelConversionJobSchema.md)
@@ -242,6 +273,7 @@ Class | Method | HTTP request | Description
  - [DeactivateUserRequest](docs/DeactivateUserRequest.md)
  - [DebugPost400Response](docs/DebugPost400Response.md)
  - [DebugPostRequest](docs/DebugPostRequest.md)
+ - [DeleteDataObjectField200Response](docs/DeleteDataObjectField200Response.md)
  - [DeleteTrigger200Response](docs/DeleteTrigger200Response.md)
  - [DeployedWorkflowSchema](docs/DeployedWorkflowSchema.md)
  - [DeployedWorkflowSelectSchema](docs/DeployedWorkflowSelectSchema.md)
@@ -251,8 +283,19 @@ Class | Method | HTTP request | Description
  - [FileSchema](docs/FileSchema.md)
  - [FindDataObjectFieldsByArrayValue200ResponseInner](docs/FindDataObjectFieldsByArrayValue200ResponseInner.md)
  - [FindDataObjectFieldsByArrayValue200ResponseInnerFieldsInner](docs/FindDataObjectFieldsByArrayValue200ResponseInnerFieldsInner.md)
+ - [GetAccountAnalytics200Response](docs/GetAccountAnalytics200Response.md)
+ - [GetAccountAnalytics200ResponseOverview](docs/GetAccountAnalytics200ResponseOverview.md)
+ - [GetAccountAnalytics200ResponseOverviewAppVersionsInner](docs/GetAccountAnalytics200ResponseOverviewAppVersionsInner.md)
+ - [GetAccountAnalytics200ResponseOverviewPlatformsInner](docs/GetAccountAnalytics200ResponseOverviewPlatformsInner.md)
+ - [GetAccountAnalytics200ResponseSessionTrendsInner](docs/GetAccountAnalytics200ResponseSessionTrendsInner.md)
+ - [GetAccountAnalytics200ResponseUsersInner](docs/GetAccountAnalytics200ResponseUsersInner.md)
  - [GetApiKeys200ResponseInner](docs/GetApiKeys200ResponseInner.md)
  - [GetCompletedWorkflowsRequest](docs/GetCompletedWorkflowsRequest.md)
+ - [GetConfigurations200Response](docs/GetConfigurations200Response.md)
+ - [GetConfigurations200ResponseConfigurationsInner](docs/GetConfigurations200ResponseConfigurationsInner.md)
+ - [GetDailyUsage200Response](docs/GetDailyUsage200Response.md)
+ - [GetDailyUsage200ResponseDailyUsageInner](docs/GetDailyUsage200ResponseDailyUsageInner.md)
+ - [GetDailyUsage200ResponseSummary](docs/GetDailyUsage200ResponseSummary.md)
  - [GetDataObjectsPaged200Response](docs/GetDataObjectsPaged200Response.md)
  - [GetDataObjectsPagedFiltersParameter](docs/GetDataObjectsPagedFiltersParameter.md)
  - [GetDataObjectsPagedSortingParameter](docs/GetDataObjectsPagedSortingParameter.md)
@@ -265,6 +308,18 @@ Class | Method | HTTP request | Description
  - [GetFilteredDataObjectsFiltersParameterFieldFiltersInner](docs/GetFilteredDataObjectsFiltersParameterFieldFiltersInner.md)
  - [GetGeocodeResult200Response](docs/GetGeocodeResult200Response.md)
  - [GetGeocodeResult200ResponseLocation](docs/GetGeocodeResult200ResponseLocation.md)
+ - [GetHistoricalWeather200Response](docs/GetHistoricalWeather200Response.md)
+ - [GetHistoricalWeather200ResponseLocation](docs/GetHistoricalWeather200ResponseLocation.md)
+ - [GetHistoricalWeather200ResponseValues](docs/GetHistoricalWeather200ResponseValues.md)
+ - [GetHistoricalWeather400Response](docs/GetHistoricalWeather400Response.md)
+ - [GetHistoricalWeatherRequest](docs/GetHistoricalWeatherRequest.md)
+ - [GetJobStatistics200Response](docs/GetJobStatistics200Response.md)
+ - [GetJobStatistics200ResponseByConfigurationInner](docs/GetJobStatistics200ResponseByConfigurationInner.md)
+ - [GetJobStatistics200ResponseByStatus](docs/GetJobStatistics200ResponseByStatus.md)
+ - [GetJobStatistics200ResponseRecentActivityInner](docs/GetJobStatistics200ResponseRecentActivityInner.md)
+ - [GetJobs200Response](docs/GetJobs200Response.md)
+ - [GetJobs200ResponseJobsInner](docs/GetJobs200ResponseJobsInner.md)
+ - [GetJobs200ResponseJobsInnerMetadata](docs/GetJobs200ResponseJobsInnerMetadata.md)
  - [GetKatapultJob200ResponseInner](docs/GetKatapultJob200ResponseInner.md)
  - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
  - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
@@ -276,28 +331,35 @@ Class | Method | HTTP request | Description
  - [GetOne200Response](docs/GetOne200Response.md)
  - [GetOneDataObjectTemplate400Response](docs/GetOneDataObjectTemplate400Response.md)
  - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
- - [GetOneExecution200Response](docs/GetOneExecution200Response.md)
- - [GetOneExecution200ResponseInputs](docs/GetOneExecution200ResponseInputs.md)
- - [GetOneExecution200ResponseInputsParametersInner](docs/GetOneExecution200ResponseInputsParametersInner.md)
- - [GetOneExecution200ResponseMetadata](docs/GetOneExecution200ResponseMetadata.md)
- - [GetOneExecution200ResponseResourceLimits](docs/GetOneExecution200ResponseResourceLimits.md)
- - [GetOneExecution200ResponseResourceUsage](docs/GetOneExecution200ResponseResourceUsage.md)
+ - [GetOrgEvents200Response](docs/GetOrgEvents200Response.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
+ - [GetSessionTrends200Response](docs/GetSessionTrends200Response.md)
  - [GetSuggestions200Response](docs/GetSuggestions200Response.md)
  - [GetSuggestions200ResponseSuggestionsInner](docs/GetSuggestions200ResponseSuggestionsInner.md)
+ - [GetSyncFields200Response](docs/GetSyncFields200Response.md)
+ - [GetSyncFields200ResponseFieldsInner](docs/GetSyncFields200ResponseFieldsInner.md)
  - [GetTeamMembers200ResponseInner](docs/GetTeamMembers200ResponseInner.md)
  - [GetTeamMembers200ResponseInnerUser](docs/GetTeamMembers200ResponseInnerUser.md)
  - [GetTriggerSecrets200ResponseInner](docs/GetTriggerSecrets200ResponseInner.md)
+ - [GetTriggerTemplateCode200Response](docs/GetTriggerTemplateCode200Response.md)
+ - [GetTriggerTemplates200ResponseInner](docs/GetTriggerTemplates200ResponseInner.md)
+ - [GetTriggerTemplates200ResponseInnerConfigParams](docs/GetTriggerTemplates200ResponseInnerConfigParams.md)
+ - [GetTriggerTemplates200ResponseInnerConfigParamsParametersInner](docs/GetTriggerTemplates200ResponseInnerConfigParamsParametersInner.md)
+ - [GetTriggerTemplates200ResponseInnerInputSchema](docs/GetTriggerTemplates200ResponseInnerInputSchema.md)
+ - [GetTriggerTemplates200ResponseInnerInputSchemaParametersInner](docs/GetTriggerTemplates200ResponseInnerInputSchemaParametersInner.md)
+ - [GetTriggerTemplates200ResponseInnerResourceLimits](docs/GetTriggerTemplates200ResponseInnerResourceLimits.md)
  - [GetUploadUrl200Response](docs/GetUploadUrl200Response.md)
- - [HealthCheck200Response](docs/HealthCheck200Response.md)
- - [HealthCheck200ResponseContainer](docs/HealthCheck200ResponseContainer.md)
- - [HealthCheck200ResponseDurableObject](docs/HealthCheck200ResponseDurableObject.md)
- - [HealthCheck200ResponseExecution](docs/HealthCheck200ResponseExecution.md)
- - [HealthCheck200ResponseQueue](docs/HealthCheck200ResponseQueue.md)
+ - [GetUserAnalytics200Response](docs/GetUserAnalytics200Response.md)
+ - [GetUserEvents200Response](docs/GetUserEvents200Response.md)
+ - [GetUserEvents200ResponseEventsInner](docs/GetUserEvents200ResponseEventsInner.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
+ - [InsertPoleInspectionConfigurationSchema](docs/InsertPoleInspectionConfigurationSchema.md)
+ - [InsertPoleInspectionJobSchema](docs/InsertPoleInspectionJobSchema.md)
  - [InsertTriggerExecutionSchema](docs/InsertTriggerExecutionSchema.md)
+ - [InsertTriggerExecutionSchemaMetadata](docs/InsertTriggerExecutionSchemaMetadata.md)
+ - [InsertTriggerExecutionSchemaResourceUsage](docs/InsertTriggerExecutionSchemaResourceUsage.md)
  - [InsertTriggerLogSchema](docs/InsertTriggerLogSchema.md)
  - [InsertTriggerSchema](docs/InsertTriggerSchema.md)
  - [InsertTriggerSchemaInputSchema](docs/InsertTriggerSchemaInputSchema.md)
@@ -305,6 +367,8 @@ Class | Method | HTTP request | Description
  - [IssueKeyForCustomAuthRequest](docs/IssueKeyForCustomAuthRequest.md)
  - [ListSecrets200ResponseInner](docs/ListSecrets200ResponseInner.md)
  - [ListTeams200ResponseInner](docs/ListTeams200ResponseInner.md)
+ - [MigrateFromKV200Response](docs/MigrateFromKV200Response.md)
+ - [MigrateFromKVRequest](docs/MigrateFromKVRequest.md)
  - [ModelConversionJobCompleteRequest](docs/ModelConversionJobCompleteRequest.md)
  - [ModelConversionJobSchema](docs/ModelConversionJobSchema.md)
  - [ModelConversionJobStatusRequest](docs/ModelConversionJobStatusRequest.md)
@@ -316,8 +380,12 @@ Class | Method | HTTP request | Description
  - [OrgSchema](docs/OrgSchema.md)
  - [OrgSchemaCreate](docs/OrgSchemaCreate.md)
  - [OutputConnectionSchema](docs/OutputConnectionSchema.md)
+ - [PoleInspectionConfigurationSchema](docs/PoleInspectionConfigurationSchema.md)
+ - [PoleInspectionJobSchema](docs/PoleInspectionJobSchema.md)
  - [PutCacheItemRequest](docs/PutCacheItemRequest.md)
  - [QueryDataObjectFields200ResponseInner](docs/QueryDataObjectFields200ResponseInner.md)
+ - [RefreshAnalytics200Response](docs/RefreshAnalytics200Response.md)
+ - [RefreshAnalyticsRequest](docs/RefreshAnalyticsRequest.md)
  - [RelatedObjectTypeSchema](docs/RelatedObjectTypeSchema.md)
  - [ResendInviteRequest](docs/ResendInviteRequest.md)
  - [ResourceLimitsSchema](docs/ResourceLimitsSchema.md)
@@ -363,6 +431,7 @@ Class | Method | HTTP request | Description
  - [TriggersFieldSchema](docs/TriggersFieldSchema.md)
  - [UpdateCompletedWorkflowSchema](docs/UpdateCompletedWorkflowSchema.md)
  - [UpdateComponentSchema](docs/UpdateComponentSchema.md)
+ - [UpdateConfigurationRequest](docs/UpdateConfigurationRequest.md)
  - [UpdateCustomTypeRequest](docs/UpdateCustomTypeRequest.md)
  - [UpdateCustomTypeRequestPropertiesValue](docs/UpdateCustomTypeRequestPropertiesValue.md)
  - [UpdateCustomTypeRequestPropertiesValueEnumInner](docs/UpdateCustomTypeRequestPropertiesValueEnumInner.md)
@@ -376,6 +445,7 @@ Class | Method | HTTP request | Description
  - [UpdateDataObjectTemplateRequestIconsInner](docs/UpdateDataObjectTemplateRequestIconsInner.md)
  - [UpdateDeployedWorkflowSchema](docs/UpdateDeployedWorkflowSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
+ - [UpdateJobRequest](docs/UpdateJobRequest.md)
  - [UpdateMemberRoleRequest](docs/UpdateMemberRoleRequest.md)
  - [UpdateOrgSettings](docs/UpdateOrgSettings.md)
  - [UpdateTriggerRequest](docs/UpdateTriggerRequest.md)
