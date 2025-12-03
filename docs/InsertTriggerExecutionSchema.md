@@ -5,13 +5,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
 **triggerId** | **UUID** |  | 
+**jobId** | **UUID** |  | [optional] 
+**batchId** | **UUID** |  | [optional] 
 **status** | **String** |  | 
 **createdAt** | **Date** |  | [optional] 
 **startedAt** | **Date** |  | [optional] 
 **completedAt** | **Date** |  | [optional] 
 **error** | **String** |  | [optional] 
-**inputs** | [**GetTriggerTemplates200ResponseInnerInputSchema**](GetTriggerTemplates200ResponseInnerInputSchema.md) |  | 
-**outputs** | [**GetTriggerTemplates200ResponseInnerInputSchema**](GetTriggerTemplates200ResponseInnerInputSchema.md) |  | 
+**inputs** | **[String: JSONValue]** |  | 
+**outputs** | **[String: JSONValue]** |  | 
 **metadata** | [**InsertTriggerExecutionSchemaMetadata**](InsertTriggerExecutionSchemaMetadata.md) |  | 
 **resourceLimits** | [**GetTriggerTemplates200ResponseInnerResourceLimits**](GetTriggerTemplates200ResponseInnerResourceLimits.md) |  | 
 **resourceUsage** | [**InsertTriggerExecutionSchemaResourceUsage**](InsertTriggerExecutionSchemaResourceUsage.md) |  | 

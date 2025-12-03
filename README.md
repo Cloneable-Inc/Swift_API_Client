@@ -29,6 +29,7 @@ Class | Method | HTTP request | Description
 *AnalyticsAPI* | [**getAccountAnalytics**](docs/AnalyticsAPI.md#getaccountanalytics) | **GET** /analytics/account/{org_id} | Get analytics data for an organization from Intercom
 *AnalyticsAPI* | [**getDailyUsage**](docs/AnalyticsAPI.md#getdailyusage) | **GET** /analytics/usage/{org_id} | Get daily pole measurement usage for an organization
 *AnalyticsAPI* | [**getOrgEvents**](docs/AnalyticsAPI.md#getorgevents) | **GET** /analytics/events/{org_id} | Get events for an entire organization
+*AnalyticsAPI* | [**getPlatformMetrics**](docs/AnalyticsAPI.md#getplatformmetrics) | **GET** /analytics/platform/metrics | Get platform-wide pole measurement metrics (admin only)
 *AnalyticsAPI* | [**getSessionTrends**](docs/AnalyticsAPI.md#getsessiontrends) | **GET** /analytics/sessions/{org_id} | Get session trends over time for an organization
 *AnalyticsAPI* | [**getUserAnalytics**](docs/AnalyticsAPI.md#getuseranalytics) | **GET** /analytics/users/{org_id} | Get detailed user analytics for an organization
 *AnalyticsAPI* | [**getUserEvents**](docs/AnalyticsAPI.md#getuserevents) | **GET** /analytics/events/user/{user_id} | Get recent events for a specific user
@@ -72,6 +73,7 @@ Class | Method | HTTP request | Description
 *DataObjectSyncAPI* | [**findDataObjectFieldsByArrayValue**](docs/DataObjectSyncAPI.md#finddataobjectfieldsbyarrayvalue) | **GET** /data-objects-sync/fields-by-array | Find data objects containing a specific value in their array fields
 *DataObjectSyncAPI* | [**getFilteredDataObjects**](docs/DataObjectSyncAPI.md#getfiltereddataobjects) | **GET** /data-object-sync/filtered-data-objects | Get filtered and paginated data objects
 *DataObjectSyncAPI* | [**getOne**](docs/DataObjectSyncAPI.md#getone) | **GET** /data-object-sync/data-object/{id} | Get a flattened data object
+*DataObjectSyncAPI* | [**getOneWithMetadata**](docs/DataObjectSyncAPI.md#getonewithmetadata) | **GET** /data-object-sync/data-object/{id}/with-metadata | Get a data object with full field metadata
 *DataObjectSyncAPI* | [**getSyncFields**](docs/DataObjectSyncAPI.md#getsyncfields) | **GET** /data-object-sync/fields | Get individual data object fields for sync operations with optional timestamp filtering
 *DataObjectSyncAPI* | [**getTemplate**](docs/DataObjectSyncAPI.md#gettemplate) | **GET** /data-object-sync/template/{id} | Get a data object template
 *DataObjectSyncAPI* | [**listTemplates**](docs/DataObjectSyncAPI.md#listtemplates) | **GET** /data-object-sync/templates | List all data object templates
@@ -89,6 +91,8 @@ Class | Method | HTTP request | Description
 *EsriAPI* | [**getGeocodeResult**](docs/EsriAPI.md#getgeocoderesult) | **GET** /esri/geocode | Get geocode result from ESRI
 *EsriAPI* | [**getSuggestions**](docs/EsriAPI.md#getsuggestions) | **GET** /esri/suggestions | Get geocoding suggestions from ESRI
 *ExportAPI* | [**exportStatus**](docs/ExportAPI.md#exportstatus) | **GET** /exports/status/{jobId} | Get export status counts for a given export/job id
+*ExportAPI* | [**getExportExecutions**](docs/ExportAPI.md#getexportexecutions) | **GET** /exports/executions/{jobId} | Get export executions for a job
+*ExportAPI* | [**getExportQueue**](docs/ExportAPI.md#getexportqueue) | **GET** /exports/queue/{jobId} | Get data object IDs that need re-export based on field modifications
 *ExportAPI* | [**getKatapultJob**](docs/ExportAPI.md#getkatapultjob) | **GET** /exports/katapult/{jobId} | Get a Katapult job by ID
 *ExportAPI* | [**triggerExport**](docs/ExportAPI.md#triggerexport) | **POST** /exports/{exportType} | Trigger an export to external system
 *FileAPI* | [**createFile**](docs/FileAPI.md#createfile) | **PUT** /file | Add a new file after upload
@@ -124,17 +128,22 @@ Class | Method | HTTP request | Description
 *OrgAPI* | [**updateOrgSettings**](docs/OrgAPI.md#updateorgsettings) | **POST** /org/{id}/settings | 
 *PoleInspectionAPI* | [**bulkUpdateJobStatus**](docs/PoleInspectionAPI.md#bulkupdatejobstatus) | **POST** /pole-inspection/jobs/bulk/status | Bulk update job statuses
 *PoleInspectionAPI* | [**createConfiguration**](docs/PoleInspectionAPI.md#createconfiguration) | **POST** /pole-inspection/configurations | Create a new pole inspection configuration
+*PoleInspectionAPI* | [**createGroup**](docs/PoleInspectionAPI.md#creategroup) | **POST** /pole-inspection/groups | Create a new pole inspection job group
 *PoleInspectionAPI* | [**createJob**](docs/PoleInspectionAPI.md#createjob) | **POST** /pole-inspection/jobs | Create a new pole inspection job
 *PoleInspectionAPI* | [**deleteConfiguration**](docs/PoleInspectionAPI.md#deleteconfiguration) | **DELETE** /pole-inspection/configurations/{id} | Delete a pole inspection configuration
+*PoleInspectionAPI* | [**deleteGroup**](docs/PoleInspectionAPI.md#deletegroup) | **DELETE** /pole-inspection/groups/{id} | Delete a pole inspection job group
 *PoleInspectionAPI* | [**deleteJob**](docs/PoleInspectionAPI.md#deletejob) | **DELETE** /pole-inspection/jobs/{id} | Delete a pole inspection job
 *PoleInspectionAPI* | [**getConfigurationById**](docs/PoleInspectionAPI.md#getconfigurationbyid) | **GET** /pole-inspection/configurations/{id} | Get a single pole inspection configuration by ID
 *PoleInspectionAPI* | [**getConfigurations**](docs/PoleInspectionAPI.md#getconfigurations) | **GET** /pole-inspection/configurations | Get all pole inspection configurations
+*PoleInspectionAPI* | [**getGroupById**](docs/PoleInspectionAPI.md#getgroupbyid) | **GET** /pole-inspection/groups/{id} | Get a single pole inspection job group by ID
+*PoleInspectionAPI* | [**getGroups**](docs/PoleInspectionAPI.md#getgroups) | **GET** /pole-inspection/groups | Get all pole inspection job groups
 *PoleInspectionAPI* | [**getJobById**](docs/PoleInspectionAPI.md#getjobbyid) | **GET** /pole-inspection/jobs/{id} | Get a single pole inspection job by ID
 *PoleInspectionAPI* | [**getJobStatistics**](docs/PoleInspectionAPI.md#getjobstatistics) | **GET** /pole-inspection/jobs/statistics | Get job statistics and analytics
 *PoleInspectionAPI* | [**getJobs**](docs/PoleInspectionAPI.md#getjobs) | **GET** /pole-inspection/jobs | Get all pole inspection jobs with filtering and pagination
 *PoleInspectionAPI* | [**getMigrationStatus**](docs/PoleInspectionAPI.md#getmigrationstatus) | **GET** /pole-inspection/migrate/status | Get the current migration status
 *PoleInspectionAPI* | [**migrateFromKV**](docs/PoleInspectionAPI.md#migratefromkv) | **POST** /pole-inspection/migrate | Migrate pole inspection data from KV storage to database
 *PoleInspectionAPI* | [**updateConfiguration**](docs/PoleInspectionAPI.md#updateconfiguration) | **PUT** /pole-inspection/configurations/{id} | Update an existing pole inspection configuration
+*PoleInspectionAPI* | [**updateGroup**](docs/PoleInspectionAPI.md#updategroup) | **PUT** /pole-inspection/groups/{id} | Update an existing pole inspection job group
 *PoleInspectionAPI* | [**updateJob**](docs/PoleInspectionAPI.md#updatejob) | **PUT** /pole-inspection/jobs/{id} | Update an existing pole inspection job
 *SecretsAPI* | [**createSecret**](docs/SecretsAPI.md#createsecret) | **POST** /secrets | Create a new secret
 *SecretsAPI* | [**deleteSecret**](docs/SecretsAPI.md#deletesecret) | **DELETE** /secrets/{id} | Delete a secret
@@ -159,6 +168,7 @@ Class | Method | HTTP request | Description
 *TriggerAPI* | [**detachSecret**](docs/TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
 *TriggerAPI* | [**getAllExecutions**](docs/TriggerAPI.md#getallexecutions) | **GET** /triggers/executions | Get recent executions across all triggers
 *TriggerAPI* | [**getExecutionLogs**](docs/TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
+*TriggerAPI* | [**getExecutionsByObjectId**](docs/TriggerAPI.md#getexecutionsbyobjectid) | **GET** /triggers/executions/by-object/{object_id} | Get executions for a specific object_id (used in export triggers)
 *TriggerAPI* | [**getOneTrigger**](docs/TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
 *TriggerAPI* | [**getTriggerByNameId**](docs/TriggerAPI.md#gettriggerbynameid) | **GET** /trigger/by-name/{name_id} | Get a single trigger by name_id
 *TriggerAPI* | [**getTriggerExecutions**](docs/TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
@@ -248,6 +258,7 @@ Class | Method | HTTP request | Description
  - [CreateFile400Response](docs/CreateFile400Response.md)
  - [CreateFile409Response](docs/CreateFile409Response.md)
  - [CreateFileSchema](docs/CreateFileSchema.md)
+ - [CreateGroupRequest](docs/CreateGroupRequest.md)
  - [CreateJobRequest](docs/CreateJobRequest.md)
  - [CreateModelConversionJobRequest](docs/CreateModelConversionJobRequest.md)
  - [CreateModelConversionJobRequestParamsInner](docs/CreateModelConversionJobRequestParamsInner.md)
@@ -302,12 +313,19 @@ Class | Method | HTTP request | Description
  - [GetDeployedWorkflowsQueryFiltersParameter](docs/GetDeployedWorkflowsQueryFiltersParameter.md)
  - [GetDeployedWorkflowsRequest](docs/GetDeployedWorkflowsRequest.md)
  - [GetDeployedWorkflowsRequestFilters](docs/GetDeployedWorkflowsRequestFilters.md)
+ - [GetExportExecutions200Response](docs/GetExportExecutions200Response.md)
+ - [GetExportExecutions200ResponseExecutionsInner](docs/GetExportExecutions200ResponseExecutionsInner.md)
+ - [GetExportExecutions200ResponsePagination](docs/GetExportExecutions200ResponsePagination.md)
+ - [GetExportExecutions200ResponseSummary](docs/GetExportExecutions200ResponseSummary.md)
+ - [GetExportQueue200Response](docs/GetExportQueue200Response.md)
  - [GetFileDownloadUrl200Response](docs/GetFileDownloadUrl200Response.md)
  - [GetFilesRequest](docs/GetFilesRequest.md)
  - [GetFilteredDataObjectsFiltersParameter](docs/GetFilteredDataObjectsFiltersParameter.md)
  - [GetFilteredDataObjectsFiltersParameterFieldFiltersInner](docs/GetFilteredDataObjectsFiltersParameterFieldFiltersInner.md)
  - [GetGeocodeResult200Response](docs/GetGeocodeResult200Response.md)
  - [GetGeocodeResult200ResponseLocation](docs/GetGeocodeResult200ResponseLocation.md)
+ - [GetGroups200Response](docs/GetGroups200Response.md)
+ - [GetGroups200ResponseGroupsInner](docs/GetGroups200ResponseGroupsInner.md)
  - [GetHistoricalWeather200Response](docs/GetHistoricalWeather200Response.md)
  - [GetHistoricalWeather200ResponseLocation](docs/GetHistoricalWeather200ResponseLocation.md)
  - [GetHistoricalWeather200ResponseValues](docs/GetHistoricalWeather200ResponseValues.md)
@@ -320,6 +338,7 @@ Class | Method | HTTP request | Description
  - [GetJobs200Response](docs/GetJobs200Response.md)
  - [GetJobs200ResponseJobsInner](docs/GetJobs200ResponseJobsInner.md)
  - [GetJobs200ResponseJobsInnerMetadata](docs/GetJobs200ResponseJobsInnerMetadata.md)
+ - [GetJobs200ResponseJobsInnerMetadataExportBatchesInner](docs/GetJobs200ResponseJobsInnerMetadataExportBatchesInner.md)
  - [GetKatapultJob200ResponseInner](docs/GetKatapultJob200ResponseInner.md)
  - [GetManyDataObjectTemplatesFiltersParameter](docs/GetManyDataObjectTemplatesFiltersParameter.md)
  - [GetManyFiles200Response](docs/GetManyFiles200Response.md)
@@ -331,10 +350,13 @@ Class | Method | HTTP request | Description
  - [GetOne200Response](docs/GetOne200Response.md)
  - [GetOneDataObjectTemplate400Response](docs/GetOneDataObjectTemplate400Response.md)
  - [GetOneDataObjectTemplateByObjectTemplateId200Response](docs/GetOneDataObjectTemplateByObjectTemplateId200Response.md)
+ - [GetOneWithMetadata200Response](docs/GetOneWithMetadata200Response.md)
+ - [GetOneWithMetadata200ResponseFieldsInner](docs/GetOneWithMetadata200ResponseFieldsInner.md)
  - [GetOrgEvents200Response](docs/GetOrgEvents200Response.md)
  - [GetPagedWorkflows200Response](docs/GetPagedWorkflows200Response.md)
  - [GetPagedWorkflowsFiltersParameter](docs/GetPagedWorkflowsFiltersParameter.md)
  - [GetPagedWorkflowsSortingParameter](docs/GetPagedWorkflowsSortingParameter.md)
+ - [GetPlatformMetrics200ResponseInner](docs/GetPlatformMetrics200ResponseInner.md)
  - [GetSessionTrends200Response](docs/GetSessionTrends200Response.md)
  - [GetSuggestions200Response](docs/GetSuggestions200Response.md)
  - [GetSuggestions200ResponseSuggestionsInner](docs/GetSuggestions200ResponseSuggestionsInner.md)
@@ -356,6 +378,7 @@ Class | Method | HTTP request | Description
  - [GetUserEvents200ResponseEventsInner](docs/GetUserEvents200ResponseEventsInner.md)
  - [InsertFileSchema](docs/InsertFileSchema.md)
  - [InsertPoleInspectionConfigurationSchema](docs/InsertPoleInspectionConfigurationSchema.md)
+ - [InsertPoleInspectionJobGroupSchema](docs/InsertPoleInspectionJobGroupSchema.md)
  - [InsertPoleInspectionJobSchema](docs/InsertPoleInspectionJobSchema.md)
  - [InsertTriggerExecutionSchema](docs/InsertTriggerExecutionSchema.md)
  - [InsertTriggerExecutionSchemaMetadata](docs/InsertTriggerExecutionSchemaMetadata.md)
@@ -381,6 +404,7 @@ Class | Method | HTTP request | Description
  - [OrgSchemaCreate](docs/OrgSchemaCreate.md)
  - [OutputConnectionSchema](docs/OutputConnectionSchema.md)
  - [PoleInspectionConfigurationSchema](docs/PoleInspectionConfigurationSchema.md)
+ - [PoleInspectionJobGroupSchema](docs/PoleInspectionJobGroupSchema.md)
  - [PoleInspectionJobSchema](docs/PoleInspectionJobSchema.md)
  - [PutCacheItemRequest](docs/PutCacheItemRequest.md)
  - [QueryDataObjectFields200ResponseInner](docs/QueryDataObjectFields200ResponseInner.md)
@@ -445,6 +469,7 @@ Class | Method | HTTP request | Description
  - [UpdateDataObjectTemplateRequestIconsInner](docs/UpdateDataObjectTemplateRequestIconsInner.md)
  - [UpdateDeployedWorkflowSchema](docs/UpdateDeployedWorkflowSchema.md)
  - [UpdateFile200Response](docs/UpdateFile200Response.md)
+ - [UpdateGroupRequest](docs/UpdateGroupRequest.md)
  - [UpdateJobRequest](docs/UpdateJobRequest.md)
  - [UpdateMemberRoleRequest](docs/UpdateMemberRoleRequest.md)
  - [UpdateOrgSettings](docs/UpdateOrgSettings.md)

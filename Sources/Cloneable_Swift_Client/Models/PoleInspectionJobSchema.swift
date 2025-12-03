@@ -19,26 +19,30 @@ public struct PoleInspectionJobSchema: Sendable, Codable, ParameterConvertible, 
     public var name: String
     public var description: String?
     public var configurationId: UUID?
+    public var groupId: UUID?
     public var status: Status
     public var assignedTo: String?
     public var location: String?
     public var metadata: GetJobs200ResponseJobsInnerMetadata
     public var importExecutionId: UUID?
     public var createdBy: String?
+    public var archivedAt: Date?
     public var createdAt: Date
     public var updatedAt: Date
 
-    public init(id: UUID, name: String, description: String?, configurationId: UUID?, status: Status, assignedTo: String?, location: String?, metadata: GetJobs200ResponseJobsInnerMetadata, importExecutionId: UUID?, createdBy: String?, createdAt: Date, updatedAt: Date) {
+    public init(id: UUID, name: String, description: String?, configurationId: UUID?, groupId: UUID?, status: Status, assignedTo: String?, location: String?, metadata: GetJobs200ResponseJobsInnerMetadata, importExecutionId: UUID?, createdBy: String?, archivedAt: Date?, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.name = name
         self.description = description
         self.configurationId = configurationId
+        self.groupId = groupId
         self.status = status
         self.assignedTo = assignedTo
         self.location = location
         self.metadata = metadata
         self.importExecutionId = importExecutionId
         self.createdBy = createdBy
+        self.archivedAt = archivedAt
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -48,12 +52,14 @@ public struct PoleInspectionJobSchema: Sendable, Codable, ParameterConvertible, 
         case name
         case description
         case configurationId = "configuration_id"
+        case groupId = "group_id"
         case status
         case assignedTo = "assigned_to"
         case location
         case metadata
         case importExecutionId = "import_execution_id"
         case createdBy = "created_by"
+        case archivedAt = "archived_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
@@ -66,12 +72,14 @@ public struct PoleInspectionJobSchema: Sendable, Codable, ParameterConvertible, 
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
         try container.encode(configurationId, forKey: .configurationId)
+        try container.encode(groupId, forKey: .groupId)
         try container.encode(status, forKey: .status)
         try container.encode(assignedTo, forKey: .assignedTo)
         try container.encode(location, forKey: .location)
         try container.encode(metadata, forKey: .metadata)
         try container.encode(importExecutionId, forKey: .importExecutionId)
         try container.encode(createdBy, forKey: .createdBy)
+        try container.encode(archivedAt, forKey: .archivedAt)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(updatedAt, forKey: .updatedAt)
     }

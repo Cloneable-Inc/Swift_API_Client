@@ -84,6 +84,43 @@ open class PoleInspectionAPI {
     }
 
     /**
+     Create a new pole inspection job group
+     
+     - parameter createGroupRequest: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetGroups200ResponseGroupsInner
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func createGroup(createGroupRequest: CreateGroupRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetGroups200ResponseGroupsInner {
+        return try await createGroupWithRequestBuilder(createGroupRequest: createGroupRequest, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Create a new pole inspection job group
+     - POST /pole-inspection/groups
+     - parameter createGroupRequest: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetGroups200ResponseGroupsInner> 
+     */
+    open class func createGroupWithRequestBuilder(createGroupRequest: CreateGroupRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetGroups200ResponseGroupsInner> {
+        let localVariablePath = "/pole-inspection/groups"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createGroupRequest, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetGroups200ResponseGroupsInner>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Create a new pole inspection job
      
      - parameter createJobRequest: (body) Body (optional)
@@ -143,6 +180,48 @@ open class PoleInspectionAPI {
      */
     open class func deleteConfigurationWithRequestBuilder(id: String, body: JSONValue? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<JSONValue> {
         var localVariablePath = "/pole-inspection/configurations/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<JSONValue>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Delete a pole inspection job group
+     
+     - parameter id: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: JSONValue
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func deleteGroup(id: String, body: JSONValue? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> JSONValue {
+        return try await deleteGroupWithRequestBuilder(id: id, body: body, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Delete a pole inspection job group
+     - DELETE /pole-inspection/groups/{id}
+     - parameter id: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<JSONValue> 
+     */
+    open class func deleteGroupWithRequestBuilder(id: String, body: JSONValue? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<JSONValue> {
+        var localVariablePath = "/pole-inspection/groups/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
@@ -291,6 +370,92 @@ open class PoleInspectionAPI {
     }
 
     /**
+     Get a single pole inspection job group by ID
+     
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetGroups200ResponseGroupsInner
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getGroupById(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetGroups200ResponseGroupsInner {
+        return try await getGroupByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get a single pole inspection job group by ID
+     - GET /pole-inspection/groups/{id}
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetGroups200ResponseGroupsInner> 
+     */
+    open class func getGroupByIdWithRequestBuilder(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetGroups200ResponseGroupsInner> {
+        var localVariablePath = "/pole-inspection/groups/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetGroups200ResponseGroupsInner>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Get all pole inspection job groups
+     
+     - parameter search: (query)  (optional)
+     - parameter limit: (query)  (optional, default to 50)
+     - parameter offset: (query)  (optional, default to 0)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetGroups200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getGroups(search: String? = nil, limit: Double? = nil, offset: Double? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetGroups200Response {
+        return try await getGroupsWithRequestBuilder(search: search, limit: limit, offset: offset, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get all pole inspection job groups
+     - GET /pole-inspection/groups
+     - parameter search: (query)  (optional)
+     - parameter limit: (query)  (optional, default to 50)
+     - parameter offset: (query)  (optional, default to 0)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetGroups200Response> 
+     */
+    open class func getGroupsWithRequestBuilder(search: String? = nil, limit: Double? = nil, offset: Double? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetGroups200Response> {
+        let localVariablePath = "/pole-inspection/groups"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "search": (wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "offset": (wrappedValue: offset?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetGroups200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get a single pole inspection job by ID
      
      - parameter id: (path)  
@@ -406,6 +571,7 @@ open class PoleInspectionAPI {
      
      - parameter status: (query)  (optional)
      - parameter configurationId: (query)  (optional)
+     - parameter groupId: (query)  (optional)
      - parameter assignedTo: (query)  (optional)
      - parameter search: (query)  (optional)
      - parameter limit: (query)  (optional, default to 50)
@@ -416,8 +582,8 @@ open class PoleInspectionAPI {
      - returns: GetJobs200Response
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getJobs(status: Status_getJobs? = nil, configurationId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetJobs200Response {
-        return try await getJobsWithRequestBuilder(status: status, configurationId: configurationId, assignedTo: assignedTo, search: search, limit: limit, offset: offset, sortBy: sortBy, sortOrder: sortOrder, apiConfiguration: apiConfiguration).execute().body
+    open class func getJobs(status: Status_getJobs? = nil, configurationId: UUID? = nil, groupId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetJobs200Response {
+        return try await getJobsWithRequestBuilder(status: status, configurationId: configurationId, groupId: groupId, assignedTo: assignedTo, search: search, limit: limit, offset: offset, sortBy: sortBy, sortOrder: sortOrder, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -425,6 +591,7 @@ open class PoleInspectionAPI {
      - GET /pole-inspection/jobs
      - parameter status: (query)  (optional)
      - parameter configurationId: (query)  (optional)
+     - parameter groupId: (query)  (optional)
      - parameter assignedTo: (query)  (optional)
      - parameter search: (query)  (optional)
      - parameter limit: (query)  (optional, default to 50)
@@ -434,7 +601,7 @@ open class PoleInspectionAPI {
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<GetJobs200Response> 
      */
-    open class func getJobsWithRequestBuilder(status: Status_getJobs? = nil, configurationId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetJobs200Response> {
+    open class func getJobsWithRequestBuilder(status: Status_getJobs? = nil, configurationId: UUID? = nil, groupId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetJobs200Response> {
         let localVariablePath = "/pole-inspection/jobs"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -443,6 +610,7 @@ open class PoleInspectionAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "status": (wrappedValue: status?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "configurationId": (wrappedValue: configurationId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "groupId": (wrappedValue: groupId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "assignedTo": (wrappedValue: assignedTo?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "search": (wrappedValue: search?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -572,6 +740,48 @@ open class PoleInspectionAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<GetConfigurations200ResponseConfigurationsInner>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Update an existing pole inspection job group
+     
+     - parameter id: (path)  
+     - parameter updateGroupRequest: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetGroups200ResponseGroupsInner
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func updateGroup(id: String, updateGroupRequest: UpdateGroupRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetGroups200ResponseGroupsInner {
+        return try await updateGroupWithRequestBuilder(id: id, updateGroupRequest: updateGroupRequest, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Update an existing pole inspection job group
+     - PUT /pole-inspection/groups/{id}
+     - parameter id: (path)  
+     - parameter updateGroupRequest: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetGroups200ResponseGroupsInner> 
+     */
+    open class func updateGroupWithRequestBuilder(id: String, updateGroupRequest: UpdateGroupRequest? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetGroups200ResponseGroupsInner> {
+        var localVariablePath = "/pole-inspection/groups/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateGroupRequest, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetGroups200ResponseGroupsInner>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
     }

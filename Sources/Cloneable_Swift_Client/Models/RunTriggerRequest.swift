@@ -10,13 +10,19 @@ import Foundation
 public struct RunTriggerRequest: Sendable, Codable, ParameterConvertible, Hashable {
 
     public var inputParameters: [String: JSONValue]?
+    public var jobId: UUID?
+    public var batchId: UUID?
 
-    public init(inputParameters: [String: JSONValue]? = nil) {
+    public init(inputParameters: [String: JSONValue]? = nil, jobId: UUID? = nil, batchId: UUID? = nil) {
         self.inputParameters = inputParameters
+        self.jobId = jobId
+        self.batchId = batchId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case inputParameters = "input_parameters"
+        case jobId = "job_id"
+        case batchId = "batch_id"
     }
 
     // Encodable protocol methods
@@ -24,6 +30,8 @@ public struct RunTriggerRequest: Sendable, Codable, ParameterConvertible, Hashab
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(inputParameters, forKey: .inputParameters)
+        try container.encodeIfPresent(jobId, forKey: .jobId)
+        try container.encodeIfPresent(batchId, forKey: .batchId)
     }
 }
 

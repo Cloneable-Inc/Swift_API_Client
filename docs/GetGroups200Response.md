@@ -1,11 +1,12 @@
-# RunTriggerRequest
+# GetGroups200Response
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**inputParameters** | **[String: JSONValue]** |  | [optional] 
-**jobId** | **UUID** |  | [optional] 
-**batchId** | **UUID** |  | [optional] 
+**groups** | [GetGroups200ResponseGroupsInner] |  | 
+**total** | **Double** |  | 
+**limit** | **Double** |  | 
+**offset** | **Double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

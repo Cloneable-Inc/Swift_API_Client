@@ -1,4 +1,4 @@
-# GetJobs200ResponseJobsInner
+# GetGroups200ResponseGroupsInner
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,15 +6,6 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | 
 **name** | **String** |  | 
 **description** | **String** |  | 
-**configurationId** | **UUID** |  | 
-**groupId** | **UUID** |  | 
-**status** | **String** |  | 
-**assignedTo** | **String** |  | 
-**location** | **String** |  | 
-**metadata** | [**GetJobs200ResponseJobsInnerMetadata**](GetJobs200ResponseJobsInnerMetadata.md) |  | 
-**importExecutionId** | **UUID** |  | 
-**createdBy** | **String** |  | 
-**archivedAt** | **Date** |  | 
 **createdAt** | **Date** |  | 
 **updatedAt** | **Date** |  | 
 

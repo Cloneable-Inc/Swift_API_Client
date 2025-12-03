@@ -6,17 +6,22 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bulkUpdateJobStatus**](PoleInspectionAPI.md#bulkupdatejobstatus) | **POST** /pole-inspection/jobs/bulk/status | Bulk update job statuses
 [**createConfiguration**](PoleInspectionAPI.md#createconfiguration) | **POST** /pole-inspection/configurations | Create a new pole inspection configuration
+[**createGroup**](PoleInspectionAPI.md#creategroup) | **POST** /pole-inspection/groups | Create a new pole inspection job group
 [**createJob**](PoleInspectionAPI.md#createjob) | **POST** /pole-inspection/jobs | Create a new pole inspection job
 [**deleteConfiguration**](PoleInspectionAPI.md#deleteconfiguration) | **DELETE** /pole-inspection/configurations/{id} | Delete a pole inspection configuration
+[**deleteGroup**](PoleInspectionAPI.md#deletegroup) | **DELETE** /pole-inspection/groups/{id} | Delete a pole inspection job group
 [**deleteJob**](PoleInspectionAPI.md#deletejob) | **DELETE** /pole-inspection/jobs/{id} | Delete a pole inspection job
 [**getConfigurationById**](PoleInspectionAPI.md#getconfigurationbyid) | **GET** /pole-inspection/configurations/{id} | Get a single pole inspection configuration by ID
 [**getConfigurations**](PoleInspectionAPI.md#getconfigurations) | **GET** /pole-inspection/configurations | Get all pole inspection configurations
+[**getGroupById**](PoleInspectionAPI.md#getgroupbyid) | **GET** /pole-inspection/groups/{id} | Get a single pole inspection job group by ID
+[**getGroups**](PoleInspectionAPI.md#getgroups) | **GET** /pole-inspection/groups | Get all pole inspection job groups
 [**getJobById**](PoleInspectionAPI.md#getjobbyid) | **GET** /pole-inspection/jobs/{id} | Get a single pole inspection job by ID
 [**getJobStatistics**](PoleInspectionAPI.md#getjobstatistics) | **GET** /pole-inspection/jobs/statistics | Get job statistics and analytics
 [**getJobs**](PoleInspectionAPI.md#getjobs) | **GET** /pole-inspection/jobs | Get all pole inspection jobs with filtering and pagination
 [**getMigrationStatus**](PoleInspectionAPI.md#getmigrationstatus) | **GET** /pole-inspection/migrate/status | Get the current migration status
 [**migrateFromKV**](PoleInspectionAPI.md#migratefromkv) | **POST** /pole-inspection/migrate | Migrate pole inspection data from KV storage to database
 [**updateConfiguration**](PoleInspectionAPI.md#updateconfiguration) | **PUT** /pole-inspection/configurations/{id} | Update an existing pole inspection configuration
+[**updateGroup**](PoleInspectionAPI.md#updategroup) | **PUT** /pole-inspection/groups/{id} | Update an existing pole inspection job group
 [**updateJob**](PoleInspectionAPI.md#updatejob) | **PUT** /pole-inspection/jobs/{id} | Update an existing pole inspection job
 
 
@@ -116,6 +121,54 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createGroup**
+```swift
+    open class func createGroup(createGroupRequest: CreateGroupRequest? = nil, completion: @escaping (_ data: GetGroups200ResponseGroupsInner?, _ error: Error?) -> Void)
+```
+
+Create a new pole inspection job group
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let createGroupRequest = createGroup_request(name: "name_example", description: "description_example") // CreateGroupRequest | Body (optional)
+
+// Create a new pole inspection job group
+PoleInspectionAPI.createGroup(createGroupRequest: createGroupRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createGroupRequest** | [**CreateGroupRequest**](CreateGroupRequest.md) | Body | [optional] 
+
+### Return type
+
+[**GetGroups200ResponseGroupsInner**](GetGroups200ResponseGroupsInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createJob**
 ```swift
     open class func createJob(createJobRequest: CreateJobRequest? = nil, completion: @escaping (_ data: GetJobs200ResponseJobsInner?, _ error: Error?) -> Void)
@@ -128,7 +181,7 @@ Create a new pole inspection job
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import Cloneable_Swift_Client
 
-let createJobRequest = createJob_request(name: "name_example", description: "description_example", configurationId: 123, status: "status_example", assignedTo: "assignedTo_example", location: "location_example", metadata: getJobs_200_response_jobs_inner_metadata(jobIdField: "jobIdField_example", createdBy: "createdBy_example", katapultJobId: "katapultJobId_example"), importExecutionId: 123, createdBy: "createdBy_example") // CreateJobRequest | Body (optional)
+let createJobRequest = createJob_request(name: "name_example", description: "description_example", configurationId: 123, groupId: 123, status: "status_example", assignedTo: "assignedTo_example", location: "location_example", metadata: getJobs_200_response_jobs_inner_metadata(jobIdField: "jobIdField_example", createdBy: "createdBy_example", katapultJobId: "katapultJobId_example", exportBatches: [getJobs_200_response_jobs_inner_metadata_export_batches_inner(batchId: "batchId_example", startedAt: "startedAt_example", queuedCount: 123)], lastExportReferenceTime: "lastExportReferenceTime_example"), importExecutionId: 123, createdBy: "createdBy_example", archivedAt: Date()) // CreateJobRequest | Body (optional)
 
 // Create a new pole inspection job
 PoleInspectionAPI.createJob(createJobRequest: createJobRequest) { (response, error) in
@@ -181,6 +234,56 @@ let body = "TODO" // JSONValue | Body (optional)
 
 // Delete a pole inspection configuration
 PoleInspectionAPI.deleteConfiguration(id: id, body: body) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+ **body** | **JSONValue** | Body | [optional] 
+
+### Return type
+
+**JSONValue**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteGroup**
+```swift
+    open class func deleteGroup(id: String, body: JSONValue? = nil, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
+```
+
+Delete a pole inspection job group
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+let body = "TODO" // JSONValue | Body (optional)
+
+// Delete a pole inspection job group
+PoleInspectionAPI.deleteGroup(id: id, body: body) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -364,6 +467,106 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getGroupById**
+```swift
+    open class func getGroupById(id: String, completion: @escaping (_ data: GetGroups200ResponseGroupsInner?, _ error: Error?) -> Void)
+```
+
+Get a single pole inspection job group by ID
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+
+// Get a single pole inspection job group by ID
+PoleInspectionAPI.getGroupById(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+
+### Return type
+
+[**GetGroups200ResponseGroupsInner**](GetGroups200ResponseGroupsInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGroups**
+```swift
+    open class func getGroups(search: String? = nil, limit: Double? = nil, offset: Double? = nil, completion: @escaping (_ data: GetGroups200Response?, _ error: Error?) -> Void)
+```
+
+Get all pole inspection job groups
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let search = "search_example" // String |  (optional)
+let limit = 987 // Double |  (optional) (default to 50)
+let offset = 987 // Double |  (optional) (default to 0)
+
+// Get all pole inspection job groups
+PoleInspectionAPI.getGroups(search: search, limit: limit, offset: offset) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **String** |  | [optional] 
+ **limit** | **Double** |  | [optional] [default to 50]
+ **offset** | **Double** |  | [optional] [default to 0]
+
+### Return type
+
+[**GetGroups200Response**](GetGroups200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getJobById**
 ```swift
     open class func getJobById(id: String, completion: @escaping (_ data: GetJobs200ResponseJobsInner?, _ error: Error?) -> Void)
@@ -464,7 +667,7 @@ No authorization required
 
 # **getJobs**
 ```swift
-    open class func getJobs(status: Status_getJobs? = nil, configurationId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, completion: @escaping (_ data: GetJobs200Response?, _ error: Error?) -> Void)
+    open class func getJobs(status: Status_getJobs? = nil, configurationId: UUID? = nil, groupId: UUID? = nil, assignedTo: UUID? = nil, search: String? = nil, limit: Double? = nil, offset: Double? = nil, sortBy: SortBy_getJobs? = nil, sortOrder: SortOrder_getJobs? = nil, completion: @escaping (_ data: GetJobs200Response?, _ error: Error?) -> Void)
 ```
 
 Get all pole inspection jobs with filtering and pagination
@@ -476,6 +679,7 @@ import Cloneable_Swift_Client
 
 let status = "status_example" // String |  (optional)
 let configurationId = 987 // UUID |  (optional)
+let groupId = 987 // UUID |  (optional)
 let assignedTo = 987 // UUID |  (optional)
 let search = "search_example" // String |  (optional)
 let limit = 987 // Double |  (optional) (default to 50)
@@ -484,7 +688,7 @@ let sortBy = "sortBy_example" // String |  (optional) (default to .createdAt)
 let sortOrder = "sortOrder_example" // String |  (optional) (default to .desc)
 
 // Get all pole inspection jobs with filtering and pagination
-PoleInspectionAPI.getJobs(status: status, configurationId: configurationId, assignedTo: assignedTo, search: search, limit: limit, offset: offset, sortBy: sortBy, sortOrder: sortOrder) { (response, error) in
+PoleInspectionAPI.getJobs(status: status, configurationId: configurationId, groupId: groupId, assignedTo: assignedTo, search: search, limit: limit, offset: offset, sortBy: sortBy, sortOrder: sortOrder) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -502,6 +706,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | **String** |  | [optional] 
  **configurationId** | **UUID** |  | [optional] 
+ **groupId** | **UUID** |  | [optional] 
  **assignedTo** | **UUID** |  | [optional] 
  **search** | **String** |  | [optional] 
  **limit** | **Double** |  | [optional] [default to 50]
@@ -666,6 +871,56 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateGroup**
+```swift
+    open class func updateGroup(id: String, updateGroupRequest: UpdateGroupRequest? = nil, completion: @escaping (_ data: GetGroups200ResponseGroupsInner?, _ error: Error?) -> Void)
+```
+
+Update an existing pole inspection job group
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+let updateGroupRequest = updateGroup_request(name: "name_example", description: "description_example") // UpdateGroupRequest | Body (optional)
+
+// Update an existing pole inspection job group
+PoleInspectionAPI.updateGroup(id: id, updateGroupRequest: updateGroupRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+ **updateGroupRequest** | [**UpdateGroupRequest**](UpdateGroupRequest.md) | Body | [optional] 
+
+### Return type
+
+[**GetGroups200ResponseGroupsInner**](GetGroups200ResponseGroupsInner.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateJob**
 ```swift
     open class func updateJob(id: String, updateJobRequest: UpdateJobRequest? = nil, completion: @escaping (_ data: GetJobs200ResponseJobsInner?, _ error: Error?) -> Void)
@@ -679,7 +934,7 @@ Update an existing pole inspection job
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let updateJobRequest = updateJob_request(name: "name_example", description: "description_example", configurationId: 123, status: "status_example", assignedTo: "assignedTo_example", location: "location_example", metadata: getJobs_200_response_jobs_inner_metadata(jobIdField: "jobIdField_example", createdBy: "createdBy_example", katapultJobId: "katapultJobId_example"), importExecutionId: 123, createdBy: "createdBy_example") // UpdateJobRequest | Body (optional)
+let updateJobRequest = updateJob_request(name: "name_example", description: "description_example", configurationId: 123, groupId: 123, status: "status_example", assignedTo: "assignedTo_example", location: "location_example", metadata: getJobs_200_response_jobs_inner_metadata(jobIdField: "jobIdField_example", createdBy: "createdBy_example", katapultJobId: "katapultJobId_example", exportBatches: [getJobs_200_response_jobs_inner_metadata_export_batches_inner(batchId: "batchId_example", startedAt: "startedAt_example", queuedCount: 123)], lastExportReferenceTime: "lastExportReferenceTime_example"), importExecutionId: 123, createdBy: "createdBy_example", archivedAt: Date()) // UpdateJobRequest | Body (optional)
 
 // Update an existing pole inspection job
 PoleInspectionAPI.updateJob(id: id, updateJobRequest: updateJobRequest) { (response, error) in

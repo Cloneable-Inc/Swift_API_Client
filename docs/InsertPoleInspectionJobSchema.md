@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **description** | **String** |  | [optional] [default to ""]
 **configurationId** | **UUID** |  | [optional] 
+**groupId** | **UUID** |  | [optional] 
 **status** | **String** |  | [optional] [default to .pending]
 **assignedTo** | **String** |  | [optional] 
 **location** | **String** |  | [optional] 
 **metadata** | [**GetJobs200ResponseJobsInnerMetadata**](GetJobs200ResponseJobsInnerMetadata.md) |  | 
 **importExecutionId** | **UUID** |  | [optional] 
 **createdBy** | **String** |  | [optional] 
+**archivedAt** | **Date** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
 **updatedAt** | **Date** |  | [optional] 
 

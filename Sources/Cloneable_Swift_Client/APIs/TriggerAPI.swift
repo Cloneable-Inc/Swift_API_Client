@@ -396,6 +396,57 @@ open class TriggerAPI {
     }
 
     /**
+     Get executions for a specific object_id (used in export triggers)
+     
+     - parameter objectId: (path)  
+     - parameter triggerId: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter offset: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [TriggerExecutionSchema]
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getExecutionsByObjectId(objectId: String, triggerId: UUID? = nil, limit: Double? = nil, offset: Double? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> [TriggerExecutionSchema] {
+        return try await getExecutionsByObjectIdWithRequestBuilder(objectId: objectId, triggerId: triggerId, limit: limit, offset: offset, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get executions for a specific object_id (used in export triggers)
+     - GET /triggers/executions/by-object/{object_id}
+     - parameter objectId: (path)  
+     - parameter triggerId: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter offset: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[TriggerExecutionSchema]> 
+     */
+    open class func getExecutionsByObjectIdWithRequestBuilder(objectId: String, triggerId: UUID? = nil, limit: Double? = nil, offset: Double? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<[TriggerExecutionSchema]> {
+        var localVariablePath = "/triggers/executions/by-object/{object_id}"
+        let objectIdPreEscape = "\(APIHelper.mapValueToPathItem(objectId))"
+        let objectIdPostEscape = objectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{object_id}", with: objectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "trigger_id": (wrappedValue: triggerId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "offset": (wrappedValue: offset?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[TriggerExecutionSchema]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get a single trigger by ID
      
      - parameter id: (path)  
