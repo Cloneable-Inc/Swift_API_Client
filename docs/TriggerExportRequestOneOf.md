@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **connectionId** | **String** |  | [optional] 
 **sectionId** | **String** |  | [optional] 
 **attachments** | [TriggerExportRequestOneOfAttachmentsInner] |  | [optional] 
-**elements** | **[String]** |  | [optional] 
+**elements** | **[JSONValue]** |  | [optional] 
+**traces** | [TriggerExportRequestOneOfTracesInner] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
