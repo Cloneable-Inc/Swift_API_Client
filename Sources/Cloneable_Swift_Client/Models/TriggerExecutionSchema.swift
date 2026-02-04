@@ -11,20 +11,24 @@ public struct TriggerExecutionSchema: Sendable, Codable, ParameterConvertible, H
 
     public var id: UUID
     public var triggerId: UUID
+    public var jobId: UUID?
+    public var batchId: UUID?
     public var status: String
     public var createdAt: Date
     public var startedAt: Date?
     public var completedAt: Date?
     public var error: String?
-    public var inputs: InsertTriggerExecutionSchemaInputs
-    public var outputs: InsertTriggerExecutionSchemaInputs
+    public var inputs: [String: JSONValue]
+    public var outputs: [String: JSONValue]?
     public var metadata: InsertTriggerExecutionSchemaMetadata
-    public var resourceLimits: InsertTriggerExecutionSchemaResourceLimits
+    public var resourceLimits: GetTriggerTemplates200ResponseInnerResourceLimits
     public var resourceUsage: InsertTriggerExecutionSchemaResourceUsage
 
-    public init(id: UUID, triggerId: UUID, status: String, createdAt: Date, startedAt: Date?, completedAt: Date?, error: String?, inputs: InsertTriggerExecutionSchemaInputs, outputs: InsertTriggerExecutionSchemaInputs, metadata: InsertTriggerExecutionSchemaMetadata, resourceLimits: InsertTriggerExecutionSchemaResourceLimits, resourceUsage: InsertTriggerExecutionSchemaResourceUsage) {
+    public init(id: UUID, triggerId: UUID, jobId: UUID?, batchId: UUID?, status: String, createdAt: Date, startedAt: Date?, completedAt: Date?, error: String?, inputs: [String: JSONValue], outputs: [String: JSONValue]?, metadata: InsertTriggerExecutionSchemaMetadata, resourceLimits: GetTriggerTemplates200ResponseInnerResourceLimits, resourceUsage: InsertTriggerExecutionSchemaResourceUsage) {
         self.id = id
         self.triggerId = triggerId
+        self.jobId = jobId
+        self.batchId = batchId
         self.status = status
         self.createdAt = createdAt
         self.startedAt = startedAt
@@ -40,6 +44,8 @@ public struct TriggerExecutionSchema: Sendable, Codable, ParameterConvertible, H
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case triggerId = "trigger_id"
+        case jobId = "job_id"
+        case batchId = "batch_id"
         case status
         case createdAt = "created_at"
         case startedAt = "started_at"
@@ -58,6 +64,8 @@ public struct TriggerExecutionSchema: Sendable, Codable, ParameterConvertible, H
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(triggerId, forKey: .triggerId)
+        try container.encode(jobId, forKey: .jobId)
+        try container.encode(batchId, forKey: .batchId)
         try container.encode(status, forKey: .status)
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(startedAt, forKey: .startedAt)

@@ -182,6 +182,103 @@ open class DataObjectSyncAPI {
     }
 
     /**
+     Get a data object with full field metadata
+     
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetOneWithMetadata200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getOneWithMetadata(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetOneWithMetadata200Response {
+        return try await getOneWithMetadataWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get a data object with full field metadata
+     - GET /data-object-sync/data-object/{id}/with-metadata
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetOneWithMetadata200Response> 
+     */
+    open class func getOneWithMetadataWithRequestBuilder(id: String, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetOneWithMetadata200Response> {
+        var localVariablePath = "/data-object-sync/data-object/{id}/with-metadata"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetOneWithMetadata200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     * enum for parameter orderBy
+     */
+    public enum OrderBy_getSyncFields: String, Sendable, CaseIterable {
+        case updatedAt = "updated_at"
+        case createdAt = "created_at"
+    }
+
+    /**
+     Get individual data object fields for sync operations with optional timestamp filtering
+     
+     - parameter updatedAtGt: (query)  (optional)
+     - parameter templateNameId: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter orderBy: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetSyncFields200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getSyncFields(updatedAtGt: String? = nil, templateNameId: String? = nil, limit: Int? = nil, orderBy: OrderBy_getSyncFields? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetSyncFields200Response {
+        return try await getSyncFieldsWithRequestBuilder(updatedAtGt: updatedAtGt, templateNameId: templateNameId, limit: limit, orderBy: orderBy, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get individual data object fields for sync operations with optional timestamp filtering
+     - GET /data-object-sync/fields
+     - parameter updatedAtGt: (query)  (optional)
+     - parameter templateNameId: (query)  (optional)
+     - parameter limit: (query)  (optional)
+     - parameter orderBy: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetSyncFields200Response> 
+     */
+    open class func getSyncFieldsWithRequestBuilder(updatedAtGt: String? = nil, templateNameId: String? = nil, limit: Int? = nil, orderBy: OrderBy_getSyncFields? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetSyncFields200Response> {
+        let localVariablePath = "/data-object-sync/fields"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "updated_at_gt": (wrappedValue: updatedAtGt?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "template_name_id": (wrappedValue: templateNameId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "order_by": (wrappedValue: orderBy?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetSyncFields200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get a data object template
      
      - parameter id: (path)  

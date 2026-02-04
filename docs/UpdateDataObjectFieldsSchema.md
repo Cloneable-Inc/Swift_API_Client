@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **linkedObjectRevision** | **Double** |  | [optional] 
 **linkedObjectTemplateId** | **String** |  | [optional] 
 **modifiedAt** | **Date** |  | 
-**modifiedBy** | **String** |  | 
+**modifiedBy** | **String** |  | [optional] 
 **storedValue** | **String** |  | [optional] 
 **jsonSchema** | **String** |  | [optional] 
 **jsonSchemaId** | **String** |  | [optional] 

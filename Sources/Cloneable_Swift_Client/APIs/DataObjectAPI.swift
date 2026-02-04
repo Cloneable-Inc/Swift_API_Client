@@ -126,6 +126,53 @@ open class DataObjectAPI {
     }
 
     /**
+     Delete a specific field from a data object
+     
+     - parameter id: (path)  
+     - parameter fieldId: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: DeleteDataObjectField200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func deleteDataObjectField(id: String, fieldId: String, body: JSONValue? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteDataObjectField200Response {
+        return try await deleteDataObjectFieldWithRequestBuilder(id: id, fieldId: fieldId, body: body, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Delete a specific field from a data object
+     - DELETE /data-object/{id}/field/{fieldId}
+     - parameter id: (path)  
+     - parameter fieldId: (path)  
+     - parameter body: (body) Body (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<DeleteDataObjectField200Response> 
+     */
+    open class func deleteDataObjectFieldWithRequestBuilder(id: String, fieldId: String, body: JSONValue? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<DeleteDataObjectField200Response> {
+        var localVariablePath = "/data-object/{id}/field/{fieldId}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let fieldIdPreEscape = "\(APIHelper.mapValueToPathItem(fieldId))"
+        let fieldIdPostEscape = fieldIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{fieldId}", with: fieldIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DeleteDataObjectField200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Delete an explorer page
      
      - parameter id: (path)  

@@ -16,13 +16,13 @@ public struct UpdateDataObjectFieldsSchema: Sendable, Codable, ParameterConverti
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
     public var modifiedAt: Date
-    public var modifiedBy: String
+    public var modifiedBy: String?
     public var storedValue: String?
     public var jsonSchema: String?
     public var jsonSchemaId: String?
     public var teamId: String?
 
-    public init(id: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, storedValue: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, teamId: String? = nil) {
+    public init(id: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String? = nil, storedValue: String? = nil, jsonSchema: String? = nil, jsonSchemaId: String? = nil, teamId: String? = nil) {
         self.id = id
         self.fieldId = fieldId
         self.linkedObjectDisplayName = linkedObjectDisplayName
@@ -63,7 +63,7 @@ public struct UpdateDataObjectFieldsSchema: Sendable, Codable, ParameterConverti
         try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encodeIfPresent(linkedObjectTemplateId, forKey: .linkedObjectTemplateId)
         try container.encode(modifiedAt, forKey: .modifiedAt)
-        try container.encode(modifiedBy, forKey: .modifiedBy)
+        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
         try container.encodeIfPresent(jsonSchema, forKey: .jsonSchema)
         try container.encodeIfPresent(jsonSchemaId, forKey: .jsonSchemaId)

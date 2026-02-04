@@ -5,15 +5,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | 
 **triggerId** | **UUID** |  | 
+**jobId** | **UUID** |  | 
+**batchId** | **UUID** |  | 
 **status** | **String** |  | 
 **createdAt** | **Date** |  | 
 **startedAt** | **Date** |  | 
 **completedAt** | **Date** |  | 
 **error** | **String** |  | 
-**inputs** | [**InsertTriggerExecutionSchemaInputs**](InsertTriggerExecutionSchemaInputs.md) |  | 
-**outputs** | [**InsertTriggerExecutionSchemaInputs**](InsertTriggerExecutionSchemaInputs.md) |  | 
+**inputs** | **[String: JSONValue]** |  | 
+**outputs** | **[String: JSONValue]** |  | 
 **metadata** | [**InsertTriggerExecutionSchemaMetadata**](InsertTriggerExecutionSchemaMetadata.md) |  | 
-**resourceLimits** | [**InsertTriggerExecutionSchemaResourceLimits**](InsertTriggerExecutionSchemaResourceLimits.md) |  | 
+**resourceLimits** | [**GetTriggerTemplates200ResponseInnerResourceLimits**](GetTriggerTemplates200ResponseInnerResourceLimits.md) |  | 
 **resourceUsage** | [**InsertTriggerExecutionSchemaResourceUsage**](InsertTriggerExecutionSchemaResourceUsage.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

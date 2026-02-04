@@ -12,6 +12,7 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
     public static let executionWaitTimeRule = NumericRule<Int>(minimum: -2147483648, exclusiveMinimum: false, maximum: 2147483647, exclusiveMaximum: false, multipleOf: nil)
     public var id: UUID?
     public var name: String
+    public var nameId: String
     public var description: String?
     public var type: String
     public var enabled: Bool?
@@ -26,12 +27,15 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
     public var inputSchema: InsertTriggerSchemaInputSchema?
     public var outputSchema: InsertTriggerSchemaInputSchema?
     public var state: [String: JSONValue]?
+    public var templateId: String?
+    public var configParams: [String: JSONValue]?
     public var createdAt: Date?
     public var updatedAt: Date?
 
-    public init(id: UUID? = nil, name: String, description: String? = nil, type: String, enabled: Bool? = nil, archived: Bool? = nil, code: String? = nil, runtime: String, schedule: String? = nil, executionType: String? = nil, executionWaitTime: Int? = nil, environmentVariables: [String: String]?, resourceLimits: InsertTriggerSchemaResourceLimits?, inputSchema: InsertTriggerSchemaInputSchema?, outputSchema: InsertTriggerSchemaInputSchema?, state: [String: JSONValue]?, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    public init(id: UUID? = nil, name: String, nameId: String, description: String? = nil, type: String, enabled: Bool? = nil, archived: Bool? = nil, code: String? = nil, runtime: String, schedule: String? = nil, executionType: String? = nil, executionWaitTime: Int? = nil, environmentVariables: [String: String]?, resourceLimits: InsertTriggerSchemaResourceLimits?, inputSchema: InsertTriggerSchemaInputSchema?, outputSchema: InsertTriggerSchemaInputSchema?, state: [String: JSONValue]?, templateId: String?, configParams: [String: JSONValue]?, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.name = name
+        self.nameId = nameId
         self.description = description
         self.type = type
         self.enabled = enabled
@@ -46,6 +50,8 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
         self.inputSchema = inputSchema
         self.outputSchema = outputSchema
         self.state = state
+        self.templateId = templateId
+        self.configParams = configParams
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -53,6 +59,7 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
+        case nameId = "name_id"
         case description
         case type
         case enabled
@@ -67,6 +74,8 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
         case inputSchema = "input_schema"
         case outputSchema = "output_schema"
         case state
+        case templateId = "template_id"
+        case configParams = "config_params"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
@@ -77,6 +86,7 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(name, forKey: .name)
+        try container.encode(nameId, forKey: .nameId)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(type, forKey: .type)
         try container.encodeIfPresent(enabled, forKey: .enabled)
@@ -91,6 +101,8 @@ public struct InsertTriggerSchema: Sendable, Codable, ParameterConvertible, Hash
         try container.encode(inputSchema, forKey: .inputSchema)
         try container.encode(outputSchema, forKey: .outputSchema)
         try container.encode(state, forKey: .state)
+        try container.encode(templateId, forKey: .templateId)
+        try container.encode(configParams, forKey: .configParams)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(updatedAt, forKey: .updatedAt)
     }

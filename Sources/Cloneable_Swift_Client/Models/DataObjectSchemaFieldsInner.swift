@@ -18,7 +18,7 @@ public struct DataObjectSchemaFieldsInner: Sendable, Codable, ParameterConvertib
     public var linkedObjectRevision: Double?
     public var linkedObjectTemplateId: String?
     public var modifiedAt: Date
-    public var modifiedBy: String
+    public var modifiedBy: String?
     public var name: String
     public var storedValue: String?
     public var type: String
@@ -26,7 +26,7 @@ public struct DataObjectSchemaFieldsInner: Sendable, Codable, ParameterConvertib
     public var jsonSchemaId: String?
     public var teamId: String?
 
-    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String, name: String, storedValue: String? = nil, type: String, jsonSchema: String? = nil, jsonSchemaId: String? = nil, teamId: String? = nil) {
+    public init(id: String, arraySubType: String? = nil, displayName: String, fieldId: String, linkedObjectDisplayName: String? = nil, linkedObjectName: String? = nil, linkedObjectRevision: Double? = nil, linkedObjectTemplateId: String? = nil, modifiedAt: Date, modifiedBy: String? = nil, name: String, storedValue: String? = nil, type: String, jsonSchema: String? = nil, jsonSchemaId: String? = nil, teamId: String? = nil) {
         self.id = id
         self.arraySubType = arraySubType
         self.displayName = displayName
@@ -77,7 +77,7 @@ public struct DataObjectSchemaFieldsInner: Sendable, Codable, ParameterConvertib
         try container.encodeIfPresent(linkedObjectRevision, forKey: .linkedObjectRevision)
         try container.encodeIfPresent(linkedObjectTemplateId, forKey: .linkedObjectTemplateId)
         try container.encode(modifiedAt, forKey: .modifiedAt)
-        try container.encode(modifiedBy, forKey: .modifiedBy)
+        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(storedValue, forKey: .storedValue)
         try container.encode(type, forKey: .type)

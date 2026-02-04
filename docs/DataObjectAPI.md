@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**archiveDataObject**](DataObjectAPI.md#archivedataobject) | **POST** /data-object/{id}/archive | Archive a data object
 [**createDataObject**](DataObjectAPI.md#createdataobject) | **PUT** /data-object | Create a data object
 [**createExplorerPage**](DataObjectAPI.md#createexplorerpage) | **PUT** /explorer-page | Create an explorer page
+[**deleteDataObjectField**](DataObjectAPI.md#deletedataobjectfield) | **DELETE** /data-object/{id}/field/{fieldId} | Delete a specific field from a data object
 [**deleteExplorerPage**](DataObjectAPI.md#deleteexplorerpage) | **DELETE** /explorer-page/{id} | Delete an explorer page
 [**getDataObjectsPaged**](DataObjectAPI.md#getdataobjectspaged) | **GET** /data-objects | Get paginated data objects
 [**getExplorerPages**](DataObjectAPI.md#getexplorerpages) | **GET** /explorer-pages | Get all explorer pages
@@ -151,6 +152,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateFile200Response**](UpdateFile200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteDataObjectField**
+```swift
+    open class func deleteDataObjectField(id: String, fieldId: String, body: JSONValue? = nil, completion: @escaping (_ data: DeleteDataObjectField200Response?, _ error: Error?) -> Void)
+```
+
+Delete a specific field from a data object
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+let fieldId = "fieldId_example" // String | 
+let body = "TODO" // JSONValue | Body (optional)
+
+// Delete a specific field from a data object
+DataObjectAPI.deleteDataObjectField(id: id, fieldId: fieldId, body: body) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+ **fieldId** | **String** |  | 
+ **body** | **JSONValue** | Body | [optional] 
+
+### Return type
+
+[**DeleteDataObjectField200Response**](DeleteDataObjectField200Response.md)
 
 ### Authorization
 

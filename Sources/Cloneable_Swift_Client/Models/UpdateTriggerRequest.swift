@@ -28,6 +28,7 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         case performance = "performance"
     }
     public var name: String?
+    public var nameId: String?
     public var description: String?
     public var code: String?
     public var runtime: Runtime?
@@ -39,9 +40,12 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
     public var environmentVariables: [String: String]?
     public var enabled: Bool?
     public var inputSchema: UpdateTriggerRequestInputSchema?
+    public var templateId: String?
+    public var configParams: [String: JSONValue]?
 
-    public init(name: String? = nil, description: String? = nil, code: String? = nil, runtime: Runtime? = nil, schedule: String? = nil, type: ModelType? = nil, executionType: ExecutionType? = nil, executionWaitTime: Double? = nil, resourcePreset: ResourcePreset? = nil, environmentVariables: [String: String]? = nil, enabled: Bool? = nil, inputSchema: UpdateTriggerRequestInputSchema? = nil) {
+    public init(name: String? = nil, nameId: String? = nil, description: String? = nil, code: String? = nil, runtime: Runtime? = nil, schedule: String? = nil, type: ModelType? = nil, executionType: ExecutionType? = nil, executionWaitTime: Double? = nil, resourcePreset: ResourcePreset? = nil, environmentVariables: [String: String]? = nil, enabled: Bool? = nil, inputSchema: UpdateTriggerRequestInputSchema? = nil, templateId: String? = nil, configParams: [String: JSONValue]? = nil) {
         self.name = name
+        self.nameId = nameId
         self.description = description
         self.code = code
         self.runtime = runtime
@@ -53,10 +57,13 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         self.environmentVariables = environmentVariables
         self.enabled = enabled
         self.inputSchema = inputSchema
+        self.templateId = templateId
+        self.configParams = configParams
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
+        case nameId = "name_id"
         case description
         case code
         case runtime
@@ -68,6 +75,8 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         case environmentVariables = "environment_variables"
         case enabled
         case inputSchema = "input_schema"
+        case templateId = "template_id"
+        case configParams = "config_params"
     }
 
     // Encodable protocol methods
@@ -75,6 +84,7 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(nameId, forKey: .nameId)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(runtime, forKey: .runtime)
@@ -86,6 +96,8 @@ public struct UpdateTriggerRequest: Sendable, Codable, ParameterConvertible, Has
         try container.encodeIfPresent(environmentVariables, forKey: .environmentVariables)
         try container.encodeIfPresent(enabled, forKey: .enabled)
         try container.encodeIfPresent(inputSchema, forKey: .inputSchema)
+        try container.encodeIfPresent(templateId, forKey: .templateId)
+        try container.encodeIfPresent(configParams, forKey: .configParams)
     }
 }
 
