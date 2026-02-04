@@ -50,6 +50,112 @@ open class ExportAPI {
     }
 
     /**
+     * enum for parameter status
+     */
+    public enum Status_getExportExecutions: String, Sendable, CaseIterable {
+        case pending = "pending"
+        case running = "running"
+        case success = "success"
+        case error = "error"
+    }
+
+    /**
+     Get export executions for a job
+     
+     - parameter jobId: (path)  
+     - parameter limit: (query)  (optional)
+     - parameter offset: (query)  (optional)
+     - parameter status: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetExportExecutions200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getExportExecutions(jobId: String, limit: Double? = nil, offset: Double? = nil, status: Status_getExportExecutions? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetExportExecutions200Response {
+        return try await getExportExecutionsWithRequestBuilder(jobId: jobId, limit: limit, offset: offset, status: status, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get export executions for a job
+     - GET /exports/executions/{jobId}
+     - parameter jobId: (path)  
+     - parameter limit: (query)  (optional)
+     - parameter offset: (query)  (optional)
+     - parameter status: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetExportExecutions200Response> 
+     */
+    open class func getExportExecutionsWithRequestBuilder(jobId: String, limit: Double? = nil, offset: Double? = nil, status: Status_getExportExecutions? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetExportExecutions200Response> {
+        var localVariablePath = "/exports/executions/{jobId}"
+        let jobIdPreEscape = "\(APIHelper.mapValueToPathItem(jobId))"
+        let jobIdPostEscape = jobIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{jobId}", with: jobIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "offset": (wrappedValue: offset?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "status": (wrappedValue: status?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetExportExecutions200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+     Get data object IDs that need re-export based on field modifications
+     
+     - parameter jobId: (path)  
+     - parameter specifiedTime: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: GetExportQueue200Response
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getExportQueue(jobId: String, specifiedTime: String? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetExportQueue200Response {
+        return try await getExportQueueWithRequestBuilder(jobId: jobId, specifiedTime: specifiedTime, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get data object IDs that need re-export based on field modifications
+     - GET /exports/queue/{jobId}
+     - parameter jobId: (path)  
+     - parameter specifiedTime: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<GetExportQueue200Response> 
+     */
+    open class func getExportQueueWithRequestBuilder(jobId: String, specifiedTime: String? = nil, apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<GetExportQueue200Response> {
+        var localVariablePath = "/exports/queue/{jobId}"
+        let jobIdPreEscape = "\(APIHelper.mapValueToPathItem(jobId))"
+        let jobIdPostEscape = jobIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{jobId}", with: jobIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "specified_time": (wrappedValue: specifiedTime?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetExportQueue200Response>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get a Katapult job by ID
      
      - parameter jobId: (path)  

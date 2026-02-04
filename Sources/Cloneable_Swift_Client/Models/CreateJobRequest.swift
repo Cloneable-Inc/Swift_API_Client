@@ -15,38 +15,48 @@ public struct CreateJobRequest: Sendable, Codable, ParameterConvertible, Hashabl
         case completed = "completed"
         case cancelled = "cancelled"
     }
+    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var name: String
     public var description: String? = ""
     public var configurationId: UUID?
+    public var groupId: UUID?
     public var status: Status? = .pending
     public var assignedTo: String?
     public var location: String?
+    public var externalId: String?
     public var metadata: GetJobs200ResponseJobsInnerMetadata
     public var importExecutionId: UUID?
     public var createdBy: String?
+    public var archivedAt: Date?
 
-    public init(name: String, description: String? = "", configurationId: UUID? = nil, status: Status? = .pending, assignedTo: String? = nil, location: String? = nil, metadata: GetJobs200ResponseJobsInnerMetadata, importExecutionId: UUID? = nil, createdBy: String? = nil) {
+    public init(name: String, description: String? = "", configurationId: UUID? = nil, groupId: UUID? = nil, status: Status? = .pending, assignedTo: String? = nil, location: String? = nil, externalId: String? = nil, metadata: GetJobs200ResponseJobsInnerMetadata, importExecutionId: UUID? = nil, createdBy: String? = nil, archivedAt: Date? = nil) {
         self.name = name
         self.description = description
         self.configurationId = configurationId
+        self.groupId = groupId
         self.status = status
         self.assignedTo = assignedTo
         self.location = location
+        self.externalId = externalId
         self.metadata = metadata
         self.importExecutionId = importExecutionId
         self.createdBy = createdBy
+        self.archivedAt = archivedAt
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
         case configurationId = "configuration_id"
+        case groupId = "group_id"
         case status
         case assignedTo = "assigned_to"
         case location
+        case externalId = "external_id"
         case metadata
         case importExecutionId = "import_execution_id"
         case createdBy = "created_by"
+        case archivedAt = "archived_at"
     }
 
     // Encodable protocol methods
@@ -56,12 +66,15 @@ public struct CreateJobRequest: Sendable, Codable, ParameterConvertible, Hashabl
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(configurationId, forKey: .configurationId)
+        try container.encodeIfPresent(groupId, forKey: .groupId)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(assignedTo, forKey: .assignedTo)
         try container.encodeIfPresent(location, forKey: .location)
+        try container.encodeIfPresent(externalId, forKey: .externalId)
         try container.encode(metadata, forKey: .metadata)
         try container.encodeIfPresent(importExecutionId, forKey: .importExecutionId)
         try container.encodeIfPresent(createdBy, forKey: .createdBy)
+        try container.encodeIfPresent(archivedAt, forKey: .archivedAt)
     }
 }
 

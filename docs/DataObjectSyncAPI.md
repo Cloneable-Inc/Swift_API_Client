@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**findDataObjectFieldsByArrayValue**](DataObjectSyncAPI.md#finddataobjectfieldsbyarrayvalue) | **GET** /data-objects-sync/fields-by-array | Find data objects containing a specific value in their array fields
 [**getFilteredDataObjects**](DataObjectSyncAPI.md#getfiltereddataobjects) | **GET** /data-object-sync/filtered-data-objects | Get filtered and paginated data objects
 [**getOne**](DataObjectSyncAPI.md#getone) | **GET** /data-object-sync/data-object/{id} | Get a flattened data object
+[**getOneWithMetadata**](DataObjectSyncAPI.md#getonewithmetadata) | **GET** /data-object-sync/data-object/{id}/with-metadata | Get a data object with full field metadata
 [**getSyncFields**](DataObjectSyncAPI.md#getsyncfields) | **GET** /data-object-sync/fields | Get individual data object fields for sync operations with optional timestamp filtering
 [**getTemplate**](DataObjectSyncAPI.md#gettemplate) | **GET** /data-object-sync/template/{id} | Get a data object template
 [**listTemplates**](DataObjectSyncAPI.md#listtemplates) | **GET** /data-object-sync/templates | List all data object templates
@@ -205,6 +206,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetOne200Response**](GetOne200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getOneWithMetadata**
+```swift
+    open class func getOneWithMetadata(id: String, completion: @escaping (_ data: GetOneWithMetadata200Response?, _ error: Error?) -> Void)
+```
+
+Get a data object with full field metadata
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let id = "id_example" // String | 
+
+// Get a data object with full field metadata
+DataObjectSyncAPI.getOneWithMetadata(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+
+### Return type
+
+[**GetOneWithMetadata200Response**](GetOneWithMetadata200Response.md)
 
 ### Authorization
 

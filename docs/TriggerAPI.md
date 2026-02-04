@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**detachSecret**](TriggerAPI.md#detachsecret) | **DELETE** /trigger/{id}/secrets/{secret_id} | Remove a secret from a trigger
 [**getAllExecutions**](TriggerAPI.md#getallexecutions) | **GET** /triggers/executions | Get recent executions across all triggers
 [**getExecutionLogs**](TriggerAPI.md#getexecutionlogs) | **GET** /trigger/execution/{execution_id}/logs | Get logs for a specific execution
+[**getExecutionSummaryByType**](TriggerAPI.md#getexecutionsummarybytype) | **GET** /triggers/executions/summary | Get aggregated execution stats split by import/export trigger types
+[**getExecutionsByObjectId**](TriggerAPI.md#getexecutionsbyobjectid) | **GET** /triggers/executions/by-object/{object_id} | Get executions for a specific object_id (used in export triggers)
 [**getOneTrigger**](TriggerAPI.md#getonetrigger) | **GET** /trigger/{id} | Get a single trigger by ID
 [**getTriggerByNameId**](TriggerAPI.md#gettriggerbynameid) | **GET** /trigger/by-name/{name_id} | Get a single trigger by name_id
 [**getTriggerExecutions**](TriggerAPI.md#gettriggerexecutions) | **GET** /trigger/{id}/executions | Get execution history for a trigger
@@ -481,6 +483,108 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getExecutionSummaryByType**
+```swift
+    open class func getExecutionSummaryByType(recentLimit: Double? = nil, completion: @escaping (_ data: GetExecutionSummaryByType200Response?, _ error: Error?) -> Void)
+```
+
+Get aggregated execution stats split by import/export trigger types
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let recentLimit = 987 // Double |  (optional)
+
+// Get aggregated execution stats split by import/export trigger types
+TriggerAPI.getExecutionSummaryByType(recentLimit: recentLimit) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **recentLimit** | **Double** |  | [optional] 
+
+### Return type
+
+[**GetExecutionSummaryByType200Response**](GetExecutionSummaryByType200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getExecutionsByObjectId**
+```swift
+    open class func getExecutionsByObjectId(objectId: String, triggerId: UUID? = nil, limit: Double? = nil, offset: Double? = nil, completion: @escaping (_ data: [TriggerExecutionSchema]?, _ error: Error?) -> Void)
+```
+
+Get executions for a specific object_id (used in export triggers)
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+let objectId = "objectId_example" // String | 
+let triggerId = 987 // UUID |  (optional)
+let limit = 987 // Double |  (optional)
+let offset = 987 // Double |  (optional)
+
+// Get executions for a specific object_id (used in export triggers)
+TriggerAPI.getExecutionsByObjectId(objectId: objectId, triggerId: triggerId, limit: limit, offset: offset) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **objectId** | **String** |  | 
+ **triggerId** | **UUID** |  | [optional] 
+ **limit** | **Double** |  | [optional] 
+ **offset** | **Double** |  | [optional] 
+
+### Return type
+
+[**[TriggerExecutionSchema]**](TriggerExecutionSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getOneTrigger**
 ```swift
     open class func getOneTrigger(id: String, completion: @escaping (_ data: TriggerSchema?, _ error: Error?) -> Void)
@@ -880,7 +984,7 @@ Manually execute a trigger (id can be UUID or name_id)
 import Cloneable_Swift_Client
 
 let id = "id_example" // String | 
-let runTriggerRequest = runTrigger_request(inputParameters: "TODO") // RunTriggerRequest | Body (optional)
+let runTriggerRequest = runTrigger_request(inputParameters: "TODO", jobId: 123, batchId: 123) // RunTriggerRequest | Body (optional)
 
 // Manually execute a trigger (id can be UUID or name_id)
 TriggerAPI.runTrigger(id: id, runTriggerRequest: runTriggerRequest) { (response, error) in

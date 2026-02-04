@@ -11,8 +11,6 @@ public struct DebugPostRequest: Sendable, Codable, ParameterConvertible, Hashabl
 
     public enum Action: String, Sendable, Codable, CaseIterable {
         case reset = "reset"
-        case autoRecover = "auto_recover"
-        case resumeProcessing = "resume_processing"
         case forceProcessQueue = "force_process_queue"
     }
     public var action: Action

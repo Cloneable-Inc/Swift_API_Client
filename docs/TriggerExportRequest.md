@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **connectionId** | **String** |  | [optional] 
 **sectionId** | **String** |  | [optional] 
 **attachments** | [TriggerExportRequestOneOfAttachmentsInner] |  | [optional] 
-**elements** | **[String]** |  | [optional] 
+**elements** | **[JSONValue]** |  | [optional] 
+**traces** | [TriggerExportRequestOneOfTracesInner] |  | [optional] 
 **columns** | **[String]** |  | 
 **data** | [[String: JSONValue]] |  | 
 **filename** | **String** |  | [optional] 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getAccountAnalytics**](AnalyticsAPI.md#getaccountanalytics) | **GET** /analytics/account/{org_id} | Get analytics data for an organization from Intercom
 [**getDailyUsage**](AnalyticsAPI.md#getdailyusage) | **GET** /analytics/usage/{org_id} | Get daily pole measurement usage for an organization
 [**getOrgEvents**](AnalyticsAPI.md#getorgevents) | **GET** /analytics/events/{org_id} | Get events for an entire organization
+[**getPlatformMetrics**](AnalyticsAPI.md#getplatformmetrics) | **GET** /analytics/platform/metrics | Get platform-wide pole measurement metrics (admin only)
 [**getSessionTrends**](AnalyticsAPI.md#getsessiontrends) | **GET** /analytics/sessions/{org_id} | Get session trends over time for an organization
 [**getUserAnalytics**](AnalyticsAPI.md#getuseranalytics) | **GET** /analytics/users/{org_id} | Get detailed user analytics for an organization
 [**getUserEvents**](AnalyticsAPI.md#getuserevents) | **GET** /analytics/events/user/{user_id} | Get recent events for a specific user
@@ -145,6 +146,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetOrgEvents200Response**](GetOrgEvents200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPlatformMetrics**
+```swift
+    open class func getPlatformMetrics(completion: @escaping (_ data: [GetPlatformMetrics200ResponseInner]?, _ error: Error?) -> Void)
+```
+
+Get platform-wide pole measurement metrics (admin only)
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import Cloneable_Swift_Client
+
+
+// Get platform-wide pole measurement metrics (admin only)
+AnalyticsAPI.getPlatformMetrics() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[GetPlatformMetrics200ResponseInner]**](GetPlatformMetrics200ResponseInner.md)
 
 ### Authorization
 

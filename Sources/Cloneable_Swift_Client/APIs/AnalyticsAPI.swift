@@ -130,6 +130,41 @@ open class AnalyticsAPI {
     }
 
     /**
+     Get platform-wide pole measurement metrics (admin only)
+     
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [GetPlatformMetrics200ResponseInner]
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getPlatformMetrics(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) async throws(ErrorResponse) -> [GetPlatformMetrics200ResponseInner] {
+        return try await getPlatformMetricsWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     Get platform-wide pole measurement metrics (admin only)
+     - GET /analytics/platform/metrics
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<[GetPlatformMetrics200ResponseInner]> 
+     */
+    open class func getPlatformMetricsWithRequestBuilder(apiConfiguration: Cloneable_Swift_ClientAPIConfiguration = Cloneable_Swift_ClientAPIConfiguration.shared) -> RequestBuilder<[GetPlatformMetrics200ResponseInner]> {
+        let localVariablePath = "/analytics/platform/metrics"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: any Sendable]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: (any Sendable)?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[GetPlatformMetrics200ResponseInner]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false, apiConfiguration: apiConfiguration)
+    }
+
+    /**
      Get session trends over time for an organization
      
      - parameter orgId: (path)  

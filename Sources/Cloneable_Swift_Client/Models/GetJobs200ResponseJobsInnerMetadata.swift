@@ -12,17 +12,23 @@ public struct GetJobs200ResponseJobsInnerMetadata: Sendable, Codable, ParameterC
     public var jobIdField: String? = "job_id"
     public var createdBy: String?
     public var katapultJobId: String?
+    public var exportBatches: [GetJobs200ResponseJobsInnerMetadataExportBatchesInner]?
+    public var lastExportReferenceTime: String?
 
-    public init(jobIdField: String? = "job_id", createdBy: String? = nil, katapultJobId: String? = nil) {
+    public init(jobIdField: String? = "job_id", createdBy: String? = nil, katapultJobId: String? = nil, exportBatches: [GetJobs200ResponseJobsInnerMetadataExportBatchesInner]? = nil, lastExportReferenceTime: String? = nil) {
         self.jobIdField = jobIdField
         self.createdBy = createdBy
         self.katapultJobId = katapultJobId
+        self.exportBatches = exportBatches
+        self.lastExportReferenceTime = lastExportReferenceTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case jobIdField
         case createdBy
         case katapultJobId = "katapult_job_id"
+        case exportBatches = "export_batches"
+        case lastExportReferenceTime = "last_export_reference_time"
     }
 
     // Encodable protocol methods
@@ -32,6 +38,8 @@ public struct GetJobs200ResponseJobsInnerMetadata: Sendable, Codable, ParameterC
         try container.encodeIfPresent(jobIdField, forKey: .jobIdField)
         try container.encodeIfPresent(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(katapultJobId, forKey: .katapultJobId)
+        try container.encodeIfPresent(exportBatches, forKey: .exportBatches)
+        try container.encodeIfPresent(lastExportReferenceTime, forKey: .lastExportReferenceTime)
     }
 }
 

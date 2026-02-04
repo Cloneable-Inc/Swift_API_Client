@@ -21,9 +21,10 @@ public struct TriggerExportRequestOneOf: Sendable, Codable, ParameterConvertible
     public var connectionId: String?
     public var sectionId: String?
     public var attachments: [TriggerExportRequestOneOfAttachmentsInner]?
-    public var elements: [String]?
+    public var elements: [JSONValue]?
+    public var traces: [TriggerExportRequestOneOfTracesInner]?
 
-    public init(fileId: String, exportType: ExportType? = .node, nodeUrl: String? = nil, jobId: String? = nil, nodeId: String? = nil, connectionId: String? = nil, sectionId: String? = nil, attachments: [TriggerExportRequestOneOfAttachmentsInner]? = nil, elements: [String]? = nil) {
+    public init(fileId: String, exportType: ExportType? = .node, nodeUrl: String? = nil, jobId: String? = nil, nodeId: String? = nil, connectionId: String? = nil, sectionId: String? = nil, attachments: [TriggerExportRequestOneOfAttachmentsInner]? = nil, elements: [JSONValue]? = nil, traces: [TriggerExportRequestOneOfTracesInner]? = nil) {
         self.fileId = fileId
         self.exportType = exportType
         self.nodeUrl = nodeUrl
@@ -33,6 +34,7 @@ public struct TriggerExportRequestOneOf: Sendable, Codable, ParameterConvertible
         self.sectionId = sectionId
         self.attachments = attachments
         self.elements = elements
+        self.traces = traces
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -45,6 +47,7 @@ public struct TriggerExportRequestOneOf: Sendable, Codable, ParameterConvertible
         case sectionId = "section_id"
         case attachments
         case elements
+        case traces
     }
 
     // Encodable protocol methods
@@ -60,6 +63,7 @@ public struct TriggerExportRequestOneOf: Sendable, Codable, ParameterConvertible
         try container.encodeIfPresent(sectionId, forKey: .sectionId)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(elements, forKey: .elements)
+        try container.encodeIfPresent(traces, forKey: .traces)
     }
 }
 
